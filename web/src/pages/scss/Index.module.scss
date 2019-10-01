@@ -131,6 +131,8 @@
     margin-top: 1rem;
   }
 
+
+
   .slider {
     overflow: hidden;
     margin-right: -1.5rem;
@@ -138,6 +140,12 @@
 
     @include breakpoint-lg {
       margin-right: calc(-100vw / 2 + (#{$layout-width} + 1.5rem) / 2);
+    }
+
+    &.sliderContained {
+      @include breakpoint-lg {
+        margin-right: -1.5rem;
+      }
     }
 
     li:last-child>.item {

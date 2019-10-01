@@ -4,6 +4,7 @@ import Image from 'gatsby-image/withIEPolyfill'
 import { mapEdgesToNodes, filterOutDocsWithoutSlugs, useWindowDimensions } from '../lib/helpers'
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel'
 import GraphQLErrorList from '../components/graphql-error-list'
+import { isMobile } from 'react-device-detect'
 import SEO from '../components/Seo'
 import Button from '../components/Button'
 import Layout from '../containers/layout'
@@ -12,6 +13,7 @@ import Hero from '../modules/Hero'
 import cn from 'classnames'
 import styles from './scss/Index.module.scss'
 import 'pure-react-carousel/dist/react-carousel.es.css'
+import post from '../../../studio/schemas/post'
 
 export const query = graphql`
   query IndexPageQuery {
@@ -43,6 +45,9 @@ export const query = graphql`
               width
             }
             asset {
+              fluid {
+                ...GatsbySanityImageFluid
+              }
               _id
             }
             alt
@@ -175,9 +180,11 @@ const IndexPage = props => {
         <CarouselProvider
           naturalSlideWidth={369}
           naturalSlideHeight={480}
-          lockOnWindowScroll
-          visibleSlides={width <= 500 ? 1.5 : 3.5}
-          totalSlides={5}
+          lockOnWindowScroll={false}
+          visibleSlides={
+            width || isMobile <= 500 ? 1.5 : projectNodes.length > 3 ? 3.5 : projectNodes.length
+          }
+          totalSlides={projectNodes.length}
           className={cn(styles.sliderCarousel, styles.projectCarousel)}
         >
           <div className={styles.headingWrapper}>
@@ -190,66 +197,25 @@ const IndexPage = props => {
               <ButtonNext>{'>'}</ButtonNext>
             </div>
           </div>
-
-          <Slider className={styles.slider}>
-            <Slide index={0}>
-              <Link to="/" className={styles.item}>
-                <div className={styles.wrapper}>
-                  <Image fluid={data.project01.childImageSharp.fluid} className={styles.image} />
-                </div>
-                <div className={styles.content}>
-                  <h4 className={styles.title}>OneLion Vapers</h4>
-                  <p className={styles.description}>Accessories</p>
-                </div>
-              </Link>
-            </Slide>
-            <Slide index={1}>
-              <Link to="/" className={styles.item}>
-                <div className={styles.wrapper}>
-                  <Image fluid={data.project02.childImageSharp.fluid} className={styles.image} />
-                </div>
-                <div className={styles.content}>
-                  <h4 className={styles.title}>Pointec</h4>
-                  <p className={styles.description}>Accessories</p>
-                </div>
-              </Link>
-            </Slide>
-            <Slide index={2}>
-              <Link to="/" className={styles.item}>
-                <div className={styles.wrapper}>
-                  <Image fluid={data.project03.childImageSharp.fluid} className={styles.image} />
-                </div>
-                <div className={styles.content}>
-                  <h4 className={styles.title}>Worst Behavior</h4>
-                  <p className={styles.description}>Fashion</p>
-                </div>
-              </Link>
-            </Slide>
-            <Slide index={3}>
-              <Link to="/" className={styles.item}>
-                <div className={styles.wrapper}>
-                  <Image fluid={data.project04.childImageSharp.fluid} className={styles.image} />
-                </div>
-                <div className={styles.content}>
-                  <h4 className={styles.title}>IamYours</h4>
-                  <p className={styles.description}>Fashion</p>
-                </div>
-              </Link>
-            </Slide>
-            <Slide index={4}>
-              <Link to="/" className={styles.item}>
-                <div className={styles.wrapper}>
-                  <Image fluid={data.project01.childImageSharp.fluid} className={styles.image} />
-                </div>
-                <div className={styles.content}>
-                  <h4 className={styles.title}>Lagomar</h4>
-                  <p className={styles.description}>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, corrupti!
-                  </p>
-                </div>
-              </Link>
-            </Slide>
-          </Slider>
+          {projectNodes && (
+            <Slider
+              className={cn(styles.slider, projectNodes.length <= 2 && styles.sliderContained)}
+            >
+              {projectNodes.map((project, i) => (
+                <Slide index={i}>
+                  <Link to="/" className={styles.item}>
+                    <div className={styles.wrapper}>
+                      <Image fluid={project.mainImage.asset.fluid} className={styles.image} />
+                    </div>
+                    <div className={styles.content}>
+                      <h4 className={styles.title}>{project.title}</h4>
+                      <p className={styles.description}>Accessories</p>
+                    </div>
+                  </Link>
+                </Slide>
+              ))}
+            </Slider>
+          )}
         </CarouselProvider>
       </Section>
       {/*  <Section narrow={false} divider={false} className={styles.intro}>
