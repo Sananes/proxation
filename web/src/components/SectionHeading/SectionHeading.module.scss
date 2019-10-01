@@ -1,0 +1,44 @@
+@import '../../assets/scss/helpers';
+
+.sectionHeading {
+  text-align: center;
+}
+
+.leftAligned,
+.rightAligned {
+  text-align: left;
+  lost-center: 100%;
+}
+
+.centerAligned {
+  text-align: center;
+  lost-center: 600px;
+}
+
+.rightAligned {
+  text-align: right;
+}
+
+.buttonWrapper {
+  margin-top: 1.5rem;
+}
+
+.buttonSecondary {
+  background: red;
+}
+
+.caption {
+  @include overline;
+}
+
+.caption+.title {
+  margin-top: 1rem;
+}
+
+.title {
+  @include h2;
+}
+
+.lead {
+  @include body-l;
+}

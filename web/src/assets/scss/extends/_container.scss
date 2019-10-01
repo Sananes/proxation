@@ -1,0 +1,53 @@
+%container,
+%container-narrow {
+  @include clear-top-margin;
+  padding: 1.5rem 0;
+}
+
+%container {
+  lost-center: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  @include breakpoint-lg {
+    lost-center: $layout-breakpoint-lg;
+  }
+}
+
+%container-narrow,
+.container-narrow {
+  lost-center: 780px;
+
+  @include breakpoint-lg {
+    lost-center: 780px;
+  }
+}
+
+%section {
+  @include interpolate((padding-top, padding-bottom), 24px, 120px);
+  overflow: hidden;
+  @include clear-top-margin;
+  max-width: 100%;
+
+  &>div {
+    padding: 0 1rem;
+  }
+
+
+  &+& {
+    border-top: 0;
+  }
+
+}
+
+%section-heading {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: 0;
+  }
+}

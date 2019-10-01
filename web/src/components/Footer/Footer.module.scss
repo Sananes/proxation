@@ -1,0 +1,71 @@
+@import '../../assets/scss/helpers';
+
+.footer {
+  background: $color-footer-background;
+  border-top: 1px solid $color-footer-border;
+  color: $text-dark;
+
+  li a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+.logo {
+  color: inherit;
+}
+
+.footerWrapper {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.contact,
+.menu,
+.partners {
+  lost-column: 1/3;
+}
+
+.contact {
+  ul {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding: 0;
+  }
+}
+
+.menu {
+  lost-column: 1/6;
+  lost-move: 1/6;
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  li a {
+    display: block;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+  }
+}
+
+.partners {
+
+  ul {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  li {
+    margin-left: 2rem;
+  }
+}
+
+.siteInfo {
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}

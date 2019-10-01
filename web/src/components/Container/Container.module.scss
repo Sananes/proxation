@@ -1,0 +1,9 @@
+@import '../../assets/scss/helpers';
+
+.container {
+  @extend %container !optional;
+}
+
+.narrow {
+  @extend %container-narrow;
+}

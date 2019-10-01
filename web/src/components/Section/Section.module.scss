@@ -1,0 +1,15 @@
+@import '../../assets/scss/helpers';
+
+.section {
+  @extend %section;
+}
+
+.sectionDivider {
+  @extend %section;
+  border-top: 1px solid $color-divider;
+  border-bottom: 1px solid $color-divider;
+
+  .containerNarrow {
+    max-width: 780px;
+  }
+}

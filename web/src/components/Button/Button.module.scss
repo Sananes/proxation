@@ -1,0 +1,30 @@
+@import '../../assets/scss/helpers';
+
+.button {
+  @extend %button;
+}
+
+.buttonLink {
+  @extend %button;
+}
+
+.buttonSecondary {
+  @extend %buttonSecondary;
+}
+
+.buttonGhost {
+  @extend %buttonGhost;
+}
+
+.buttonPrimary {
+  @extend %button;
+}
+
+.buttonLarge {
+  @extend %button,
+  %buttonLarge;
+}
+
+.buttonSmall {
+  @extend %buttonSmall;
+}

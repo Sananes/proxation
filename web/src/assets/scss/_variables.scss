@@ -1,0 +1,156 @@
+// Global
+
+$global-border-radius: 3px;
+
+// Colors
+$color-primary: #1A1A1A;
+$color-white: #fff;
+$color-border: #efefef;
+$color-divider: $color-border;
+$color-background: #fff;
+$color-hightlight-background: #F4F4F2;
+
+$text-dark: #1A1A1A;
+$text-subdued: #4F4F4F;
+$text-dimmed: #828282;
+$text-muted: #BDBDBD;
+$text-ghost: #E0E0E0;
+
+$text-light: #fff;
+$text-light-subdued: lighten($text-light, 20%);
+$text-light-dimmed: lighten($text-light, 40%);
+$text-light-muted: lighten($text-light, 60%);
+
+// Color: Typography
+$heading-color: $text-dark;
+$text-color: $text-subdued;
+$overline-color: $text-dimmed;
+
+// Typography
+$typographic-font-family: "Space Grotesk",
+-apple-system,
+BlinkMacSystemFont,
+"Segoe UI",
+Roboto,
+Oxygen-Sans,
+Ubuntu,
+Cantarell,
+"Helvetica Neue",
+sans-serif;
+
+$typographic-heading-font-family: "Space Grotesk",
+-apple-system-headline,
+-apple-system,
+BlinkMacSystemFont,
+"Segoe UI",
+Roboto,
+Oxygen-Sans,
+Ubuntu,
+Cantarell,
+"Helvetica Neue",
+sans-serif;
+$typographic-heading-font-weight: 700;
+$typographic-root-font-size: 100;
+$typographic-base-font-size: 16px;
+$typographic-small-font-size: 14px;
+$typographic-base-line-height: 1.5;
+$typographic-leading: round(strip-unit($typographic-base-font-size) * ($typographic-root-font-size / 100) * $typographic-base-line-height);
+
+// Desktop type sizes
+$font-size-heading-1: 60px;
+$font-size-heading-2: 45px;
+$font-size-heading-3: 32px;
+$font-size-heading-4: 28px;
+$font-size-heading-5: 24px;
+$font-size-heading-6: 20px;
+$font-size-body-xl: 16px;
+$font-size-body-l: 20px;
+$font-size-body: $typographic-base-font-size;
+$font-size-body-s: 14px;
+$font-size-body-xs: 12px;
+$font-size-overline: 12px;
+$font-size-menu: 12px;
+$font-size-button: 12px;
+
+// Mobile type sizes
+$font-size-heading-1-mobile: 30px;
+$font-size-heading-2-mobile: 26px;
+$font-size-heading-3-mobile: 24px;
+$font-size-heading-4-mobile: 20px;
+$font-size-heading-5-mobile: 18px;
+$font-size-heading-6-mobile: 20px;
+$font-size-body-xl-mobile: 16px;
+$font-size-body-l-mobile: 18px;
+$font-size-body-mobile: $font-size-body;
+$font-size-body-s-mobile: $font-size-body-s;
+$font-size-body-xs-mobile: $font-size-body-xs;
+$font-size-overline-mobile: 11px;
+$font-size-menu-mobile: 12px;
+$font-size-button-mobile: 16px;
+
+// Layout Breakpoints
+$layout-width: 1140px;
+$layout-breakpoint-xs: 320px;
+$layout-breakpoint-sm: 640px;
+$layout-breakpoint-md: 960px;
+$layout-breakpoint-lg: 1200px;
+
+// Buttons
+$button-font-size: 12px;
+$button-font-weight: 600;
+$button-large-height: 56px;
+$button-medium-height: 48px;
+$button-small-height: 40px;
+$button-border: 1px;
+$button-text-style: uppercase;
+$button-letter-spacing: 2px;
+$button-border-radius: $global-border-radius;
+
+$color-button-text: $color-white;
+$color-button-text-hover: $color-white;
+$color-button-background: $color-primary;
+$color-button-background-hover: darken($color-primary, 10%);
+$color-button-border: transparent;
+$color-button-border-hover: transparent;
+
+$color-button-secondary-text: #000;
+$color-button-secondary-text-hover: $color-white;
+$color-button-secondary-background: transparent;
+$color-button-secondary-background-hover: $color-primary;
+$color-button-secondary-border: transparent;
+$color-button-secondary-border-hover: transparent;
+
+$color-button-link-text: #000;
+$color-button-link-text-hover: #000;
+
+
+// Header
+$header-height: 100px;
+$header-mobile-height: 50px;
+$header-menu-font-weight: 500;
+$header-menu-letter-spacing: 2px;
+$header-menu-font-style: uppercase;
+$color-header-background: #fff;
+$color-header-border: $color-border;
+$color-header-hover: #fff;
+$color-header-menu: #000;
+$color-header-menu-hover: #000;
+$color-header-menu-active: #000;
+$color-header-text: $text-color;
+$color-header-text-hover: #000;
+
+// Footer
+$color-footer-background: #fff;
+$color-footer-border: $color-border;
+$color-footer-text: #000;
+$color-footer-copyright: #333;
+$color-footer-menu: #000;
+$color-footer-menu-hover: #000;
+
+
+// Input
+$input-placeholder: #text-muted;
+$input-text-color: $text-subdued;
+$input-border: darken($color-border, 5%);
+$input-border-hover: darken($input-border, 5%);
+$input-border-focus: $color-primary;

@@ -1,0 +1,114 @@
+@import '../../assets/scss/helpers';
+
+.hero {
+  position: relative;
+  margin-top: -$header-mobile-height;
+  height: 80vh;
+
+  @include breakpoint-md {
+    margin-top: -$header-height;
+
+  }
+}
+
+.alignRight {
+  text-align: left;
+}
+
+.alignLeft {
+  text-align: left;
+}
+
+.alignCenter {
+  text-align: center;
+}
+
+.container {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  color: $text-dark;
+
+  .fullScreen & {
+    left: 50%;
+    top: calc(50% - #{$header-height});
+    transform: translate(-50%, calc(-50% + #{$header-mobile-height * 2.5}));
+
+    @include breakpoint-md {
+      transform: translate(-50%, calc(-50% + #{$header-height + $header-height / 2}));
+
+      &.alignLeft & {
+        transform: translate(0px, calc(-50% + #{$header-height + $header-height / 2}));
+      }
+    }
+
+    &.alignLeft & {
+      transform: translate(0px, calc(-50% + #{$header-mobile-height + $header-mobile-height / 2}));
+
+    }
+  }
+
+  .light & {
+    color: $text-light;
+  }
+
+  &.alignRight.fullScreen & {
+
+    transform: translate(-50%, calc(-50% + #{$header-mobile-height + $header-mobile-height / 2}));
+
+    @include breakpoint-md {
+      transform: translate(-50%, calc(-50% + #{$header-height + $header-height / 2}));
+    }
+  }
+
+  .alignLeft.fullScreen & {
+    transform: translate(-50%, calc(-50% + #{$header-mobile-height + $header-mobile-height / 2}));
+
+    @include breakpoint-md {
+      transform: translate(-50%, calc(-50% + #{$header-height + $header-height / 2}));
+    }
+  }
+}
+
+.content {
+  max-width: 650px;
+
+  .alignLeft & {
+    padding-left: 0;
+  }
+
+  .alignCenter & {
+    lost-center: 820px;
+  }
+
+  .alignRight & {
+    margin-right: 0;
+    margin-left: auto;
+  }
+
+  p {
+    lost-center: 500px;
+  }
+}
+
+small {
+  @include overline;
+  color: inherit;
+}
+
+.title {
+  color: inherit;
+}
+
+small+.title {
+  margin-top: 1rem;
+}
+
+.button {
+  @extend %buttonLarge,
+  %buttonSecondaryLight;
+  margin-top: 2rem;
+}

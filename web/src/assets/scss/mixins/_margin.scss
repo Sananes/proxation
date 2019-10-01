@@ -1,0 +1,7 @@
+@mixin margin-top($number) {
+  margin-top: #{ $number * ($typographic-leading) + "px"};
+}
+
+@mixin margin-bottom($number) {
+  margin-top: #{ $number * ($typographic-leading) + "px"};
+}
