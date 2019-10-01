@@ -19,7 +19,6 @@
   },
   "devDependencies": {
     "lerna": "^3.14.1",
-    "postcss-pxtorem": "^4.0.1",
     "rimraf": "^2.6.3"
   }
 }

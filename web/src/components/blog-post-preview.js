@@ -6,7 +6,7 @@ import BlockText from './block-text'
 
 import styles from './blog-post-preview.module.css'
 
-function BlogPostPreview (props) {
+function BlogPostPreview(props) {
   return (
     <Link className={styles.root} to={getBlogUrl(props.publishedAt, props.slug.current)}>
       <div className={styles.leadMediaThumb}>
@@ -20,7 +20,7 @@ function BlogPostPreview (props) {
           />
         )}
       </div>
-      <h3 className={cn(responsiveTitle3, styles.title)}>{props.title}</h3>
+      <h3 className={cn(styles.title)}>{props.title}</h3>
       {props._rawExcerpt && (
         <div className={styles.excerpt}>
           <BlockText blocks={props._rawExcerpt} />

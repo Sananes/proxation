@@ -4,9 +4,8 @@ import { buildImageObj } from '../lib/helpers'
 import { imageUrlFor } from '../lib/image-url'
 
 import styles from './people-grid.module.css'
-import { responsiveTitle2 } from '../components/typography.module.css'
 
-function ProfileCard ({ image, name, _rawBio }) {
+function ProfileCard({ image, name, _rawBio }) {
   return (
     <div className={styles.profileCard}>
       <div className={styles.profileMediaThumb}>
@@ -30,10 +29,10 @@ function ProfileCard ({ image, name, _rawBio }) {
   )
 }
 
-function PeopleGrid ({ items, title }) {
+function PeopleGrid({ items, title }) {
   return (
     <div className={styles.root}>
-      {<h2 className={responsiveTitle2}>{title}</h2>}
+      {<h2>{title}</h2>}
       <ul className={styles.grid}>
         {items.map(item => (
           <li key={item.id}>

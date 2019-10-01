@@ -33,9 +33,9 @@ module.exports = {
         dataset,
         // To enable preview of drafts, copy .env-example into .env,
         // and add a token with read permissions
-        token: process.env.SANITY_TOKEN
-        // watchMode: true,
-        // overlayDrafts: true
+        token: process.env.SANITY_TOKEN,
+        watchMode: true,
+        overlayDrafts: true
       }
     }
   ]
@@ -48,7 +48,7 @@ module.exports = {
  * with directions to enter the info manually or in the environment.
  */
 
-function requireConfig (path) {
+function requireConfig(path) {
   try {
     return require('../studio/sanity.json')
   } catch (e) {

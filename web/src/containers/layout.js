@@ -48,7 +48,7 @@ function LayoutContainer(props) {
             {...props}
             showNav={showNav}
             companyInfo={data.companyInfo}
-            siteTitle={data.site.title}
+            siteTitle={data.site.title || 'Proxation'}
             onHideNav={handleHideNav}
             onShowNav={handleShowNav}
           />
