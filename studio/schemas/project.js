@@ -51,6 +51,11 @@ export default {
       type: "mainImage"
     },
     {
+      name: "type",
+      title: "Type",
+      type: "string"
+    },
+    {
       name: "categories",
       title: "Categories",
       type: "array",
