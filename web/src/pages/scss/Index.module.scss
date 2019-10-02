@@ -96,6 +96,10 @@
 }
 
 .sliderCarousel {
+  .sliderNav {
+    margin-right: -5px;
+  }
+
   .button {
     @include buttonReset;
     outline: 0;

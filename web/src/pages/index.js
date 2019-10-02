@@ -118,7 +118,6 @@ const IndexPage = props => {
     : []
   const projectNodes =
     (data || {}).projects && data.projects.edges.map(edge => edge.node.relatedProjects)[0]
-
   if (!site) {
     throw new Error(
       'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'

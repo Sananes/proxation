@@ -23,10 +23,7 @@
   position: relative;
   z-index: 100;
   background: $color-header-background;
-  padding-left: 1rem;
-  padding-right: 1rem;
 
-  @include breakpoint-md {}
 
   &.transparent {
     color: $text-light;
@@ -43,12 +40,12 @@
   align-items: center;
   height: $header-mobile-height;
   transition: height 300ms ease-in-out;
+  padding-left: 1rem;
+  padding-right: 1rem;
 
-  @include breakpoint-md {
+  @include breakpoint-lg {
     height: $header-height;
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
-    lost-center: calc(#{$layout-width + 40px + 64px});
+    lost-center: calc(#{$layout-breakpoint-lg - 16px});
 
   }
 }
@@ -89,7 +86,7 @@
   font-size: 25px;
   border: none;
   background: none;
-  margin: 0;
+  margin-right: -5px;
   padding: calc(14 / 17 / 2 * 1rem);
   outline: none;
 
