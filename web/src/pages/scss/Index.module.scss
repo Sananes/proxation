@@ -95,6 +95,19 @@
   }
 }
 
+.sliderCarousel {
+  .button {
+    @include buttonReset;
+    outline: 0;
+    border: none;
+    padding: 5px;
+
+    &:disabled {
+      opacity: 0.2;
+    }
+  }
+}
+
 .projects {
   margin-top: -20vh;
 
@@ -129,6 +142,8 @@
 
   .sliderCarousel {
     margin-top: 1rem;
+
+
   }
 
 

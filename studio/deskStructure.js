@@ -6,6 +6,7 @@ const hiddenTypes = [
   "category",
   "companyInfo",
   "page",
+  "pageHome",
   "person",
   "post",
   "project",
@@ -49,6 +50,15 @@ export default () =>
           S.list()
             .title("Pages")
             .items([
+              S.listItem()
+                .title("Homepage")
+                .child(
+                  S.editor()
+                    .id("pageHome")
+                    .schemaType("pageHome")
+                    .documentId("pageHome")
+                )
+                .icon(FaFile),
               S.listItem()
                 .title("About")
                 .child(

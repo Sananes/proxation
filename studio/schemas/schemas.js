@@ -13,6 +13,7 @@ import figure from "./figure";
 import mainImage from "./mainImage";
 import localeString from "./localeString";
 import page from "./page";
+import pageHome from "./pageHome";
 import person from "./person";
 import post from "./post";
 import postAuthor from "./postAuthor";
@@ -38,6 +39,7 @@ export default createSchema({
     mainImage,
     localeString,
     page,
+    pageHome,
     person,
     post,
     postAuthor,

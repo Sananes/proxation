@@ -5,6 +5,7 @@ import { mapEdgesToNodes, filterOutDocsWithoutSlugs, useWindowDimensions } from 
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel'
 import GraphQLErrorList from '../components/graphql-error-list'
 import { isMobile } from 'react-device-detect'
+import Icon from '../components/icons'
 import SEO from '../components/Seo'
 import Button from '../components/Button'
 import Layout from '../containers/layout'
@@ -23,39 +24,39 @@ export const query = graphql`
       keywords
     }
 
-    projects: allSanityProject(limit: 6, sort: { fields: [publishedAt], order: DESC }) {
+    projects: allSanityPageHome {
       edges {
         node {
-          id
-          mainImage {
-            crop {
-              _key
-              _type
-              top
-              bottom
-              left
-              right
-            }
-            hotspot {
-              _key
-              _type
-              x
-              y
-              height
-              width
-            }
-            asset {
-              fluid {
-                ...GatsbySanityImageFluid
+          relatedProjects {
+            mainImage {
+              crop {
+                _key
+                _type
+                top
+                bottom
+                left
+                right
               }
-              _id
+              hotspot {
+                _key
+                _type
+                x
+                y
+                height
+                width
+              }
+              asset {
+                fluid {
+                  ...GatsbySanityImageFluid
+                }
+                _id
+              }
+              alt
             }
-            alt
-          }
-          title
-          _rawExcerpt
-          slug {
-            current
+            title
+            slug {
+              current
+            }
           }
         }
       }
@@ -96,38 +97,6 @@ export const query = graphql`
         }
       }
     }
-
-    project01: file(relativePath: { eq: "project/project01.png" }) {
-      childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-
-    project02: file(relativePath: { eq: "project/project02.png" }) {
-      childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-
-    project03: file(relativePath: { eq: "project/project03.png" }) {
-      childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-
-    project04: file(relativePath: { eq: "project/project04.png" }) {
-      childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
   }
 `
 
@@ -147,9 +116,8 @@ const IndexPage = props => {
   const postNodes = (data || {}).posts
     ? mapEdgesToNodes(data.posts).filter(filterOutDocsWithoutSlugs)
     : []
-  const projectNodes = (data || {}).projects
-    ? mapEdgesToNodes(data.projects).filter(filterOutDocsWithoutSlugs)
-    : []
+  const projectNodes =
+    (data || {}).projects && data.projects.edges.map(edge => edge.node.relatedProjects)[0]
 
   if (!site) {
     throw new Error(
@@ -182,7 +150,7 @@ const IndexPage = props => {
           naturalSlideHeight={480}
           lockOnWindowScroll={false}
           visibleSlides={
-            width || isMobile <= 500 ? 1.5 : projectNodes.length > 3 ? 3.5 : projectNodes.length
+            isMobile || width <= 500 ? 1.5 : projectNodes.length > 3 ? 3.5 : projectNodes.length
           }
           totalSlides={projectNodes.length}
           className={cn(styles.sliderCarousel, styles.projectCarousel)}
@@ -193,8 +161,12 @@ const IndexPage = props => {
             </div>
 
             <div className={styles.sliderNav}>
-              <ButtonBack>{'<'}</ButtonBack>
-              <ButtonNext>{'>'}</ButtonNext>
+              <ButtonBack className={cn(styles.button, styles.buttonBack)}>
+                <Icon symbol="arrow-left" />
+              </ButtonBack>
+              <ButtonNext className={cn(styles.button, styles.buttonNext)}>
+                <Icon symbol="arrow-right" />
+              </ButtonNext>
             </div>
           </div>
           {projectNodes && (
@@ -202,10 +174,10 @@ const IndexPage = props => {
               className={cn(styles.slider, projectNodes.length <= 2 && styles.sliderContained)}
             >
               {projectNodes.map((project, i) => (
-                <Slide index={i}>
+                <Slide key={i}>
                   <Link to="/" className={styles.item}>
                     <div className={styles.wrapper}>
-                      <Image fluid={project.mainImage.asset.fluid} className={styles.image} />
+                      <Image fluid={project.mainImage.asset.fluid} alt={project.mainImage.alt} />
                     </div>
                     <div className={styles.content}>
                       <h4 className={styles.title}>{project.title}</h4>

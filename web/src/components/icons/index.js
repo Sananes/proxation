@@ -1,22 +1,19 @@
 import React from 'react'
 import HamburgerIcon from './hamburger'
 import Logo from './logo'
-import Airbnb from './airbnb'
-import EspanaBreaks from './espanabreaks'
-import OwnersDirect from './ownersdirect'
+import ArrowRight from './arrow-right'
+import ArrowLeft from './arrow-left'
 
-function Icon (props) {
+function Icon(props) {
   switch (props.symbol) {
     case 'hamburger':
       return <HamburgerIcon />
     case 'logo':
       return <Logo />
-    case 'ownersdirect':
-      return <OwnersDirect />
-    case 'espanabreaks':
-      return <EspanaBreaks />
-    case 'airbnb':
-      return <Airbnb />
+    case 'arrow-right':
+      return <ArrowRight />
+    case 'arrow-left':
+      return <ArrowLeft />
     default:
       return <span>Unknown icon: {props.symbol}</span>
   }
