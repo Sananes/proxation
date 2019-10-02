@@ -27,7 +27,7 @@ export const query = graphql`
     projects: allSanityPageHome {
       edges {
         node {
-          relatedProjects {
+          projects {
             mainImage {
               crop {
                 _key
@@ -117,7 +117,7 @@ const IndexPage = props => {
     ? mapEdgesToNodes(data.posts).filter(filterOutDocsWithoutSlugs)
     : []
   const projectNodes =
-    (data || {}).projects && data.projects.edges.map(edge => edge.node.relatedProjects)[0]
+    (data || {}).projects && data.projects.edges.map(edge => edge.node.projects)[0]
   if (!site) {
     throw new Error(
       'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'
@@ -174,7 +174,7 @@ const IndexPage = props => {
             >
               {projectNodes.map((project, i) => (
                 <Slide key={i}>
-                  <Link to="/" className={styles.item}>
+                  <Link to={`project/` + project.slug.current} className={styles.item}>
                     <div className={styles.wrapper}>
                       <Image fluid={project.mainImage.asset.fluid} alt={project.mainImage.alt} />
                     </div>
