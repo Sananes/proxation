@@ -1,15 +1,14 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
-import Image from 'gatsby-image/withIEPolyfill'
-import { mapEdgesToNodes, filterOutDocsWithoutSlugs, useWindowDimensions } from '../lib/helpers'
-import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel'
+import { mapEdgesToNodes, filterOutDocsWithoutSlugs } from '../lib/helpers'
 import GraphQLErrorList from '../components/graphql-error-list'
-import { isMobile } from 'react-device-detect'
 import Icon from '../components/icons'
 import SEO from '../components/Seo'
 import Button from '../components/Button'
+import Features from '../sections/Features'
 import Layout from '../containers/layout'
 import Section from '../components/Section'
+import Carousel from '../sections/Carousel'
 import TextBlock from '../components/SectionHeading'
 import Hero from '../modules/Hero'
 import cn from 'classnames'
@@ -122,7 +121,7 @@ export const query = graphql`
 
 const IndexPage = props => {
   const { data, errors } = props
-  const { width } = useWindowDimensions()
+
   if (errors) {
     return (
       <Layout>
@@ -152,93 +151,15 @@ const IndexPage = props => {
   return (
     <Layout fullScreen={false}>
       <SEO title={site.title} description={site.description} keywords={site.keywords} />
-      {/* <h1 hidden>Welcome to {site.title}</h1>
-        {projectNodes && (
-          <ProjectPreviewGrid
-            title="Latest projects"
-            nodes={projectNodes}
-            browseMoreHref="/projects/"
-          />
-        )}
-        {postNodes && (
-          <BlogPostPreviewGrid
-            title="Latest blog posts"
-            nodes={postNodes}
-            browseMoreHref="/blog/"
-          />
-        )} */}
       <Hero />
+
       {projectNodes && (
         <Section className={styles.projects}>
-          <CarouselProvider
-            naturalSlideWidth={369}
-            naturalSlideHeight={480}
-            lockOnWindowScroll={false}
-            visibleSlides={
-              isMobile || width <= 500 ? 1.5 : projectNodes.length > 3 ? 3.5 : projectNodes.length
-            }
-            totalSlides={projectNodes.length}
-            className={cn(styles.sliderCarousel, styles.projectCarousel)}
-          >
-            <div className={styles.headingWrapper}>
-              <div className={styles.heading}>
-                <h2 className={styles.caption}>Latest work</h2>
-              </div>
-
-              <div className={styles.sliderNav}>
-                <ButtonBack className={cn(styles.button, styles.buttonBack)}>
-                  <Icon symbol="arrow-left" />
-                </ButtonBack>
-                <ButtonNext className={cn(styles.button, styles.buttonNext)}>
-                  <Icon symbol="arrow-right" />
-                </ButtonNext>
-              </div>
-            </div>
-            <Slider
-              className={cn(styles.slider, projectNodes.length <= 2 && styles.sliderContained)}
-            >
-              {projectNodes.map((project, i) => (
-                <Slide key={i}>
-                  <Link to={`project/` + project.slug.current} className={styles.item}>
-                    <div className={styles.wrapper}>
-                      <Image fluid={project.mainImage.asset.fluid} alt={project.mainImage.alt} />
-                    </div>
-                    <div className={styles.content}>
-                      <h4 className={styles.title}>{project.title}</h4>
-                      <p className={styles.description}>Accessories</p>
-                    </div>
-                  </Link>
-                </Slide>
-              ))}
-            </Slider>
-          </CarouselProvider>
+          <Carousel data={projectNodes} slug="project" className={styles.sliderCarousel} />
         </Section>
       )}
 
-      {featuresNodes && (
-        <Section
-          className={styles.features}
-          headingClassName={styles.heading}
-          narrowHeading={true}
-          dark={true}
-          title={featuresHeadingNodes.title}
-          caption={featuresHeadingNodes.caption}
-          lead={featuresHeadingNodes.subheading}
-        >
-          <div className={styles.grid}>
-            {featuresNodes.map((item, i) => (
-              <div className={styles.featureItem} key={i}>
-                {item.icon && <img src={item.icon.asset.url} />}
-                <h4 className={styles.title}>{item.title}</h4>
-                <p className={styles.content}>{item.content}</p>
-                <a className={styles.button} href={item.button.url}>
-                  {item.button.text}
-                </a>
-              </div>
-            ))}
-          </div>
-        </Section>
-      )}
+      {featuresNodes && <Features data={featuresNodes} headingData={featuresHeadingNodes} />}
 
       {featuresNodes && (
         <Section className={styles.summary}>
