@@ -3,23 +3,23 @@
 $global-border-radius: 3px;
 
 // Colors
-$color-primary: #1A1A1A;
+$color-primary: #131313;
 $color-white: #fff;
 $color-border: #efefef;
 $color-divider: $color-border;
 $color-background: #fff;
 $color-hightlight-background: #f6f6f6;
 
-$text-dark: #1A1A1A;
+$text-dark: #131313;
 $text-subdued: #4F4F4F;
 $text-dimmed: #828282;
 $text-muted: #BDBDBD;
 $text-ghost: #E0E0E0;
 
 $text-light: #fff;
-$text-light-subdued: lighten($text-light, 20%);
-$text-light-dimmed: lighten($text-light, 40%);
-$text-light-muted: lighten($text-light, 60%);
+$text-light-subdued: darken($text-light, 20%);
+$text-light-dimmed: darken($text-light, 40%);
+$text-light-muted: darken($text-light, 60%);
 
 // Color: Typography
 $heading-color: $text-dark;
@@ -88,6 +88,11 @@ $font-size-body-xs-mobile: $font-size-body-xs;
 $font-size-overline-mobile: 11px;
 $font-size-menu-mobile: 12px;
 $font-size-button-mobile: 16px;
+
+// Font weights
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 600;
 
 // Layout Breakpoints
 $layout-width: 1140px;
