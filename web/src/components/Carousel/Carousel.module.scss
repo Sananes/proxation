@@ -73,6 +73,7 @@
     height: auto;
 
     .title {
+      @include h6;
       color: inherit;
     }
   }

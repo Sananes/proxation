@@ -184,6 +184,7 @@
 
     .title {
       @include h5;
+      color: $text-dark;
       margin-top: 32px;
     }
 

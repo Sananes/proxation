@@ -27,7 +27,7 @@ $text-color: $text-subdued;
 $overline-color: $text-dimmed;
 
 // Typography
-$typographic-font-family: "SpaceGrotesk",
+$typographic-font-family: aktiv-grotesk,
 -apple-system,
 BlinkMacSystemFont,
 "Segoe UI",
@@ -38,7 +38,7 @@ Cantarell,
 "Helvetica Neue",
 sans-serif;
 
-$typographic-heading-font-family: "SpaceGrotesk",
+$typographic-heading-font-family: aktiv-grotesk,
 -apple-system-headline,
 -apple-system,
 BlinkMacSystemFont,
@@ -49,9 +49,10 @@ Ubuntu,
 Cantarell,
 "Helvetica Neue",
 sans-serif;
-$typographic-heading-font-weight: 700;
+$typographic-heading-font-weight: 500;
 $typographic-root-font-size: 100;
 $typographic-base-font-size: 16px;
+$typographic-base-font-weight: normal;
 $typographic-small-font-size: 14px;
 $typographic-base-line-height: 1.5;
 $typographic-leading: round(strip-unit($typographic-base-font-size) * ($typographic-root-font-size / 100) * $typographic-base-line-height);
@@ -64,7 +65,7 @@ $font-size-heading-4: 28px;
 $font-size-heading-5: 24px;
 $font-size-heading-6: 20px;
 $font-size-body-xl: 16px;
-$font-size-body-l: 20px;
+$font-size-body-l: 18px;
 $font-size-body: $typographic-base-font-size;
 $font-size-body-s: 14px;
 $font-size-body-xs: 12px;
