@@ -23,7 +23,13 @@ const Features = props => {
       <div className={styles.grid}>
         {data.map((item, i) => (
           <div className={styles.featureItem} key={i}>
-            {item.image != null && <img src={item.image.asset.url} />}
+            {item.image != null && (
+              <img
+                src={item.image.asset.url}
+                title={item.image.alt || item.title}
+                alt={item.image.alt || item.title}
+              />
+            )}
             <h4 className={styles.title}>{item.title}</h4>
             <BlockText className={styles.content} blocks={item._rawContent} />
             <a className={styles.button} href={item.button.url}>

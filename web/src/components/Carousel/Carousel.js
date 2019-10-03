@@ -46,7 +46,8 @@ const Carousel = props => {
               <div className={styles.wrapper}>
                 <Image
                   fluid={data.mainImage.asset.fluid}
-                  alt={data.mainImage.alt}
+                  title={data.mainImage.alt || data.title}
+                  alt={data.mainImage.alt || data.title}
                   styles={styles.image}
                 />
               </div>

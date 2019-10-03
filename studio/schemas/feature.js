@@ -6,7 +6,7 @@ export default {
     {
       title: "Image",
       name: "image",
-      type: "image"
+      type: "figure"
     },
     {
       title: "Title",

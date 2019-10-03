@@ -5,14 +5,12 @@ import Image from 'gatsby-image/withIEPolyfill'
 import GraphQLErrorList from '../components/graphql-error-list'
 import Icon from '../components/icons'
 import SEO from '../components/Seo'
-import Button from '../components/Button'
 import Features from '../sections/Features'
 import Layout from '../containers/layout'
 import Section from '../components/Section'
 import CarouselSection from '../sections/CarouselSection'
 import TextBlock from '../components/SectionHeading'
 import Hero from '../modules/Hero'
-import cn from 'classnames'
 import styles from './scss/Index.module.scss'
 import 'pure-react-carousel/dist/react-carousel.es.css'
 import post from '../../../studio/schemas/post'
@@ -39,6 +37,8 @@ export const query = graphql`
               title
               _rawContent
               image {
+                alt
+                caption
                 asset {
                   url
                   fluid {
@@ -57,6 +57,8 @@ export const query = graphql`
               title
               _rawContent
               image {
+                alt
+                caption
                 asset {
                   url
                   fluid {
@@ -225,7 +227,11 @@ const IndexPage = props => {
           <div className={styles.grid}>
             {sectionThreeItemNodes.map(item => (
               <div className={styles.item}>
-                <Image fluid={item.image.asset.fluid} />
+                <Image
+                  fluid={item.image.asset.fluid}
+                  title={item.image.alt || item.title}
+                  alt={item.image.alt || item.image.title}
+                />
                 <h4 className={styles.title}>{item.title}</h4>
                 <BlockText blocks={item._rawContent} />
               </div>
