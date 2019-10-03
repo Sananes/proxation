@@ -8,6 +8,8 @@ const hiddenTypes = [
   "page",
   "pageHome",
   "person",
+  "feature",
+  "button",
   "post",
   "project",
   "siteSettings",

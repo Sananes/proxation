@@ -24,7 +24,7 @@
 }
 
 %section {
-  @include interpolate((padding-top, padding-bottom), 24px, 120px);
+  @include interpolate((padding-top, padding-bottom), 48px, 120px);
   overflow: hidden;
   @include clear-top-margin;
   max-width: 100%;

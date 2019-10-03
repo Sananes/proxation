@@ -10,6 +10,7 @@ import SEO from '../components/Seo'
 import Button from '../components/Button'
 import Layout from '../containers/layout'
 import Section from '../components/Section'
+import TextBlock from '../components/SectionHeading'
 import Hero from '../modules/Hero'
 import cn from 'classnames'
 import styles from './scss/Index.module.scss'
@@ -24,9 +25,23 @@ export const query = graphql`
       keywords
     }
 
-    projects: allSanityPageHome {
+    home: allSanityPageHome {
       edges {
         node {
+          features {
+            heading {
+              caption
+              title
+            }
+            features {
+              title
+              content
+              button {
+                text
+                url
+              }
+            }
+          }
           projects {
             mainImage {
               crop {
@@ -116,8 +131,13 @@ const IndexPage = props => {
   const postNodes = (data || {}).posts
     ? mapEdgesToNodes(data.posts).filter(filterOutDocsWithoutSlugs)
     : []
-  const projectNodes =
-    (data || {}).projects && data.projects.edges.map(edge => edge.node.projects)[0]
+  const projectNodes = (data || {}).home && data.home.edges.map(edge => edge.node.projects)[0]
+  const featuresHeadingNodes =
+    (data || {}).home && data.home.edges.map(edge => edge.node.features.heading)[0]
+  const featuresNodes =
+    (data || {}).home && data.home.edges.map(edge => edge.node.features.features)[0]
+
+  console.log(featuresNodes.length)
   if (!site) {
     throw new Error(
       'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'
@@ -143,32 +163,32 @@ const IndexPage = props => {
           />
         )} */}
       <Hero />
-      <Section className={styles.projects}>
-        <CarouselProvider
-          naturalSlideWidth={369}
-          naturalSlideHeight={480}
-          lockOnWindowScroll={false}
-          visibleSlides={
-            isMobile || width <= 500 ? 1.5 : projectNodes.length > 3 ? 3.5 : projectNodes.length
-          }
-          totalSlides={projectNodes.length}
-          className={cn(styles.sliderCarousel, styles.projectCarousel)}
-        >
-          <div className={styles.headingWrapper}>
-            <div className={styles.heading}>
-              <h2 className={styles.caption}>Latest work</h2>
-            </div>
+      {projectNodes && (
+        <Section className={styles.projects}>
+          <CarouselProvider
+            naturalSlideWidth={369}
+            naturalSlideHeight={480}
+            lockOnWindowScroll={false}
+            visibleSlides={
+              isMobile || width <= 500 ? 1.5 : projectNodes.length > 3 ? 3.5 : projectNodes.length
+            }
+            totalSlides={projectNodes.length}
+            className={cn(styles.sliderCarousel, styles.projectCarousel)}
+          >
+            <div className={styles.headingWrapper}>
+              <div className={styles.heading}>
+                <h2 className={styles.caption}>Latest work</h2>
+              </div>
 
-            <div className={styles.sliderNav}>
-              <ButtonBack className={cn(styles.button, styles.buttonBack)}>
-                <Icon symbol="arrow-left" />
-              </ButtonBack>
-              <ButtonNext className={cn(styles.button, styles.buttonNext)}>
-                <Icon symbol="arrow-right" />
-              </ButtonNext>
+              <div className={styles.sliderNav}>
+                <ButtonBack className={cn(styles.button, styles.buttonBack)}>
+                  <Icon symbol="arrow-left" />
+                </ButtonBack>
+                <ButtonNext className={cn(styles.button, styles.buttonNext)}>
+                  <Icon symbol="arrow-right" />
+                </ButtonNext>
+              </div>
             </div>
-          </div>
-          {projectNodes && (
             <Slider
               className={cn(styles.slider, projectNodes.length <= 2 && styles.sliderContained)}
             >
@@ -186,9 +206,65 @@ const IndexPage = props => {
                 </Slide>
               ))}
             </Slider>
-          )}
-        </CarouselProvider>
-      </Section>
+          </CarouselProvider>
+        </Section>
+      )}
+
+      {featuresNodes && (
+        <Section
+          className={styles.features}
+          headingClassName={styles.heading}
+          narrowHeading={true}
+          title={featuresHeadingNodes.title}
+          caption={featuresHeadingNodes.caption}
+          lead={featuresHeadingNodes.subheading}
+        >
+          <div className={styles.grid}>
+            {featuresNodes.map((item, i) => (
+              <div className={styles.featureItem} key={i}>
+                <h4 className={styles.title}>{item.title}</h4>
+                <p className={styles.content}>{item.content}</p>
+                <a className={styles.button} href={item.button.url}>
+                  {item.button.text}
+                </a>
+              </div>
+            ))}
+          </div>
+        </Section>
+      )}
+
+      {featuresNodes && (
+        <Section className={styles.summary}>
+          <div className={styles.grid}>
+            {/* {featuresNodes.map((item, i) => (
+              <div className={styles.featureItem} key={i}>
+                <h4 className={styles.title}>{item.title}</h4>
+                <p className={styles.content}>{item.content}</p>
+                <a className={styles.button} href={item.button.url}>
+                  {item.button.text}
+                </a>
+              </div>
+            ))} */}
+            <TextBlock
+              caption={featuresHeadingNodes.caption}
+              align="left"
+              className={styles.heading}
+              title={featuresHeadingNodes.title}
+              button={{
+                text: 'Read more',
+                style: 'primary',
+                size: 'large',
+                type: 'link',
+                link: '/hello'
+              }}
+              lead="Lassen Sie sich von unserer E-Commerce Agentur unterstützen und profitieren Sie von unserer langjährigen Erfahrung und Expertise in der Entwicklung von Online Shops. Als zertifizierter shopware Solutions Partner setzen wir Ihre Wünsche und Vorstellungen gekonnt in einen modernen Online Shop um. Online Shop Programmierung – bei unserer E-Commerce Agentur in München sind Sie genau richtig!"
+            ></TextBlock>
+            <div className={styles.image}>
+              <img src="https://source.unsplash.com/random/800x800" />
+            </div>
+          </div>
+        </Section>
+      )}
       {/*  <Section narrow={false} divider={false} className={styles.intro}>
         <div className={styles.content}>
           <small className={styles.overline}>Summary</small>

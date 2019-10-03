@@ -90,6 +90,7 @@
   }
 
   p {
+    @include body-l;
     lost-center: 500px;
   }
 }

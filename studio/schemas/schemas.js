@@ -12,11 +12,15 @@ import companyInfo from "./companyInfo";
 import figure from "./figure";
 import mainImage from "./mainImage";
 import localeString from "./localeString";
+import button from "./button";
 import page from "./page";
 import pageHome from "./pageHome";
+import heading from "./heading";
 import person from "./person";
 import post from "./post";
 import postAuthor from "./postAuthor";
+import feature from "./feature";
+import featuresHome from "./featuresHome";
 import project from "./project";
 import projectMember from "./projectMember";
 import siteSettings from "./siteSettings";
@@ -38,6 +42,10 @@ export default createSchema({
     figure,
     mainImage,
     localeString,
+    feature,
+    heading,
+    featuresHome,
+    button,
     page,
     pageHome,
     person,

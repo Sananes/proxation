@@ -219,6 +219,64 @@
   }
 }
 
+.features {
+  background: $color-primary;
+  color: $text-light;
+
+  .heading {
+    @include interpolate(margin-bottom, 24px, 80px);
+  }
+
+  .featureItem {
+
+    @include breakpoint-md {
+      lost-column: 1/3 3 30px;
+    }
+  }
+
+  .title {
+    @include h5;
+    color: inherit;
+  }
+
+  a {
+    display: block;
+    margin-top: 2em;
+    color: inherit;
+  }
+}
+
+.summary {
+  .grid {
+    @include breakpoint-md {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .heading,
+  .image {
+    @include breakpoint-md {
+      lost-column: 1/2 2 48px;
+    }
+  }
+
+  .heading {
+    @include interpolate(margin-bottom, 24px, 120px);
+
+    @include breakpoint-md {
+      margin-bottom: 0;
+    }
+  }
+
+  .image {
+
+    img {
+      max-width: 100%;
+    }
+  }
+}
+
 .testimonials {
   background: $color-hightlight-background;
 

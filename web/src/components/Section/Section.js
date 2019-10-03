@@ -4,6 +4,8 @@ import SectionHeading from '../SectionHeading'
 import PropTypes from 'prop-types'
 
 import Container from '../Container'
+import cn from 'classnames'
+
 const Section = ({
   children,
   container,
@@ -13,21 +15,25 @@ const Section = ({
   align,
   button,
   narrow,
+  narrowHeading,
   divider,
-  className
+  className,
+  headingClassName
 }) => {
   const setClasses = divider ? styles.sectionDivider : styles.section
   return (
-    <section className={`${setClasses} ${className}`}>
+    <section className={cn(setClasses, className)}>
       {container === false ? (
         children
       ) : (
-        <Container narrow={narrow}>
-          {title && lead ? (
+        <Container narrow={narrow} className={styles.container}>
+          {title ? (
             <SectionHeading
               title={title}
               align={align}
+              narrow={narrowHeading}
               button={button}
+              className={headingClassName}
               lead={lead}
               caption={caption}
             />

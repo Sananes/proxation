@@ -1,18 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Button from '../Button'
-import cx from 'classnames'
+import cn from 'classnames'
 import styles from './SectionHeading.module.scss'
 
-const SectionHeading = ({ title, lead, caption, children, align, button, className }) => {
-  const setAlignmentClass = cx(styles.sectionHeading, {
+const SectionHeading = ({ title, lead, caption, children, align, button, className, narrow }) => {
+  const setAlignmentClass = cn(styles.sectionHeading, {
     [styles.rightAligned]: align === 'right',
     [styles.leftAligned]: align === 'left',
     [styles.centerAligned]: align === 'center'
   })
 
   return (
-    <div className={`${setAlignmentClass} ${className && className}`}>
+    <div className={cn(setAlignmentClass, narrow && styles.narrow, className)}>
       {caption && <span className={styles.caption}>{caption || `Caption`}</span>}
       {title && <h1 className={styles.title}>{title || `Title`}</h1>}
       {lead && (
@@ -22,7 +22,13 @@ const SectionHeading = ({ title, lead, caption, children, align, button, classNa
       )}
       {button && (
         <div className={styles.buttonWrapper}>
-          <Button text={button.text} style={button.style} type={button.type} link={button.link} />
+          <Button
+            text={button.text}
+            size={button.size}
+            style={button.style}
+            type={button.type}
+            link={button.link}
+          />
         </div>
       )}
       {children}
