@@ -23,7 +23,7 @@ const Layout = ({
       headerTransparent={headerTransparent}
     />
     <div className={styles.content}>{children}</div>
-    {/* <Footer companyInfo={companyInfo} siteTitle={siteTitle} /> */}
+    <Footer companyInfo={companyInfo} siteTitle={siteTitle} />
   </>
 )
 

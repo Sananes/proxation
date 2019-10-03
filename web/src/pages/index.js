@@ -36,6 +36,11 @@ export const query = graphql`
             features {
               title
               content
+              icon {
+                asset {
+                  url
+                }
+              }
               button {
                 text
                 url
@@ -223,6 +228,7 @@ const IndexPage = props => {
           <div className={styles.grid}>
             {featuresNodes.map((item, i) => (
               <div className={styles.featureItem} key={i}>
+                {item.icon && <img src={item.icon.asset.url} />}
                 <h4 className={styles.title}>{item.title}</h4>
                 <p className={styles.content}>{item.content}</p>
                 <a className={styles.button} href={item.button.url}>

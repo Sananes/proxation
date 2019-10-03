@@ -20,13 +20,14 @@
   padding-bottom: 4rem;
 }
 
-.contact,
 .menu,
 .partners {
-  lost-column: 1/3;
+  lost-column: 1/2;
 }
 
 .contact {
+  lost-column: 1/2.5;
+
   ul {
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
@@ -34,12 +35,21 @@
   }
 }
 
+.menuWrapper {
+  lost-column: 1/2;
+}
+
 .menu {
-  lost-column: 1/6;
-  lost-move: 1/6;
+  @include interpolate(margin-bottom, 32px, 32px);
+  margin-top: 12px;
+
+  h5 {
+    @include overline;
+  }
 
   ul {
     margin: 0;
+    margin-top: 8px;
     padding: 0;
   }
 
@@ -47,6 +57,7 @@
     display: block;
     padding-top: 0.25rem;
     padding-bottom: 0.25rem;
+    text-decoration: underline;
   }
 }
 
