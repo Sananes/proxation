@@ -247,6 +247,8 @@
 }
 
 .summary {
+  background-color: $color-hightlight-background;
+
   .grid {
     @include breakpoint-md {
       display: flex;
