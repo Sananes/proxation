@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
 import { mapEdgesToNodes, filterOutDocsWithoutSlugs } from '../lib/helpers'
+import Image from 'gatsby-image/withIEPolyfill'
 import GraphQLErrorList from '../components/graphql-error-list'
 import Icon from '../components/icons'
 import SEO from '../components/Seo'
@@ -15,6 +16,7 @@ import cn from 'classnames'
 import styles from './scss/Index.module.scss'
 import 'pure-react-carousel/dist/react-carousel.es.css'
 import post from '../../../studio/schemas/post'
+import BlockText from '../components/block-text'
 
 export const query = graphql`
   query IndexPageQuery {
@@ -27,6 +29,25 @@ export const query = graphql`
     home: allSanityPageHome {
       edges {
         node {
+          sectionThree {
+            heading {
+              caption
+              title
+              subHeading
+            }
+            items {
+              title
+              _rawContent
+              image {
+                asset {
+                  url
+                  fluid {
+                    ...GatsbySanityImageFluid
+                  }
+                }
+              }
+            }
+          }
           features {
             heading {
               caption
@@ -34,10 +55,13 @@ export const query = graphql`
             }
             features {
               title
-              content
-              icon {
+              _rawContent
+              image {
                 asset {
                   url
+                  fluid {
+                    ...GatsbySanityImageFluid
+                  }
                 }
               }
               button {
@@ -141,6 +165,12 @@ const IndexPage = props => {
   const featuresNodes =
     (data || {}).home && data.home.edges.map(edge => edge.node.features.features)[0]
 
+  const sectionThreeHeadingNodes =
+    (data || {}).home && data.home.edges.map(edge => edge.node.sectionThree.heading)[0]
+
+  const sectionThreeItemNodes =
+    (data || {}).home && data.home.edges.map(edge => edge.node.sectionThree.items)[0]
+
   console.log(featuresNodes.length)
   if (!site) {
     throw new Error(
@@ -185,106 +215,21 @@ const IndexPage = props => {
         <Section className={styles.agency}>
           <div className={styles.headingWrapper}>
             <TextBlock
-              caption={featuresHeadingNodes.caption}
+              caption={sectionThreeHeadingNodes.caption}
               align="left"
               className={styles.heading}
-              title={featuresHeadingNodes.title}
+              title={sectionThreeHeadingNodes.title}
             />
-            <p className={styles.lead}>
-              Sie haben bereits einen Webshop, wollen aber mehr rausholen? Oder haben Sie noch gar
-              keinen Online-Shop, möchten Ihre Produkte jetzt aber auch im Internet anbieten?
-            </p>
+            <p className={styles.lead}>{sectionThreeHeadingNodes.subHeading}</p>
           </div>
           <div className={styles.grid}>
-            <div className={styles.item}>
-              <img src="https://source.unsplash.com/random/800x800" />
-              <h4 className="title">Professionelles Planungs- & Anforderungsmanagement</h4>
-
-              <p>
-                Sie möchten mit Ihrem Online-Shop nachhaltige Erfolge erzielen? Dann sind eine
-                exakte Planung, eine detaillierte Zielsetzung sowie Status-Updates für alle
-                Stakeholder von größter Bedeutung. Wir leiten Sie erfolgreich durch Ihren
-                (Re)Launch. Vertrauen Sie auf unsere Expertise im Online- sowie Mobile-Commerce.
-              </p>
-              <ul>
-                <li>
-                  Wir brainstormen mit Ihnen und für Sie und erstellen eine individuelle
-                  Shop-Konzeption
-                </li>
-                <li>Professionelles Projekt-Management sind essentiell für jeden Projekterfolg</li>
-                <li>
-                  Als Kunde erhalten Sie Zugang zu einem durchdachten Ticket-System und nützlichen
-                  Tools zur effizienteren Zusammenarbeit
-                </li>
-              </ul>
-            </div>
-
-            <div className={styles.item}>
-              <img src="https://source.unsplash.com/random/800x800" />
-              <h4 className="title">Professionelles Planungs- & Anforderungsmanagement</h4>
-              <p>
-                Sie möchten mit Ihrem Online-Shop nachhaltige Erfolge erzielen? Dann sind eine
-                exakte Planung, eine detaillierte Zielsetzung sowie Status-Updates für alle
-                Stakeholder von größter Bedeutung. Wir leiten Sie erfolgreich durch Ihren
-                (Re)Launch. Vertrauen Sie auf unsere Expertise im Online- sowie Mobile-Commerce.
-              </p>
-              <ul>
-                <li>
-                  Wir brainstormen mit Ihnen und für Sie und erstellen eine individuelle
-                  Shop-Konzeption
-                </li>
-                <li>Professionelles Projekt-Management sind essentiell für jeden Projekterfolg</li>
-                <li>
-                  Als Kunde erhalten Sie Zugang zu einem durchdachten Ticket-System und nützlichen
-                  Tools zur effizienteren Zusammenarbeit
-                </li>
-              </ul>
-            </div>
-
-            <div className={styles.item}>
-              <img src="https://source.unsplash.com/random/800x800" />
-              <h4 className="title">Professionelles Planungs- & Anforderungsmanagement</h4>
-              <p>
-                Sie möchten mit Ihrem Online-Shop nachhaltige Erfolge erzielen? Dann sind eine
-                exakte Planung, eine detaillierte Zielsetzung sowie Status-Updates für alle
-                Stakeholder von größter Bedeutung. Wir leiten Sie erfolgreich durch Ihren
-                (Re)Launch. Vertrauen Sie auf unsere Expertise im Online- sowie Mobile-Commerce.
-              </p>
-              <ul>
-                <li>
-                  Wir brainstormen mit Ihnen und für Sie und erstellen eine individuelle
-                  Shop-Konzeption
-                </li>
-                <li>Professionelles Projekt-Management sind essentiell für jeden Projekterfolg</li>
-                <li>
-                  Als Kunde erhalten Sie Zugang zu einem durchdachten Ticket-System und nützlichen
-                  Tools zur effizienteren Zusammenarbeit
-                </li>
-              </ul>
-            </div>
-
-            <div className={styles.item}>
-              <img src="https://source.unsplash.com/random/800x800" />
-              <h4 className="title">Professionelles Planungs- & Anforderungsmanagement</h4>
-
-              <p>
-                Sie möchten mit Ihrem Online-Shop nachhaltige Erfolge erzielen? Dann sind eine
-                exakte Planung, eine detaillierte Zielsetzung sowie Status-Updates für alle
-                Stakeholder von größter Bedeutung. Wir leiten Sie erfolgreich durch Ihren
-                (Re)Launch. Vertrauen Sie auf unsere Expertise im Online- sowie Mobile-Commerce.
-              </p>
-              <ul>
-                <li>
-                  Wir brainstormen mit Ihnen und für Sie und erstellen eine individuelle
-                  Shop-Konzeption
-                </li>
-                <li>Professionelles Projekt-Management sind essentiell für jeden Projekterfolg</li>
-                <li>
-                  Als Kunde erhalten Sie Zugang zu einem durchdachten Ticket-System und nützlichen
-                  Tools zur effizienteren Zusammenarbeit
-                </li>
-              </ul>
-            </div>
+            {sectionThreeItemNodes.map(item => (
+              <div className={styles.item}>
+                <Image fluid={item.image.asset.fluid} />
+                <h4 className="title">{item.title}</h4>
+                <BlockText blocks={item._rawContent} />
+              </div>
+            ))}
           </div>
         </Section>
       )}

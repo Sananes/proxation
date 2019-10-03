@@ -1,6 +1,7 @@
 import React from 'react'
 import Section from '../../components/Section'
 import styles from './Features.module.scss'
+import BlockText from '../../components/block-text'
 
 const Features = props => {
   const { data, headingData } = props
@@ -22,9 +23,9 @@ const Features = props => {
       <div className={styles.grid}>
         {data.map((item, i) => (
           <div className={styles.featureItem} key={i}>
-            {item.icon && <img src={item.icon.asset.url} />}
+            {item.image != null && <img src={item.image.asset.url} />}
             <h4 className={styles.title}>{item.title}</h4>
-            <p className={styles.content}>{item.content}</p>
+            <BlockText className={styles.content} blocks={item._rawContent} />
             <a className={styles.button} href={item.button.url}>
               {item.button.text}
             </a>

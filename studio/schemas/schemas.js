@@ -26,6 +26,9 @@ import projectMember from "./projectMember";
 import siteSettings from "./siteSettings";
 import slideshow from "./slideshow";
 
+// Homepage sections
+import sectionThreeHome from "./sectionThreeHome";
+
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
   // We name our schema
@@ -44,10 +47,15 @@ export default createSchema({
     localeString,
     feature,
     heading,
+
+    // Homepage sections
+    pageHome,
+    sectionThreeHome,
     featuresHome,
+
+    // Misc
     button,
     page,
-    pageHome,
     person,
     post,
     postAuthor,

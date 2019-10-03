@@ -2,6 +2,9 @@ export default {
   title: "Button",
   name: "button",
   type: "object",
+  options: {
+    collapsible: true
+  },
   fields: [
     {
       title: "Button URL",

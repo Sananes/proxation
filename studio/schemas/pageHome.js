@@ -17,15 +17,20 @@ export default {
     },
     {
       name: "projects",
-      title: "Projects",
+      title: "Section: Showcase Projects",
       type: "array",
       of: [{ type: "reference", to: { type: "project" } }],
       validation: Rule => Rule.required().min(2)
     },
     {
       name: "features",
-      title: "Features",
+      title: "Section: What main features you offer",
       type: "featuresHome"
+    },
+    {
+      name: "sectionThree",
+      title: "Section: What we offer",
+      type: "sectionThreeHome"
     }
   ]
 };

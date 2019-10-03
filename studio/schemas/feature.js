@@ -4,8 +4,8 @@ export default {
   type: "document",
   fields: [
     {
-      title: "Icon",
-      name: "icon",
+      title: "Image",
+      name: "image",
       type: "image"
     },
     {
@@ -16,7 +16,7 @@ export default {
     {
       title: "Content",
       name: "content",
-      type: "text"
+      type: "blockContent"
     },
     {
       title: "Button",
