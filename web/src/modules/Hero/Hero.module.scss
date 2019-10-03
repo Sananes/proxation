@@ -91,6 +91,7 @@
 
   p {
     @include body-l;
+    color: $text-subdued;
     lost-center: 500px;
   }
 }

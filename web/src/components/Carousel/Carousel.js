@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'gatsby'
 import Image from 'gatsby-image/withIEPolyfill'
 import { useWindowDimensions } from '../../lib/helpers'
@@ -11,6 +11,7 @@ import styles from './Carousel.module.scss'
 const Carousel = props => {
   const { data, className, slug } = props
   const { width } = useWindowDimensions()
+
   if (!data) {
     throw new Error('No slide items have been added in the studio')
   }

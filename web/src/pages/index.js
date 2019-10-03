@@ -183,7 +183,7 @@ const IndexPage = props => {
       <SEO title={site.title} description={site.description} keywords={site.keywords} />
       <Hero />
 
-      <CarouselSection className={styles.projects} data={projectNodes} />
+      <CarouselSection className={styles.projects} data={projectNodes} slug="project" />
 
       <Features data={featuresNodes} headingData={featuresHeadingNodes} />
 
@@ -211,7 +211,7 @@ const IndexPage = props => {
         </Section>
       )}
 
-      {featuresNodes && (
+      {sectionThreeItemNodes && (
         <Section className={styles.agency}>
           <div className={styles.headingWrapper}>
             <TextBlock
@@ -226,7 +226,7 @@ const IndexPage = props => {
             {sectionThreeItemNodes.map(item => (
               <div className={styles.item}>
                 <Image fluid={item.image.asset.fluid} />
-                <h4 className="title">{item.title}</h4>
+                <h4 className={styles.title}>{item.title}</h4>
                 <BlockText blocks={item._rawContent} />
               </div>
             ))}

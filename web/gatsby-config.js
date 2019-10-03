@@ -37,7 +37,20 @@ module.exports = {
         watchMode: true,
         overlayDrafts: true
       }
-    }
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Proxation`,
+        short_name: `Proxation`,
+        start_url: `/`,
+        background_color: `#1a1a1a`,
+        theme_color: `#1a1a1a`,
+        display: `standalone`,
+        include_favicon: false
+      }
+    },
+    `gatsby-plugin-offline`
   ]
 }
 

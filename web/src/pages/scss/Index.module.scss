@@ -170,18 +170,32 @@
 
   .heading {
     @include breakpoint-md {}
+
   }
 
   .lead {
     @include body-l;
   }
 
+
+
   .item {
     @include interpolate(margin-bottom, 48px, 48px);
+
+    .title {
+      @include h5;
+      margin-top: 32px;
+    }
+
+    .title+div {
+      margin-top: 16px;
+    }
+
 
     @include breakpoint-md {
       lost-column: 1/2 2 48px;
     }
+
 
     img {
       max-width: 100%;
