@@ -34,7 +34,10 @@
 .caption,
 .title,
 .lead {
-  color: inherit;
+
+  .light & {
+    color: $text-light;
+  }
 }
 
 .caption {

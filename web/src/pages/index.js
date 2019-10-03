@@ -215,6 +215,7 @@ const IndexPage = props => {
           className={styles.features}
           headingClassName={styles.heading}
           narrowHeading={true}
+          dark={true}
           title={featuresHeadingNodes.title}
           caption={featuresHeadingNodes.caption}
           lead={featuresHeadingNodes.subheading}
@@ -236,15 +237,6 @@ const IndexPage = props => {
       {featuresNodes && (
         <Section className={styles.summary}>
           <div className={styles.grid}>
-            {/* {featuresNodes.map((item, i) => (
-              <div className={styles.featureItem} key={i}>
-                <h4 className={styles.title}>{item.title}</h4>
-                <p className={styles.content}>{item.content}</p>
-                <a className={styles.button} href={item.button.url}>
-                  {item.button.text}
-                </a>
-              </div>
-            ))} */}
             <TextBlock
               caption={featuresHeadingNodes.caption}
               align="left"
@@ -258,15 +250,124 @@ const IndexPage = props => {
                 link: '/hello'
               }}
               lead="Lassen Sie sich von unserer E-Commerce Agentur unterstützen und profitieren Sie von unserer langjährigen Erfahrung und Expertise in der Entwicklung von Online Shops. Als zertifizierter shopware Solutions Partner setzen wir Ihre Wünsche und Vorstellungen gekonnt in einen modernen Online Shop um. Online Shop Programmierung – bei unserer E-Commerce Agentur in München sind Sie genau richtig!"
-            ></TextBlock>
+            />
             <div className={styles.image}>
               <img src="https://source.unsplash.com/random/800x800" />
             </div>
           </div>
         </Section>
       )}
+
+      {featuresNodes && (
+        <Section className={styles.agency}>
+          <div className={styles.headingWrapper}>
+            <TextBlock
+              caption={featuresHeadingNodes.caption}
+              align="left"
+              className={styles.heading}
+              title={featuresHeadingNodes.title}
+            />
+            <p className={styles.lead}>
+              Sie haben bereits einen Webshop, wollen aber mehr rausholen? Oder haben Sie noch gar
+              keinen Online-Shop, möchten Ihre Produkte jetzt aber auch im Internet anbieten?
+            </p>
+          </div>
+          <div className={styles.grid}>
+            <div className={styles.item}>
+              <img src="https://source.unsplash.com/random/800x800" />
+              <h4 className="title">Professionelles Planungs- & Anforderungsmanagement</h4>
+
+              <p>
+                Sie möchten mit Ihrem Online-Shop nachhaltige Erfolge erzielen? Dann sind eine
+                exakte Planung, eine detaillierte Zielsetzung sowie Status-Updates für alle
+                Stakeholder von größter Bedeutung. Wir leiten Sie erfolgreich durch Ihren
+                (Re)Launch. Vertrauen Sie auf unsere Expertise im Online- sowie Mobile-Commerce.
+              </p>
+              <ul>
+                <li>
+                  Wir brainstormen mit Ihnen und für Sie und erstellen eine individuelle
+                  Shop-Konzeption
+                </li>
+                <li>Professionelles Projekt-Management sind essentiell für jeden Projekterfolg</li>
+                <li>
+                  Als Kunde erhalten Sie Zugang zu einem durchdachten Ticket-System und nützlichen
+                  Tools zur effizienteren Zusammenarbeit
+                </li>
+              </ul>
+            </div>
+
+            <div className={styles.item}>
+              <img src="https://source.unsplash.com/random/800x800" />
+              <h4 className="title">Professionelles Planungs- & Anforderungsmanagement</h4>
+              <p>
+                Sie möchten mit Ihrem Online-Shop nachhaltige Erfolge erzielen? Dann sind eine
+                exakte Planung, eine detaillierte Zielsetzung sowie Status-Updates für alle
+                Stakeholder von größter Bedeutung. Wir leiten Sie erfolgreich durch Ihren
+                (Re)Launch. Vertrauen Sie auf unsere Expertise im Online- sowie Mobile-Commerce.
+              </p>
+              <ul>
+                <li>
+                  Wir brainstormen mit Ihnen und für Sie und erstellen eine individuelle
+                  Shop-Konzeption
+                </li>
+                <li>Professionelles Projekt-Management sind essentiell für jeden Projekterfolg</li>
+                <li>
+                  Als Kunde erhalten Sie Zugang zu einem durchdachten Ticket-System und nützlichen
+                  Tools zur effizienteren Zusammenarbeit
+                </li>
+              </ul>
+            </div>
+
+            <div className={styles.item}>
+              <img src="https://source.unsplash.com/random/800x800" />
+              <h4 className="title">Professionelles Planungs- & Anforderungsmanagement</h4>
+              <p>
+                Sie möchten mit Ihrem Online-Shop nachhaltige Erfolge erzielen? Dann sind eine
+                exakte Planung, eine detaillierte Zielsetzung sowie Status-Updates für alle
+                Stakeholder von größter Bedeutung. Wir leiten Sie erfolgreich durch Ihren
+                (Re)Launch. Vertrauen Sie auf unsere Expertise im Online- sowie Mobile-Commerce.
+              </p>
+              <ul>
+                <li>
+                  Wir brainstormen mit Ihnen und für Sie und erstellen eine individuelle
+                  Shop-Konzeption
+                </li>
+                <li>Professionelles Projekt-Management sind essentiell für jeden Projekterfolg</li>
+                <li>
+                  Als Kunde erhalten Sie Zugang zu einem durchdachten Ticket-System und nützlichen
+                  Tools zur effizienteren Zusammenarbeit
+                </li>
+              </ul>
+            </div>
+
+            <div className={styles.item}>
+              <img src="https://source.unsplash.com/random/800x800" />
+              <h4 className="title">Professionelles Planungs- & Anforderungsmanagement</h4>
+
+              <p>
+                Sie möchten mit Ihrem Online-Shop nachhaltige Erfolge erzielen? Dann sind eine
+                exakte Planung, eine detaillierte Zielsetzung sowie Status-Updates für alle
+                Stakeholder von größter Bedeutung. Wir leiten Sie erfolgreich durch Ihren
+                (Re)Launch. Vertrauen Sie auf unsere Expertise im Online- sowie Mobile-Commerce.
+              </p>
+              <ul>
+                <li>
+                  Wir brainstormen mit Ihnen und für Sie und erstellen eine individuelle
+                  Shop-Konzeption
+                </li>
+                <li>Professionelles Projekt-Management sind essentiell für jeden Projekterfolg</li>
+                <li>
+                  Als Kunde erhalten Sie Zugang zu einem durchdachten Ticket-System und nützlichen
+                  Tools zur effizienteren Zusammenarbeit
+                </li>
+              </ul>
+            </div>
+          </div>
+        </Section>
+      )}
       {/*  <Section narrow={false} divider={false} className={styles.intro}>
-        <div className={styles.content}>
+              )}<div c
+        lassName={styles.content}>
           <small className={styles.overline}>Summary</small>
           <h2 className={styles.title}>
             In our lovely Villa Maxim you will find everything you need for a relaxing holiday.

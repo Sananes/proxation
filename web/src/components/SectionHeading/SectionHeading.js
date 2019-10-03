@@ -4,15 +4,25 @@ import Button from '../Button'
 import cn from 'classnames'
 import styles from './SectionHeading.module.scss'
 
-const SectionHeading = ({ title, lead, caption, children, align, button, className, narrow }) => {
+const SectionHeading = ({
+  title,
+  lead,
+  caption,
+  children,
+  align,
+  button,
+  dark,
+  className,
+  narrow
+}) => {
   const setAlignmentClass = cn(styles.sectionHeading, {
     [styles.rightAligned]: align === 'right',
     [styles.leftAligned]: align === 'left',
     [styles.centerAligned]: align === 'center'
   })
-
+  const setDark = dark ? styles.light : null
   return (
-    <div className={cn(setAlignmentClass, narrow && styles.narrow, className)}>
+    <div className={cn(setAlignmentClass, narrow && styles.narrow, className, setDark)}>
       {caption && <span className={styles.caption}>{caption || `Caption`}</span>}
       {title && <h1 className={styles.title}>{title || `Title`}</h1>}
       {lead && (

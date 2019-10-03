@@ -14,6 +14,7 @@ const Section = ({
   title,
   align,
   button,
+  dark,
   narrow,
   narrowHeading,
   divider,
@@ -21,8 +22,9 @@ const Section = ({
   headingClassName
 }) => {
   const setClasses = divider ? styles.sectionDivider : styles.section
+  const setDark = dark ? styles.light : null
   return (
-    <section className={cn(setClasses, className)}>
+    <section className={cn(setClasses, className, setDark)}>
       {container === false ? (
         children
       ) : (
@@ -31,6 +33,7 @@ const Section = ({
             <SectionHeading
               title={title}
               align={align}
+              dark={dark}
               narrow={narrowHeading}
               button={button}
               className={headingClassName}

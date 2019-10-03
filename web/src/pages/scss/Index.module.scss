@@ -235,7 +235,7 @@
   }
 
   .title {
-    @include h5;
+    @include h6;
     color: inherit;
   }
 
@@ -270,6 +270,43 @@
   }
 
   .image {
+
+    img {
+      max-width: 100%;
+    }
+  }
+}
+
+.agency {
+  .headingWrapper {
+    @include breakpoint-md {
+      display: flex;
+      align-items: flex-end;
+      @include interpolate(margin-bottom, 48px, 80px);
+    }
+  }
+
+  .heading,
+  .lead {
+    @include breakpoint-md {
+      lost-column: 1/2 2 48px;
+    }
+  }
+
+  .heading {
+    @include breakpoint-md {}
+  }
+
+  .lead {
+    @include body-l;
+  }
+
+  .item {
+    @include interpolate(margin-bottom, 48px, 48px);
+
+    @include breakpoint-md {
+      lost-column: 1/2 2 48px;
+    }
 
     img {
       max-width: 100%;
