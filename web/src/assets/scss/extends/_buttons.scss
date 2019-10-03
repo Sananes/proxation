@@ -103,3 +103,18 @@
     border-color: transparent;
   }
 }
+
+%buttonLink {
+  @extend %buttonGhost;
+  @include body;
+  letter-spacing: 0;
+  text-transform: none;
+  font-weight: bold;
+  padding-left: 0;
+  padding-right: 0;
+
+  &:hover,
+  &:active {
+    color: inherit;
+  }
+}

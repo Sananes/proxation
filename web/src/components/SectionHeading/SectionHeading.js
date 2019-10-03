@@ -38,6 +38,8 @@ const SectionHeading = ({
             style={button.style}
             type={button.type}
             link={button.link}
+            hasIcon={button.hasIcon}
+            icon={button.icon}
           />
         </div>
       )}

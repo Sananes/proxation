@@ -3,17 +3,20 @@ import HamburgerIcon from './hamburger'
 import Logo from './logo'
 import ArrowRight from './arrow-right'
 import ArrowLeft from './arrow-left'
+import ChevronRight from './chevron-right'
 
-function Icon(props) {
-  switch (props.symbol) {
+function Icon({ symbol, strokeWidth }) {
+  switch (symbol) {
     case 'hamburger':
-      return <HamburgerIcon />
+      return <HamburgerIcon strokeWidth={strokeWidth} />
     case 'logo':
       return <Logo />
     case 'arrow-right':
       return <ArrowRight />
     case 'arrow-left':
       return <ArrowLeft />
+    case 'chevron-right':
+      return <ChevronRight strokeWidth={strokeWidth} />
     default:
       return <span>Unknown icon: {props.symbol}</span>
   }

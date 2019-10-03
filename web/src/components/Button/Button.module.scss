@@ -1,11 +1,24 @@
 @import '../../assets/scss/helpers';
 
+.icon {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+
+  svg {
+    width: 16px;
+    height: 16px;
+    margin-top: 2.5px;
+    margin-left: 4px;
+  }
+}
+
 .button {
   @extend %button;
 }
 
 .buttonLink {
-  @extend %button;
+  @extend %buttonLink;
 }
 
 .buttonSecondary {

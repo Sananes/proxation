@@ -199,10 +199,11 @@ const IndexPage = props => {
               title={featuresHeadingNodes.title}
               button={{
                 text: 'Read more',
-                style: 'primary',
                 size: 'large',
+                style: 'primary',
                 type: 'link',
-                link: '/hello'
+                link: '/',
+                hasIcon: true
               }}
               lead="Lassen Sie sich von unserer E-Commerce Agentur unterstützen und profitieren Sie von unserer langjährigen Erfahrung und Expertise in der Entwicklung von Online Shops. Als zertifizierter shopware Solutions Partner setzen wir Ihre Wünsche und Vorstellungen gekonnt in einen modernen Online Shop um. Online Shop Programmierung – bei unserer E-Commerce Agentur in München sind Sie genau richtig!"
             />
