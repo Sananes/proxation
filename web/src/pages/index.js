@@ -8,7 +8,7 @@ import Button from '../components/Button'
 import Features from '../sections/Features'
 import Layout from '../containers/layout'
 import Section from '../components/Section'
-import Carousel from '../sections/Carousel'
+import CarouselSection from '../sections/CarouselSection'
 import TextBlock from '../components/SectionHeading'
 import Hero from '../modules/Hero'
 import cn from 'classnames'
@@ -153,13 +153,9 @@ const IndexPage = props => {
       <SEO title={site.title} description={site.description} keywords={site.keywords} />
       <Hero />
 
-      {projectNodes && (
-        <Section className={styles.projects}>
-          <Carousel data={projectNodes} slug="project" className={styles.sliderCarousel} />
-        </Section>
-      )}
+      <CarouselSection className={styles.projects} data={projectNodes} />
 
-      {featuresNodes && <Features data={featuresNodes} headingData={featuresHeadingNodes} />}
+      <Features data={featuresNodes} headingData={featuresHeadingNodes} />
 
       {featuresNodes && (
         <Section className={styles.summary}>
