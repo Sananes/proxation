@@ -26,7 +26,10 @@
 }
 
 .contact {
-  lost-column: 1/2.5;
+
+  @include breakpoint-md {
+    lost-column: 1/2.5;
+  }
 
   ul {
     margin-top: 1.5rem;
@@ -36,7 +39,11 @@
 }
 
 .menuWrapper {
-  lost-column: 1/2;
+
+  @include breakpoint-md {
+    lost-column: 1/2;
+
+  }
 }
 
 .menu {

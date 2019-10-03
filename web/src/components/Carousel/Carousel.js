@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'gatsby'
 import Image from 'gatsby-image/withIEPolyfill'
 import { useWindowDimensions } from '../../lib/helpers'
@@ -11,7 +11,15 @@ import styles from './Carousel.module.scss'
 const Carousel = props => {
   const { data, className, slug } = props
   const { width } = useWindowDimensions()
-  console.log(deviceType)
+  const [isDevice, setIsDevice] = useState(false)
+
+  useEffect(() => {
+    if (width <= 700) {
+      setIsDevice(true)
+    }
+  })
+
+  console.log(isDevice)
 
   if (!data) {
     throw new Error('No slide items have been added in the studio')
@@ -22,13 +30,7 @@ const Carousel = props => {
       naturalSlideWidth={369}
       naturalSlideHeight={480}
       lockOnWindowScroll={false}
-      visibleSlides={
-        (isMobile && deviceType === 'mobile') || width <= 700
-          ? 1.5
-          : data.length > 3
-          ? 3.5
-          : data.length
-      }
+      visibleSlides={isDevice ? 1.5 : data.length > 3 ? 3.5 : data.length}
       totalSlides={data.length}
       className={cn(styles.sliderCarousel, className)}
     >
