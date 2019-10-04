@@ -1,5 +1,31 @@
 @import '../../assets/scss/helpers';
 
+$menu-delay: 3s / 18;
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  100% {
+    opacity: 100;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fixed {
+  0% {
+    position: relative;
+    width: 100%;
+  }
+
+  100% {
+    position: fixed;
+    width: 100%;
+  }
+}
+
 // .root {
 //   position: relative;
 //   lost-center: $layout-width;
@@ -25,12 +51,14 @@
   width: 100%;
   background: $color-header-background;
 
+
+
   // when nav is activated
   &.showNav {
     z-index: 9999;
     position: fixed;
     top: 0;
-    background: $color-primary;
+    background: transparent;
     color: $text-light;
   }
 
@@ -143,6 +171,8 @@
       justify-content: space-around;
     }
   }
+
+
 
   .menuWrapper {}
 
@@ -271,24 +301,69 @@
   }
 }
 
+// Animations for menu
+
 .showNav {
   display: block;
 }
 
-.book {
-  display: none;
-  @extend %button;
+.root.animate {
+  animation: 100ms ease-in-out 0s forwards;
+  animation-name: fixed;
+  transition: color 200ms ease-in-out;
 
-  .transparent & {
-    @extend %button,
-    %buttonSecondaryLight;
+  .branding a {
+    transition: color 200ms ease-in-out;
+  }
+}
 
-    &:hover {
-      @extend %button;
+.nav {
+  &.showNav {
+
+    animation: 100ms ease 0s forwards;
+    animation-name: fadeIn;
+    background: $color-primary;
+  }
+}
+
+.menuBlock,
+.block {
+  opacity: 0;
+}
+
+.showNav .menuBlock,
+.showNav .block {
+  animation: 1s ease 0s forwards;
+  animation-name: fadeIn;
+}
+
+.showNav .subMenu {
+  animation: 1s ease 0s forwards;
+  animation-name: fadeIn;
+}
+
+// Loop from 1-9.
+@for $i from 1 through 3 {
+  .animate .menuBlock {
+
+    // :nth-child(1-9)
+    &:nth-child(#{$i}) {
+      // Delay the animation. Delay increases as items loop.
+      animation-delay: $i * ($menu-delay);
+
+      @for $i from 1 through 5 {
+        .subMenu li:nth-child(#{$i}) {
+          animation-delay: 100ms + $i * (5s / 18);
+        }
+      }
     }
   }
+}
 
-  @include breakpoint-md {
-    display: block;
+@for $i from 1 through 2 {
+  .animate .block {
+    &:nth-child(#{$i}) {
+      animation-delay: ($menu-delay * 2) + $i * ($menu-delay);
+    }
   }
 }

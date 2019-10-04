@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef } from 'react'
 import { Link } from 'gatsby'
 import Icon from '../icons'
 import cn from 'classnames'
@@ -12,7 +12,8 @@ const Header = ({ onHideNav, onShowNav, showNav, siteTitle, headerTransparent })
         className={cn(
           styles.root,
           headerTransparent && styles.transparent,
-          showNav && styles.showNav
+          showNav && styles.showNav,
+          showNav && styles.animate
         )}
       >
         <div className={styles.wrapper}>
@@ -29,10 +30,10 @@ const Header = ({ onHideNav, onShowNav, showNav, siteTitle, headerTransparent })
         </div>
       </div>
 
-      <div className={cn(styles.nav, showNav && styles.showNav)}>
+      <div className={cn(styles.nav, showNav && styles.showNav, showNav && styles.animate)}>
         <div className={styles.container}>
           <nav className={styles.menuWrapper}>
-            <ul className={styles.menuBlock}>
+            <ul className={cn(styles.menuBlock)}>
               <li className={styles.navItem}>
                 <Link to="/about/">
                   <span>01</span>Shopware
@@ -56,7 +57,7 @@ const Header = ({ onHideNav, onShowNav, showNav, siteTitle, headerTransparent })
                 </ul>
               </li>
             </ul>
-            <ul className={styles.menuBlock}>
+            <ul className={cn(styles.menuBlock)}>
               <li className={styles.navItem}>
                 <Link to="/projects/">
                   <span>02</span>Spezialitäten
@@ -102,14 +103,14 @@ const Header = ({ onHideNav, onShowNav, showNav, siteTitle, headerTransparent })
               </li>
             </ul>
           </nav>
-          <div className={styles.bottomWrapper}>
-            <address className={styles.address}>
+          <div className={cn(styles.bottomWrapper)}>
+            <address className={cn(styles.address, styles.block)}>
               Proxation GmbH
               <br /> c/o WeWork
               <br /> Oskar-von-Miller-Ring 20
               <br /> 80333 München
             </address>
-            <div className={styles.kontakt}>
+            <div className={cn(styles.kontakt, styles.block)}>
               <ul>
                 <li>
                   <Link to="/">+49 (0) 89 4275 9987</Link>
