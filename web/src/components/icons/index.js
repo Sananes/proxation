@@ -2,6 +2,7 @@ import React from 'react'
 import HamburgerIcon from './hamburger'
 import Logo from './logo'
 import ArrowRight from './arrow-right'
+import Close from './close'
 import ArrowLeft from './arrow-left'
 import ChevronRight from './chevron-right'
 
@@ -13,6 +14,8 @@ function Icon({ symbol, strokeWidth }) {
       return <Logo />
     case 'arrow-right':
       return <ArrowRight />
+    case 'close':
+      return <Close />
     case 'arrow-left':
       return <ArrowLeft />
     case 'chevron-right':

@@ -3,6 +3,7 @@
 @font-face {
   font-family: 'SpaceGrotesk';
   font-weight: normal;
+  font-display: auto;
   src: url('../fonts/SpaceGrotesk-Regular.woff2') format('woff2'),
     url('../fonts/SpaceGrotesk-Regular.woff') format('woff');
 }
@@ -10,6 +11,7 @@
 @font-face {
   font-family: 'SpaceGrotesk';
   font-weight: normal;
+  font-display: auto;
   src: url('../fonts/SpaceGrotesk-Medium.woff2') format('woff2'),
     url('../fonts/SpaceGrotesk-Medium.woff') format('woff');
 }
@@ -17,6 +19,7 @@
 @font-face {
   font-family: 'SpaceGrotesk';
   font-weight: bold;
+  font-display: auto;
   src: url('../fonts/SpaceGrotesk-Bold.woff2') format('woff2'),
     url('../fonts/SpaceGrotesk-Bold.woff') format('woff');
 }

@@ -41,7 +41,7 @@ export const query = graphql`
                 caption
                 asset {
                   url
-                  fluid {
+                  fluid(maxWidth: 800) {
                     ...GatsbySanityImageFluid
                   }
                 }
@@ -61,7 +61,7 @@ export const query = graphql`
                 caption
                 asset {
                   url
-                  fluid {
+                  fluid(maxWidth: 800) {
                     ...GatsbySanityImageFluid
                   }
                 }
@@ -91,7 +91,7 @@ export const query = graphql`
                 width
               }
               asset {
-                fluid {
+                fluid(maxWidth: 800) {
                   ...GatsbySanityImageFluid
                 }
                 _id

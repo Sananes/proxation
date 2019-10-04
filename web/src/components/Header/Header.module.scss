@@ -26,12 +26,13 @@
   background: $color-header-background;
 
   // when nav is activated
-  // z-index: 9999;
-  // position: fixed;
-  // top: 0;
-  // background: $color-primary;
-  // color: $text-light;
-
+  &.showNav {
+    z-index: 9999;
+    position: fixed;
+    top: 0;
+    background: $color-primary;
+    color: $text-light;
+  }
 
   &.transparent {
     color: $text-light;
@@ -68,25 +69,27 @@
   text-decoration: none;
   margin: 0;
 
+  .title {
+    opacity: 0;
+    visibility: hidden;
+  }
+
   a {
     display: inline-block;
     padding-left: 0;
     padding-right: 0;
     color: $color-primary;
+
     // when nav is active
     // color: $text-light;
 
-    .transparent & {
+    .showNav & {
       color: $text-light;
-    }
 
-    .transparent:hover & {
-      color: $text-dark;
-    }
-
-    &:hover {
-      color: $color-header-text-hover;
-      text-decoration: none;
+      &:hover {
+        color: $text-light;
+        text-decoration: none;
+      }
     }
   }
 }
@@ -99,7 +102,7 @@
   margin-right: -5px;
   padding: calc(14 / 17 / 2 * 1rem);
   outline: none;
-
+  cursor: pointer;
   color: inherit;
 
   @include breakpoint-md {}
@@ -119,55 +122,101 @@
   background: $color-primary;
   color: $text-light;
   z-index: 9997;
+  overflow-y: scroll;
+
+
+  @include breakpoint-md {
+    overflow-y: hidden;
+  }
+
 
   .container {
     @extend %container;
-    margin-top: $header-height;
+    margin-top: $header-mobile-height;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+
+    @include breakpoint-md {
+      margin-top: -$header-height / 2;
+      justify-content: space-around;
+    }
   }
 
-  .showNav {
-    lost-utility: clearfix;
+  .menuWrapper {}
+
+  &.showNav {
+    display: flex;
+
+    @include breakpoint-md {
+      align-items: center;
+    }
   }
 
   .navItem {
     @include h2;
     font-weight: $font-weight-medium;
+    transition: color 300ms ease-in-out;
+
+
+    &:hover {
+      color: $text-light-subdued;
+    }
 
     span {
       @include overline;
-      display: inline-block;
       margin-left: -24px;
       margin-top: 10px;
       float: left;
+      display: none;
+
+      @include breakpoint-md {
+        display: inline-block;
+      }
     }
   }
 
   .bottomWrapper {
-    clear: both;
-    margin-top: 64px;
+    @include interpolate(margin-top, 24px, 64px)
+  }
+
+  .address,
+  .kontakt {
+
+    @include breakpoint-md {
+      lost-column: 1/3;
+    }
+
+    ul {
+      padding: 0;
+      margin: 0;
+    }
   }
 
   .address {
+    @include body;
     color: $text-light-dimmed;
-    lost-column: 1/3;
     font-style: normal;
   }
 
   .kontakt {
-
     a {
       color: inherit;
     }
   }
 
-  .menuBlockLast li a {
-    margin-bottom: 16px;
-  }
+
 
   .menuBlock {
-    lost-column: 1/3;
     margin: 0;
     padding: 0;
+    flex: 1;
+    margin-bottom: 32px;
+
+    @include breakpoint-md {
+      lost-column: 1/3;
+    }
 
     &>li a {
       display: block;
@@ -178,12 +227,24 @@
     }
 
   }
+
+  .menuBlockLast {
+    margin-bottom: 0;
+  }
+
+  .menuBlockLast li a {
+    margin-bottom: 16px;
+  }
 }
 
 .subMenu {
-  margin: 24px 0 0 0;
+  margin: 0;
   padding: 0;
   color: $text-light-subdued;
+
+  @include breakpoint-md {
+    margin: 24px 0 0 0;
+  }
 }
 
 .subMenu li {
@@ -191,13 +252,22 @@
   letter-spacing: 0;
   line-height: 1;
   margin: 0;
-  padding: 0;
-  font-weight: 500;
+  padding: 5px;
+  font-weight: $font-weight-normal;
+
+  @include breakpoint-md {
+    padding: 0;
+  }
 
   a {
     padding: 0;
     margin: 0;
     color: $text-light-subdued;
+    transition: color 300ms ease-in-out;
+
+    &:hover {
+      color: $text-light;
+    }
   }
 }
 
