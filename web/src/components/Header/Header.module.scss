@@ -3,6 +3,8 @@
 $menu-delay: 3s / 18;
 $menu-total-duration: $menu-delay * 3;
 
+$animation-easing: ease-in-out;
+
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -15,15 +17,15 @@ $menu-total-duration: $menu-delay * 3;
   }
 }
 
-@keyframes fixed {
+@keyframes headerFade {
   0% {
-    position: relative;
-    width: 100%;
+    color: $color-primary;
+    background: $color-header-background;
   }
 
   100% {
-    position: fixed;
-    width: 100%;
+    color: $color-white;
+    background: $color-primary;
   }
 }
 
@@ -59,7 +61,7 @@ $menu-total-duration: $menu-delay * 3;
   justify-content: space-between;
   align-items: center;
   height: $header-mobile-height;
-  transition: height 300ms ease-in-out;
+  transition: height 300ms $animation-easing;
   padding-left: 1rem;
   padding-right: 1rem;
 
@@ -105,15 +107,113 @@ $menu-total-duration: $menu-delay * 3;
 }
 
 .toggleNavButton {
+  position: relative;
+
+  &:before {
+    content: "";
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    position: absolute;
+    padding: 20px;
+  }
+
+  $button-size: 20px;
+  @include buttonReset;
+  transform: scale(0.7);
   appearance: none;
-  font-size: 25px;
-  border: none;
-  background: none;
-  margin-right: -5px;
-  padding: calc(14 / 17 / 2 * 1rem);
-  outline: none;
+  outline: 0;
+  width: $button-size;
+  height: $button-size;
+  position: relative;
+  margin: 0;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .5s $animation-easing;
+  -moz-transition: .5s $animation-easing;
+  -o-transition: .5s $animation-easing;
+  transition: .5s $animation-easing;
   cursor: pointer;
-  color: inherit;
+
+  span {
+    display: block;
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    background: $color-primary;
+    border-radius: 2px;
+    opacity: 1;
+    left: 0;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: .25s $animation-easing;
+    -moz-transition: .25s $animation-easing;
+    -o-transition: .25s $animation-easing;
+    transition: .25s $animation-easing;
+
+    .showNav & {
+      background-color: $text-light;
+    }
+
+    &:nth-child(1) {
+      top: 0px;
+      -webkit-transform-origin: left center;
+      -moz-transform-origin: left center;
+      -o-transform-origin: left center;
+      transform-origin: left center;
+    }
+
+    &:nth-child(2) {
+      top: 6px;
+      -webkit-transform-origin: left center;
+      -moz-transform-origin: left center;
+      -o-transform-origin: left center;
+      transform-origin: left center;
+    }
+
+    &:nth-child(3) {
+      top: 12px;
+      -webkit-transform-origin: left center;
+      -moz-transform-origin: left center;
+      -o-transform-origin: left center;
+      transform-origin: left center;
+    }
+
+    &:nth-child(1) {
+
+      .showNav & {
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        transform: rotate(45deg);
+        top: 0px;
+        left: 4px;
+      }
+    }
+
+    &:nth-child(2) {
+      .showNav & {
+        width: 0%;
+        opacity: 0;
+      }
+    }
+
+    &:nth-child(3) {
+      .showNav & {
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+        top: 14px;
+        left: 4px;
+      }
+    }
+  }
 
   @include breakpoint-md {}
 
@@ -163,7 +263,7 @@ $menu-total-duration: $menu-delay * 3;
   .navItem {
     @include h2;
     font-weight: $font-weight-medium;
-    transition: color 300ms ease-in-out;
+    transition: color 300ms $animation-easing;
 
 
     &:hover {
@@ -218,17 +318,23 @@ $menu-total-duration: $menu-delay * 3;
     margin: 0;
     padding: 0;
     flex: 1;
-    margin-bottom: 32px;
+    margin-bottom: 0;
 
     @include breakpoint-md {
       lost-column: 1/3;
+      margin-bottom: 32px;
     }
 
     &>li a {
       display: block;
       color: inherit;
+      margin-bottom: 16px;
+      line-height: 1;
       text-decoration: none;
 
+      @include breakpoint-md {
+        margin-bottom: 0;
+      }
 
     }
 
@@ -247,9 +353,11 @@ $menu-total-duration: $menu-delay * 3;
   margin: 0;
   padding: 0;
   color: $text-light-subdued;
+  display: none;
 
   @include breakpoint-md {
     margin: 24px 0 0 0;
+    display: block;
   }
 }
 
@@ -269,7 +377,7 @@ $menu-total-duration: $menu-delay * 3;
     padding: 0;
     margin: 0;
     color: $text-light-subdued;
-    transition: color 300ms ease-in-out;
+    transition: color 300ms $animation-easing;
 
     &:hover {
       color: $text-light;
@@ -279,30 +387,35 @@ $menu-total-duration: $menu-delay * 3;
 
 .animate {
   &.root {
-    background: transparent;
     color: $text-light;
 
+
     .branding a {
-      transition: color 500ms ease-in-out;
+      transition: color 500ms $animation-easing;
+    }
+
+    .toggleNavButton span {
+      transition: all 300ms $animation-easing,
     }
   }
 }
 
 .animateEnterActive {
-
-  .root {
-    transition: color 500ms ease-in-out;
+  &.root {
+    background: $color-primary;
+    animation: 200ms $animation-easing 0s forwards;
+    animation-name: headerFade;
   }
 
   &.nav {
-    animation: 0.2s ease-in-out 0s backwards;
+    animation: 0.2s $animation-easing 0s backwards;
     animation-name: fadeIn;
   }
 
   .menuBlock,
   .block,
   .subMenu {
-    animation: 0.5s ease-in-out 0s backwards;
+    animation: 0.5s $animation-easing 0s backwards;
     animation-name: fadeIn;
   }
 
@@ -352,7 +465,7 @@ $menu-total-duration: $menu-delay * 3;
 
         @for $i from 1 through 5 {
           .subMenu li:nth-child(#{$i}) {
-            animation-delay: $i * (5s / 18);
+            animation-delay: $i * (2s / 18);
           }
         }
       }
@@ -371,16 +484,24 @@ $menu-total-duration: $menu-delay * 3;
 .animateExit {
 
   &.nav {
-    animation: 300ms ease $menu-total-duration forwards reverse;
+    animation: 300ms $animation-easing 200ms forwards reverse;
     animation-name: fadeIn;
   }
 
   &.root {
-    background: none;
+    animation: 300ms $animation-easing 200ms backwards reverse;
+    animation-name: headerFade;
+
+    .toggleNavButton span {
+      transition: all 300ms 200ms $animation-easing;
+    }
 
     .branding a,
-    .toggleNavButton {
-      transition: color 300ms $menu-total-duration ease-in-out;
+    .toggleNavButton span {
+      transition:
+        all 300ms 200ms $animation-easing,
+
+      ;
     }
   }
 }

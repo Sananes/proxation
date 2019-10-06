@@ -19,8 +19,6 @@ const Carousel = props => {
     }
   })
 
-  console.log(isDevice)
-
   if (!data) {
     throw new Error('No slide items have been added in the studio')
   }

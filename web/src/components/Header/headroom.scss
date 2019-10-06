@@ -1,0 +1,43 @@
+@import '../../assets/scss/helpers';
+
+.headroom {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: $header-mobile-height;
+  right: 0;
+  z-index: 9999;
+  transition: transform 200ms ease-in-out;
+
+
+  @include breakpoint-md {
+    height: $header-height;
+  }
+}
+
+.headroom--unfixed {
+  transform: translateY(0%);
+}
+
+.headroom--scrolled {
+  transition: transform 200ms ease-in-out;
+}
+
+.headroom--unpinned {
+  transform: translateY(-100%);
+}
+
+.headroom--pinned {
+  transform: translateY(0%);
+
+}
+
+.headroom-shownav .headroom {
+
+  &--unfixed,
+  &--pinned,
+  &--unpinned {
+    transform: translateY(0%);
+  }
+}

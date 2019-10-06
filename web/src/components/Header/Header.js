@@ -3,47 +3,53 @@ import { Link } from 'gatsby'
 import Icon from '../icons'
 import cn from 'classnames'
 import { CSSTransition } from 'react-transition-group'
+import Headroom from 'react-headroom'
 
 import styles from './Header.module.scss'
+import './headroom.scss'
 
 const Header = ({ onHideNav, onShowNav, showNav, siteTitle, headerTransparent }) => {
   const animationTime = 1200
-  const animationTimer = setTimeout(() => console.log('Hello, World!'), animationTime)
+
   return (
     <>
-      <CSSTransition
-        in={showNav}
-        timeout={animationTime}
-        classNames={{
-          enter: styles.animate,
-          enterActive: styles.animateEnterActive,
-          enterDone: styles.animateEnterDone,
-          exit: styles.animateExit,
-          exitActive: styles.animateExitActive,
-          exitDone: styles.animateExitDone
-        }}
-      >
-        <div
-          className={cn(
-            styles.root,
-            headerTransparent && styles.transparent,
-            showNav && styles.showNav
-          )}
+      <Headroom disableInlineStyles pinStart={0} className={showNav && `headroom-shownav`}>
+        <CSSTransition
+          in={showNav}
+          timeout={animationTime}
+          classNames={{
+            enter: styles.animate,
+            enterActive: styles.animateEnterActive,
+            enterDone: styles.animateEnterDone,
+            exit: styles.animateExit,
+            exitActive: styles.animateExitActive,
+            exitDone: styles.animateExitDone
+          }}
         >
-          <div className={styles.wrapper}>
-            <h1 className={styles.branding}>
-              <Link className={styles.branding} to="/">
-                <Icon symbol="logo" />
-                <span className={styles.title}>{siteTitle}</span>
-              </Link>
-            </h1>
+          <div
+            className={cn(
+              styles.root,
+              headerTransparent && styles.transparent,
+              showNav && styles.showNav
+            )}
+          >
+            <div className={styles.wrapper}>
+              <h1 className={styles.branding}>
+                <Link className={styles.branding} to="/">
+                  <Icon symbol="logo" />
+                  <span className={styles.title}>{siteTitle}</span>
+                </Link>
+              </h1>
 
-            <button className={styles.toggleNavButton} onClick={showNav ? onHideNav : onShowNav}>
-              <Icon symbol={(showNav && `close`) || `hamburger`} />
-            </button>
+              <button className={styles.toggleNavButton} onClick={showNav ? onHideNav : onShowNav}>
+                <span></span>
+                <span></span>
+                <span></span>
+              </button>
+            </div>
           </div>
-        </div>
-      </CSSTransition>
+        </CSSTransition>
+      </Headroom>
 
       <CSSTransition
         in={showNav}
