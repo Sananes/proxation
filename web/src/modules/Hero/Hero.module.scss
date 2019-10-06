@@ -6,7 +6,7 @@
   height: 80vh;
 
   @include breakpoint-md {
-    margin-top: -$header-height;
+    margin-top: -$header-height /2;
 
   }
 }

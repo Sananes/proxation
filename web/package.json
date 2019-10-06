@@ -41,7 +41,8 @@
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
     "react-pose": "^4.0.8",
-    "react-scrolllock": "^4.0.1"
+    "react-scrolllock": "^4.0.1",
+    "react-transition-group": "^4.3.0"
   },
   "devDependencies": {
     "autoprefixer": "^9.6.1",

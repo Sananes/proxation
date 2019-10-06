@@ -1,6 +1,7 @@
 @import '../../assets/scss/helpers';
 
 $menu-delay: 3s / 18;
+$menu-total-duration: $menu-delay * 3;
 
 @keyframes fadeIn {
   0% {
@@ -26,31 +27,12 @@ $menu-delay: 3s / 18;
   }
 }
 
-// .root {
-//   position: relative;
-//   lost-center: $layout-width;
-//   z-index: 100;
-//   background: $color-header-background;
-//   border-bottom: 1px solid $color-header-border;
-
-//   &.transparent {
-//     color: $text-light;
-//     background: transparent;
-//     border-bottom: none;
-//     transition: all 200ms ease-in-out;
-
-//     &:hover {
-//       background: $color-header-background;
-//     }
-//   }
-// }
-
 .root {
-  position: relative;
-  z-index: 100;
+  position: fixed;
+  top: 0;
+  z-index: 9999;
   width: 100%;
   background: $color-header-background;
-
 
 
   // when nav is activated
@@ -141,11 +123,11 @@ $menu-delay: 3s / 18;
 }
 
 .nav {
-  display: none;
   position: fixed;
   top: 0;
   width: 100%;
   height: 100%;
+  display: flex;
   min-height: 100%;
   background: $color-primary;
   color: $text-light;
@@ -155,6 +137,7 @@ $menu-delay: 3s / 18;
 
   @include breakpoint-md {
     overflow-y: hidden;
+    align-items: center;
   }
 
 
@@ -176,13 +159,6 @@ $menu-delay: 3s / 18;
 
   .menuWrapper {}
 
-  &.showNav {
-    display: flex;
-
-    @include breakpoint-md {
-      align-items: center;
-    }
-  }
 
   .navItem {
     @include h2;
@@ -301,69 +277,110 @@ $menu-delay: 3s / 18;
   }
 }
 
-// Animations for menu
+.animate {
+  &.root {
+    background: transparent;
+    color: $text-light;
 
-.showNav {
-  display: block;
-}
-
-.root.animate {
-  animation: 100ms ease-in-out 0s forwards;
-  animation-name: fixed;
-  transition: color 200ms ease-in-out;
-
-  .branding a {
-    transition: color 200ms ease-in-out;
+    .branding a {
+      transition: color 500ms ease-in-out;
+    }
   }
 }
 
-.nav {
-  &.showNav {
+.animateEnterActive {
 
-    animation: 100ms ease 0s forwards;
+  .root {
+    transition: color 500ms ease-in-out;
+  }
+
+  &.nav {
+    animation: 0.2s ease-in-out 0s backwards;
     animation-name: fadeIn;
-    background: $color-primary;
   }
-}
 
-.menuBlock,
-.block {
-  opacity: 0;
-}
+  .menuBlock,
+  .block,
+  .subMenu {
+    animation: 0.5s ease-in-out 0s backwards;
+    animation-name: fadeIn;
+  }
 
-.showNav .menuBlock,
-.showNav .block {
-  animation: 1s ease 0s forwards;
-  animation-name: fadeIn;
-}
+  @for $i from 1 through 3 {
+    .menuBlock {
 
-.showNav .subMenu {
-  animation: 1s ease 0s forwards;
-  animation-name: fadeIn;
-}
+      // :nth-child(1-9)
+      &:nth-child(#{$i}) {
+        // Delay the animation. Delay increases as items loop.
+        animation-delay: $i * ($menu-delay);
 
-// Loop from 1-9.
-@for $i from 1 through 3 {
-  .animate .menuBlock {
-
-    // :nth-child(1-9)
-    &:nth-child(#{$i}) {
-      // Delay the animation. Delay increases as items loop.
-      animation-delay: $i * ($menu-delay);
-
-      @for $i from 1 through 5 {
-        .subMenu li:nth-child(#{$i}) {
-          animation-delay: 100ms + $i * (5s / 18);
+        @for $i from 1 through 5 {
+          .subMenu li:nth-child(#{$i}) {
+            animation-delay: 100ms + $i * (5s / 18);
+          }
         }
+      }
+    }
+  }
+
+  @for $i from 1 through 2 {
+    .block {
+      &:nth-child(#{$i}) {
+        animation-delay: ($menu-delay * 2) + $i * ($menu-delay);
+      }
+    }
+  }
+
+}
+
+.animateExitActive {
+
+  .menuBlock,
+  .block,
+  .subMenu {
+    animation: 300ms ease 0s forwards reverse;
+    animation-name: fadeIn;
+  }
+
+  @for $i from 1 through 3 {
+    .menuBlock {
+
+      // :nth-child(1-9)
+      &:nth-child(#{$i}) {
+        // Delay the animation. Delay increases as items loop.
+        animation-delay: $i * ($menu-delay);
+
+        @for $i from 1 through 5 {
+          .subMenu li:nth-child(#{$i}) {
+            animation-delay: $i * (5s / 18);
+          }
+        }
+      }
+    }
+  }
+
+  @for $i from 1 through 2 {
+    .block {
+      &:nth-child(#{$i}) {
+        animation-delay: $i * ($menu-delay);
       }
     }
   }
 }
 
-@for $i from 1 through 2 {
-  .animate .block {
-    &:nth-child(#{$i}) {
-      animation-delay: ($menu-delay * 2) + $i * ($menu-delay);
+.animateExit {
+
+  &.nav {
+    animation: 300ms ease $menu-total-duration forwards reverse;
+    animation-name: fadeIn;
+  }
+
+  &.root {
+    background: none;
+
+    .branding a,
+    .toggleNavButton {
+      transition: color 300ms $menu-total-duration ease-in-out;
     }
   }
 }
