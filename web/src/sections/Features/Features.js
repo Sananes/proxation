@@ -2,6 +2,7 @@ import React from 'react'
 import Section from '../../components/Section'
 import styles from './Features.module.scss'
 import BlockText from '../../components/block-text'
+import Button from '../../components/Button'
 
 const Features = props => {
   const { data, headingData } = props
@@ -32,9 +33,14 @@ const Features = props => {
             )}
             <h4 className={styles.title}>{item.title}</h4>
             <BlockText className={styles.content} blocks={item._rawContent} />
-            <a className={styles.button} href={item.button.url}>
-              {item.button.text}
-            </a>
+            <Button
+              type="link"
+              style="ghost"
+              hasIcon={true}
+              className={styles.button}
+              text={item.button.text}
+              href={item.button.url}
+            />
           </div>
         ))}
       </div>
