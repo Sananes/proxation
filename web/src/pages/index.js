@@ -3,6 +3,7 @@ import { graphql, Link } from 'gatsby'
 import { mapEdgesToNodes, filterOutDocsWithoutSlugs } from '../lib/helpers'
 import Image from 'gatsby-image/withIEPolyfill'
 import GraphQLErrorList from '../components/graphql-error-list'
+import Reveal from 'react-reveal/Reveal'
 import Icon from '../components/icons'
 import SEO from '../components/Seo'
 import Features from '../sections/Features'
@@ -208,67 +209,69 @@ const IndexPage = props => {
   return (
     <Layout fullScreen={false}>
       <SEO title={site.title} description={site.description} keywords={site.keywords} />
-      <Hero />
+      <Reveal>
+        <Hero />
 
-      <CarouselSection className={styles.projects} data={projectNodes} slug="project" />
+        <CarouselSection className={styles.projects} data={projectNodes} slug="project" />
 
-      <Features data={featuresNodes} headingData={featuresHeadingNodes} />
+        <Features data={featuresNodes} headingData={featuresHeadingNodes} />
 
-      {supportSectionNode && (
-        <Section className={styles.summary}>
-          <div className={styles.grid}>
-            <TextBlock
-              caption={supportSectionHeadingNodes.caption}
-              align="left"
-              className={styles.heading}
-              title={supportSectionHeadingNodes.title}
-              button={{
-                text: supportSectionNode.button.text,
-                size: 'large',
-                style: 'primary',
-                type: 'link',
-                href: supportSectionNode.button.url,
-                hasIcon: true
-              }}
-              lead={supportSectionHeadingNodes.subHeading}
-            />
-            <div className={styles.image}>
-              <Image
-                fluid={supportSectionNode.image.asset.fluid}
-                title={supportSectionNode.image.alt || supportSectionHeadingNodes.title}
-                alt={supportSectionNode.image.alt || supportSectionHeadingNodes.title}
+        {supportSectionNode && (
+          <Section className={styles.summary}>
+            <div className={styles.grid}>
+              <TextBlock
+                caption={supportSectionHeadingNodes.caption}
+                align="left"
+                className={styles.heading}
+                title={supportSectionHeadingNodes.title}
+                button={{
+                  text: supportSectionNode.button.text,
+                  size: 'large',
+                  style: 'primary',
+                  type: 'link',
+                  href: supportSectionNode.button.url,
+                  hasIcon: true
+                }}
+                lead={supportSectionHeadingNodes.subHeading}
               />
-            </div>
-          </div>
-        </Section>
-      )}
-
-      {sectionThreeItemNodes && (
-        <Section className={styles.agency}>
-          <div className={styles.headingWrapper}>
-            <TextBlock
-              caption={sectionThreeHeadingNodes.caption}
-              align="left"
-              className={styles.heading}
-              title={sectionThreeHeadingNodes.title}
-            />
-            <p className={styles.lead}>{sectionThreeHeadingNodes.subHeading}</p>
-          </div>
-          <div className={styles.grid}>
-            {sectionThreeItemNodes.map(item => (
-              <div className={styles.item}>
+              <div className={styles.image}>
                 <Image
-                  fluid={item.image.asset.fluid}
-                  title={item.image.alt || item.title}
-                  alt={item.image.alt || item.image.title}
+                  fluid={supportSectionNode.image.asset.fluid}
+                  title={supportSectionNode.image.alt || supportSectionHeadingNodes.title}
+                  alt={supportSectionNode.image.alt || supportSectionHeadingNodes.title}
                 />
-                <h4 className={styles.title}>{item.title}</h4>
-                <BlockText blocks={item._rawContent} />
               </div>
-            ))}
-          </div>
-        </Section>
-      )}
+            </div>
+          </Section>
+        )}
+
+        {sectionThreeItemNodes && (
+          <Section className={styles.agency}>
+            <div className={styles.headingWrapper}>
+              <TextBlock
+                caption={sectionThreeHeadingNodes.caption}
+                align="left"
+                className={styles.heading}
+                title={sectionThreeHeadingNodes.title}
+              />
+              <p className={styles.lead}>{sectionThreeHeadingNodes.subHeading}</p>
+            </div>
+            <div className={styles.grid}>
+              {sectionThreeItemNodes.map(item => (
+                <div className={styles.item}>
+                  <Image
+                    fluid={item.image.asset.fluid}
+                    title={item.image.alt || item.title}
+                    alt={item.image.alt || item.image.title}
+                  />
+                  <h4 className={styles.title}>{item.title}</h4>
+                  <BlockText blocks={item._rawContent} />
+                </div>
+              ))}
+            </div>
+          </Section>
+        )}
+      </Reveal>
       {/*  <Section narrow={false} divider={false} className={styles.intro}>
               )}<div c
         lassName={styles.content}>
