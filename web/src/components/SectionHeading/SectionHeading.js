@@ -37,7 +37,8 @@ const SectionHeading = ({
             size={button.size}
             style={button.style}
             type={button.type}
-            link={button.link}
+            href={button.href}
+            to={button.to}
             hasIcon={button.hasIcon}
             icon={button.icon}
           />

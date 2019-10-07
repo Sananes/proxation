@@ -17,5 +17,6 @@ export default {
       name: "subHeading",
       type: "text"
     }
-  ]
+  ],
+  options: { collapsible: true, collapsed: false }
 };

@@ -13,6 +13,7 @@ const hiddenTypes = [
   "features",
   "featuresHome",
   "sectionThreeHome",
+  "textImageBlock",
   "post",
   "project",
   "siteSettings",

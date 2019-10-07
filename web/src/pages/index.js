@@ -48,6 +48,26 @@ export const query = graphql`
               }
             }
           }
+          support {
+            heading {
+              caption
+              title
+              subHeading
+            }
+            image {
+              asset {
+                fluid(maxWidth: 800) {
+                  ...GatsbySanityImageFluid
+                }
+              }
+              alt
+              caption
+            }
+            button {
+              text
+              url
+            }
+          }
           features {
             heading {
               caption
@@ -162,6 +182,12 @@ const IndexPage = props => {
     ? mapEdgesToNodes(data.posts).filter(filterOutDocsWithoutSlugs)
     : []
   const projectNodes = (data || {}).home && data.home.edges.map(edge => edge.node.projects)[0]
+
+  const supportSectionHeadingNodes =
+    (data || {}).home && data.home.edges.map(edge => edge.node.support.heading)[0]
+
+  const supportSectionNode = (data || {}).home && data.home.edges.map(edge => edge.node.support)[0]
+
   const featuresHeadingNodes =
     (data || {}).home && data.home.edges.map(edge => edge.node.features.heading)[0]
   const featuresNodes =
@@ -188,26 +214,30 @@ const IndexPage = props => {
 
       <Features data={featuresNodes} headingData={featuresHeadingNodes} />
 
-      {featuresNodes && (
+      {supportSectionNode && (
         <Section className={styles.summary}>
           <div className={styles.grid}>
             <TextBlock
-              caption={featuresHeadingNodes.caption}
+              caption={supportSectionHeadingNodes.caption}
               align="left"
               className={styles.heading}
-              title={featuresHeadingNodes.title}
+              title={supportSectionHeadingNodes.title}
               button={{
-                text: 'Read more',
+                text: supportSectionNode.button.text,
                 size: 'large',
                 style: 'primary',
                 type: 'link',
-                link: '/',
+                href: supportSectionNode.button.url,
                 hasIcon: true
               }}
-              lead="Lassen Sie sich von unserer E-Commerce Agentur unterstützen und profitieren Sie von unserer langjährigen Erfahrung und Expertise in der Entwicklung von Online Shops. Als zertifizierter shopware Solutions Partner setzen wir Ihre Wünsche und Vorstellungen gekonnt in einen modernen Online Shop um. Online Shop Programmierung – bei unserer E-Commerce Agentur in München sind Sie genau richtig!"
+              lead={supportSectionHeadingNodes.subHeading}
             />
             <div className={styles.image}>
-              <img src="https://source.unsplash.com/random/800x800" />
+              <Image
+                fluid={supportSectionNode.image.asset.fluid}
+                title={supportSectionNode.image.alt || supportSectionHeadingNodes.title}
+                alt={supportSectionNode.image.alt || supportSectionHeadingNodes.title}
+              />
             </div>
           </div>
         </Section>

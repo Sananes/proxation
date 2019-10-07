@@ -19,6 +19,7 @@ import heading from "./heading";
 import person from "./person";
 import post from "./post";
 import postAuthor from "./postAuthor";
+import textImageBlock from "./textImageBlock";
 import feature from "./feature";
 import featuresHome from "./featuresHome";
 import project from "./project";
@@ -47,6 +48,9 @@ export default createSchema({
     localeString,
     feature,
     heading,
+
+    // Parts
+    textImageBlock,
 
     // Homepage sections
     pageHome,

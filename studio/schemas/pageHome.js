@@ -28,6 +28,11 @@ export default {
       type: "featuresHome"
     },
     {
+      name: "support",
+      title: "Section: We support you",
+      type: "textImageBlock"
+    },
+    {
       name: "sectionThree",
       title: "Section: What we offer",
       type: "sectionThreeHome"
