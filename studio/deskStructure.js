@@ -12,6 +12,7 @@ const hiddenTypes = [
   "button",
   "features",
   "featuresHome",
+  "heroHome",
   "sectionThreeHome",
   "textImageBlock",
   "post",

@@ -7,11 +7,15 @@ import styles from './Hero.module.scss'
 import Container from '../../components/Container'
 
 const query = graphql`
-  query heroImage {
-    file(relativePath: { eq: "home-hero.jpg" }) {
-      childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid
+  query hero {
+    sanityPageHome {
+      hero {
+        title
+        subheading
+        caption
+        button {
+          text
+          url
         }
       }
     }
@@ -27,12 +31,12 @@ function Hero(props) {
           <div className={cn(styles.hero, styles.dark, styles.alignCenter)}>
             <Container className={styles.container}>
               <div className={styles.content}>
-                <h1 className={styles.title}>Ihre freundliche E-Commerce Agentur aus München.</h1>
-                <p className={styles.paragraph}>
-                  Als E-Commerce Agentur und zertifizierter shopware solutions Partner setzen wir
-                  Ihre Wünsche und Vorstellungen elegant und effizient in einen modernen Online Shop
-                  um.
-                </p>
+                {data.sanityPageHome.hero.title && (
+                  <h1 className={styles.title}>{data.sanityPageHome.hero.title}</h1>
+                )}
+                {data.sanityPageHome.hero.subheading && (
+                  <p className={styles.paragraph}>{data.sanityPageHome.hero.subheading}</p>
+                )}
               </div>
             </Container>
           </div>

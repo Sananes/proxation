@@ -15,6 +15,7 @@ import localeString from "./localeString";
 import button from "./button";
 import page from "./page";
 import pageHome from "./pageHome";
+import heroHome from "./heroHome";
 import heading from "./heading";
 import person from "./person";
 import post from "./post";
@@ -53,6 +54,7 @@ export default createSchema({
     textImageBlock,
 
     // Homepage sections
+    heroHome,
     pageHome,
     sectionThreeHome,
     featuresHome,
