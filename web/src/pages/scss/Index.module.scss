@@ -107,67 +107,7 @@
   color: inherit;
 }
 
-.agency {
-  .headingWrapper {
-    @include breakpoint-md {
-      display: flex;
-      align-items: flex-end;
-      @include interpolate(margin-bottom, 48px, 80px);
-    }
-  }
 
-  ul {
-    padding: 0;
-
-    li {
-      padding-left: 32px;
-      background: url('../../assets/images/icon-check.svg') left 2px no-repeat;
-      margin: 6px 0;
-    }
-  }
-
-  .heading,
-  .lead {
-    @include breakpoint-md {
-      lost-column: 1/2 2 48px;
-    }
-  }
-
-  .heading {
-    @include breakpoint-md {}
-
-  }
-
-  .lead {
-    @include body-l;
-  }
-
-
-
-  .item {
-    @include interpolate(margin-bottom, 48px, 48px);
-
-    .title {
-      @include h5;
-      color: $text-dark;
-      margin-top: 32px;
-    }
-
-    .title+div {
-      margin-top: 16px;
-    }
-
-
-    @include breakpoint-md {
-      lost-column: 1/2 2 48px;
-    }
-
-
-    img {
-      max-width: 100%;
-    }
-  }
-}
 
 .testimonials {
   background: $color-hightlight-background;

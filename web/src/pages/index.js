@@ -10,7 +10,7 @@ import Layout from '../containers/layout'
 import Section from '../components/Section'
 import CarouselSection from '../sections/CarouselSection'
 import SupportSection from '../sections/SupportSection'
-import TextBlock from '../components/SectionHeading'
+import AgencySection from '../sections/AgencySection'
 import Hero from '../modules/Hero'
 import styles from './scss/Index.module.scss'
 import 'pure-react-carousel/dist/react-carousel.es.css'
@@ -244,31 +244,11 @@ const IndexPage = props => {
 
       <VisibilitySensor once partialVisibility>
         {({ isVisible }) => (
-          <Section className={styles.agency}>
-            <div className={styles.headingWrapper}>
-              <TextBlock
-                caption={sectionThreeHeadingNodes.caption}
-                align="left"
-                className={styles.heading}
-                title={sectionThreeHeadingNodes.title}
-                isVisible={isVisible}
-              />
-              <p className={styles.lead}>{sectionThreeHeadingNodes.subHeading}</p>
-            </div>
-            <div className={styles.grid}>
-              {sectionThreeItemNodes.map((item, index) => (
-                <div className={styles.item} key={index}>
-                  <Image
-                    fluid={item.image.asset.fluid}
-                    title={item.image.alt || item.title}
-                    alt={item.image.alt || item.image.title}
-                  />
-                  <h4 className={styles.title}>{item.title}</h4>
-                  <BlockText blocks={item._rawContent} />
-                </div>
-              ))}
-            </div>
-          </Section>
+          <AgencySection
+            data={sectionThreeItemNodes}
+            headingData={sectionThreeHeadingNodes}
+            isVisible={isVisible}
+          />
         )}
       </VisibilitySensor>
     </Layout>
