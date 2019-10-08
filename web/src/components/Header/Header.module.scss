@@ -92,6 +92,14 @@ $animation-easing: ease-in-out;
     padding-right: 0;
     color: $color-primary;
 
+    svg {
+      height: 22px;
+
+      @include breakpoint-md {
+        height: auto;
+      }
+    }
+
     // when nav is active
     // color: $text-light;
 
