@@ -22,6 +22,7 @@ const Features = ({ data, headingData, isVisible }) => {
       headingClassName={styles.heading}
       narrowHeading={true}
       dark={true}
+      isVisible={isVisible}
       title={headingData.title}
       caption={headingData.caption}
       lead={headingData.subheading}

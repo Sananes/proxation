@@ -1,4 +1,6 @@
 import React from 'react'
+import { useSpring, animated } from 'react-spring'
+import { Spring } from 'react-spring/renderprops'
 import PropTypes from 'prop-types'
 import Button from '../Button'
 import cn from 'classnames'
@@ -11,6 +13,7 @@ const SectionHeading = ({
   children,
   align,
   button,
+  isVisible,
   dark,
   className,
   narrow
@@ -20,29 +23,60 @@ const SectionHeading = ({
     [styles.leftAligned]: align === 'left',
     [styles.centerAligned]: align === 'center'
   })
+
+  const animationProps = {
+    transform: isVisible ? `translateY(0)` : `translateY(-24px)`,
+    opacity: isVisible ? 1 : 0
+  }
+
   const setDark = dark ? styles.light : null
+
   return (
     <div className={cn(setAlignmentClass, narrow && styles.narrow, className, setDark)}>
-      {caption && <span className={styles.caption}>{caption || `Caption`}</span>}
-      {title && <h1 className={styles.title}>{title || `Title`}</h1>}
+      {caption && (
+        <Spring to={animationProps}>
+          {props => (
+            <span style={props} className={styles.caption}>
+              {caption || `Caption`}
+            </span>
+          )}
+        </Spring>
+      )}
+      {title && (
+        <Spring to={animationProps} delay="200">
+          {props => (
+            <h1 style={props} className={styles.title}>
+              {title || `Title`}
+            </h1>
+          )}
+        </Spring>
+      )}
       {lead && (
-        <p className={styles.lead}>
-          {lead || `Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, eos?`}
-        </p>
+        <Spring to={animationProps} delay="300">
+          {props => (
+            <p style={props} className={styles.lead}>
+              {lead || `Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, eos?`}
+            </p>
+          )}
+        </Spring>
       )}
       {button && (
-        <div className={styles.buttonWrapper}>
-          <Button
-            text={button.text}
-            size={button.size}
-            style={button.style}
-            type={button.type}
-            href={button.href}
-            to={button.to}
-            hasIcon={button.hasIcon}
-            icon={button.icon}
-          />
-        </div>
+        <Spring to={animationProps} delay="400">
+          {props => (
+            <div style={props} className={styles.buttonWrapper}>
+              <Button
+                text={button.text}
+                size={button.size}
+                style={button.style}
+                type={button.type}
+                href={button.href}
+                to={button.to}
+                hasIcon={button.hasIcon}
+                icon={button.icon}
+              />
+            </div>
+          )}
+        </Spring>
       )}
       {children}
     </div>

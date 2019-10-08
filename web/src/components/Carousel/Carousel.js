@@ -14,6 +14,7 @@ const Carousel = props => {
   const { data, className, slug, isVisible } = props
   const { width } = useWindowDimensions()
   const [isDevice, setIsDevice] = useState(false)
+
   const trail = useTrail(data.length, {
     to: {
       transform: isVisible ? 'translateY(0)' : 'translateY(-24px)',

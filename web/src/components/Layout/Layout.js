@@ -4,6 +4,7 @@ import Footer from '../Footer'
 
 import '../../styles/layout.css'
 import styles from './Layout.module.scss'
+import VisibilitySensor from '../VisibilitySensor'
 
 const Layout = ({
   children,
@@ -23,7 +24,11 @@ const Layout = ({
       headerTransparent={headerTransparent}
     />
     <div className={styles.content}>{children}</div>
-    <Footer companyInfo={companyInfo} siteTitle={siteTitle} />
+    <VisibilitySensor once partialVisibility>
+      {({ isVisible }) => (
+        <Footer companyInfo={companyInfo} siteTitle={siteTitle} isVisible={isVisible} />
+      )}
+    </VisibilitySensor>
   </>
 )
 

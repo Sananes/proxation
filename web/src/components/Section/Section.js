@@ -15,6 +15,7 @@ const Section = ({
   align,
   button,
   dark,
+  isVisible,
   narrow,
   narrowHeading,
   divider,
@@ -34,6 +35,7 @@ const Section = ({
               title={title}
               align={align}
               dark={dark}
+              isVisible={isVisible}
               narrow={narrowHeading}
               button={button}
               className={headingClassName}

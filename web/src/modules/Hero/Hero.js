@@ -42,7 +42,7 @@ function Hero(props) {
 
         const paragraphSlideIn = useSpring({
           to: {
-            transform: visible ? 'translateY(0)' : 'translateY(-32px)',
+            transform: visible ? 'translateY(0)' : 'translateY(-24px)',
             opacity: visible ? 1 : 0
           },
           delay: 100
