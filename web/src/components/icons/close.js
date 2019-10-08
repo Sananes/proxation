@@ -9,14 +9,14 @@ const Close = () => (
       stroke="currentColor"
       strokeWidth="2"
       strokeLineCap="round"
-      strokeLineJoin="round"
+      strokeLinejoin="round"
     />
     <path
       d="M6 6L18 18"
       stroke="currentColor"
       strokeWidth="2"
       strokeLineCap="round"
-      strokeLineJoin="round"
+      strokeLinejoin="round"
     />
   </svg>
 )

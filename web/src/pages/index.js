@@ -226,7 +226,7 @@ const IndexPage = props => {
         )}
       </VisibilitySensor>
 
-      <VisibilitySensor once>
+      <VisibilitySensor once partialVisibility>
         {({ isVisible }) => (
           <Features data={featuresNodes} headingData={featuresHeadingNodes} isVisible={isVisible} />
         )}
@@ -273,8 +273,8 @@ const IndexPage = props => {
             <p className={styles.lead}>{sectionThreeHeadingNodes.subHeading}</p>
           </div>
           <div className={styles.grid}>
-            {sectionThreeItemNodes.map(item => (
-              <div className={styles.item}>
+            {sectionThreeItemNodes.map((item, index) => (
+              <div className={styles.item} key={index}>
                 <Image
                   fluid={item.image.asset.fluid}
                   title={item.image.alt || item.title}

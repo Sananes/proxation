@@ -9,7 +9,7 @@ const ArrowRight = ({ strokeWidth }) => (
       stroke="currentColor"
       strokeWidth={strokeWidth || 2}
       strokeLinecap="round"
-      strokeLineJoin="round"
+      strokeLinejoin="round"
     />
   </svg>
 )

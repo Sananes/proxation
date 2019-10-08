@@ -55,20 +55,20 @@ const Carousel = props => {
         </div>
       </div>
       <Slider className={cn(styles.slider, data.length <= 2 && styles.sliderContained)}>
-        {trail.map((props, i) => (
-          <animated.div style={props}>
-            <Slide key={data[i]}>
-              <Link to={slug + `/` + data[i].slug.current} className={styles.item}>
+        {trail.map((props, index) => (
+          <animated.div style={props} key={index}>
+            <Slide>
+              <Link to={slug + `/` + data[index].slug.current} className={styles.item}>
                 <div className={styles.wrapper}>
                   <Image
-                    fluid={data[i].mainImage.asset.fluid}
-                    title={data[i].mainImage.alt || data.title}
-                    alt={data[i].mainImage.alt || data.title}
+                    fluid={data[index].mainImage.asset.fluid}
+                    title={data[index].mainImage.alt || data.title}
+                    alt={data[index].mainImage.alt || data.title}
                     styles={styles.image}
                   />
                 </div>
                 <div className={styles.content}>
-                  <h4 className={styles.title}>{data[i].title}</h4>
+                  <h4 className={styles.title}>{data[index].title}</h4>
                   <p className={styles.description}>Accessories</p>
                 </div>
               </Link>
