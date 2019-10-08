@@ -3,10 +3,10 @@ import { graphql, Link } from 'gatsby'
 import { mapEdgesToNodes, filterOutDocsWithoutSlugs } from '../lib/helpers'
 import Image from 'gatsby-image/withIEPolyfill'
 import GraphQLErrorList from '../components/graphql-error-list'
-import Reveal from 'react-reveal/Reveal'
 import Icon from '../components/icons'
 import SEO from '../components/Seo'
 import Features from '../sections/Features'
+import VisibilitySensor from '../components/VisibilitySensor'
 import Layout from '../containers/layout'
 import Section from '../components/Section'
 import CarouselSection from '../sections/CarouselSection'
@@ -166,6 +166,8 @@ export const query = graphql`
   }
 `
 
+const homepageComponents = [1, 2, 3, 4, 5]
+
 const IndexPage = props => {
   const { data, errors } = props
 
@@ -200,6 +202,7 @@ const IndexPage = props => {
   const sectionThreeItemNodes =
     (data || {}).home && data.home.edges.map(edge => edge.node.sectionThree.items)[0]
 
+  const isVisible = true
   if (!site) {
     throw new Error(
       'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'
@@ -209,69 +212,81 @@ const IndexPage = props => {
   return (
     <Layout fullScreen={false}>
       <SEO title={site.title} description={site.description} keywords={site.keywords} />
-      <Reveal>
-        <Hero />
+      <VisibilitySensor once>{({ isVisible }) => <Hero visible={isVisible} />}</VisibilitySensor>
 
-        <CarouselSection className={styles.projects} data={projectNodes} slug="project" />
+      <VisibilitySensor once partialVisibility>
+        {({ isVisible }) => (
+          <CarouselSection
+            className={styles.projects}
+            data={projectNodes}
+            length={projectNodes.length}
+            slug="project"
+            isVisible={isVisible}
+          />
+        )}
+      </VisibilitySensor>
 
-        <Features data={featuresNodes} headingData={featuresHeadingNodes} />
+      <VisibilitySensor once>
+        {({ isVisible }) => (
+          <Features data={featuresNodes} headingData={featuresHeadingNodes} isVisible={isVisible} />
+        )}
+      </VisibilitySensor>
 
-        {supportSectionNode && (
-          <Section className={styles.summary}>
-            <div className={styles.grid}>
-              <TextBlock
-                caption={supportSectionHeadingNodes.caption}
-                align="left"
-                className={styles.heading}
-                title={supportSectionHeadingNodes.title}
-                button={{
-                  text: supportSectionNode.button.text,
-                  size: 'large',
-                  style: 'primary',
-                  type: 'link',
-                  href: supportSectionNode.button.url,
-                  hasIcon: true
-                }}
-                lead={supportSectionHeadingNodes.subHeading}
+      {supportSectionNode && (
+        <Section className={styles.summary}>
+          <div className={styles.grid}>
+            <TextBlock
+              caption={supportSectionHeadingNodes.caption}
+              align="left"
+              className={styles.heading}
+              title={supportSectionHeadingNodes.title}
+              button={{
+                text: supportSectionNode.button.text,
+                size: 'large',
+                style: 'primary',
+                type: 'link',
+                href: supportSectionNode.button.url,
+                hasIcon: true
+              }}
+              lead={supportSectionHeadingNodes.subHeading}
+            />
+            <div className={styles.image}>
+              <Image
+                fluid={supportSectionNode.image.asset.fluid}
+                title={supportSectionNode.image.alt || supportSectionHeadingNodes.title}
+                alt={supportSectionNode.image.alt || supportSectionHeadingNodes.title}
               />
-              <div className={styles.image}>
+            </div>
+          </div>
+        </Section>
+      )}
+
+      {sectionThreeItemNodes && (
+        <Section className={styles.agency}>
+          <div className={styles.headingWrapper}>
+            <TextBlock
+              caption={sectionThreeHeadingNodes.caption}
+              align="left"
+              className={styles.heading}
+              title={sectionThreeHeadingNodes.title}
+            />
+            <p className={styles.lead}>{sectionThreeHeadingNodes.subHeading}</p>
+          </div>
+          <div className={styles.grid}>
+            {sectionThreeItemNodes.map(item => (
+              <div className={styles.item}>
                 <Image
-                  fluid={supportSectionNode.image.asset.fluid}
-                  title={supportSectionNode.image.alt || supportSectionHeadingNodes.title}
-                  alt={supportSectionNode.image.alt || supportSectionHeadingNodes.title}
+                  fluid={item.image.asset.fluid}
+                  title={item.image.alt || item.title}
+                  alt={item.image.alt || item.image.title}
                 />
+                <h4 className={styles.title}>{item.title}</h4>
+                <BlockText blocks={item._rawContent} />
               </div>
-            </div>
-          </Section>
-        )}
-
-        {sectionThreeItemNodes && (
-          <Section className={styles.agency}>
-            <div className={styles.headingWrapper}>
-              <TextBlock
-                caption={sectionThreeHeadingNodes.caption}
-                align="left"
-                className={styles.heading}
-                title={sectionThreeHeadingNodes.title}
-              />
-              <p className={styles.lead}>{sectionThreeHeadingNodes.subHeading}</p>
-            </div>
-            <div className={styles.grid}>
-              {sectionThreeItemNodes.map(item => (
-                <div className={styles.item}>
-                  <Image
-                    fluid={item.image.asset.fluid}
-                    title={item.image.alt || item.title}
-                    alt={item.image.alt || item.image.title}
-                  />
-                  <h4 className={styles.title}>{item.title}</h4>
-                  <BlockText blocks={item._rawContent} />
-                </div>
-              ))}
-            </div>
-          </Section>
-        )}
-      </Reveal>
+            ))}
+          </div>
+        </Section>
+      )}
       {/*  <Section narrow={false} divider={false} className={styles.intro}>
               )}<div c
         lassName={styles.content}>

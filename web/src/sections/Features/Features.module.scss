@@ -16,6 +16,12 @@
     }
   }
 
+  .grid {
+    lost-utility: clearfix;
+    position: relative;
+    display: block;
+  }
+
   .title {
     @include h6;
     color: inherit;

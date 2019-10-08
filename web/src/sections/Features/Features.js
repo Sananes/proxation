@@ -1,16 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Section from '../../components/Section'
 import styles from './Features.module.scss'
+import { useTrail, animated } from 'react-spring'
 import BlockText from '../../components/block-text'
 import Button from '../../components/Button'
 
-const Features = props => {
-  const { data, headingData } = props
+const Features = ({ data, headingData, isVisible }) => {
+  const trail = useTrail(data.length, {
+    to: {
+      opacity: isVisible ? 1 : 0,
+      transform: isVisible ? 'translateY(0)' : 'translateY(-24px)'
+    }
+  })
 
   if (!data) {
     throw new Error('No features have been added in the studio')
   }
-
   return (
     <Section
       className={styles.features}
@@ -22,26 +27,26 @@ const Features = props => {
       lead={headingData.subheading}
     >
       <div className={styles.grid}>
-        {data.map((item, i) => (
-          <div className={styles.featureItem} key={i}>
-            {item.image != null && (
+        {trail.map((props, i) => (
+          <animated.div style={props} delay={1000} className={styles.featureItem} key={i}>
+            {data[i].image != null && (
               <img
-                src={item.image.asset.url}
-                title={item.image.alt || item.title}
-                alt={item.image.alt || item.title}
+                src={data[i].image.asset.url}
+                title={data[i].image.alt || data[i].title}
+                alt={data[i].image.alt || data[i].title}
               />
             )}
-            <h4 className={styles.title}>{item.title}</h4>
-            <BlockText className={styles.content} blocks={item._rawContent} />
+            <h4 className={styles.title}>{data[i].title}</h4>
+            <BlockText className={styles.content} blocks={data[i]._rawContent} />
             <Button
               type="link"
               style="ghost"
               hasIcon={true}
               className={styles.button}
-              text={item.button.text}
-              href={item.button.url}
+              text={data[i].button.text}
+              href={data[i].button.url}
             />
-          </div>
+          </animated.div>
         ))}
       </div>
     </Section>

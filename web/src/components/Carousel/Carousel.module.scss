@@ -47,7 +47,7 @@
 }
 
 .slider {
-  overflow: hidden;
+  overflow: visible !important;
   margin-right: -1.5rem;
   color: $text-light;
 

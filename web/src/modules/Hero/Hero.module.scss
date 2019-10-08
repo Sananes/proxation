@@ -1,5 +1,12 @@
 @import '../../assets/scss/helpers';
 
+
+:global(.react-reveal) {
+  .hero {
+    background: red !important;
+  }
+}
+
 .hero {
   position: relative;
   margin-top: -$header-mobile-height;
@@ -9,7 +16,10 @@
     margin-top: -$header-height /1.5;
 
   }
+
 }
+
+
 
 .alignRight {
   text-align: left;

@@ -3,15 +3,23 @@ import { Link } from 'gatsby'
 import Image from 'gatsby-image/withIEPolyfill'
 import { useWindowDimensions } from '../../lib/helpers'
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel'
+import { useTrail, animated } from 'react-spring'
+import VisibilitySensor from '../VisibilitySensor'
 import Icon from '../../components/icons'
 import { isMobile, deviceType } from 'react-device-detect'
 import cn from 'classnames'
 import styles from './Carousel.module.scss'
 
 const Carousel = props => {
-  const { data, className, slug } = props
+  const { data, className, slug, isVisible } = props
   const { width } = useWindowDimensions()
   const [isDevice, setIsDevice] = useState(false)
+  const trail = useTrail(data.length, {
+    to: {
+      transform: isVisible ? 'translateY(0)' : 'translateY(-24px)',
+      opacity: isVisible ? 1 : 0
+    }
+  })
 
   useEffect(() => {
     if (width <= 700) {
@@ -47,23 +55,25 @@ const Carousel = props => {
         </div>
       </div>
       <Slider className={cn(styles.slider, data.length <= 2 && styles.sliderContained)}>
-        {data.map((data, i) => (
-          <Slide key={i}>
-            <Link to={slug + `/` + data.slug.current} className={styles.item}>
-              <div className={styles.wrapper}>
-                <Image
-                  fluid={data.mainImage.asset.fluid}
-                  title={data.mainImage.alt || data.title}
-                  alt={data.mainImage.alt || data.title}
-                  styles={styles.image}
-                />
-              </div>
-              <div className={styles.content}>
-                <h4 className={styles.title}>{data.title}</h4>
-                <p className={styles.description}>Accessories</p>
-              </div>
-            </Link>
-          </Slide>
+        {trail.map((props, i) => (
+          <animated.div style={props}>
+            <Slide key={data[i]}>
+              <Link to={slug + `/` + data[i].slug.current} className={styles.item}>
+                <div className={styles.wrapper}>
+                  <Image
+                    fluid={data[i].mainImage.asset.fluid}
+                    title={data[i].mainImage.alt || data.title}
+                    alt={data[i].mainImage.alt || data.title}
+                    styles={styles.image}
+                  />
+                </div>
+                <div className={styles.content}>
+                  <h4 className={styles.title}>{data[i].title}</h4>
+                  <p className={styles.description}>Accessories</p>
+                </div>
+              </Link>
+            </Slide>
+          </animated.div>
         ))}
       </Slider>
     </CarouselProvider>
