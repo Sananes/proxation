@@ -1,15 +1,15 @@
 import React from 'react'
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
 import { mapEdgesToNodes, filterOutDocsWithoutSlugs } from '../lib/helpers'
 import Image from 'gatsby-image/withIEPolyfill'
 import GraphQLErrorList from '../components/graphql-error-list'
-import Icon from '../components/icons'
 import SEO from '../components/Seo'
 import Features from '../sections/Features'
 import VisibilitySensor from '../components/VisibilitySensor'
 import Layout from '../containers/layout'
 import Section from '../components/Section'
 import CarouselSection from '../sections/CarouselSection'
+import SupportSection from '../sections/SupportSection'
 import TextBlock from '../components/SectionHeading'
 import Hero from '../modules/Hero'
 import styles from './scss/Index.module.scss'
@@ -233,37 +233,13 @@ const IndexPage = props => {
       </VisibilitySensor>
 
       <VisibilitySensor once partialVisibility>
-        {({ isVisible }) =>
-          supportSectionNode && (
-            <Section className={styles.summary} isVisible={isVisible}>
-              <div className={styles.grid}>
-                <TextBlock
-                  caption={supportSectionHeadingNodes.caption}
-                  align="left"
-                  className={styles.heading}
-                  isVisible={isVisible}
-                  title={supportSectionHeadingNodes.title}
-                  button={{
-                    text: supportSectionNode.button.text,
-                    size: 'large',
-                    style: 'primary',
-                    type: 'link',
-                    href: supportSectionNode.button.url,
-                    hasIcon: true
-                  }}
-                  lead={supportSectionHeadingNodes.subHeading}
-                />
-                <div className={styles.image}>
-                  <Image
-                    fluid={supportSectionNode.image.asset.fluid}
-                    title={supportSectionNode.image.alt || supportSectionHeadingNodes.title}
-                    alt={supportSectionNode.image.alt || supportSectionHeadingNodes.title}
-                  />
-                </div>
-              </div>
-            </Section>
-          )
-        }
+        {({ isVisible }) => (
+          <SupportSection
+            data={supportSectionNode}
+            headingData={supportSectionHeadingNodes}
+            isVisible={isVisible}
+          />
+        )}
       </VisibilitySensor>
 
       <VisibilitySensor once partialVisibility>

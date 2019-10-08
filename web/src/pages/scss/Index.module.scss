@@ -107,41 +107,6 @@
   color: inherit;
 }
 
-.summary {
-  background-color: $color-hightlight-background;
-
-  .grid {
-    @include breakpoint-md {
-      display: flex;
-      align-items: center;
-    }
-  }
-
-
-
-  .heading,
-  .image {
-    @include breakpoint-md {
-      lost-column: 1/2 2 48px;
-    }
-  }
-
-  .heading {
-    @include interpolate(margin-bottom, 24px, 120px);
-
-    @include breakpoint-md {
-      margin-bottom: 0;
-    }
-  }
-
-  .image {
-
-    img {
-      max-width: 100%;
-    }
-  }
-}
-
 .agency {
   .headingWrapper {
     @include breakpoint-md {
