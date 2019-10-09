@@ -11,6 +11,7 @@ const Section = ({
   container,
   lead,
   caption,
+  animate,
   title,
   align,
   button,
@@ -35,6 +36,7 @@ const Section = ({
               title={title}
               align={align}
               dark={dark}
+              animate={animate}
               isVisible={isVisible}
               narrow={narrowHeading}
               button={button}

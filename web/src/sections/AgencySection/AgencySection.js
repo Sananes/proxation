@@ -35,13 +35,7 @@ const AgencySection = props => {
           title={headingData.title}
           isVisible={isVisible}
         />
-        <Spring to={fadeIn}>
-          {props => (
-            <p className={styles.lead} style={props}>
-              {headingData.subHeading}
-            </p>
-          )}
-        </Spring>
+        <p className={styles.lead}>{headingData.subHeading}</p>
       </div>
       <div className={styles.grid}>
         {animateItems.map((props, index) => (
@@ -64,10 +58,7 @@ const AgencySection = props => {
                 </h4>
               )}
             </Spring>
-
-            <Spring to={fadeIn} delay={300}>
-              {props => <BlockText blocks={data[index]._rawContent} />}
-            </Spring>
+            <BlockText blocks={data[index]._rawContent} />
           </animated.div>
         ))}
       </div>

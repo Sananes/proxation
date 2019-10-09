@@ -232,16 +232,11 @@ const IndexPage = props => {
         )}
       </VisibilitySensor>
 
-      <VisibilitySensor once partialVisibility>
-        {({ isVisible }) => (
-          <SupportSection
-            data={supportSectionNode}
-            headingData={supportSectionHeadingNodes}
-            isVisible={isVisible}
-          />
-        )}
-      </VisibilitySensor>
-
+      <SupportSection
+        data={supportSectionNode}
+        headingData={supportSectionHeadingNodes}
+        animate={true}
+      />
       <VisibilitySensor once partialVisibility>
         {({ isVisible }) => (
           <AgencySection
