@@ -60,4 +60,5 @@
 
 .lead {
   @include body-l;
+  color: $text-subdued;
 }

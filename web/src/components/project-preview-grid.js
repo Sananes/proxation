@@ -33,6 +33,7 @@ function ProjectPreviewGrid(props) {
                 opacity: isVisible ? 1 : 0,
                 transform: isVisible ? 'translateY(0)' : 'translateY(-32px)'
               }}
+              delay={300}
             >
               {node => props => (
                 <li style={props}>

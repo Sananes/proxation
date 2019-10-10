@@ -14,16 +14,24 @@
   padding: 0;
   list-style: none;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-column-gap: 2rem;
-  grid-row-gap: 2rem;
+  grid-template-columns: 1fr;
+  grid-gap: 16px;
 
-  @media (--media-min-small) {
+  @include breakpoint-sm {
     grid-template-columns: 1fr 1fr;
   }
 
-  @media (--media-min-medium) {
-    grid-template-columns: 1fr 1fr 1fr;
+  @include breakpoint-md {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+
+    li:nth-child(2),
+    li:nth-child(1) {
+      grid-column: span 3;
+    }
+
+    li {
+      grid-column: span 2;
+    }
   }
 }
 

@@ -11,7 +11,7 @@
   transition: transform 200ms ease-in-out;
 
 
-  @include breakpoint-md {
+  @include breakpoint-lg {
     height: $header-height;
   }
 }
