@@ -1,5 +1,6 @@
 export default {
   name: "seo",
+  title: "SEO",
   type: "object",
   fields: [
     { title: "Title Tag", name: "title", type: "string" },

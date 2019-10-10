@@ -5,7 +5,9 @@ import GraphQLErrorList from '../components/graphql-error-list'
 import ProjectPreviewGrid from '../components/project-preview-grid'
 import SEO from '../components/Seo'
 import Layout from '../containers/layout'
+import SectionHeading from '../components/SectionHeading'
 import { mapEdgesToNodes, filterOutDocsWithoutSlugs } from '../lib/helpers'
+import VisibilitySensor from '../components/VisibilitySensor'
 
 export const query = graphql`
   query ProjectsPageQuery {
@@ -16,6 +18,9 @@ export const query = graphql`
           mainImage {
             asset {
               _id
+              fluid {
+                ...GatsbySanityImageFluid
+              }
             }
             alt
           }
@@ -43,10 +48,17 @@ const ProjectsPage = props => {
     data && data.projects && mapEdgesToNodes(data.projects).filter(filterOutDocsWithoutSlugs)
   return (
     <Layout>
-      <SEO title='Projects' />
+      <SEO title="Projects" />
       <Container>
-        <h1>Projects</h1>
-        {projectNodes && projectNodes.length > 0 && <ProjectPreviewGrid nodes={projectNodes} />}
+        {projectNodes && projectNodes.length > 0 && (
+          <ProjectPreviewGrid
+            title="Unsere Referenzen
+            im eCommerce"
+            lead="Als E-Commerce Agentur und zertifizierter shopware solutions Partner setzen wir Ihre Wünsche
+        und Vorstellungen elegant und effizient in einen modernen Online Shop um."
+            nodes={projectNodes}
+          />
+        )}
       </Container>
     </Layout>
   )

@@ -4,9 +4,7 @@ import Image from 'gatsby-image/withIEPolyfill'
 import { useWindowDimensions } from '../../lib/helpers'
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel'
 import { useTrail, animated } from 'react-spring'
-import VisibilitySensor from '../VisibilitySensor'
 import Icon from '../../components/icons'
-import { isMobile, deviceType } from 'react-device-detect'
 import cn from 'classnames'
 import styles from './Carousel.module.scss'
 
@@ -37,6 +35,8 @@ const Carousel = props => {
       naturalSlideWidth={369}
       naturalSlideHeight={480}
       lockOnWindowScroll={false}
+      interval={200}
+      infinite={true}
       visibleSlides={isDevice ? 1.5 : data.length > 3 ? 3.5 : data.length}
       totalSlides={data.length}
       className={cn(styles.sliderCarousel, className)}

@@ -2,6 +2,7 @@
 
 .sectionHeading {
   text-align: center;
+  color: $text-dark;
 }
 
 .leftAligned,
@@ -50,6 +51,11 @@
 
 .title {
   @include h3;
+
+}
+
+.titleLarge {
+  @include h1;
 }
 
 .lead {

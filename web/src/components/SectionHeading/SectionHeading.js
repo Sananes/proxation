@@ -12,6 +12,7 @@ const SectionHeading = ({
   caption,
   children,
   align,
+  type,
   button,
   isVisible,
   dark,
@@ -22,6 +23,10 @@ const SectionHeading = ({
     [styles.rightAligned]: align === 'right',
     [styles.leftAligned]: align === 'left',
     [styles.centerAligned]: align === 'center'
+  })
+
+  const setTypeClass = cn(styles.title, {
+    [styles.titleLarge]: type === 'large'
   })
 
   const animationProps = {
@@ -45,7 +50,7 @@ const SectionHeading = ({
       {title && (
         <Spring to={animationProps} delay="200">
           {props => (
-            <h1 style={props} className={styles.title}>
+            <h1 style={props} className={setTypeClass}>
               {title || `Title`}
             </h1>
           )}

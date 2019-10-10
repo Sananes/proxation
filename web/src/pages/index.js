@@ -1,7 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { mapEdgesToNodes, filterOutDocsWithoutSlugs } from '../lib/helpers'
-import Image from 'gatsby-image/withIEPolyfill'
 import GraphQLErrorList from '../components/graphql-error-list'
 import SEO from '../components/Seo'
 import Features from '../sections/Features'
