@@ -15,7 +15,9 @@ import localeString from "./localeString";
 import button from "./button";
 import page from "./page";
 import pageHome from "./pageHome";
+import seo from "./seo";
 import heroHome from "./heroHome";
+import clientsHome from "./clientsHome";
 import heading from "./heading";
 import person from "./person";
 import post from "./post";
@@ -44,6 +46,7 @@ export default createSchema({
     blockText,
     category,
     companyInfo,
+    seo,
     figure,
     mainImage,
     localeString,
@@ -56,6 +59,7 @@ export default createSchema({
     // Homepage sections
     heroHome,
     pageHome,
+    clientsHome,
     sectionThreeHome,
     featuresHome,
 

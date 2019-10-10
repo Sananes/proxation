@@ -6,14 +6,14 @@ export default {
   __experimental_actions: ["update", "publish" /* 'create', 'delete' */],
   fields: [
     {
+      name: "seo",
+      type: "seo"
+    },
+    { name: "title", title: "Title", type: "string" },
+    {
       name: "hero",
       title: "Hero",
       type: "heroHome"
-    },
-    {
-      name: "body",
-      title: "Body",
-      type: "blockContent"
     },
     {
       name: "projects",
@@ -21,6 +21,11 @@ export default {
       type: "array",
       of: [{ type: "reference", to: { type: "project" } }],
       validation: Rule => Rule.required().min(2)
+    },
+    {
+      name: "clients",
+      title: "Section: Clients",
+      type: "clientsHome"
     },
     {
       name: "features",

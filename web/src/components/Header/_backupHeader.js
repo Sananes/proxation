@@ -1,63 +1,16 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import Icon from '../icons'
-import { useTrail, animated } from 'react-spring'
-import { CSSTransition } from 'react-transition-group'
+import { useSpring, animated } from 'react-spring'
 import cn from 'classnames'
+import { CSSTransition } from 'react-transition-group'
 import Headroom from 'react-headroom'
 
 import styles from './Header.module.scss'
 import './headroom.scss'
-import { Spring } from 'react-spring/renderprops'
 
-const data = [
-  {
-    name: 'Shopware',
-    link: 'shopware',
-    dropdown: [
-      {
-        name: 'Shopware 6',
-        link: 'shopware-6'
-      }
-    ]
-  },
-  {
-    name: 'Spezialitäten',
-    link: 'spezialitaten',
-    dropdown: [
-      {
-        name: 'Amazon Marketing',
-        link: 'amazon-marketing'
-      },
-      {
-        name: 'Braintree Payments',
-        link: 'braintree-payments'
-      },
-      {
-        name: 'Pickware Warenwirtschaft',
-        link: 'pickware-warenwirtschaft'
-      }
-    ]
-  },
-  {
-    name: 'Referenzen',
-    link: 'referenzen'
-  },
-  { name: 'Shop', link: 'shop' },
-  { name: 'Jobs', link: 'jobs' },
-  { name: 'Blog', link: 'blog' },
-  { name: 'Kontakt', link: 'kontakt' }
-]
 const Header = ({ onHideNav, onShowNav, showNav, siteTitle, headerTransparent }) => {
   const animationTime = 1200
-
-  const menuAnimation = useTrail(data.length, {
-    opacity: showNav ? 1 : 0,
-    tension: 2000,
-    friction: 4
-  })
-
-  console.log(menuAnimation)
 
   return (
     <>
@@ -98,6 +51,7 @@ const Header = ({ onHideNav, onShowNav, showNav, siteTitle, headerTransparent })
           </div>
         </CSSTransition>
       </Headroom>
+
       <CSSTransition
         in={showNav}
         timeout={animationTime}
@@ -205,28 +159,6 @@ const Header = ({ onHideNav, onShowNav, showNav, siteTitle, headerTransparent })
           </div>
         </div>
       </CSSTransition>
-      {/* <div>
-        {data.map((item, index) => (
-          <Spring to={{ opacity: showNav ? 1 : 0 }} delay={100 * index}>
-            {props => (
-              <ul>
-                <li style={props} key={index + 1}>
-                  {item.name}
-                  {item.dropdown != null && (
-                    <ul>
-                      {item.dropdown.map((item, index) => (
-                        <Spring to={{ opacity: showNav ? 1 : 0 }} delay={100 * index}>
-                          {props => <li style={props}>{item.name}</li>}
-                        </Spring>
-                      ))}
-                    </ul>
-                  )}
-                </li>
-              </ul>
-            )}
-          </Spring>
-        ))}
-                      </div> */}
     </>
   )
 }
