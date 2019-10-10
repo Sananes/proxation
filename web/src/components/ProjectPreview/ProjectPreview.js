@@ -1,12 +1,12 @@
 import { Link } from 'gatsby'
 import React from 'react'
-import { buildImageObj } from '../lib/helpers'
+import { buildImageObj } from '../../lib/helpers'
 import Image from 'gatsby-image/withIEPolyfill'
 import cn from 'classnames'
-import { imageUrlFor } from '../lib/image-url'
-import BlockText from './block-text'
+import { imageUrlFor } from '../../lib/image-url'
+import BlockText from '../block-text'
 
-import styles from './project-preview.module.scss'
+import styles from './ProjectPreview.module.scss'
 
 function ProjectPreview(props) {
   return (

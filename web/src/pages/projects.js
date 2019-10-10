@@ -2,12 +2,10 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Container from '../components/Container'
 import GraphQLErrorList from '../components/graphql-error-list'
-import ProjectPreviewGrid from '../components/project-preview-grid'
+import ProjectPreviewGrid from '../components/ProjectPreviewGrid/ProjectPreviewGrid'
 import SEO from '../components/Seo'
 import Layout from '../containers/layout'
-import SectionHeading from '../components/SectionHeading'
 import { mapEdgesToNodes, filterOutDocsWithoutSlugs } from '../lib/helpers'
-import VisibilitySensor from '../components/VisibilitySensor'
 
 export const query = graphql`
   query ProjectsPageQuery {

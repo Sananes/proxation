@@ -1,10 +1,10 @@
 import { Link } from 'gatsby'
 import React from 'react'
-import ProjectPreview from './project-preview'
-import SectionHeading from './SectionHeading'
-import VisibilitySensor from './VisibilitySensor'
+import ProjectPreview from '../ProjectPreview'
+import SectionHeading from '../SectionHeading'
+import VisibilitySensor from '../VisibilitySensor'
 
-import styles from './project-preview-grid.module.scss'
+import styles from './ProjectPreviewGrid.module.scss'
 import { Trail } from 'react-spring/renderprops'
 
 function ProjectPreviewGrid(props) {
