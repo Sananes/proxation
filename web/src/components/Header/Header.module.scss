@@ -71,9 +71,20 @@ $animation-easing: ease-in-out;
   }
 }
 
+.titleWrapper {
+  display: flex;
+  align-items: center;
+  line-height: 1;
+  flex: 1;
+
+  span {
+    margin-top: -2px;
+    margin-left: 16px;
+  }
+}
+
 .branding {
   @include clear-top-margin;
-  flex: 1;
   font-size: inherit;
   font-size: 24px;
   font-weight: bold;
@@ -84,6 +95,7 @@ $animation-easing: ease-in-out;
   .title {
     opacity: 0;
     visibility: hidden;
+    display: none;
   }
 
   a {

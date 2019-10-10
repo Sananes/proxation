@@ -8,8 +8,19 @@ export default {
       name: "clientsList",
       title: "Client List",
       type: "array",
-      of: [{ name: "client", title: "Client", type: "figure" }],
-      validation: Rule => Rule.required().min(3)
+      of: [
+        {
+          name: "client",
+          title: "Client",
+          type: "figure"
+        }
+      ],
+      preview: {
+        select: {
+          title: "client.title",
+          media: "client.image"
+        }
+      }
     }
   ]
 };

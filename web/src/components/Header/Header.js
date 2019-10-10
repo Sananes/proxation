@@ -48,16 +48,16 @@ const data = [
   { name: 'Blog', link: 'blog' },
   { name: 'Kontakt', link: 'kontakt' }
 ]
-const Header = ({ onHideNav, onShowNav, showNav, siteTitle, headerTransparent }) => {
+const Header = ({ onHideNav, onShowNav, showNav, siteTitle, headerTransparent, ...props }) => {
   const animationTime = 1200
 
-  const menuAnimation = useTrail(data.length, {
-    opacity: showNav ? 1 : 0,
-    tension: 2000,
-    friction: 4
-  })
+  // const menuAnimation = useTrail(data.length, {
+  //   opacity: showNav ? 1 : 0,
+  //   tension: 2000,
+  //   friction: 4
+  // })
 
-  console.log(menuAnimation)
+  // console.log(menuAnimation)
 
   return (
     <>
@@ -82,12 +82,19 @@ const Header = ({ onHideNav, onShowNav, showNav, siteTitle, headerTransparent })
             )}
           >
             <div className={styles.wrapper}>
-              <h1 className={styles.branding}>
-                <Link className={styles.branding} to="/">
-                  <Icon symbol="logo" />
-                  <span className={styles.title}>{siteTitle}</span>
-                </Link>
-              </h1>
+              <div className={styles.titleWrapper}>
+                <h1 className={styles.branding}>
+                  <Link className={styles.branding} to="/">
+                    <Icon symbol="logo" />
+                    <span className={styles.title}>{siteTitle}</span>
+                  </Link>
+                </h1>
+                {props.pageTitle && (
+                  <span>
+                    &mdash;<span>{props.pageTitle}</span>
+                  </span>
+                )}
+              </div>
 
               <button className={styles.toggleNavButton} onClick={showNav ? onHideNav : onShowNav}>
                 <span></span>

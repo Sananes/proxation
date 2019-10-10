@@ -23,5 +23,11 @@ export default {
       name: "button",
       type: "button"
     }
-  ]
+  ],
+  preview: {
+    select: {
+      title: "title",
+      media: "image"
+    }
+  }
 };

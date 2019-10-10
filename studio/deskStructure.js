@@ -12,8 +12,10 @@ const hiddenTypes = [
   "figure",
   "button",
   "features",
+  "navigationSettings",
   "featuresHome",
   "heroHome",
+  "clients",
   "clientsHome",
   "sectionThreeHome",
   "textImageBlock",
@@ -32,6 +34,7 @@ export default () =>
         .child(
           S.editor()
             .id("siteSettings")
+            .title("Site Settings")
             .schemaType("siteSettings")
             .documentId("siteSettings")
         )
@@ -42,7 +45,18 @@ export default () =>
           S.editor()
             .id("companyInfo")
             .schemaType("companyInfo")
+            .title("Company Info")
             .documentId("companyInfo")
+        )
+        .icon(MdBusiness),
+      S.listItem()
+        .title("Navigation")
+        .child(
+          S.editor()
+            .id("navigationSettings")
+            .title("Navigation")
+            .schemaType("navigationSettings")
+            .documentId("navigationSettings")
         )
         .icon(MdBusiness),
       S.listItem()

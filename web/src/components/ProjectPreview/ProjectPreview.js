@@ -1,16 +1,13 @@
 import { Link } from 'gatsby'
 import React from 'react'
-import { buildImageObj } from '../../lib/helpers'
 import Image from 'gatsby-image/withIEPolyfill'
 import cn from 'classnames'
-import { imageUrlFor } from '../../lib/image-url'
-import BlockText from '../block-text'
 
 import styles from './ProjectPreview.module.scss'
 
 function ProjectPreview(props) {
   return (
-    <Link className={styles.root} to={`/project/${props.slug.current}`}>
+    <Link className={cn(styles.root, props.className)} to={`/project/${props.slug.current}`}>
       <div className={styles.wrapper}>
         {props.mainImage && props.mainImage.asset && (
           <Image

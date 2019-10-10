@@ -7,13 +7,26 @@ const query = graphql`
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
       title
     }
-    companyInfo: sanityCompanyInfo(_id: { regex: "/(drafts.|)companyInfo/" }) {
+    companyInfo: sanityCompanyInfo {
       name
       address1
       address2
       zipCode
       city
       country
+      social {
+        _key
+        title
+        image {
+          asset {
+            fluid(maxWidth: 240) {
+              ...GatsbySanityImageFluid
+            }
+          }
+          alt
+          caption
+        }
+      }
     }
   }
 `
@@ -31,27 +44,29 @@ function LayoutContainer(props) {
       query={query}
       render={data => {
         {
-          /* if (!data.site) {
-          throw new Error(
-            'Missing "Site settings". Open the studio at http://localhost:3333 and add "Site settings" data'
-          )
-        }
-        if (!data.companyInfo) {
-          throw new Error(
-            'Missing "Company info". Open the studio at http://localhost:3333 and add "Company info" data'
-          )
-        }
-         */
+          if (!data.site) {
+            throw new Error(
+              'Missing "Site settings". Open the studio at http://localhost:3333 and add "Site settings" data'
+            )
+          }
+
+          if (!data.companyInfo) {
+            throw new Error(
+              'Missing "Company info". Open the studio at http://localhost:3333 and add "Company info" data'
+            )
+          }
         }
         return (
-          <Layout
-            {...props}
-            showNav={showNav}
-            companyInfo={data.companyInfo}
-            siteTitle={data.site.title || 'Proxation'}
-            onHideNav={handleHideNav}
-            onShowNav={handleShowNav}
-          />
+          <>
+            <Layout
+              {...props}
+              showNav={showNav}
+              companyInfo={data.companyInfo}
+              siteTitle={data.site.title}
+              onHideNav={handleHideNav}
+              onShowNav={handleShowNav}
+            />
+          </>
         )
       }}
     />

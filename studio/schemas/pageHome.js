@@ -1,3 +1,5 @@
+import project from "./project";
+
 export default {
   name: "pageHome",
   title: "Homepage",
@@ -20,6 +22,12 @@ export default {
       title: "Section: Showcase Projects",
       type: "array",
       of: [{ type: "reference", to: { type: "project" } }],
+      preview: {
+        select: {
+          title: "project.title",
+          media: "project.mainImage"
+        }
+      },
       validation: Rule => Rule.required().min(2)
     },
     {

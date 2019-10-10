@@ -1,0 +1,20 @@
+@import '../../assets/scss/helpers';
+
+.root {
+  @include body;
+  background: $color-input-background;
+  border: 1px solid $color-input-border;
+  height: 48px;
+  padding: 0 16px;
+  box-sizing: border-box;
+  width: 100%;
+
+  @include placeholder {
+    color: $text-dimmed;
+  }
+
+  &:hover,
+  &:focus {
+    border: 1px solid $color-input-border-hover;
+  }
+}

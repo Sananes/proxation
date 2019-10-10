@@ -3,22 +3,16 @@ import { Link } from 'gatsby'
 import Image from 'gatsby-image/withIEPolyfill'
 import { useWindowDimensions } from '../../lib/helpers'
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel'
-import { useTrail, animated } from 'react-spring'
 import Icon from '../../components/icons'
 import cn from 'classnames'
 import styles from './Carousel.module.scss'
+import ProjectPreview from '../ProjectPreview'
+import { Trail } from 'react-spring/renderprops'
 
 const Carousel = props => {
   const { data, className, slug, isVisible } = props
   const { width } = useWindowDimensions()
   const [isDevice, setIsDevice] = useState(false)
-
-  const trail = useTrail(data.length, {
-    to: {
-      transform: isVisible ? 'translateY(0)' : 'translateY(-24px)',
-      opacity: isVisible ? 1 : 0
-    }
-  })
 
   useEffect(() => {
     if (width <= 700) {
@@ -56,26 +50,20 @@ const Carousel = props => {
         </div>
       </div>
       <Slider className={cn(styles.slider, data.length <= 2 && styles.sliderContained)}>
-        {trail.map((props, index) => (
-          <animated.div style={props} key={index}>
-            <Slide>
-              <Link to={slug + `/` + data[index].slug.current} className={styles.item}>
-                <div className={styles.wrapper}>
-                  <Image
-                    fluid={data[index].mainImage.asset.fluid}
-                    title={data[index].mainImage.alt || data.title}
-                    alt={data[index].mainImage.alt || data.title}
-                    styles={styles.image}
-                  />
-                </div>
-                <div className={styles.content}>
-                  <h4 className={styles.title}>{data[index].title}</h4>
-                  <p className={styles.description}>Accessories</p>
-                </div>
-              </Link>
+        <Trail
+          items={data}
+          keys={item => item.id}
+          to={{
+            transform: isVisible ? 'translateY(0)' : 'translateY(-24px)',
+            opacity: isVisible ? 1 : 0
+          }}
+        >
+          {item => props => (
+            <Slide style={props}>
+              <ProjectPreview {...item} className={styles.item} />
             </Slide>
-          </animated.div>
-        ))}
+          )}
+        </Trail>
       </Slider>
     </CarouselProvider>
   )

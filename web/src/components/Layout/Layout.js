@@ -13,6 +13,7 @@ const Layout = ({
   onShowNav,
   showNav,
   siteTitle,
+  pageTitle,
   headerTransparent
 }) => (
   <>
@@ -20,6 +21,7 @@ const Layout = ({
       siteTitle={siteTitle}
       onHideNav={onHideNav}
       onShowNav={onShowNav}
+      pageTitle={pageTitle}
       showNav={showNav}
       headerTransparent={headerTransparent}
     />

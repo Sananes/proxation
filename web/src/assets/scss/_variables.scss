@@ -1,11 +1,12 @@
 // Global
 
-$global-border-radius: 3px;
+$global-border-radius: 0px;
 
 // Colors
 $color-primary: #131313;
 $color-white: #fff;
 $color-border: #efefef;
+$color-border-darker: darken($color-border, 10%);
 $color-divider: $color-border;
 $color-background: #fff;
 $color-hightlight-background: #f6f6f6;
@@ -129,6 +130,10 @@ $color-button-secondary-border-hover: transparent;
 $color-button-link-text: #000;
 $color-button-link-text-hover: #000;
 
+// Inputs
+$color-input-background: $color-white;
+$color-input-border: $color-border-darker;
+$color-input-border-hover: darken($color-border-darker, 10%);
 
 // Header
 $header-height: 100px;

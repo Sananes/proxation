@@ -1,5 +1,6 @@
 export default {
   name: "heroHome",
+  title: "Hero Settings",
   type: "object",
   fields: [
     {

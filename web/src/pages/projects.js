@@ -45,8 +45,8 @@ const ProjectsPage = props => {
   const projectNodes =
     data && data.projects && mapEdgesToNodes(data.projects).filter(filterOutDocsWithoutSlugs)
   return (
-    <Layout>
-      <SEO title="Projects" />
+    <Layout pageTitle="Referenzen">
+      <SEO title="Referenzen" />
       <Container>
         {projectNodes && projectNodes.length > 0 && (
           <ProjectPreviewGrid

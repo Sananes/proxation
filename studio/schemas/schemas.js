@@ -12,12 +12,16 @@ import companyInfo from "./companyInfo";
 import figure from "./figure";
 import mainImage from "./mainImage";
 import localeString from "./localeString";
+// import navigationSettings from "./navigationSettings";
 import button from "./button";
 import page from "./page";
 import pageHome from "./pageHome";
+import social from "./social";
+import socialList from "./socialList";
 import seo from "./seo";
 import heroHome from "./heroHome";
 import clientsHome from "./clientsHome";
+import clients from "./clients";
 import heading from "./heading";
 import person from "./person";
 import post from "./post";
@@ -51,7 +55,12 @@ export default createSchema({
     mainImage,
     localeString,
     feature,
+    clients,
     heading,
+
+    // SiteSettings
+    socialList,
+    social,
 
     // Parts
     textImageBlock,
