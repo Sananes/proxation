@@ -2,6 +2,11 @@
 
 .section {
   @extend %section;
+
+  &.light {
+    color: $text-light;
+    background-color: $color-primary;
+  }
 }
 
 .sectionDivider {

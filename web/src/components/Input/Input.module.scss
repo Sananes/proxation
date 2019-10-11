@@ -2,6 +2,7 @@
 
 .root {
   @include body;
+  color: inherit;
   background: $color-input-background;
   border: 1px solid $color-input-border;
   height: 48px;
@@ -16,5 +17,14 @@
   &:hover,
   &:focus {
     border: 1px solid $color-input-border-hover;
+  }
+
+  &.dark {
+    background: lighten($color-primary, 10%);
+    border: 0px;
+
+    @include placeholder {
+      color: $text-light-dimmed;
+    }
   }
 }

@@ -49,6 +49,11 @@ export default {
       name: "sectionThree",
       title: "Section: What we offer",
       type: "sectionThreeHome"
+    },
+    {
+      title: "Section: Contact",
+      name: "sectionContact",
+      type: "sectionContact"
     }
   ]
 };

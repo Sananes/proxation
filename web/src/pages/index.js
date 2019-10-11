@@ -8,6 +8,7 @@ import VisibilitySensor from '../components/VisibilitySensor'
 import Layout from '../containers/layout'
 import Section from '../components/Section'
 import CarouselSection from '../sections/CarouselSection'
+import ContactSection from '../sections/ContactSection'
 import SupportSection from '../sections/SupportSection'
 import AgencySection from '../sections/AgencySection'
 import Hero from '../modules/Hero'
@@ -22,6 +23,24 @@ export const query = graphql`
       title
       description
       keywords
+    }
+
+    contact: sanityPageHome {
+      sectionContact {
+        heading {
+          caption
+          title
+        }
+        image {
+          asset {
+            fluid(maxWidth: 450) {
+              ...GatsbySanityImageFluid
+            }
+          }
+          alt
+          caption
+        }
+      }
     }
 
     home: allSanityPageHome {
@@ -236,15 +255,14 @@ const IndexPage = props => {
         headingData={supportSectionHeadingNodes}
         animate={true}
       />
-      <VisibilitySensor once partialVisibility>
-        {({ isVisible }) => (
-          <AgencySection
-            data={sectionThreeItemNodes}
-            headingData={sectionThreeHeadingNodes}
-            isVisible={isVisible}
-          />
-        )}
-      </VisibilitySensor>
+
+      <AgencySection
+        data={sectionThreeItemNodes}
+        headingData={sectionThreeHeadingNodes}
+        animate={true}
+      />
+
+      <ContactSection data={data.contact.sectionContact} animate={true} />
     </Layout>
   )
 }

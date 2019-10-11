@@ -44,6 +44,7 @@
     "react-pose": "^4.0.8",
     "react-reveal": "^1.2.2",
     "react-scrolllock": "^4.0.1",
+    "react-select": "^3.0.8",
     "react-spring": "^8.0.27",
     "react-transition-group": "^4.3.0",
     "react-visibility-sensor": "^5.1.1"

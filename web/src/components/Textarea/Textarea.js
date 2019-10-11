@@ -1,9 +1,9 @@
 import React from 'react'
 import cn from 'classnames'
-import styles from './Input.module.scss'
+import styles from './Textarea.module.scss'
 
-const Input = props => (
-  <input
+const Textarea = props => (
+  <textarea
     id={props.name}
     className={cn(styles.root, props.dark && styles.dark)}
     placeholder={props.placeholder}
@@ -11,4 +11,4 @@ const Input = props => (
   />
 )
 
-export default Input
+export default Textarea

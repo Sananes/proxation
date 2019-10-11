@@ -1,0 +1,12 @@
+@import '../../assets/scss/helpers';
+
+.root {
+  composes: root from '../Input/Input.module.scss';
+  min-height: 200px;
+  overflow: hidden;
+  resize: vertical;
+}
+
+.dark {
+  composes: dark from '../Input/Input.module.scss'
+}

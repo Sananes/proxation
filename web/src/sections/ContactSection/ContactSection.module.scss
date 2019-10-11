@@ -1,0 +1,102 @@
+@import '../../assets/scss/helpers';
+
+.root {
+  color: inherit;
+}
+
+.grid,
+.other {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 64px;
+
+  @include breakpoint-md {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.content {
+  order: 2;
+
+  @include breakpoint-md {
+    order: 1;
+  }
+}
+
+.wrapper {
+  order: 1;
+
+  @include breakpoint-md {
+    order: 2;
+  }
+}
+
+.title {
+  margin-bottom: 8px;
+  color: inherit;
+}
+
+.lead {
+  @include body-l;
+  color: $text-light-subdued;
+  margin-top: 16px;
+  margin-bottom: 32px;
+
+  a {
+    color: inherit;
+  }
+}
+
+.image {
+  width: 100%;
+  display: none;
+
+  @include breakpoint-md {
+    display: block;
+  }
+}
+
+.form {
+  display: grid;
+  align-self: start;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 24px 16px;
+  grid-template-rows: auto;
+
+
+  .message {
+    grid-column: span 2;
+    place-self: stretch;
+  }
+
+}
+
+.button {
+  background-color: $color-white;
+  align-self: start;
+  justify-self: start;
+}
+
+.badges {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 0;
+  justify-content: space-around;
+
+  svg {
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .badgeItem svg {
+    color: $text-light-dimmed;
+  }
+
+  .badgeBusiness svg {
+    color: $color-gold;
+  }
+
+  .badgeTechnology svg {
+    color: $text-light;
+  }
+}

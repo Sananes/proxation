@@ -21,6 +21,7 @@ import socialList from "./socialList";
 import seo from "./seo";
 import heroHome from "./heroHome";
 import clientsHome from "./clientsHome";
+import sectionContact from "./sectionContact";
 import clients from "./clients";
 import heading from "./heading";
 import person from "./person";
@@ -71,6 +72,7 @@ export default createSchema({
     clientsHome,
     sectionThreeHome,
     featuresHome,
+    sectionContact,
 
     // Misc
     button,

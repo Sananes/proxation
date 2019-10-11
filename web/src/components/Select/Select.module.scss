@@ -1,0 +1,32 @@
+@import '../../assets/scss/helpers';
+
+.root {
+  position: relative;
+  display: flex;
+  height: $button-medium-height;
+  height: auto;
+  width: 100%;
+  padding-left: 8px;
+  padding-right: 8px;
+
+  &.dark {
+    background: lighten($color-primary, 10%);
+    border: 0px;
+
+    @include placeholder {
+      color: $text-light-dimmed;
+    }
+  }
+}
+
+.select {
+  composes: root from '../Input/Input.module.scss';
+  border: none;
+  background: none;
+  width: 100%;
+
+  &:focus,
+  &:hover {
+    border: none;
+  }
+}
