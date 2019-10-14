@@ -14,8 +14,6 @@ import AgencySection from '../sections/AgencySection'
 import Hero from '../modules/Hero'
 import styles from './scss/Index.module.scss'
 import 'pure-react-carousel/dist/react-carousel.es.css'
-import post from '../../../studio/schemas/post'
-import BlockText from '../components/block-text'
 
 export const query = graphql`
   query IndexPageQuery {
@@ -184,8 +182,6 @@ export const query = graphql`
   }
 `
 
-const homepageComponents = [1, 2, 3, 4, 5]
-
 const IndexPage = props => {
   const { data, errors } = props
 
@@ -199,9 +195,6 @@ const IndexPage = props => {
 
   const site = (data || {}).site
 
-  const postNodes = (data || {}).posts
-    ? mapEdgesToNodes(data.posts).filter(filterOutDocsWithoutSlugs)
-    : []
   const projectNodes = (data || {}).home && data.home.edges.map(edge => edge.node.projects)[0]
 
   const supportSectionHeadingNodes =
@@ -230,34 +223,26 @@ const IndexPage = props => {
   return (
     <Layout>
       <Seo title={site.title} description={site.description} keywords={site.keywords} />
-      <VisibilitySensor once>{({ isVisible }) => <Hero visible={isVisible} />}</VisibilitySensor>
-
-      <VisibilitySensor once partialVisibility>
-        {({ isVisible }) => (
-          <CarouselSection
-            className={styles.projects}
-            data={projectNodes}
-            length={projectNodes.length}
-            slug="project"
-            isVisible={isVisible}
-          />
-        )}
-      </VisibilitySensor>
-
+      <Hero visible={isVisible} />
+      <CarouselSection
+        className={styles.projects}
+        data={projectNodes}
+        length={projectNodes.length}
+        slug="project"
+        animate={true}
+        isVisible={isVisible}
+      />
       <Features data={featuresNodes} headingData={featuresHeadingNodes} animate={true} />
-
       <SupportSection
         data={supportSectionNode}
         headingData={supportSectionHeadingNodes}
         animate={true}
       />
-
       <AgencySection
         data={sectionThreeItemNodes}
         headingData={sectionThreeHeadingNodes}
         animate={true}
       />
-
       <ContactSection data={data.contact.sectionContact} animate={true} />
     </Layout>
   )

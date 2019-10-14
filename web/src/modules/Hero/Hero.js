@@ -1,13 +1,10 @@
 import { graphql, StaticQuery } from 'gatsby'
 import React from 'react'
-import Image from 'gatsby-image/withIEPolyfill'
 import { useSpring, animated } from 'react-spring'
-import { mapEdgesToNodes } from '../../lib/helpers'
-import VisibilitySensor from '../../components/VisibilitySensor'
 import cn from 'classnames'
-import Button from '../../components/Button'
 import styles from './Hero.module.scss'
 import Container from '../../components/Container'
+import { Spring } from 'react-spring/renderprops'
 
 const query = graphql`
   query hero {
@@ -26,46 +23,43 @@ const query = graphql`
 `
 
 function Hero(props) {
-  const { visible } = props
   return (
     <StaticQuery
       query={query}
       render={data => {
-        const fade = useSpring({
-          to: {
-            opacity: visible ? 1 : 0
-          }
-        })
-        const titleSlideIn = useSpring({
-          to: { transform: visible ? 'translateY(0)' : 'translateY(-32px)' }
-        })
-
-        const paragraphSlideIn = useSpring({
-          to: {
-            transform: visible ? 'translateY(0)' : 'translateY(-24px)',
-            opacity: visible ? 1 : 0
-          },
-          delay: 100
-        })
-
         return (
-          <animated.div className={cn(styles.hero, styles.dark, styles.alignCenter)} style={fade}>
+          <div className={cn(styles.hero, styles.dark, styles.alignCenter)}>
             <Container className={styles.container}>
               <div className={styles.content}>
                 {data.sanityPageHome.hero.title && (
-                  <animated.h1 style={titleSlideIn} className={styles.title}>
-                    {data.sanityPageHome.hero.title}
-                  </animated.h1>
+                  <Spring
+                    from={{ opacity: 0, transform: 'translateY(-24px)' }}
+                    to={{ opacity: 1, transform: 'translateY(0)' }}
+                  >
+                    {props => (
+                      <h1 style={props} className={styles.title}>
+                        {data.sanityPageHome.hero.title}
+                      </h1>
+                    )}
+                  </Spring>
                 )}
 
                 {data.sanityPageHome.hero.subheading && (
-                  <animated.p style={paragraphSlideIn} className={styles.paragraph}>
-                    {data.sanityPageHome.hero.subheading}
-                  </animated.p>
+                  <Spring
+                    from={{ opacity: 0, transform: 'translateY(-24px)' }}
+                    to={{ opacity: 1, transform: 'translateY(0)' }}
+                    delay={200}
+                  >
+                    {props => (
+                      <animated.p style={props} className={styles.paragraph}>
+                        {data.sanityPageHome.hero.subheading}
+                      </animated.p>
+                    )}
+                  </Spring>
                 )}
               </div>
             </Container>
-          </animated.div>
+          </div>
         )
       }}
     />

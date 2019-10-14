@@ -5,7 +5,8 @@ import Image from 'gatsby-image/withIEPolyfill'
 import { imageUrlFor } from '../../lib/image-url'
 import BlockContent from '../block-content'
 import Container from '../Container'
-import RoleList from '../role-list'
+import VisibilitySensor from '../VisibilitySensor'
+import { Spring } from 'react-spring/renderprops'
 
 import styles from './BlogPost.module.scss'
 
@@ -16,23 +17,67 @@ function BlogPost(props) {
       <Container narrow={true}>
         <div className={styles.content}>
           <div className={styles.mainContent}>
-            <h1 className={styles.title}>{title}</h1>
-            {publishedAt && (
-              <div className={styles.publishedAt}>
-                by -{' '}
-                {authors.map(item => (
-                  <span>{item.person.name}</span>
-                ))}
-                {differenceInDays(new Date(publishedAt), new Date()) > 3
-                  ? distanceInWords(new Date(publishedAt), new Date())
-                  : format(new Date(publishedAt), 'MMMM Do YYYY')}
-              </div>
-            )}
-
+            <VisibilitySensor
+              partialVisibility
+              once
+              children={({ isVisible }) => (
+                <React.Fragment>
+                  <Spring
+                    to={{
+                      opacity: isVisible ? 1 : 0,
+                      transform: isVisible ? 'translateY(0)' : 'translateY(-24px)'
+                    }}
+                  >
+                    {props => (
+                      <h1 className={styles.title} style={props}>
+                        {title}
+                      </h1>
+                    )}
+                  </Spring>
+                  {publishedAt && (
+                    <Spring
+                      to={{
+                        opacity: isVisible ? 1 : 0,
+                        transform: isVisible ? 'translateY(0)' : 'translateY(-24px)'
+                      }}
+                      delay={300}
+                    >
+                      {props => (
+                        <div className={styles.publishedAt} style={props}>
+                          by{' '}
+                          {authors.map(item => (
+                            <span>{item.person.name} - </span>
+                          ))}
+                          {differenceInDays(new Date(publishedAt), new Date()) > 3
+                            ? distanceInWords(new Date(publishedAt), new Date())
+                            : format(new Date(publishedAt), 'MMMM Do YYYY')}
+                        </div>
+                      )}
+                    </Spring>
+                  )}
+                </React.Fragment>
+              )}
+            />
             {mainImage && mainImage.asset && (
-              <div className={styles.mainImage}>
-                <Image fluid={mainImage.asset.fluid} alt={mainImage.alt} />
-              </div>
+              <VisibilitySensor
+                partialVisibility
+                once
+                children={({ isVisible }) => (
+                  <Spring
+                    to={{
+                      opacity: isVisible ? 1 : 0,
+                      transform: isVisible ? 'translateY(0)' : 'translateY(-24px)'
+                    }}
+                    delay={600}
+                  >
+                    {props => (
+                      <div className={styles.mainImage} style={props}>
+                        <Image fluid={mainImage.asset.fluid} alt={mainImage.alt} />
+                      </div>
+                    )}
+                  </Spring>
+                )}
+              />
             )}
             {_rawBody && <BlockContent className={styles.blogContent} blocks={_rawBody} />}
           </div>

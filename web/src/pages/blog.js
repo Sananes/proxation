@@ -46,7 +46,7 @@ const BlogPage = props => {
   const postNodes = data && data.posts && mapEdgesToNodes(data.posts)
 
   return (
-    <Layout>
+    <Layout pageTitle="Blog">
       <SEO title="Blog" />
       <Container className={styles.blogStyling}>
         <h1>Blog</h1>
