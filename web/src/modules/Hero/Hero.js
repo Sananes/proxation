@@ -1,6 +1,5 @@
 import { graphql, StaticQuery } from 'gatsby'
 import React from 'react'
-import { useSpring, animated } from 'react-spring'
 import cn from 'classnames'
 import styles from './Hero.module.scss'
 import Container from '../../components/Container'
@@ -51,9 +50,9 @@ function Hero(props) {
                     delay={200}
                   >
                     {props => (
-                      <animated.p style={props} className={styles.paragraph}>
+                      <p style={props} className={styles.paragraph}>
                         {data.sanityPageHome.hero.subheading}
-                      </animated.p>
+                      </p>
                     )}
                   </Spring>
                 )}

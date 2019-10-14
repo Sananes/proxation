@@ -1,6 +1,7 @@
 import React from 'react'
 import cn from 'classnames'
 import styles from './Select.module.scss'
+import Icon from '../icons'
 
 const options = [
   { value: '10k', label: 'bis 10.000€' },
@@ -19,6 +20,7 @@ const Select = props => (
         </option>
       ))}
     </select>
+    <Icon symbol="chevron-down" />
   </div>
 )
 

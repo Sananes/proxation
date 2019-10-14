@@ -74,6 +74,21 @@ const ContactSection = props => {
                 </div>
               </div>
               <div className={styles.other}>
+                <div className={styles.contact} style={props}>
+                  <h4 className={styles.title}>Kontakt</h4>
+                  <ul>
+                    <li>
+                      <a href="mailto:info@proxation.de">
+                        <strong>Email:</strong> info@proxation.de
+                      </a>
+                    </li>
+                    <li>
+                      <a href="mailto:info@proxation.de">
+                        <strong>Call us:</strong> +49 778 112 332
+                      </a>
+                    </li>
+                  </ul>
+                </div>
                 <div className={styles.badgesWrapper} style={props}>
                   <h4 className={styles.title}>Partners</h4>
                   <ul className={styles.badges}>
@@ -88,22 +103,6 @@ const ContactSection = props => {
                     <li className={cn(styles.badgeItem, styles.badgeBusiness)}>
                       <Icon symbol="shopware" className={styles.badgeIcon}></Icon>
                       <strong className={styles.bold}>Business</strong> Partner
-                    </li>
-                  </ul>
-                </div>
-
-                <div className={styles.contact} style={props}>
-                  <h4 className={styles.title}>Kontakt</h4>
-                  <ul>
-                    <li>
-                      <a href="mailto:info@proxation.de">
-                        <strong>Email:</strong> info@proxation.de
-                      </a>
-                    </li>
-                    <li>
-                      <a href="mailto:info@proxation.de">
-                        <strong>Call us:</strong> +49 778 112 332
-                      </a>
                     </li>
                   </ul>
                 </div>
