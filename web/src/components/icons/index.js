@@ -6,6 +6,7 @@ import Close from './close'
 import ArrowLeft from './arrow-left'
 import ChevronRight from './chevron-right'
 import ChevronDown from './chevron-down'
+import Pattern from './pattern'
 import Shopware from './shopware'
 
 function Icon({ symbol, strokeWidth }) {
@@ -26,6 +27,8 @@ function Icon({ symbol, strokeWidth }) {
       return <ChevronDown strokeWidth={strokeWidth || 2} />
     case 'shopware':
       return <Shopware strokeWidth={strokeWidth || 2} />
+    case 'pattern':
+      return <Pattern />
     default:
       return <span>Unknown icon: {props.symbol}</span>
   }
