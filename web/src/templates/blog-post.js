@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Container from '../components/Container'
 import GraphQLErrorList from '../components/graphql-error-list'
-import BlogPost from '../components/blog-post'
+import BlogPost from '../components/BlogPost'
 import SEO from '../components/Seo'
 import Layout from '../containers/layout'
 
@@ -34,6 +34,9 @@ export const query = graphql`
         }
         asset {
           _id
+          fluid {
+            ...GatsbySanityImageFluid
+          }
         }
         alt
       }
@@ -79,7 +82,7 @@ const BlogPostTemplate = props => {
   const post = data && data.post
   return (
     <Layout>
-      {errors && <SEO title='GraphQL Error' />}
+      {errors && <SEO title="GraphQL Error" />}
       {post && <SEO title={post.title || 'Untitled'} />}
 
       {errors && (

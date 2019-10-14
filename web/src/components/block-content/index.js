@@ -5,7 +5,7 @@ import Slideshow from './slideshow'
 
 const serializers = {
   types: {
-    block (props) {
+    block(props) {
       switch (props.node.style) {
         case 'h1':
           return <h1>{props.children}</h1>
@@ -26,15 +26,17 @@ const serializers = {
           return <p>{props.children}</p>
       }
     },
-    figure (props) {
+    figure(props) {
       return <Figure {...props.node} />
     },
-    slideshow (props) {
+    slideshow(props) {
       return <Slideshow {...props.node} />
     }
   }
 }
 
-const BlockContent = ({ blocks }) => <BaseBlockContent blocks={blocks} serializers={serializers} />
+const BlockContent = ({ className, blocks }) => (
+  <BaseBlockContent className={className} blocks={blocks} serializers={serializers} />
+)
 
 export default BlockContent

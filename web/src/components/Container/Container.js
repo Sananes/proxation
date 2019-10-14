@@ -1,4 +1,5 @@
 import React from 'react'
+import cn from 'classnames'
 
 import styles from './Container.module.scss'
 
@@ -7,7 +8,7 @@ const Container = ({ children, narrow, className }) => {
     <div
       className={
         narrow
-          ? `${styles.narrow}`
+          ? `${styles.container} ${styles.narrow}`
           : className
           ? `${styles.container} ${className}`
           : `${styles.container}`

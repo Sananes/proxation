@@ -16,10 +16,10 @@
 
 %container-narrow,
 .container-narrow {
-  lost-center: 780px;
+  lost-center: $content-width;
 
   @include breakpoint-lg {
-    lost-center: 780px;
+    lost-center: $content-width;
   }
 }
 

@@ -5,6 +5,7 @@ import BlogPostPreviewGrid from '../components/blog-post-preview-grid'
 import Container from '../components/Container'
 import GraphQLErrorList from '../components/graphql-error-list'
 import SEO from '../components/Seo'
+import styles from './scss/Blog.module.scss'
 import Layout from '../containers/layout'
 
 export const query = graphql`
@@ -46,8 +47,8 @@ const BlogPage = props => {
 
   return (
     <Layout>
-      <SEO title='Blog' />
-      <Container>
+      <SEO title="Blog" />
+      <Container className={styles.blogStyling}>
         <h1>Blog</h1>
         {postNodes && postNodes.length > 0 && <BlogPostPreviewGrid nodes={postNodes} />}
       </Container>
