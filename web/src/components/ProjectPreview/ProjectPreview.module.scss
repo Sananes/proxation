@@ -10,11 +10,17 @@
 .wrapper {
   width: 100%;
   height: auto;
+  overflow: hidden;
 
   &>div {
     width: 100%;
     height: auto;
     position: relative;
+    transition: transform 300ms ease-in-out;
+
+    .root:hover & {
+      transform: scale(1.05);
+    }
 
     &::before {
       content: "";

@@ -2,6 +2,8 @@
 
 
 .sliderCarousel {
+  position: relative;
+
   .sliderNav {
     margin-right: -5px;
   }
@@ -17,6 +19,16 @@
       opacity: 0.2;
     }
   }
+}
+
+.pattern {
+  position: absolute;
+  left: 0;
+  top: 50px;
+  z-index: 8888;
+  width: 200px;
+  transform: translateX(-50%);
+
 }
 
 .headingWrapper {
@@ -47,7 +59,7 @@
 }
 
 .slider {
-  overflow: visible !important;
+  overflow: hidden;
   margin-right: -1.5rem;
   color: $text-light;
 
