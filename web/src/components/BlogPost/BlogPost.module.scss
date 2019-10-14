@@ -71,7 +71,7 @@
 
 .publishedAt {
   margin-top: 24px;
-  @include interpolate(margin-bottom, 32px, 64px);
+  @include interpolate(margin-bottom, 32px, 120px);
 }
 
 .categories {

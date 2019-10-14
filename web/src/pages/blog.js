@@ -1,12 +1,15 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { mapEdgesToNodes } from '../lib/helpers'
-import BlogPostPreviewGrid from '../components/blog-post-preview-grid'
+import BlogPostPreviewGrid from '../components/BlogPostPreviewGrid'
 import Container from '../components/Container'
 import GraphQLErrorList from '../components/graphql-error-list'
 import SEO from '../components/Seo'
-import styles from './scss/Blog.module.scss'
 import Layout from '../containers/layout'
+import SectionHeading from '../components/SectionHeading'
+import VisibilitySensor from '../components/VisibilitySensor'
+
+import styles from './scss/Blog.module.scss'
 
 export const query = graphql`
   query BlogPageQuery {
@@ -18,6 +21,9 @@ export const query = graphql`
           mainImage {
             asset {
               _id
+              fluid {
+                ...GatsbySanityImageFluid
+              }
             }
             alt
           }
@@ -46,10 +52,23 @@ const BlogPage = props => {
   const postNodes = data && data.posts && mapEdgesToNodes(data.posts)
 
   return (
-    <Layout pageTitle="Blog">
-      <SEO title="Blog" />
-      <Container className={styles.blogStyling}>
-        <h1>Blog</h1>
+    <Layout pageTitle="Unser Blog">
+      <SEO title="Unser Blog" />
+      <Container className={styles.root}>
+        <div className={styles.pageHeader}>
+          <VisibilitySensor once partialVisibility>
+            {({ isVisible }) => (
+              <SectionHeading
+                align="center"
+                isVisible={isVisible}
+                type="large"
+                title="Unser Blog"
+                lead="Eine Sammlung von Nachrichten und Mitteilungen, Nerds Talks und Company-Carry-Ons."
+                className={styles.pageHeader}
+              />
+            )}
+          </VisibilitySensor>
+        </div>
         {postNodes && postNodes.length > 0 && <BlogPostPreviewGrid nodes={postNodes} />}
       </Container>
     </Layout>

@@ -1,5 +1,5 @@
-@import '../styles/media-queries.css';
-@import '../styles/vars.css';
+@import '../../assets/scss/helpers';
+
 
 .root {
   margin: 2em 0 4em;
@@ -10,7 +10,7 @@
   line-height: var(--font-small-line-height);
   margin: 2rem 0;
 
-  @nest & a {
+  & a {
     color: inherit;
     text-decoration: none;
   }
@@ -25,29 +25,24 @@
   grid-column-gap: 2em;
   grid-row-gap: 2em;
 
-  @media (--media-min-small) {
+  @include breakpoint-sm {
     grid-template-columns: 1fr 1fr;
   }
 
-  @media (--media-min-medium) {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
 }
 
 .browseMoreNav {
   margin-top: 1rem;
   text-align: right;
 
-  @nest & a {
+  & a {
     display: inline-block;
     padding: 0.5rem 0;
     color: inherit;
     text-decoration: none;
 
-    @media (hover: hover) {
-      @nest &:hover {
-        color: var(--color-accent);
-      }
+    &:hover {
+      color: var(--color-accent);
     }
   }
 }

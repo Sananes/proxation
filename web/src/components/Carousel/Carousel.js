@@ -52,7 +52,7 @@ const Carousel = props => {
       <Slider className={cn(styles.slider, data.length <= 2 && styles.sliderContained)}>
         <Trail
           items={data}
-          keys={item => item.id}
+          keys={item => item._id}
           to={{
             transform: isVisible ? 'translateY(0)' : 'translateY(-24px)',
             opacity: isVisible ? 1 : 0

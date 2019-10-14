@@ -1,0 +1,60 @@
+@import '../../assets/scss/helpers';
+
+.root {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.leadMediaThumb {
+  position: relative;
+  background: #eee;
+  overflow: hidden;
+
+  &>div {
+    max-height: 350px;
+    overflow: hidden;
+    transition: transform 300ms ease-in-out;
+
+    .root:hover & {
+      transform: scale(1.1);
+    }
+  }
+
+  &>img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.publishedAt {
+  @include overline;
+  margin-top: 2rem;
+
+  +.title {
+    margin-top: 8px;
+  }
+}
+
+.title {
+  @include h4;
+
+  .root:hover & {}
+}
+
+.excerpt {
+  @include body;
+  margin-top: 1rem;
+
+  p {
+    margin: 1rem 0;
+  }
+
+  & strong {
+    font-weight: 600;
+  }
+}
