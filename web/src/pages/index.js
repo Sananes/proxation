@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { mapEdgesToNodes, filterOutDocsWithoutSlugs } from '../lib/helpers'
 import GraphQLErrorList from '../components/graphql-error-list'
-import SEO from '../components/Seo'
+import Seo from '../components/Seo'
 import Features from '../sections/Features'
 import VisibilitySensor from '../components/VisibilitySensor'
 import Layout from '../containers/layout'
@@ -228,8 +228,8 @@ const IndexPage = props => {
   }
 
   return (
-    <Layout fullScreen={false}>
-      <SEO title={site.title} description={site.description} keywords={site.keywords} />
+    <Layout>
+      <Seo title={site.title} description={site.description} keywords={site.keywords} />
       <VisibilitySensor once>{({ isVisible }) => <Hero visible={isVisible} />}</VisibilitySensor>
 
       <VisibilitySensor once partialVisibility>
@@ -244,11 +244,7 @@ const IndexPage = props => {
         )}
       </VisibilitySensor>
 
-      <VisibilitySensor once partialVisibility>
-        {({ isVisible }) => (
-          <Features data={featuresNodes} headingData={featuresHeadingNodes} isVisible={isVisible} />
-        )}
-      </VisibilitySensor>
+      <Features data={featuresNodes} headingData={featuresHeadingNodes} animate={true} />
 
       <SupportSection
         data={supportSectionNode}

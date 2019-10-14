@@ -29,21 +29,24 @@ const ContactSection = props => {
           {props => (
             <Section
               style={props}
-              className={styles.features}
+              className={styles.root}
               headingClassName={styles.heading}
               dark={true}
             >
-              <div className={styles.grid} style={props}>
+              <div className={styles.grid} style={(props, { delay: 300 })}>
                 <div className={styles.content}>
                   <Image
                     className={styles.image}
                     alt={data.image.alt || data.heading.title}
                     fluid={data.image.asset.fluid}
+                    style={props}
                   />
                 </div>
 
                 <div className={styles.wrapper} style={props}>
-                  <h2 className={styles.title}>{data.heading.title}</h2>
+                  <h2 className={styles.title} style={props}>
+                    {data.heading.title}
+                  </h2>
                   <p className={styles.lead}>
                     Dann lassen Sie es uns gemeinsam angehen! Wir freuen uns auf Ihre Anfrage!{' '}
                     <a href="mailto: info@proxation.de">info@proxation.de</a>
@@ -65,28 +68,46 @@ const ContactSection = props => {
                       text="Kontakt Aufnehmen"
                       type="button"
                       size="large"
-                      style="secondary"
+                      style="primary"
                     />
                   </form>
                 </div>
               </div>
-              {/*<div className={styles.other}>
-            <h4>Partners</h4>
-             <ul className={styles.badges}>
-              <li className={styles.badgeItem}>
-                <Icon symbol="shopware" className={styles.badgeIcon}></Icon>
-                <strong className={styles.bold}>Solutions</strong> Partner
-              </li>
-              <li className={cn(styles.badgeItem, styles.badgeTechnology)}>
-                <Icon symbol="shopware" className={styles.badgeIcon}></Icon>
-                <strong className={styles.bold}>Technology</strong> Partner
-              </li>
-              <li className={cn(styles.badgeItem, styles.badgeBusiness)}>
-                <Icon symbol="shopware" className={styles.badgeIcon}></Icon>
-                <strong className={styles.bold}>Business</strong> Partner
-              </li>
-      </ul>
-          </div> */}
+              <div className={styles.other}>
+                <div className={styles.badgesWrapper} style={props}>
+                  <h4 className={styles.title}>Partners</h4>
+                  <ul className={styles.badges}>
+                    <li className={styles.badgeItem}>
+                      <Icon symbol="shopware" className={styles.badgeIcon}></Icon>
+                      <strong className={styles.bold}>Solutions</strong> Partner
+                    </li>
+                    <li className={cn(styles.badgeItem, styles.badgeTechnology)}>
+                      <Icon symbol="shopware" className={styles.badgeIcon}></Icon>
+                      <strong className={styles.bold}>Technology</strong> Partner
+                    </li>
+                    <li className={cn(styles.badgeItem, styles.badgeBusiness)}>
+                      <Icon symbol="shopware" className={styles.badgeIcon}></Icon>
+                      <strong className={styles.bold}>Business</strong> Partner
+                    </li>
+                  </ul>
+                </div>
+
+                <div className={styles.contact} style={props}>
+                  <h4 className={styles.title}>Kontakt</h4>
+                  <ul>
+                    <li>
+                      <a href="mailto:info@proxation.de">
+                        <strong>Email:</strong> info@proxation.de
+                      </a>
+                    </li>
+                    <li>
+                      <a href="mailto:info@proxation.de">
+                        <strong>Call us:</strong> +49 778 112 332
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </Section>
           )}
         </Spring>

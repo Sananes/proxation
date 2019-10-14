@@ -14,7 +14,7 @@ const Select = props => (
   <div className={cn(styles.root, styles.dark)}>
     <select {...props} className={styles.select}>
       {options.map(option => (
-        <option value={option.value} disabled={option.options}>
+        <option key={option.value} value={option.value} disabled={option.options}>
           {option.label}
         </option>
       ))}

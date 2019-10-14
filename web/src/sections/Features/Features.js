@@ -5,8 +5,9 @@ import { useTrail, animated } from 'react-spring'
 import BlockText from '../../components/block-text'
 import Button from '../../components/Button'
 import { Trail } from 'react-spring/renderprops'
+import AnimateScroll from '../../components/AnimateScroll'
 
-const Features = ({ data, headingData, isVisible }) => {
+const Features = ({ data, headingData, isVisible, animate }) => {
   const trail = useTrail(data.length, {
     to: {
       opacity: isVisible ? 1 : 0,
@@ -18,49 +19,62 @@ const Features = ({ data, headingData, isVisible }) => {
     throw new Error('No features have been added in the studio')
   }
   return (
-    <Section
-      className={styles.features}
-      headingClassName={styles.heading}
-      narrowHeading={true}
-      dark={true}
-      isVisible={isVisible}
-      title={headingData.title}
-      caption={headingData.caption}
-      lead={headingData.subheading}
-    >
-      <div className={styles.grid}>
-        <Trail
-          items={data}
-          keys={item => item.id}
-          to={{
-            transform: isVisible ? 'translateY(0)' : 'translateY(-24px)',
-            opacity: isVisible ? 1 : 0
-          }}
+    <AnimateScroll
+      once
+      condition={animate}
+      partialVisiblity="top"
+      children={({ isVisible }) => (
+        <Section
+          className={styles.features}
+          headingClassName={styles.heading}
+          narrowHeading={true}
+          dark={true}
+          isVisible={isVisible}
+          title={headingData.title}
+          caption={headingData.caption}
+          lead={headingData.subheading}
         >
-          {item => props => (
-            <div style={props} delay={1000} className={styles.featureItem} key={item.id}>
-              {item.image != null && (
-                <img
-                  src={item.image.asset.url}
-                  title={item.image.alt || item.title}
-                  alt={item.image.alt || item.title}
-                />
+          <div className={styles.grid}>
+            <AnimateScroll
+              once
+              condition={animate}
+              children={({ isVisible }) => (
+                <Trail
+                  items={data}
+                  keys={item => item.id}
+                  to={{
+                    transform: isVisible ? 'translateY(0)' : 'translateY(-24px)',
+                    opacity: isVisible ? 1 : 0
+                  }}
+                >
+                  {item => props => (
+                    <div style={props} delay={1000} className={styles.featureItem} key={item.id}>
+                      {item.image != null && (
+                        <img
+                          src={item.image.asset.url}
+                          title={item.image.alt || item.title}
+                          alt={item.image.alt || item.title}
+                        />
+                      )}
+                      <h4 className={styles.title}>{item.title}</h4>
+                      <BlockText className={styles.content} blocks={item._rawContent} />
+                      <Button
+                        type="link"
+                        style="ghost"
+                        hasIcon={true}
+                        className={styles.button}
+                        text={item.button.text}
+                        href={item.button.url}
+                      />
+                    </div>
+                  )}
+                </Trail>
               )}
-              <h4 className={styles.title}>{item.title}</h4>
-              <BlockText className={styles.content} blocks={item._rawContent} />
-              <Button
-                type="link"
-                style="ghost"
-                hasIcon={true}
-                className={styles.button}
-                text={item.button.text}
-                href={item.button.url}
-              />
-            </div>
-          )}
-        </Trail>
-      </div>
-    </Section>
+            />
+          </div>
+        </Section>
+      )}
+    />
   )
 }
 

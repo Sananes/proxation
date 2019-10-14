@@ -1,7 +1,11 @@
 @import '../../assets/scss/helpers';
 
 .root {
-  color: inherit;
+  color: $text-light;
+
+  * {
+    color: inherit;
+  }
 }
 
 .grid,
@@ -72,9 +76,16 @@
 }
 
 .button {
-  background-color: $color-white;
   align-self: start;
   justify-self: start;
+}
+
+.other {
+  @include interpolate(margin-top, 32px, 64px);
+
+  .title {
+    @include overline;
+  }
 }
 
 .badges {
@@ -98,5 +109,25 @@
 
   .badgeTechnology svg {
     color: $text-light;
+  }
+}
+
+.contact {
+
+  strong {
+    display: none;
+
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  ul {
+    padding: 0;
+  }
+
+  li {
+    @include h4;
   }
 }

@@ -58,5 +58,6 @@ Section.propTypes = {
   align: PropTypes.string,
   title: PropTypes.string,
   lead: PropTypes.string,
+  dark: PropTypes.boolean,
   caption: PropTypes.string
 }

@@ -73,7 +73,7 @@ $font-size-body-s: 14px;
 $font-size-body-xs: 12px;
 $font-size-overline: 12px;
 $font-size-menu: 12px;
-$font-size-button: 12px;
+$font-size-button: 16px;
 
 // Mobile type sizes
 $font-size-heading-1-mobile: 30px;
@@ -104,19 +104,19 @@ $layout-breakpoint-md: 960px;
 $layout-breakpoint-lg: 1200px;
 
 // Buttons
-$button-font-size: 12px;
+$button-font-size: $font-size-button;
 $button-font-weight: 600;
 $button-large-height: 56px;
 $button-medium-height: 48px;
 $button-small-height: 40px;
 $button-border: 1px;
-$button-text-style: uppercase;
-$button-letter-spacing: 2px;
+$button-text-style: normal;
+$button-letter-spacing: 0px;
 $button-border-radius: $global-border-radius;
 
 $color-button-text: $color-white;
 $color-button-text-hover: $color-white;
-$color-button-background: $color-primary;
+$color-button-background: $color-gold;
 $color-button-background-hover: darken($color-primary, 10%);
 $color-button-border: transparent;
 $color-button-border-hover: transparent;

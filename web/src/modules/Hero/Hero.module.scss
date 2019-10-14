@@ -9,17 +9,15 @@
 
 .hero {
   position: relative;
-  margin-top: -$header-mobile-height;
+  margin-top: -$header-mobile-height / 1.5;
   height: 80vh;
 
   @include breakpoint-md {
-    margin-top: -$header-height /1.5;
+    margin-top: -$header-height / 1.5;
 
   }
 
 }
-
-
 
 .alignRight {
   text-align: left;

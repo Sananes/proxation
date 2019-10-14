@@ -18,7 +18,7 @@ const Footer = ({ companyInfo, siteTitle, isVisible }) => {
               <Link to="/" className={styles.logo}>
                 <Icon symbol="logo" />
               </Link>
-              <p>
+              <p className={styles.info}>
                 Proxation GmbH ist Ihre zuverlässige Münchner shopware Agentur - Ihr erster
                 Ansprechpartner wenn es um Web- und mobile Commerce, mobile Optimierung, Template
                 Entwicklung, responsive Designs und shopware Plug-ins geht.
