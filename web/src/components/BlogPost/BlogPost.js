@@ -1,7 +1,7 @@
 import { format, distanceInWords, differenceInDays } from 'date-fns'
 import React from 'react'
 import { graphql } from 'gatsby'
-import { buildImageObj } from '../../lib/helpers'
+import { getBlogUrl } from '../../lib/helpers'
 import Image from 'gatsby-image/withIEPolyfill'
 import { imageUrlFor } from '../../lib/image-url'
 import BlockContent from '../block-content'
@@ -13,7 +13,7 @@ import styles from './BlogPost.module.scss'
 import RelatedBlogPosts from '../RelatedBlogPosts'
 
 function BlogPost(props) {
-  const { _rawBody, authors, id, title, mainImage, publishedAt } = props
+  const { _rawBody, authors, id, title, mainImage, slug, publishedAt } = props
 
   return (
     <article className={styles.root}>
@@ -107,6 +107,46 @@ function BlogPost(props) {
                 />
               )}
             </div>
+            <ul className={styles.share}>
+              <h3>Share the love</h3>
+              <li className={styles.twitter}>
+                <a
+                  href={
+                    `https://twitter.com/intent/tweet?text=` +
+                    title +
+                    ` https://www.proxation.de` +
+                    getBlogUrl(slug.current)
+                  }
+                  target="_blank"
+                >
+                  Twitter
+                </a>
+              </li>
+              <li className={styles.facebook}>
+                <a
+                  href={
+                    `https://www.facebook.com/sharer/sharer.php?u=https://www.proxation.de` +
+                    getBlogUrl(slug.current)
+                  }
+                  target="_blank"
+                >
+                  Facebook
+                </a>
+              </li>
+              <li className={styles.facebook}>
+                <a
+                  href={
+                    `https://www.linkedin.com/shareArticle?mini=true&url=https://www.proxation.de` +
+                    getBlogUrl(slug.current) +
+                    `&title=` +
+                    title
+                  }
+                  target="_blank"
+                >
+                  LinkedIn
+                </a>
+              </li>
+            </ul>
           </Container>
         </div>
         <RelatedBlogPosts current={id} className={styles.relatedPosts} />
