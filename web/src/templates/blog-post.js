@@ -81,7 +81,7 @@ const BlogPostTemplate = props => {
   const { data, errors } = props
   const post = data && data.post
   return (
-    <Layout pageTitle="Blog">
+    <Layout pageTitle="Unser Blog">
       {errors && <SEO title="GraphQL Error" />}
       {post && <SEO title={post.title || 'Untitled'} />}
 

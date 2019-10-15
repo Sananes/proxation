@@ -17,6 +17,7 @@ const hiddenTypes = [
   "heroHome",
   "clients",
   "clientsHome",
+  "social",
   "sectionThreeHome",
   "textImageBlock",
   "post",

@@ -1,6 +1,9 @@
 @import '../../assets/scss/helpers.scss';
 
-.root {}
+.root {
+  @include interpolate(padding-bottom, 32px, 64px);
+
+}
 
 .title {
   @include interpolate(padding-top, 24px, 64px);
@@ -68,6 +71,10 @@
 }
 
 .metaContent {}
+
+.mainContent {
+  @include interpolate(padding-bottom, 32px, 64px);
+}
 
 .publishedAt {
   margin-top: 24px;
