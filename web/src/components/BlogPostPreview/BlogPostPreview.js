@@ -23,11 +23,7 @@ function BlogPostPreview(props) {
           }}
         >
           {animate => (
-            <Link
-              className={styles.root}
-              to={getBlogUrl(props.publishedAt, props.slug.current)}
-              style={animate}
-            >
+            <Link className={styles.root} to={getBlogUrl(props.slug.current)} style={animate}>
               <div className={styles.leadMediaThumb}>
                 {props.mainImage && props.mainImage.asset && (
                   <Image fluid={props.mainImage.asset.fluid} alt={props.mainImage.alt} />
