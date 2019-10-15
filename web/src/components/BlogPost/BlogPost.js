@@ -48,10 +48,7 @@ function BlogPost(props) {
                       >
                         {props => (
                           <div className={styles.publishedAt} style={props}>
-                            by{' '}
-                            {authors.map(item => (
-                              <span>{item.person.name} - </span>
-                            ))}
+                            {authors && authors.map(item => <span>by {item.person.name} - </span>)}
                             {differenceInDays(new Date(publishedAt), new Date()) > 3
                               ? distanceInWords(new Date(publishedAt), new Date())
                               : format(new Date(publishedAt), 'MMMM Do YYYY')}
