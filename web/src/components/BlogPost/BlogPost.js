@@ -106,47 +106,47 @@ function BlogPost(props) {
                   )}
                 />
               )}
+              <ul className={styles.share}>
+                <h3 className={styles.title}>Make some noise</h3>
+                <li className={styles.twitter}>
+                  <a
+                    href={
+                      `https://twitter.com/intent/tweet?text=` +
+                      title +
+                      ` https://www.proxation.de` +
+                      getBlogUrl(slug.current)
+                    }
+                    target="_blank"
+                  >
+                    Twitter
+                  </a>
+                </li>
+                <li className={styles.facebook}>
+                  <a
+                    href={
+                      `https://www.facebook.com/sharer/sharer.php?u=https://www.proxation.de` +
+                      getBlogUrl(slug.current)
+                    }
+                    target="_blank"
+                  >
+                    Facebook
+                  </a>
+                </li>
+                <li className={styles.facebook}>
+                  <a
+                    href={
+                      `https://www.linkedin.com/shareArticle?mini=true&url=https://www.proxation.de` +
+                      getBlogUrl(slug.current) +
+                      `&title=` +
+                      title
+                    }
+                    target="_blank"
+                  >
+                    LinkedIn
+                  </a>
+                </li>
+              </ul>
             </div>
-            <ul className={styles.share}>
-              <h3>Share the love</h3>
-              <li className={styles.twitter}>
-                <a
-                  href={
-                    `https://twitter.com/intent/tweet?text=` +
-                    title +
-                    ` https://www.proxation.de` +
-                    getBlogUrl(slug.current)
-                  }
-                  target="_blank"
-                >
-                  Twitter
-                </a>
-              </li>
-              <li className={styles.facebook}>
-                <a
-                  href={
-                    `https://www.facebook.com/sharer/sharer.php?u=https://www.proxation.de` +
-                    getBlogUrl(slug.current)
-                  }
-                  target="_blank"
-                >
-                  Facebook
-                </a>
-              </li>
-              <li className={styles.facebook}>
-                <a
-                  href={
-                    `https://www.linkedin.com/shareArticle?mini=true&url=https://www.proxation.de` +
-                    getBlogUrl(slug.current) +
-                    `&title=` +
-                    title
-                  }
-                  target="_blank"
-                >
-                  LinkedIn
-                </a>
-              </li>
-            </ul>
           </Container>
         </div>
         <RelatedBlogPosts current={id} className={styles.relatedPosts} />
