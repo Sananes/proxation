@@ -9,6 +9,7 @@
   padding: 0 16px;
   box-sizing: border-box;
   width: 100%;
+  transition: all 200ms ease-in-out;
 
   @include placeholder {
     color: $text-dimmed;
@@ -17,6 +18,10 @@
   &:hover,
   &:focus {
     border: 1px solid $color-input-border-hover;
+
+    &.dark {
+      border: none;
+    }
   }
 
   &.dark {

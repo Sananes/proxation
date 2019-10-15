@@ -1,0 +1,17 @@
+@import '../../assets/scss/helpers';
+
+.root {
+  display: none;
+  padding-top: 0;
+}
+
+.title {
+  @include overline;
+  margin-bottom: 24px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 24px;
+}

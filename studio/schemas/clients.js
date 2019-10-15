@@ -1,12 +1,23 @@
 export default {
   name: "client",
   title: "Client",
-  type: "figure",
-  of: [
+  type: "object",
+  fields: [
     {
-      name: "client",
-      title: "Client",
+      name: "title",
+      title: "Title",
+      type: "string"
+    },
+    {
+      name: "image",
+      title: "Image",
       type: "figure"
     }
-  ]
+  ],
+  preview: {
+    select: {
+      title: "title",
+      media: "image"
+    }
+  }
 };

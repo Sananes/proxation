@@ -22,13 +22,19 @@
 }
 
 .pattern {
+  display: none;
   position: absolute;
   left: 0;
   top: 50px;
   z-index: 8888;
+  pointer-events: none;
   width: 200px;
   transform: translateX(-50%);
+  color: $color-gold;
 
+  @include breakpoint-md {
+    display: block;
+  }
 }
 
 .headingWrapper {

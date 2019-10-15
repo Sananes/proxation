@@ -1,26 +1,19 @@
 export default {
   name: "clientsHome",
   title: "Clients",
-  type: "document",
+  type: "object",
   fields: [
     { title: "Heading", name: "heading", type: "heading" },
     {
-      name: "clientsList",
-      title: "Client List",
+      title: "Clients",
+      name: "clients",
       type: "array",
       of: [
         {
-          name: "client",
           title: "Client",
-          type: "figure"
+          type: "client"
         }
-      ],
-      preview: {
-        select: {
-          title: "client.title",
-          media: "client.image"
-        }
-      }
+      ]
     }
   ]
 };

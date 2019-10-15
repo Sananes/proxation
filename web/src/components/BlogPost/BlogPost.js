@@ -79,7 +79,29 @@ function BlogPost(props) {
                 )}
               />
             )}
-            {_rawBody && <BlockContent className={styles.blogContent} blocks={_rawBody} />}
+
+            {_rawBody && (
+              <VisibilitySensor
+                partialVisibility
+                once
+                children={({ isVisible }) => (
+                  <Spring
+                    to={{
+                      opacity: isVisible ? 1 : 0,
+                      transform: isVisible ? 'translateY(0)' : 'translateY(-24px)'
+                    }}
+                  >
+                    {props => (
+                      <BlockContent
+                        className={styles.blogContent}
+                        blocks={_rawBody}
+                        style={props}
+                      />
+                    )}
+                  </Spring>
+                )}
+              />
+            )}
           </div>
 
           {/* <aside className={styles.metaContent}>

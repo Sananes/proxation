@@ -6,6 +6,7 @@ import Features from '../sections/Features'
 import Layout from '../containers/layout'
 import CarouselSection from '../sections/CarouselSection'
 import ContactSection from '../sections/ContactSection'
+import Clients from '../sections/ClientsSection'
 import SupportSection from '../sections/SupportSection'
 import AgencySection from '../sections/AgencySection'
 import Hero from '../modules/Hero'
@@ -18,6 +19,27 @@ export const query = graphql`
       title
       description
       keywords
+    }
+
+    clients: sanityPageHome {
+      clients {
+        heading {
+          title
+        }
+        clients {
+          _key
+          title
+          image {
+            alt
+            caption
+            asset {
+              fluid {
+                ...GatsbySanityImageFluid
+              }
+            }
+          }
+        }
+      }
     }
 
     contact: sanityPageHome {
@@ -229,6 +251,9 @@ const IndexPage = props => {
         animate={true}
         isVisible={isVisible}
       />
+
+      <Clients data={data.clients.clients} animate={true} />
+
       <Features data={featuresNodes} headingData={featuresHeadingNodes} animate={true} />
       <SupportSection
         data={supportSectionNode}
