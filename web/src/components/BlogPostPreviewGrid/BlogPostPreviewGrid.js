@@ -1,12 +1,13 @@
 import { Link } from 'gatsby'
 import React from 'react'
 import BlogPostPreview from '../BlogPostPreview'
+import cn from 'classnames'
 
 import styles from './BlogPostPreviewGrid.module.scss'
 
 function BlogPostPreviewGrid(props) {
   return (
-    <div className={styles.root}>
+    <div className={cn(styles.root, props.className)}>
       {props.title && (
         <h2 className={styles.headline}>
           {props.browseMoreHref ? (
