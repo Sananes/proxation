@@ -3,9 +3,13 @@
 .section {
   @extend %section;
 
-  &.light {
+  &.dark {
     color: $text-light;
     background-color: $color-primary;
+  }
+
+  &.highlight {
+    background-color: $color-hightlight-background;
   }
 }
 

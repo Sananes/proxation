@@ -15,7 +15,7 @@ const SectionHeading = ({
   type,
   button,
   isVisible,
-  dark,
+  color,
   className,
   narrow
 }) => {
@@ -24,6 +24,19 @@ const SectionHeading = ({
     [styles.leftAligned]: align === 'left',
     [styles.centerAligned]: align === 'center'
   })
+
+  function colorClasses(color) {
+    switch (color) {
+      case 'dark':
+        return styles.dark
+      case 'none':
+        return null
+      case 'highlight':
+        return styles.highlight
+      default:
+        return null
+    }
+  }
 
   const setTypeClass = cn(styles.title, {
     [styles.titleLarge]: type === 'large'
@@ -34,10 +47,8 @@ const SectionHeading = ({
     opacity: isVisible ? 1 : 0
   }
 
-  const setDark = dark ? styles.light : null
-
   return (
-    <div className={cn(setAlignmentClass, narrow && styles.narrow, className, setDark)}>
+    <div className={cn(setAlignmentClass, narrow && styles.narrow, className, colorClasses(color))}>
       {caption && (
         <Spring to={animationProps}>
           {props => (

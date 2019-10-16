@@ -1,11 +1,12 @@
 export default {
-  name: "textImageBlock",
+  name: "textWithImage",
   title: "Text with Image",
   type: "document",
   fields: [
     { title: "Heading", name: "heading", type: "heading" },
     { title: "Image", name: "image", type: "figure" },
-    { title: "Button", name: "button", type: "button" }
+    { title: "Button", name: "button", type: "button" },
+    { name: "sectionColor", type: "sectionColor" }
   ],
   preview: {
     select: {

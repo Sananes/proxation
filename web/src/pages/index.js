@@ -44,6 +44,7 @@ export const query = graphql`
 
     contact: sanityPageHome {
       sectionContact {
+        sectionColor
         heading {
           caption
           title
@@ -85,6 +86,7 @@ export const query = graphql`
             }
           }
           support {
+            sectionColor
             heading {
               caption
               title
@@ -92,9 +94,11 @@ export const query = graphql`
             }
             image {
               asset {
+                _id
                 fluid(maxWidth: 800) {
                   ...GatsbySanityImageFluid
                 }
+                url
               }
               alt
               caption
@@ -105,6 +109,7 @@ export const query = graphql`
             }
           }
           features {
+            sectionColor
             heading {
               caption
               title
@@ -180,13 +185,9 @@ const IndexPage = props => {
 
   const projectNodes = (data || {}).home && data.home.edges.map(edge => edge.node.projects)[0]
 
-  const supportSectionHeadingNodes =
-    (data || {}).home && data.home.edges.map(edge => edge.node.support.heading)[0]
-
   const supportSectionNode = (data || {}).home && data.home.edges.map(edge => edge.node.support)[0]
 
   const featuresNodes = (data || {}).home && data.home.edges.map(edge => edge.node.features)[0]
-  console.log(featuresNodes)
 
   const sectionThreeHeadingNodes =
     (data || {}).home && data.home.edges.map(edge => edge.node.sectionThree.heading)[0]
@@ -217,11 +218,7 @@ const IndexPage = props => {
       <Clients data={data.clients.clients} animate={true} />
 
       <Features {...featuresNodes} animate={true} />
-      <SupportSection
-        data={supportSectionNode}
-        headingData={supportSectionHeadingNodes}
-        animate={true}
-      />
+      <SupportSection {...supportSectionNode} animate={true} />
       <AgencySection
         data={sectionThreeItemNodes}
         headingData={sectionThreeHeadingNodes}

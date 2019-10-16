@@ -30,6 +30,7 @@ const ContactSection = props => {
             <Section
               style={props}
               className={styles.root}
+              sectionColor={data.sectionColor}
               headingClassName={styles.heading}
               dark={true}
             >

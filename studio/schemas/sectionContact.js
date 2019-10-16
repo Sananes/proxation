@@ -4,6 +4,7 @@ export default {
   type: "object",
   fields: [
     { title: "Heading", name: "heading", type: "heading" },
-    { title: "Image", name: "image", type: "figure" }
+    { title: "Image", name: "image", type: "figure" },
+    { name: "sectionColor", type: "sectionColor" }
   ]
 };

@@ -1,3 +1,2 @@
-export { default as image } from './ImageText'
-export { default as post } from './TextBlockGrid'
-export { default as featuresHome } from '../sections/Features'
+export { default as textWithImage } from '../sections/SupportSection'
+export { default as textColumnsWithImage } from '../sections/Features'

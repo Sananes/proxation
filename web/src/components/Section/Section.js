@@ -15,7 +15,7 @@ const Section = ({
   title,
   align,
   button,
-  dark,
+  sectionColor,
   isVisible,
   narrow,
   narrowHeading,
@@ -23,10 +23,26 @@ const Section = ({
   className,
   headingClassName
 }) => {
-  const setClasses = divider ? styles.sectionDivider : styles.section
-  const setDark = dark ? styles.light : null
+  const setClasses = cn(
+    divider ? styles.sectionDivider : styles.section,
+    colorClasses(sectionColor)
+  )
+
+  function colorClasses(color) {
+    switch (color) {
+      case 'dark':
+        return styles.dark
+      case 'none':
+        return null
+      case 'highlight':
+        return styles.highlight
+      default:
+        return null
+    }
+  }
+
   return (
-    <section className={cn(setClasses, className, setDark)}>
+    <section className={cn(setClasses, className)}>
       {container === false ? (
         children
       ) : (
@@ -35,11 +51,11 @@ const Section = ({
             <SectionHeading
               title={title}
               align={align}
-              dark={dark}
               animate={animate}
               isVisible={isVisible}
               narrow={narrowHeading}
               button={button}
+              color={sectionColor}
               className={headingClassName}
               lead={lead}
               caption={caption}

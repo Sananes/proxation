@@ -23,8 +23,8 @@ export default {
         list: [
           { title: "None", value: "none" },
           { title: "Dark", value: "dark" },
-          { title: "Off-White", value: "white" }
-        ] // <-- predefined values
+          { title: "Off-White", value: "highlight" }
+        ]
       }
     }
   ],

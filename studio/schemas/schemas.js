@@ -19,6 +19,7 @@ import button from "./objects/button";
 import page from "./page/page";
 import pageHome from "./page/pageHome";
 import social from "./social";
+import sectionColor from "./objects/sectionColor";
 import socialList from "./socialList";
 import seo from "./objects/seo";
 import heroHome from "./heroHome";
@@ -29,7 +30,7 @@ import heading from "./objects/heading";
 import person from "./person";
 import post from "./page/post";
 import postAuthor from "./objects/postAuthor";
-import textImageBlock from "./textImageBlock";
+import textWithImage from "./objects/textWithImage";
 import textColumnsWithImageItem from "./objects/textColumnsWithImageItem";
 import textColumnsWithImage from "./objects/textColumnsWithImage";
 import project from "./project";
@@ -54,6 +55,7 @@ export default createSchema({
     category,
     companyInfo,
     seo,
+    sectionColor,
     figure,
     landingPage,
     mainImage,
@@ -67,7 +69,7 @@ export default createSchema({
     social,
 
     // Parts
-    textImageBlock,
+    textWithImage,
 
     // Homepage sections
     heroHome,

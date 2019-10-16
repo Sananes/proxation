@@ -1,7 +1,7 @@
 @import '../../assets/scss/helpers';
 
 .summary {
-  background-color: $color-hightlight-background;
+  color: inherit;
 
   .grid {
     @include breakpoint-md {
@@ -21,6 +21,7 @@
 
   .heading {
     @include interpolate(margin-bottom, 24px, 120px);
+    color: inherit;
 
     @include breakpoint-md {
       margin-bottom: 0;

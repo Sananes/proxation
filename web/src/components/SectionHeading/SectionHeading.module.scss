@@ -35,8 +35,9 @@
 .caption,
 .title,
 .lead {
+  color: inherit;
 
-  .light & {
+  .dark & {
     color: $text-light;
   }
 }

@@ -7,10 +7,8 @@
     @include interpolate(margin-bottom, 24px, 80px);
   }
 
-  &.light {
-    color: $text-light;
-    background: $color-primary;
-
+  .image {
+    max-width: 100%;
   }
 
   .grid {

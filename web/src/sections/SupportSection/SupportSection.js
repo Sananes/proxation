@@ -4,37 +4,42 @@ import styles from './SupportSection.module.scss'
 import Image from 'gatsby-image/withIEPolyfill'
 import TextBlock from '../../components/SectionHeading'
 import { Spring } from 'react-spring/renderprops'
-// import AnimateScroll from '../../components/VisibilitySensor'
-import AnimateScroll from '../../components/AnimateScroll'
+import VisibilitySensor from '../../components/VisibilitySensor'
+import { buildImageObj } from '../../lib/helpers'
+import { imageUrlFor } from '../../lib/image-url'
 
-const SupportSection = ({ data, headingData, animate }) => {
-  if (!data) {
-    throw new Error('No features have been added in the studio')
+const SupportSection = props => {
+  const { animate, sectionColor, heading, button, image } = props
+  if (!heading && !image) {
+    throw new Error('No image or text have been added in the studio for the Text with Image')
   }
 
   return (
-    <AnimateScroll
-      condition={animate}
+    <VisibilitySensor
       partialVisibility
+      once
       children={({ isVisible }) => (
-        <Section className={styles.summary}>
+        <Section className={styles.summary} sectionColor={sectionColor}>
           <div className={styles.grid}>
             <TextBlock
-              caption={headingData.caption}
+              caption={heading.caption}
               align="left"
               animate={animate}
               className={styles.heading}
               isVisible={isVisible}
-              title={headingData.title}
-              button={{
-                text: data.button.text,
-                size: 'large',
-                style: 'primary',
-                type: 'link',
-                href: data.button.url,
-                hasIcon: true
-              }}
-              lead={headingData.subHeading}
+              title={heading.title}
+              button={
+                button && {
+                  text: button.text,
+                  size: 'large',
+                  style: 'primary',
+                  type: 'link',
+                  href: button.url,
+                  hasIcon: true
+                }
+              }
+              sectionColor={sectionColor}
+              lead={heading.subHeading}
             />
             <Spring
               to={{
@@ -47,12 +52,12 @@ const SupportSection = ({ data, headingData, animate }) => {
               }}
               delay={300}
             >
-              {props => (
-                <div className={styles.image} style={props}>
-                  <Image
-                    fluid={data.image.asset.fluid}
-                    title={data.image.alt || headingData.title}
-                    alt={data.image.alt || headingData.title}
+              {animation => (
+                <div className={styles.image} style={animation}>
+                  <img
+                    src={imageUrlFor(buildImageObj(image))}
+                    title={image.alt || heading.title}
+                    alt={image.alt || heading.title}
                   />
                 </div>
               )}
