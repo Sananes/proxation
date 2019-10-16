@@ -9,6 +9,11 @@
 
   .image {
     max-width: 100%;
+    width: auto;
+
+    >div {
+      min-width: 46px;
+    }
   }
 
   .grid {

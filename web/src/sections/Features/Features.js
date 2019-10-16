@@ -1,14 +1,16 @@
 import React from 'react'
 import Section from '../../components/Section'
 import styles from './Features.module.scss'
-import { useTrail } from 'react-spring'
 import BlockText from '../../components/block-text'
 import cn from 'classnames'
+import { getFluidGatsbyImage } from 'gatsby-source-sanity'
 import { Trail } from 'react-spring/renderprops'
 import AnimateScroll from '../../components/AnimateScroll'
 import Button from '../../components/Button'
+import { sanityConfig, buildImageObj } from '../../lib/helpers'
+import Image from 'gatsby-image/withIEPolyfill'
 import { imageUrlFor } from '../../lib/image-url'
-import { buildImageObj } from '../../lib/helpers'
+import { getImageUrl } from '@sanity/block-content-to-react'
 
 const Features = props => {
   const { isVisible } = props
@@ -16,6 +18,10 @@ const Features = props => {
   const heading = props.heading && props.heading
   const items = props.items && props.items
   const itemsCount = items != null && items != '' && items.length
+
+  function fluidProps(image) {
+    return getFluidGatsbyImage(image, { maxWidth: 800 }, sanityConfig())
+  }
 
   if (!props) {
     throw new Error('No features have been added in the studio')
@@ -58,18 +64,24 @@ const Features = props => {
                   {item => props => (
                     <div style={props} delay={1000} className={styles.featureItem} key={item.id}>
                       {item.image && item.image.asset && (
-                        <img
-                          src={item.image.asset.url}
-                          title={item.image.alt || item.title}
-                          alt={item.image.alt || item.title}
-                          className={styles.image}
-                        />
+                        <div className={styles.image}>
+                          {/* } <Image
+                            fluid={fluidProps(item.image.asset._id)}
+                            title={item.image.alt || item.title}
+                            alt={item.image.alt || item.title}
+                      /> */}
+                          <img
+                            src={imageUrlFor(buildImageObj(item.image))}
+                            className={styles.image}
+                          />
+                        </div>
                       )}
                       <h4 className={styles.title}>{item.title}</h4>
                       <BlockText
                         className={styles.content}
                         blocks={item.content || item._rawContent}
                       />
+
                       {item.button && (
                         <Button
                           type="link"

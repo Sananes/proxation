@@ -4,6 +4,7 @@ import styles from './SupportSection.module.scss'
 import Image from 'gatsby-image/withIEPolyfill'
 import TextBlock from '../../components/SectionHeading'
 import { Spring } from 'react-spring/renderprops'
+import { getFluidGatsbyImage, getFixedGatsbyImage } from 'gatsby-source-sanity'
 import VisibilitySensor from '../../components/VisibilitySensor'
 import { buildImageObj } from '../../lib/helpers'
 import { imageUrlFor } from '../../lib/image-url'
@@ -13,6 +14,9 @@ const SupportSection = props => {
   if (!heading && !image) {
     throw new Error('No image or text have been added in the studio for the Text with Image')
   }
+  const sanityConfig = { projectId: 'rks6ojwp', dataset: 'production' }
+  const imageAssetId = image.asset._id
+  const fluidProps = getFluidGatsbyImage(imageAssetId, { maxWidth: 1024 }, sanityConfig)
 
   return (
     <VisibilitySensor
@@ -54,8 +58,8 @@ const SupportSection = props => {
             >
               {animation => (
                 <div className={styles.image} style={animation}>
-                  <img
-                    src={imageUrlFor(buildImageObj(image))}
+                  <Image
+                    fluid={fluidProps}
                     title={image.alt || heading.title}
                     alt={image.alt || heading.title}
                   />

@@ -15,6 +15,10 @@ export function mapEdgesToNodes2(data) {
   return data.edges.map(edge => edge.node.relatedProjects)
 }
 
+export function sanityConfig() {
+  return { projectId: 'rks6ojwp', dataset: 'production' }
+}
+
 export function filterOutDocsWithoutSlugs({ slug }) {
   return (slug || {}).current
 }
