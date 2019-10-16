@@ -1,27 +1,26 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Section from '../../components/Section'
 import styles from './Features.module.scss'
-import { useTrail, animated } from 'react-spring'
+import { useTrail } from 'react-spring'
 import BlockText from '../../components/block-text'
-import Button from '../../components/Button'
+import cn from 'classnames'
 import { Trail } from 'react-spring/renderprops'
 import AnimateScroll from '../../components/AnimateScroll'
 
-const Features = ({ data, headingData, isVisible, animate }) => {
-  const trail = useTrail(data.length, {
-    to: {
-      opacity: isVisible ? 1 : 0,
-      transform: isVisible ? 'translateY(0)' : 'translateY(-24px)'
-    }
-  })
+const Features = props => {
+  const { isVisible } = props
 
-  if (!data) {
+  const heading = props.heading && props.heading
+  const items = props.items && props.items
+  const itemsCount = items.length
+
+  if (!props) {
     throw new Error('No features have been added in the studio')
   }
   return (
     <AnimateScroll
       once
-      condition={animate}
+      condition={true}
       partialVisiblity="top"
       children={({ isVisible }) => (
         <Section
@@ -30,17 +29,23 @@ const Features = ({ data, headingData, isVisible, animate }) => {
           narrowHeading={true}
           dark={true}
           isVisible={isVisible}
-          title={headingData.title}
-          caption={headingData.caption}
-          lead={headingData.subheading}
+          title={heading.title && heading.title}
+          caption={heading.caption && heading.caption}
+          lead={heading.subheading && heading.subheading}
         >
-          <div className={styles.grid}>
+          <div
+            className={cn(
+              styles.grid,
+              itemsCount > 2 && styles.threeColumns,
+              itemsCount === 2 && styles.twoColumns
+            )}
+          >
             <AnimateScroll
               once
-              condition={animate}
+              condition={true}
               children={({ isVisible }) => (
                 <Trail
-                  items={data}
+                  items={items}
                   keys={item => item.id}
                   to={{
                     transform: isVisible ? 'translateY(0)' : 'translateY(-24px)',
@@ -58,14 +63,6 @@ const Features = ({ data, headingData, isVisible, animate }) => {
                       )}
                       <h4 className={styles.title}>{item.title}</h4>
                       <BlockText className={styles.content} blocks={item._rawContent} />
-                      <Button
-                        type="link"
-                        style="ghost"
-                        hasIcon={true}
-                        className={styles.button}
-                        text={item.button.text}
-                        href={item.button.url}
-                      />
                     </div>
                   )}
                 </Trail>

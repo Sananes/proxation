@@ -78,7 +78,43 @@ async function createProjectPages(graphql, actions, reporter) {
   })
 }
 
+async function createLandingPages(graphql, actions, reporter) {
+  const { createPage } = actions
+  const result = await graphql(`
+    {
+      allSanityLandingPage(filter: { slug: { current: { ne: null } } }) {
+        edges {
+          node {
+            id
+            slug {
+              current
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  if (result.errors) throw result.errors
+
+  const landingPageEdges = (result.data.allSanityLandingPage || {}).edges || []
+
+  landingPageEdges.forEach((edge, index) => {
+    const { id, slug = {} } = edge.node
+    const path = `/${slug.current}`
+
+    reporter.info(`Creating landing page: ${path}`)
+
+    createPage({
+      path,
+      component: require.resolve('./src/templates/landing-page.js'),
+      context: { id }
+    })
+  })
+}
+
 exports.createPages = async ({ graphql, actions, reporter }) => {
   await createBlogPostPages(graphql, actions, reporter)
   await createProjectPages(graphql, actions, reporter)
+  await createLandingPages(graphql, actions, reporter)
 }

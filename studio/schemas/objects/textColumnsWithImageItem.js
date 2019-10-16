@@ -1,6 +1,6 @@
 export default {
-  title: "Feature",
-  name: "feature",
+  title: "Item",
+  name: "textColumnsWithImageItem",
   type: "document",
   fields: [
     {

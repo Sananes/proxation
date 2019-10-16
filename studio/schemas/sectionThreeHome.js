@@ -1,6 +1,6 @@
 export default {
   name: "sectionThreeHome",
-  title: "Features",
+  title: "Items",
   type: "document",
   fields: [
     { title: "Heading", name: "heading", type: "heading" },
@@ -11,7 +11,7 @@ export default {
       of: [
         {
           title: "Item",
-          type: "feature"
+          type: "textColumnsWithImageItem"
         }
       ]
     }

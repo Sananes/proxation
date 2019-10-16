@@ -9,7 +9,7 @@ import ContactSection from '../sections/ContactSection'
 import Clients from '../sections/ClientsSection'
 import SupportSection from '../sections/SupportSection'
 import AgencySection from '../sections/AgencySection'
-import Hero from '../modules/Hero'
+import Hero from '../sections/Hero'
 import styles from './scss/Index.module.scss'
 import 'pure-react-carousel/dist/react-carousel.es.css'
 
@@ -109,7 +109,7 @@ export const query = graphql`
               caption
               title
             }
-            features {
+            items {
               title
               _rawContent
               image {
@@ -162,42 +162,6 @@ export const query = graphql`
         }
       }
     }
-
-    posts: allSanityPost(limit: 6, sort: { fields: [publishedAt], order: DESC }) {
-      edges {
-        node {
-          id
-          publishedAt
-          mainImage {
-            crop {
-              _key
-              _type
-              top
-              bottom
-              left
-              right
-            }
-            hotspot {
-              _key
-              _type
-              x
-              y
-              height
-              width
-            }
-            asset {
-              _id
-            }
-            alt
-          }
-          title
-          _rawExcerpt
-          slug {
-            current
-          }
-        }
-      }
-    }
   }
 `
 
@@ -221,10 +185,8 @@ const IndexPage = props => {
 
   const supportSectionNode = (data || {}).home && data.home.edges.map(edge => edge.node.support)[0]
 
-  const featuresHeadingNodes =
-    (data || {}).home && data.home.edges.map(edge => edge.node.features.heading)[0]
-  const featuresNodes =
-    (data || {}).home && data.home.edges.map(edge => edge.node.features.features)[0]
+  const featuresNodes = (data || {}).home && data.home.edges.map(edge => edge.node.features)[0]
+  console.log(featuresNodes)
 
   const sectionThreeHeadingNodes =
     (data || {}).home && data.home.edges.map(edge => edge.node.sectionThree.heading)[0]
@@ -254,7 +216,7 @@ const IndexPage = props => {
 
       <Clients data={data.clients.clients} animate={true} />
 
-      <Features data={featuresNodes} headingData={featuresHeadingNodes} animate={true} />
+      <Features {...featuresNodes} animate={true} />
       <SupportSection
         data={supportSectionNode}
         headingData={supportSectionHeadingNodes}

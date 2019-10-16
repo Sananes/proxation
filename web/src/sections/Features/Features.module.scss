@@ -1,26 +1,57 @@
 @import '../../assets/scss/helpers';
 
 .features {
-  background: $color-primary;
-  color: $text-light;
+  color: inherit;
 
   .heading {
     @include interpolate(margin-bottom, 24px, 80px);
   }
 
-  .featureItem {
-    @include interpolate(margin-bottom, 24px, 0px);
+  &.light {
+    color: $text-light;
+    background: $color-primary;
 
-    @include breakpoint-md {
-      lost-column: 1/3 3 30px;
-    }
   }
 
   .grid {
-    lost-utility: clearfix;
+    display: grid;
+    grid-gap: 24px;
     position: relative;
-    display: block;
+    grid-template-columns: repeat(1, 1fr);
+
+    &.oneColumns {
+      @include breakpoint-md {
+        justify-content: center;
+        grid-template-columns: repeat(1, 1fr);
+      }
+
+      .featureItem {
+        text-align: center;
+        lost-center: 400px;
+
+      }
+    }
+
+    &.twoColumns {
+      @include breakpoint-md {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    &.threeColumns {
+      @include breakpoint-md {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
   }
+
+  .featureItem {
+    @include interpolate(margin-bottom, 24px, 0px);
+
+
+  }
+
+
 
   .title {
     @include h6;

@@ -83,7 +83,7 @@ const BlogPostTemplate = props => {
   return (
     <Layout pageTitle="Unser Blog">
       {errors && <SEO title="GraphQL Error" />}
-      {post && <SEO title={post.title || 'Untitled'} />}
+      {post && <SEO title={post.title || 'Untitled'} description={post._rawBody} />}
 
       {errors && (
         <Container>

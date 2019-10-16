@@ -47,7 +47,7 @@ function BlogPostPreview(props) {
                 style="ghost"
                 hasIcon={true}
                 className={styles.button}
-                text="Read more"
+                text="Jetzt ansehen"
               />
             </Link>
           )}

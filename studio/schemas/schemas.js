@@ -5,34 +5,36 @@ import createSchema from "part:@sanity/base/schema-creator";
 import schemaTypes from "all:part:@sanity/base/schema-type";
 
 // We import object and document schemas
-import blockContent from "./blockContent";
-import blockText from "./blockText";
-import category from "./category";
-import companyInfo from "./companyInfo";
+import blockContent from "./objects/blockContent";
+import blockText from "./objects/blockText";
+import category from "./page/category";
+import companyInfo from "./page/companyInfo";
 import figure from "./figure";
+import landingPage from "./page/landingPages";
+import pageBuilder from "./objects/pageBuilder";
 import mainImage from "./mainImage";
 import localeString from "./localeString";
 // import navigationSettings from "./navigationSettings";
-import button from "./button";
-import page from "./page";
-import pageHome from "./pageHome";
+import button from "./objects/button";
+import page from "./page/page";
+import pageHome from "./page/pageHome";
 import social from "./social";
 import socialList from "./socialList";
-import seo from "./seo";
+import seo from "./objects/seo";
 import heroHome from "./heroHome";
 import clientsHome from "./clientsHome";
 import sectionContact from "./sectionContact";
 import clients from "./clients";
-import heading from "./heading";
+import heading from "./objects/heading";
 import person from "./person";
-import post from "./post";
-import postAuthor from "./postAuthor";
+import post from "./page/post";
+import postAuthor from "./objects/postAuthor";
 import textImageBlock from "./textImageBlock";
-import feature from "./feature";
-import featuresHome from "./featuresHome";
+import textColumnsWithImageItem from "./objects/textColumnsWithImageItem";
+import textColumnsWithImage from "./objects/textColumnsWithImage";
 import project from "./project";
 import projectMember from "./projectMember";
-import siteSettings from "./siteSettings";
+import siteSettings from "./page/siteSettings";
 import slideshow from "./slideshow";
 
 // Homepage sections
@@ -53,9 +55,10 @@ export default createSchema({
     companyInfo,
     seo,
     figure,
+    landingPage,
     mainImage,
     localeString,
-    feature,
+    textColumnsWithImageItem,
     clients,
     heading,
 
@@ -71,7 +74,7 @@ export default createSchema({
     pageHome,
     clientsHome,
     sectionThreeHome,
-    featuresHome,
+    textColumnsWithImage,
     sectionContact,
 
     // Misc

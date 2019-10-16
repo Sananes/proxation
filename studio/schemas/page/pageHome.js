@@ -1,4 +1,4 @@
-import project from "./project";
+import project from "../project";
 
 export default {
   name: "pageHome",
@@ -38,7 +38,7 @@ export default {
     {
       name: "features",
       title: "Section: What main features you offer",
-      type: "featuresHome"
+      type: "textColumnsWithImage"
     },
     {
       name: "support",

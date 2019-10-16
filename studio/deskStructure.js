@@ -15,6 +15,7 @@ const hiddenTypes = [
   "navigationSettings",
   "featuresHome",
   "heroHome",
+  "landingPage",
   "clients",
   "clientsHome",
   "social",
@@ -103,6 +104,10 @@ export default () =>
                 .icon(FaFile)
             ])
         ),
+      S.listItem()
+        .title("Landing Pages")
+        .schemaType("landingPage")
+        .child(S.documentTypeList("landingPage").title("Landing Pages")),
       S.listItem()
         .title("People")
         .schemaType("person")
