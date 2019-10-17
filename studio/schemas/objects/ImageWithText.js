@@ -1,10 +1,11 @@
 export default {
-  name: "textWithImage",
+  name: "imageWithText",
   title: "Text with Image",
   type: "document",
   fields: [
-    { title: "Heading", name: "heading", type: "heading" },
     { title: "Image", name: "image", type: "figure" },
+    { title: "Image alignment", name: "imageAlignment", type: "imageAlignment" },
+    { title: "Heading", name: "heading", type: "heading" },
     { title: "Button", name: "button", type: "button" },
     { name: "sectionColor", type: "sectionColor" }
   ],

@@ -4,23 +4,35 @@
   color: inherit;
 
   .grid {
+    display: grid;
+    grid-gap: 48px;
+    text-align: left;
+    align-items: center;
+
     @include breakpoint-md {
-      display: flex;
-      align-items: center;
+      grid-template-columns: repeat(2, 1fr);
+
+    }
+
+    &.left {
+      .image {
+        order: 1;
+      }
+
+      .heading {
+        order: 2;
+      }
     }
   }
 
 
 
-  .heading,
-  .image {
-    @include breakpoint-md {
-      lost-column: 1/2 2 48px;
-    }
-  }
+
 
   .heading {
     @include interpolate(margin-bottom, 24px, 120px);
+    margin-left: 0;
+    margin-right: 0;
     color: inherit;
 
     @include breakpoint-md {

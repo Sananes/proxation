@@ -30,7 +30,8 @@ import heading from "./objects/heading";
 import person from "./person";
 import post from "./page/post";
 import postAuthor from "./objects/postAuthor";
-import textWithImage from "./objects/textWithImage";
+import imageAlignment from "./objects/imageAlignment";
+import imageWithText from "./objects/imageWithText";
 import textColumnsWithImageItem from "./objects/textColumnsWithImageItem";
 import textColumnsWithImage from "./objects/textColumnsWithImage";
 import project from "./project";
@@ -63,13 +64,14 @@ export default createSchema({
     textColumnsWithImageItem,
     clients,
     heading,
+    imageAlignment,
 
     // SiteSettings
     socialList,
     social,
 
     // Parts
-    textWithImage,
+    imageWithText,
 
     // Homepage sections
     heroHome,

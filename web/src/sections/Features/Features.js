@@ -77,11 +77,10 @@ const Features = props => {
                         </div>
                       )}
                       <h4 className={styles.title}>{item.title}</h4>
-                      <BlockText
-                        className={styles.content}
-                        blocks={item.content || item._rawContent}
-                      />
-
+                      {item._rawContent && (
+                        <BlockText className={styles.content} blocks={item._rawContent} />
+                      )}
+                      <BlockText blocks={item.content} />
                       {item.button && (
                         <Button
                           type="link"

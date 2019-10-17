@@ -2,8 +2,8 @@ export default {
   name: "pageBuilder",
   title: "Page Builder",
   type: "array",
-  of: [{ type: "textColumnsWithImage" }, { type: "post" }, { type: "textWithImage" }],
+  of: [{ type: "textColumnsWithImage" }, { type: "post" }, { type: "imageWithText" }],
   options: {
-    editModal: "fullscreen"
+    editModal: "dialog"
   }
 };

@@ -18,7 +18,8 @@
 
   .grid {
     display: grid;
-    grid-gap: 24px;
+    width: $layout-width;
+    grid-gap: 48px 24px;
     position: relative;
     grid-template-columns: repeat(1, 1fr);
 
@@ -50,15 +51,16 @@
 
   .featureItem {
     @include interpolate(margin-bottom, 24px, 0px);
-
-
   }
 
 
 
   .title {
     @include h6;
-    color: inherit;
+
+    +p {
+      margin-top: 12px;
+    }
   }
 
   a {

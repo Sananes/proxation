@@ -43,7 +43,7 @@ export default {
     {
       name: "support",
       title: "Section: We support you",
-      type: "textWithImage"
+      type: "imageWithText"
     },
     {
       name: "sectionThree",

@@ -47,27 +47,23 @@
   z-index: 20;
   text-align: center;
   width: calc(100% - 60px - 24px);
+  color: $text-light;
 }
 
 .title {
   @include h5;
-  color: inherit;
+  color: inherit !important;
+
 }
 
-.title {
-  @media (hover: hover) {
-    @nest .root:hover & {
-      text-decoration: underline;
-    }
-  }
-}
+.title {}
 
 .excerpt {
-  @nest & p {
+  & p {
     margin: 0.5em 0;
   }
 
-  @nest & strong {
+  & strong {
     font-weight: 600;
   }
 }
