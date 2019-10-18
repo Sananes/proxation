@@ -19,12 +19,12 @@ export const query = graphql`
 `
 
 const LandingPage = props => {
-  const { data, errors } = props
+  const { data, errors, location } = props
   const page = data && data.page
   const pageBuilder = page && page._rawPageBuilder
 
   return (
-    <Layout>
+    <Layout location={location}>
       {errors && (
         <Container>
           <GraphQLErrorList errors={errors} />

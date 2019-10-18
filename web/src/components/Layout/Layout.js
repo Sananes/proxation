@@ -12,6 +12,7 @@ const Layout = ({
   onHideNav,
   onShowNav,
   showNav,
+  location,
   siteTitle,
   pageTitle,
   headerTransparent
@@ -25,7 +26,9 @@ const Layout = ({
       showNav={showNav}
       headerTransparent={headerTransparent}
     />
-    <div className={styles.content}>{children}</div>
+    <div location={location} className={styles.content}>
+      {children}
+    </div>
     <VisibilitySensor once partialVisibility>
       {({ isVisible }) => (
         <Footer companyInfo={companyInfo} siteTitle={siteTitle} isVisible={isVisible} />

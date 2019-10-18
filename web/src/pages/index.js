@@ -186,7 +186,7 @@ export const query = graphql`
 `
 
 const IndexPage = props => {
-  const { data, errors } = props
+  const { data, errors, location } = props
 
   if (errors) {
     return (
@@ -221,7 +221,7 @@ const IndexPage = props => {
   return (
     <Layout>
       <Seo title={site.title} description={site.description} keywords={site.keywords} />
-      <Hero visible={isVisible} {...hero} />
+      <Hero visible={isVisible} {...hero} location={location} />
       <CarouselSection
         className={styles.projects}
         data={projectNodes}

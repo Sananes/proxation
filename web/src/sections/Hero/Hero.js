@@ -8,7 +8,18 @@ import Image from 'gatsby-image/withIEPolyfill'
 
 import styles from './Hero.module.scss'
 
-function Hero({ title, subheading, image, caption, button, overlay, position, textColor }) {
+function Hero({
+  title,
+  subheading,
+  image,
+  caption,
+  button,
+  overlay,
+  position,
+  textColor,
+  location,
+  ...props
+}) {
   const isHomepage = location.pathname === '/' && styles.homepage
   const { overlayColor: color, overlayOpacity } = overlay || {}
   const opacity = overlayOpacity / 100
