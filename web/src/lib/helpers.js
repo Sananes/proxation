@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { format } from 'date-fns'
+import { getFluidGatsbyImage } from 'gatsby-source-sanity'
 
 export function cn(...args) {
   return args.filter(Boolean).join(' ')
@@ -17,6 +18,14 @@ export function mapEdgesToNodes2(data) {
 
 export function sanityConfig() {
   return { projectId: 'rks6ojwp', dataset: 'production' }
+}
+
+export function getSanityImageFluid(source) {
+  const imageObj = {
+    asset: { _ref: source.asset._id }
+  }
+  const fluidProps = getFluidGatsbyImage(imageObj, { maxWidth: 1024 }, sanityConfig())
+  return fluidProps
 }
 
 export function filterOutDocsWithoutSlugs({ slug }) {

@@ -16,7 +16,7 @@ function resolveSections(module) {
 }
 
 function RenderModules(props) {
-  const { modules } = props
+  const { modules, location } = props
 
   if (!modules) {
     console.error('Missing section')
@@ -30,7 +30,7 @@ function RenderModules(props) {
         if (!ModuleComponent) {
           return <div>Missing module {module._type}</div>
         }
-        return <ModuleComponent {...module} key={module._key} />
+        return <ModuleComponent {...module} location={location} key={module._key} />
       })}
     </Fragment>
   )

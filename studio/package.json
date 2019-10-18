@@ -18,16 +18,19 @@
   "dependencies": {
     "@sanity/base": "^0.142.6",
     "@sanity/cli": "^0.142.7",
+    "@sanity/color-input": "^0.142.6",
     "@sanity/components": "^0.142.6",
     "@sanity/core": "^0.142.6",
     "@sanity/default-layout": "^0.142.7",
     "@sanity/default-login": "^0.142.6",
-    "@sanity/desk-tool": "^0.142.7",
+    "@sanity/desk-tool": "^0.142.8",
     "@sanity/language-filter": "^0.142.6",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-icons": "^3.7.0"
+    "react-icons": "^3.7.0",
+    "sanity-plugin-seo-tools": "^1.0.1",
+    "sanity-plugin-unicorn-slider": "^0.0.2"
   },
   "devDependencies": {
     "eslint": "^5.16.0",

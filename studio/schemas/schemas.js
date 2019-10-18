@@ -20,9 +20,10 @@ import page from "./page/page";
 import pageHome from "./page/pageHome";
 import social from "./social";
 import sectionColor from "./objects/sectionColor";
+import opacityOverlay from "./objects/opacityOverlay";
 import socialList from "./socialList";
 import seo from "./objects/seo";
-import heroHome from "./heroHome";
+import hero from "./objects/hero";
 import clientsHome from "./clientsHome";
 import sectionContact from "./sectionContact";
 import clients from "./clients";
@@ -63,6 +64,7 @@ export default createSchema({
     localeString,
     textColumnsWithImageItem,
     clients,
+    opacityOverlay,
     heading,
     imageAlignment,
 
@@ -74,7 +76,7 @@ export default createSchema({
     imageWithText,
 
     // Homepage sections
-    heroHome,
+    hero,
     pageHome,
     clientsHome,
     sectionThreeHome,

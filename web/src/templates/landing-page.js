@@ -1,5 +1,5 @@
 import React from 'react'
-import Layout from '../components/Layout'
+import Layout from '../containers/layout'
 import Seo from '../components/Seo'
 import RenderModules from '../components/RenderModules'
 import Container from '../components/Container'
@@ -23,7 +23,6 @@ const LandingPage = props => {
   const page = data && data.page
   const pageBuilder = page && page._rawPageBuilder
 
-  console.log(page._rawPageBuilder)
   return (
     <Layout>
       {errors && (
@@ -32,7 +31,11 @@ const LandingPage = props => {
         </Container>
       )}
 
-      {pageBuilder && <RenderModules modules={page._rawPageBuilder} />}
+      {pageBuilder && (
+        <div>
+          <RenderModules location={location} modules={page._rawPageBuilder} />
+        </div>
+      )}
     </Layout>
   )
 }

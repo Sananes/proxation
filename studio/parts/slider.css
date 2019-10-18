@@ -1,0 +1,103 @@
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  margin: 8.35px 0;
+}
+
+.slider:focus {
+  outline: none;
+}
+
+.slider::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+  background: #fff;
+  border-radius: 8px;
+  border: 2.3px solid rgba(0, 0, 0, 0.16);
+}
+
+.slider::before::-webkit-slider-thumb {}
+
+.slider::-webkit-slider-thumb {
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  height: 24px;
+  width: 24px;
+  border-radius: 100px;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -11px;
+  background: #fff;
+}
+
+.slider:focus::-webkit-slider-thumb {
+  box-shadow: 4.1px 4.1px 7.2px rgba(0, 0, 0, 0.064), 0px 0px 4.1px rgba(0, 0, 0, 0.064);
+}
+
+.slider:focus::-webkit-slider-runnable-track {
+  background: #f6f6f6;
+}
+
+.slider::-moz-range-track {
+  content: '🦄';
+  width: 100%;
+  height: 13.3px;
+  cursor: pointer;
+  box-shadow: 1.4px 1.4px 1.7px #ffb2df, 0px 0px 1.4px #ffccea;
+  background: #ffbae6;
+  border-radius: 25px;
+  border: 2.3px solid #dbd58f;
+}
+
+.slider::-moz-range-thumb {
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  height: 24px;
+  width: 24px;
+  border-radius: 100px;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -81px;
+  background: #fff;
+}
+
+.slider::-ms-track {
+  width: 100%;
+  height: 13.3px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+.slider::-ms-fill-lower {
+  background: #ff68ca;
+  border: 2.3px solid #dbd58f;
+  border-radius: 50px;
+  box-shadow: 1.4px 1.4px 1.7px #ffb2df, 0px 0px 1.4px #ffccea;
+}
+
+.slider::-ms-fill-upper {
+  background: #ff91d8;
+  border: 2.3px solid #dbd58f;
+  border-radius: 50px;
+  box-shadow: 1.4px 1.4px 1.7px #ffb2df, 0px 0px 1.4px #ffccea;
+}
+
+.slider::-ms-thumb {
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  height: 24px;
+  width: 24px;
+  border-radius: 100px;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -8px;
+  background: #fff;
+}
+
+.slider:focus::-ms-fill-lower {
+  background: #ff91d8;
+}
+
+.slider:focus::-ms-fill-upper {
+  background: #ffbae6;
+}

@@ -1,67 +1,136 @@
-import { graphql, StaticQuery } from 'gatsby'
 import React from 'react'
 import cn from 'classnames'
-import styles from './Hero.module.scss'
 import Container from '../../components/Container'
 import { Spring } from 'react-spring/renderprops'
+import Button from '../../components/Button'
+import { getSanityImageFluid } from '../../lib/helpers'
+import Image from 'gatsby-image/withIEPolyfill'
 
-const query = graphql`
-  query hero {
-    sanityPageHome {
-      hero {
-        title
-        subheading
-        caption
-        button {
-          text
-          url
-        }
-      }
+import styles from './Hero.module.scss'
+
+function Hero({ title, subheading, image, caption, button, overlay, position, textColor }) {
+  const isHomepage = location.pathname === '/' && styles.homepage
+  const { overlayColor: color, overlayOpacity } = overlay || {}
+  const opacity = overlayOpacity / 100
+
+  function alignmentClass(align) {
+    switch (align) {
+      case 'centerLeft':
+        return styles.alignLeft
+      case 'centerMiddle':
+        return styles.alignCenter
+      case 'centerRight':
+        return styles.alignRight
+      case 'topLeft':
+        return styles.alignTopLeft
+      case 'topCenter':
+        return styles.alignTopCenter
+      case 'topRight':
+        return styles.alignTopRight
+      case 'bottomLeft':
+        return styles.alignBottomLeft
+      case 'bottomCenter':
+        return styles.alignBottomCenter
+      case 'bottomRight':
+        return styles.alignBottomRight
+      default:
+        return styles.alignCenter
     }
   }
-`
 
-function Hero(props) {
+  console.log(textColor)
+
   return (
-    <StaticQuery
-      query={query}
-      render={data => {
-        return (
-          <div className={cn(styles.hero, styles.dark, styles.alignCenter)}>
-            <Container className={styles.container}>
-              <div className={styles.content}>
-                {data.sanityPageHome.hero.title && (
-                  <Spring
-                    from={{ opacity: 0, transform: 'translateY(-24px)' }}
-                    to={{ opacity: 1, transform: 'translateY(0)' }}
-                  >
-                    {props => (
-                      <h1 style={props} className={styles.title}>
-                        {data.sanityPageHome.hero.title}
-                      </h1>
-                    )}
-                  </Spring>
-                )}
+    <div
+      className={cn(
+        styles.hero,
+        isHomepage,
+        position && alignmentClass(position),
+        textColor && textColor === 'light' ? styles.light : styles.dark
+      )}
+    >
+      {image && image.asset && (
+        <Spring
+          from={{ opacity: 0, transform: 'translateY(-24px)' }}
+          to={{ opacity: 1, transform: 'translateY(0)' }}
+        >
+          {animation => (
+            <div className={styles.imageWrapper} style={animation}>
+              <Image fluid={getSanityImageFluid(image)} alt={image.alt || title} />
+              {overlay.overlay && (
+                <div
+                  className={styles.overlay}
+                  style={{
+                    backgroundColor: color.hex,
+                    opacity: opacity
+                  }}
+                />
+              )}
+            </div>
+          )}
+        </Spring>
+      )}
+      <Container className={styles.container}>
+        <div className={styles.content}>
+          {caption && (
+            <Spring
+              from={{ opacity: 0, transform: 'translateY(-24px)' }}
+              to={{ opacity: 1, transform: 'translateY(0)' }}
+            >
+              {animation => (
+                <small style={animation} className={styles.caption}>
+                  {caption}
+                </small>
+              )}
+            </Spring>
+          )}
+          {title && (
+            <Spring
+              from={{ opacity: 0, transform: 'translateY(-24px)' }}
+              to={{ opacity: 1, transform: 'translateY(0)' }}
+            >
+              {animation => (
+                <h2 style={animation} className={styles.title}>
+                  {title}
+                </h2>
+              )}
+            </Spring>
+          )}
 
-                {data.sanityPageHome.hero.subheading && (
-                  <Spring
-                    from={{ opacity: 0, transform: 'translateY(-24px)' }}
-                    to={{ opacity: 1, transform: 'translateY(0)' }}
-                    delay={200}
-                  >
-                    {props => (
-                      <p style={props} className={styles.paragraph}>
-                        {data.sanityPageHome.hero.subheading}
-                      </p>
-                    )}
-                  </Spring>
-                )}
-              </div>
-            </Container>
-          </div>
-        )
-      }}
-    />
+          {subheading && (
+            <Spring
+              from={{ opacity: 0, transform: 'translateY(-24px)' }}
+              to={{ opacity: 1, transform: 'translateY(0)' }}
+              delay={300}
+            >
+              {animate => (
+                <p style={animate} className={styles.lead}>
+                  {subheading}
+                </p>
+              )}
+            </Spring>
+          )}
+
+          {button && (
+            <Spring
+              from={{ opacity: 0, transform: 'translateY(-24px)' }}
+              to={{ opacity: 1, transform: 'translateY(0)' }}
+              delay={400}
+            >
+              {animation => (
+                <Button
+                  type="button"
+                  text={button.text}
+                  link={button.url}
+                  style="primary"
+                  className={styles.button}
+                />
+              )}
+            </Spring>
+          )}
+        </div>
+      </Container>
+    </div>
   )
 }
 

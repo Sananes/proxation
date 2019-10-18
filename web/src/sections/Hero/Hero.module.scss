@@ -1,29 +1,70 @@
 @import '../../assets/scss/helpers';
 
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 
-:global(.react-reveal) {
-  .hero {
-    background: red !important;
+.imageWrapper {
+  display: block;
+  position: relative;
+  background: $color-hightlight-background;
+
+  @include breakpoint-md {
+    height: 100%;
+
+    & > div:first-child {
+      height: 100%;
+    }
   }
 }
 
 .hero {
   position: relative;
-  margin-top: -$header-mobile-height / 1.5;
-  height: 80vh;
 
   @include breakpoint-md {
-    margin-top: -$header-height / 1.5;
-
+    position: relative;
+    overflow: hidden;
+    height: calc(100vh - #{$header-height});
+    padding: 0;
   }
-
 }
 
-.alignRight {
+// Homepage specific
+.homepage {
+  &.hero {
+    @include breakpoint-md {
+      height: calc(85vh - #{$header-height});
+      margin-top: -#{$header-height / 1.5};
+      padding: 0;
+    }
+  }
+
+  + section {
+    margin-top: 0;
+    padding-top: 0;
+
+    @include breakpoint-md {
+      margin-top: -15vh;
+      @include interpolate(padding-top, 48px, 120px);
+    }
+  }
+}
+
+.button {
+  margin-top: 24px;
+}
+
+.alignRight,
+.alignTopRight {
   text-align: left;
 }
 
-.alignLeft {
+.alignLeft,
+.alignTopLeft {
   text-align: left;
 }
 
@@ -32,51 +73,34 @@
 }
 
 .container {
-  position: absolute;
-  width: 100%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10;
-  color: $text-dark;
+  position: relative;
+  padding-top: 48px;
+  padding-bottom: 48px;
 
-  .fullScreen & {
+  @include breakpoint-md {
+    position: absolute;
+    width: 100%;
+    top: 50%;
     left: 50%;
-    top: calc(50% - #{$header-height});
-    transform: translate(-50%, calc(-50% + #{$header-mobile-height * 2.5}));
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    color: $text-dark;
+    padding-top: 0;
+    padding-bottom: 0;
 
-    @include breakpoint-md {
-      transform: translate(-50%, calc(-50% + #{$header-height + $header-height / 2}));
-
-      &.alignLeft & {
-        transform: translate(0px, calc(-50% + #{$header-height + $header-height / 2}));
-      }
+    .alignTopLeft &,
+    .alignTopRight &,
+    .alignTopCenter & {
+      top: 64px;
+      transform: translate(-50%, 0%);
     }
 
-    &.alignLeft & {
-      transform: translate(0px, calc(-50% + #{$header-mobile-height + $header-mobile-height / 2}));
-
-    }
-  }
-
-  .light & {
-    color: $text-light;
-  }
-
-  &.alignRight.fullScreen & {
-
-    transform: translate(-50%, calc(-50% + #{$header-mobile-height + $header-mobile-height / 2}));
-
-    @include breakpoint-md {
-      transform: translate(-50%, calc(-50% + #{$header-height + $header-height / 2}));
-    }
-  }
-
-  .alignLeft.fullScreen & {
-    transform: translate(-50%, calc(-50% + #{$header-mobile-height + $header-mobile-height / 2}));
-
-    @include breakpoint-md {
-      transform: translate(-50%, calc(-50% + #{$header-height + $header-height / 2}));
+    .alignBottomLeft &,
+    .alignBottomRight &,
+    .alignBottomCenter & {
+      top: auto;
+      bottom: 64px;
+      transform: translate(-50%, 0%);
     }
   }
 }
@@ -84,41 +108,89 @@
 .content {
   max-width: 650px;
 
-  .alignLeft & {
-    padding-left: 0;
+  .alignCenter & {
+    margin: 0 auto;
+  }
+
+  @include breakpoint-md {
+    .alignLeft &,
+    .alignTopLeft & {
+      padding-left: 0;
+    }
+
+    .alignCenter & {
+      lost-center: 820px;
+
+      .lead {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
+    .alignRight &,
+    .alignTopRight &,
+    .alignTopCenter &,
+    .alignBottomRight & {
+      margin-right: 0;
+      margin-left: auto;
+    }
+
+    .alignTopCenter &,
+    .alignBottomCenter & {
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+
+      .lead {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+}
+
+// Hero Content
+
+.title {
+  @include h1;
+
+  .light & {
+    @include breakpoint-md {
+      color: $text-light;
+    }
+  }
+}
+
+.caption {
+  @include overline;
+
+  .light & {
+    @include breakpoint-md {
+      color: $text-light;
+    }
+  }
+
+  + .title {
+    margin-top: 16px;
+  }
+}
+
+.lead {
+  @include body-l;
+  max-width: 500px;
+
+  .light & {
+    @include breakpoint-md {
+      color: $text-light;
+    }
   }
 
   .alignCenter & {
-    lost-center: 820px;
-  }
-
-  .alignRight & {
-    margin-right: 0;
     margin-left: auto;
-  }
-
-  p {
-    @include body-l;
-    color: $text-subdued;
-    lost-center: 500px;
+    margin-right: auto;
   }
 }
 
-small {
-  @include overline;
-  color: inherit;
-}
-
-.title {
-  color: inherit;
-}
-
-small+.title {
+small + .title {
   margin-top: 1rem;
-}
-
-.button {
-  @extend %buttonLarge,
-  %buttonSecondaryLight;
-  margin-top: 2rem;
 }

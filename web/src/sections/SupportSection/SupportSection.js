@@ -13,6 +13,7 @@ const SupportSection = props => {
   if (!heading && !image) {
     throw new Error('No image or text have been added in the studio for the Text with Image')
   }
+
   function alignmentClass(align) {
     switch (align) {
       case 'left':

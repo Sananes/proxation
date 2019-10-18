@@ -42,6 +42,19 @@ export const query = graphql`
       }
     }
 
+    hero: sanityPageHome {
+      heroHome {
+        title
+        subheading
+        caption
+        position
+        button {
+          text
+          url
+        }
+      }
+    }
+
     contact: sanityPageHome {
       sectionContact {
         sectionColor
@@ -182,7 +195,6 @@ const IndexPage = props => {
       </Layout>
     )
   }
-
   const site = (data || {}).site
 
   const projectNodes = (data || {}).home && data.home.edges.map(edge => edge.node.projects)[0]
@@ -190,6 +202,8 @@ const IndexPage = props => {
   const supportSectionNode = (data || {}).home && data.home.edges.map(edge => edge.node.support)[0]
 
   const featuresNodes = (data || {}).home && data.home.edges.map(edge => edge.node.features)[0]
+
+  const hero = (data || {}).hero.heroHome
 
   const sectionThreeHeadingNodes =
     (data || {}).home && data.home.edges.map(edge => edge.node.sectionThree.heading)[0]
@@ -207,7 +221,7 @@ const IndexPage = props => {
   return (
     <Layout>
       <Seo title={site.title} description={site.description} keywords={site.keywords} />
-      <Hero visible={isVisible} />
+      <Hero visible={isVisible} {...hero} />
       <CarouselSection
         className={styles.projects}
         data={projectNodes}

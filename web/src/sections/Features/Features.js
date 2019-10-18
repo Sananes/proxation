@@ -10,7 +10,6 @@ import Button from '../../components/Button'
 import { sanityConfig, buildImageObj } from '../../lib/helpers'
 import Image from 'gatsby-image/withIEPolyfill'
 import { imageUrlFor } from '../../lib/image-url'
-import { getImageUrl } from '@sanity/block-content-to-react'
 
 const Features = props => {
   const { isVisible } = props
