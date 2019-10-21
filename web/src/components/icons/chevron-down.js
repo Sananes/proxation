@@ -8,7 +8,7 @@ const ArrowDown = ({ strokeWidth }) => (
       d="M6 9L12 15L18 9"
       stroke="currentColor"
       strokeWidth={strokeWidth}
-      strokeLineCap="round"
+      strokeLinecap="round"
       strokeLinejoin="round"
     />
   </svg>

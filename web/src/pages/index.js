@@ -21,6 +21,31 @@ export const query = graphql`
       keywords
     }
 
+    agency: sanityPageHome {
+      sectionThree {
+        heading {
+          caption
+          title
+          subHeading
+        }
+        items {
+          _key
+          title
+          _rawContent
+          image {
+            alt
+            caption
+            asset {
+              url
+              fluid(maxWidth: 800) {
+                ...GatsbySanityImageFluid
+              }
+            }
+          }
+        }
+      }
+    }
+
     clients: sanityPageHome {
       clients {
         heading {
@@ -77,27 +102,6 @@ export const query = graphql`
     home: allSanityPageHome {
       edges {
         node {
-          sectionThree {
-            heading {
-              caption
-              title
-              subHeading
-            }
-            items {
-              title
-              _rawContent
-              image {
-                alt
-                caption
-                asset {
-                  url
-                  fluid(maxWidth: 800) {
-                    ...GatsbySanityImageFluid
-                  }
-                }
-              }
-            }
-          }
           support {
             sectionColor
             heading {
@@ -128,6 +132,7 @@ export const query = graphql`
               title
             }
             items {
+              _key
               title
               _rawContent
               image {
@@ -205,11 +210,7 @@ const IndexPage = props => {
 
   const hero = (data || {}).hero.heroHome
 
-  const sectionThreeHeadingNodes =
-    (data || {}).home && data.home.edges.map(edge => edge.node.sectionThree.heading)[0]
-
-  const sectionThreeItemNodes =
-    (data || {}).home && data.home.edges.map(edge => edge.node.sectionThree.items)[0]
+  const agencySectionNodes = (data || {}).agency && data.agency.sectionThree
 
   const isVisible = true
   if (!site) {
@@ -230,16 +231,10 @@ const IndexPage = props => {
         animate={true}
         isVisible={isVisible}
       />
-
       <Clients data={data.clients.clients} animate={true} />
-
       <Features {...featuresNodes} animate={true} />
       <SupportSection {...supportSectionNode} animate={true} />
-      <AgencySection
-        data={sectionThreeItemNodes}
-        headingData={sectionThreeHeadingNodes}
-        animate={true}
-      />
+      <AgencySection data={agencySectionNodes} animate={true} /> */}
       <ContactSection data={data.contact.sectionContact} animate={true} />
     </Layout>
   )

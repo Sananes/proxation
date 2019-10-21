@@ -17,6 +17,7 @@ export default {
       title: "Hero",
       type: "hero"
     },
+    { name: "linkReference", title: "Link", type: "linkReference" },
     {
       name: "projects",
       title: "Section: Showcase Projects",

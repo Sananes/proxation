@@ -5,13 +5,15 @@ import Image from 'gatsby-image/withIEPolyfill'
 import styles from './AgencySection.module.scss'
 import BlockText from '../../components/block-text'
 import { Spring, Trail } from 'react-spring/renderprops'
-import AnimateScroll from '../../components/AnimateScroll'
+import VisibilitySensor from '../../components/VisibilitySensor'
 
 const AgencySection = props => {
-  const { data, headingData, animate } = props
+  const { data } = props
   if (!data) {
     throw new Error('No slide items have been added in the studio')
   }
+
+  const { items, heading } = data
 
   function fadeIn(isVisible) {
     return {
@@ -19,39 +21,36 @@ const AgencySection = props => {
       opacity: isVisible ? 1 : 0
     }
   }
-
   return (
-    <AnimateScroll
-      condition={props.animate}
+    <VisibilitySensor
       once
-      partialVisibility="bottom"
+      partialVisibility
       children={({ isVisible }) => (
         <Section className={styles.agency}>
           <div className={styles.headingWrapper}>
             <TextBlock
-              caption={headingData.caption}
+              caption={heading.caption}
               align="left"
               className={styles.heading}
-              title={headingData.title}
+              title={heading.title}
               isVisible={isVisible}
             />
             <Spring to={fadeIn(isVisible)}>
               {props => (
                 <p style={props} className={styles.lead}>
-                  {headingData.subHeading}
+                  {heading.subHeading}
                 </p>
               )}
             </Spring>
           </div>
           <div className={styles.grid}>
-            <AnimateScroll
-              condition={props.animate}
-              once
-              partialVisibility="bottom"
-              children={({ isVisible }) => (
-                <Trail items={data} keys={item => item._id} to={fadeIn(isVisible)}>
-                  {item => props => (
-                    <div className={styles.item} key={item._id} style={props}>
+            <Trail items={items} keys={item => item._key} to={fadeIn(isVisible)}>
+              {item => props => (
+                <VisibilitySensor
+                  once
+                  partialVisibility="middle"
+                  children={({ isVisible }) => (
+                    <div className={styles.item} style={props}>
                       <Image
                         style={props}
                         fluid={item.image.asset.fluid}
@@ -66,9 +65,9 @@ const AgencySection = props => {
                       <BlockText blocks={item._rawContent} style={props} />
                     </div>
                   )}
-                </Trail>
+                />
               )}
-            />
+            </Trail>
           </div>
         </Section>
       )}

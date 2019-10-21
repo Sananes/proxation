@@ -23,6 +23,7 @@ const hiddenTypes = [
   "textImageBlock",
   "textColumnsWithImage",
   "textWithImage",
+  "imageWithText",
   "textColumnsWithImageItem",
   "post",
   "project",
@@ -79,38 +80,51 @@ export default () =>
             .title("Pages")
             .items([
               S.listItem()
+                .title("Pages")
+                .schemaType("page")
+                .child(S.documentTypeList("page").title("Pages")),
+              S.listItem()
                 .title("Homepage")
                 .child(
                   S.editor()
+                    .title("Homepage")
                     .id("pageHome")
                     .schemaType("pageHome")
                     .documentId("pageHome")
                 )
                 .icon(FaFile),
+              // S.listItem()
+              //   .title("Static Pages")
+              //   .child(
+              //     S.list()
+              //       .title("Static Pages")
+              //       .items([
+              //         S.listItem()
+              //           .title("About")
+              //           .child(
+              //             S.editor()
+              //               .id("aboutPage")
+              //               .schemaType("page")
+              //               .documentId("about")
+              //           )
+              //           .icon(FaFile),
+              //         S.listItem()
+              //           .title("Contact")
+              //           .child(
+              //             S.editor()
+              //               .id("contactPage")
+              //               .schemaType("page")
+              //               .documentId("contact")
+              //           )
+              //           .icon(FaFile)
+              //       ])
+              //   ),
               S.listItem()
-                .title("About")
-                .child(
-                  S.editor()
-                    .id("aboutPage")
-                    .schemaType("page")
-                    .documentId("about")
-                )
-                .icon(FaFile),
-              S.listItem()
-                .title("Contact")
-                .child(
-                  S.editor()
-                    .id("contactPage")
-                    .schemaType("page")
-                    .documentId("contact")
-                )
-                .icon(FaFile)
+                .title("Landing Pages")
+                .schemaType("landingPage")
+                .child(S.documentTypeList("landingPage").title("Landing Pages"))
             ])
         ),
-      S.listItem()
-        .title("Landing Pages")
-        .schemaType("landingPage")
-        .child(S.documentTypeList("landingPage").title("Landing Pages")),
       S.listItem()
         .title("People")
         .schemaType("person")

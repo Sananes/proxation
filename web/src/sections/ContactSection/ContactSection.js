@@ -20,6 +20,9 @@ const ContactSection = props => {
       transform: isVisible ? 'translateY(0)' : 'translateY(-24px)'
     }
   }
+
+  const isDark = data.sectionColor === 'dark'
+
   return (
     <AnimateScroll
       condition={props.animate}
@@ -32,7 +35,7 @@ const ContactSection = props => {
               className={styles.root}
               sectionColor={data.sectionColor}
               headingClassName={styles.heading}
-              dark={true}
+              dark={isDark}
             >
               <div className={styles.grid} style={(props, { delay: 300 })}>
                 <div className={styles.content}>
@@ -53,16 +56,16 @@ const ContactSection = props => {
                     <a href="mailto: info@proxation.de">info@proxation.de</a>
                   </p>
                   <form className={styles.form}>
-                    <FormGroup label="Full Name" name="fullName" dark={true} />
-                    <FormGroup label="Email Address" name="email" dark={true} />
-                    <FormGroup label="Company" name="company" dark={true} />
-                    <FormGroup label="Budget" type="select" name="budget" dark={true} />
+                    <FormGroup label="Full Name" name="fullName" dark={isDark} />
+                    <FormGroup label="Email Address" name="email" dark={isDark} />
+                    <FormGroup label="Company" name="company" dark={isDark} />
+                    <FormGroup label="Budget" type="select" name="budget" dark={isDark} />
                     <FormGroup
                       className={styles.message}
                       label="Message"
                       name="message"
                       type="textarea"
-                      dark={true}
+                      dark={isDark}
                     />
                     <Button
                       className={styles.button}

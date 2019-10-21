@@ -28,7 +28,7 @@ const SupportSection = props => {
   const sanityConfig = { projectId: 'rks6ojwp', dataset: 'production' }
   const imageAssetId = image.asset._id
   const fluidProps = getFluidGatsbyImage(imageAssetId, { maxWidth: 1024 }, sanityConfig)
-  console.log(align)
+
   return (
     <VisibilitySensor
       partialVisibility

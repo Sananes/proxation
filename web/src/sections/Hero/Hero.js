@@ -49,8 +49,6 @@ function Hero({
     }
   }
 
-  console.log(textColor)
-
   return (
     <div
       className={cn(
@@ -128,12 +126,11 @@ function Hero({
               to={{ opacity: 1, transform: 'translateY(0)' }}
               delay={400}
             >
-              {animation => (
+              {animate => (
                 <Button
                   type="button"
                   text={button.text}
                   link={button.url}
-                  style="primary"
                   className={styles.button}
                 />
               )}

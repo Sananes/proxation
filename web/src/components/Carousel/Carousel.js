@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'gatsby'
-import Image from 'gatsby-image/withIEPolyfill'
 import { useWindowDimensions } from '../../lib/helpers'
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel'
 import Icon from '../../components/icons'
@@ -10,7 +9,7 @@ import ProjectPreview from '../ProjectPreview'
 import { Trail } from 'react-spring/renderprops'
 
 const Carousel = props => {
-  const { data, className, slug, isVisible } = props
+  const { data, className, isVisible } = props
   const { width } = useWindowDimensions()
   const [isDevice, setIsDevice] = useState(false)
 
@@ -30,7 +29,6 @@ const Carousel = props => {
       naturalSlideHeight={480}
       lockOnWindowScroll={false}
       interval={200}
-      infinite={true}
       visibleSlides={isDevice ? 1.5 : data.length > 3 ? 3.5 : data.length}
       totalSlides={data.length}
       className={cn(styles.sliderCarousel, className)}

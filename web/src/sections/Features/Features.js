@@ -54,21 +54,16 @@ const Features = props => {
               children={({ isVisible }) => (
                 <Trail
                   items={items}
-                  keys={item => item.id}
+                  keys={item => item._key}
                   to={{
                     transform: isVisible ? 'translateY(0)' : 'translateY(-24px)',
                     opacity: isVisible ? 1 : 0
                   }}
                 >
                   {item => props => (
-                    <div style={props} delay={1000} className={styles.featureItem} key={item.id}>
+                    <div style={props} delay={1000} className={styles.featureItem} key={item._key}>
                       {item.image && item.image.asset && (
                         <div className={styles.image}>
-                          {/* } <Image
-                            fluid={fluidProps(item.image.asset._id)}
-                            title={item.image.alt || item.title}
-                            alt={item.image.alt || item.title}
-                      /> */}
                           <img
                             src={imageUrlFor(buildImageObj(item.image))}
                             className={styles.image}
@@ -76,10 +71,11 @@ const Features = props => {
                         </div>
                       )}
                       <h4 className={styles.title}>{item.title}</h4>
-                      {item._rawContent && (
+                      {item._rawContent ? (
                         <BlockText className={styles.content} blocks={item._rawContent} />
+                      ) : (
+                        <BlockText blocks={item.content} />
                       )}
-                      <BlockText blocks={item.content} />
                       {item.button && (
                         <Button
                           type="link"

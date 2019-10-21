@@ -1,4 +1,5 @@
 import React from 'react'
+import { graphql } from 'gatsby'
 import Layout from '../containers/layout'
 import Seo from '../components/Seo'
 import RenderModules from '../components/RenderModules'
@@ -24,7 +25,7 @@ const LandingPage = props => {
   const pageBuilder = page && page._rawPageBuilder
 
   return (
-    <Layout location={location}>
+    <Layout>
       {errors && (
         <Container>
           <GraphQLErrorList errors={errors} />

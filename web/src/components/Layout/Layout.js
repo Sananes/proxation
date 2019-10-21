@@ -11,6 +11,7 @@ const Layout = ({
   companyInfo,
   onHideNav,
   onShowNav,
+  menu,
   showNav,
   location,
   siteTitle,
@@ -19,6 +20,7 @@ const Layout = ({
 }) => (
   <>
     <Header
+      data={menu}
       siteTitle={siteTitle}
       onHideNav={onHideNav}
       onShowNav={onShowNav}

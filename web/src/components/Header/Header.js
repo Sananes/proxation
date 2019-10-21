@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'gatsby'
 import Icon from '../icons'
 import { useTrail, animated } from 'react-spring'
@@ -10,45 +10,86 @@ import styles from './Header.module.scss'
 import './headroom.scss'
 import { Spring } from 'react-spring/renderprops'
 
-const data = [
-  {
-    name: 'Shopware',
-    link: 'shopware',
-    dropdown: [
-      {
-        name: 'Shopware 6',
-        link: 'shopware-6'
-      }
-    ]
-  },
-  {
-    name: 'Spezialitäten',
-    link: 'spezialitaten',
-    dropdown: [
-      {
-        name: 'Amazon Marketing',
-        link: 'amazon-marketing'
-      },
-      {
-        name: 'Braintree Payments',
-        link: 'braintree-payments'
-      },
-      {
-        name: 'Pickware Warenwirtschaft',
-        link: 'pickware-warenwirtschaft'
-      }
-    ]
-  },
-  {
-    name: 'Referenzen',
-    link: 'referenzen'
-  },
-  { name: 'Shop', link: 'shop' },
-  { name: 'Jobs', link: 'jobs' },
-  { name: 'Blog', link: 'blog' },
-  { name: 'Kontakt', link: 'kontakt' }
-]
-const Header = ({ onHideNav, onShowNav, showNav, siteTitle, headerTransparent, ...props }) => {
+// const data = [
+//   {
+//     name: 'Shopware',
+//     link: 'shopware',
+//     dropdown: [
+//       {
+//         name: 'Shopware 6',
+//         link: 'shopware-6'
+//       }
+//     ]
+//   },
+//   {
+//     name: 'Spezialitäten',
+//     link: 'spezialitaten',
+//     dropdown: [
+//       {
+//         name: 'Amazon Marketing',
+//         link: 'amazon-marketing'
+//       },
+//       {
+//         name: 'Braintree Payments',
+//         link: 'braintree-payments'
+//       },
+//       {
+//         name: 'Pickware Warenwirtschaft',
+//         link: 'pickware-warenwirtschaft'
+//       }
+//     ]
+//   },
+//   {
+//     name: 'Referenzen',
+//     link: 'referenzen'
+//   },
+//   { name: 'Shop', link: 'shop' },
+//   { name: 'Jobs', link: 'jobs' },
+//   { name: 'Blog', link: 'blog' },
+//   { name: 'Kontakt', link: 'kontakt' }
+// ]
+
+function resolveType(item) {
+  const slug = item.slug && item.slug.current
+
+  switch (item._type) {
+    case 'landingPage':
+      return `/${slug}`
+    case 'post':
+      return `/blog/${slug}`
+    case 'project':
+      return `/project/${slug}`
+    default:
+      return null
+  }
+}
+
+const NavItem = ({ item }) => {
+  const { link, submenu, key: _key } = item
+  return (
+    <li key={item.key}>
+      <a href={link.navLink && resolveType(link.navLink.reference)}>{link.name}</a>
+
+      {submenu != null && (
+        <ul>
+          {submenu.map((subitem, i) => (
+            <li key={i}>{subitem.name}</li>
+          ))}
+        </ul>
+      )}
+    </li>
+  )
+}
+
+const Header = ({
+  data,
+  onHideNav,
+  onShowNav,
+  showNav,
+  siteTitle,
+  headerTransparent,
+  ...props
+}) => {
   const animationTime = 1200
 
   // const menuAnimation = useTrail(data.length, {
@@ -57,11 +98,14 @@ const Header = ({ onHideNav, onShowNav, showNav, siteTitle, headerTransparent, .
   //   friction: 4
   // })
 
-  // console.log(menuAnimation)
-
   return (
     <>
       <Headroom disableInlineStyles pinStart={0} className={showNav && `headroom-shownav`}>
+        {/* } <ul style={{ position: 'fixed', top: '100px' }}>
+          {data.map((item, index) => (
+            <NavItem item={item} />
+          ))}
+          </ul> */}
         <CSSTransition
           in={showNav}
           timeout={animationTime}

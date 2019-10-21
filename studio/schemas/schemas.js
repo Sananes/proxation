@@ -12,14 +12,16 @@ import companyInfo from "./page/companyInfo";
 import figure from "./figure";
 import landingPage from "./page/landingPages";
 import pageBuilder from "./objects/pageBuilder";
+import link from "./objects/link";
 import mainImage from "./mainImage";
 import localeString from "./localeString";
-// import navigationSettings from "./navigationSettings";
+import headerNav from "./objects/headerNav";
 import button from "./objects/button";
 import page from "./page/page";
 import pageHome from "./page/pageHome";
 import social from "./social";
 import sectionColor from "./objects/sectionColor";
+import urlReference from "./objects/urlReference";
 import opacityOverlay from "./objects/opacityOverlay";
 import socialList from "./socialList";
 import seo from "./objects/seo";
@@ -42,6 +44,8 @@ import slideshow from "./slideshow";
 
 // Homepage sections
 import sectionThreeHome from "./sectionThreeHome";
+import navigationSettings from "./page/navigationSettings";
+import nav from "./objects/nav";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -63,7 +67,12 @@ export default createSchema({
     mainImage,
     localeString,
     textColumnsWithImageItem,
+    navigationSettings,
+    nav,
+    headerNav,
     clients,
+    urlReference,
+    link,
     opacityOverlay,
     heading,
     imageAlignment,

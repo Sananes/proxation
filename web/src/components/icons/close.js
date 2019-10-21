@@ -8,14 +8,14 @@ const Close = () => (
       d="M18 6L6 18"
       stroke="currentColor"
       strokeWidth="2"
-      strokeLineCap="round"
+      strokeLinecap="round"
       strokeLinejoin="round"
     />
     <path
       d="M6 6L18 18"
       stroke="currentColor"
       strokeWidth="2"
-      strokeLineCap="round"
+      strokeLinecap="round"
       strokeLinejoin="round"
     />
   </svg>

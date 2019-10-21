@@ -7,6 +7,9 @@ const query = graphql`
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
       title
     }
+    headerNav: sanityNavigationSettings {
+      _rawHeaderNav(resolveReferences: { maxDepth: 4 })
+    }
     companyInfo: sanityCompanyInfo {
       name
       address1
@@ -64,6 +67,7 @@ function LayoutContainer(props) {
               showNav={showNav}
               companyInfo={data.companyInfo}
               siteTitle={data.site.title}
+              menu={data.headerNav._rawHeaderNav}
               onHideNav={handleHideNav}
               onShowNav={handleShowNav}
               location={location}
