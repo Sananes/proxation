@@ -8,7 +8,7 @@ const query = graphql`
       title
     }
     headerNav: sanityNavigationSettings {
-      _rawHeaderNav(resolveReferences: { maxDepth: 4 })
+      _rawHeaderNav(resolveReferences: { maxDepth: 54 })
     }
     companyInfo: sanityCompanyInfo {
       name

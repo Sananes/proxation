@@ -4,6 +4,7 @@ const path = require('path')
 const {
   api: { projectId, dataset }
 } = requireConfig('../studio/sanity.json')
+
 module.exports = {
   plugins: [
     'gatsby-plugin-postcss',

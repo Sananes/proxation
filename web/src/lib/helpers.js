@@ -2,6 +2,26 @@ import { useEffect, useState } from 'react'
 import { format } from 'date-fns'
 import { getFluidGatsbyImage } from 'gatsby-source-sanity'
 
+function requireConfig(path) {
+  try {
+    return require('../../../studio/sanity.json')
+  } catch (e) {
+    console.error(
+      'Failed to require sanity.json. Fill in projectId and dataset name manually in gatsby-config.js'
+    )
+    return {
+      api: {
+        projectId: process.env.SANITY_PROJECT_ID || '',
+        dataset: process.env.SANITY_DATASET || ''
+      }
+    }
+  }
+}
+
+const {
+  api: { projectId, dataset }
+} = requireConfig('../../../studio/sanity.json')
+
 export function cn(...args) {
   return args.filter(Boolean).join(' ')
 }
@@ -16,15 +36,11 @@ export function mapEdgesToNodes2(data) {
   return data.edges.map(edge => edge.node.relatedProjects)
 }
 
-export function sanityConfig() {
-  return { projectId: 'rks6ojwp', dataset: 'production' }
-}
-
 export function getSanityImageFluid(source) {
   const imageObj = {
     asset: { _ref: source.asset._id }
   }
-  const fluidProps = getFluidGatsbyImage(imageObj, { maxWidth: 1024 }, sanityConfig())
+  const fluidProps = getFluidGatsbyImage(imageObj, { maxWidth: 1024 }, { projectId, dataset })
   return fluidProps
 }
 

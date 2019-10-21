@@ -8,7 +8,7 @@ export default {
       type: "reference",
       weak: true,
       title: "Link",
-      to: [{ type: "project" }, { type: "landingPage" }, { type: "post" }]
+      to: [{ type: "project" }, { type: "landingPage" }, { type: "post" }, { type: "page" }]
     }
   ],
   preview: {

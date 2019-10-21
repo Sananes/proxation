@@ -10,45 +10,6 @@ import styles from './Header.module.scss'
 import './headroom.scss'
 import { Spring } from 'react-spring/renderprops'
 
-// const data = [
-//   {
-//     name: 'Shopware',
-//     link: 'shopware',
-//     dropdown: [
-//       {
-//         name: 'Shopware 6',
-//         link: 'shopware-6'
-//       }
-//     ]
-//   },
-//   {
-//     name: 'Spezialitäten',
-//     link: 'spezialitaten',
-//     dropdown: [
-//       {
-//         name: 'Amazon Marketing',
-//         link: 'amazon-marketing'
-//       },
-//       {
-//         name: 'Braintree Payments',
-//         link: 'braintree-payments'
-//       },
-//       {
-//         name: 'Pickware Warenwirtschaft',
-//         link: 'pickware-warenwirtschaft'
-//       }
-//     ]
-//   },
-//   {
-//     name: 'Referenzen',
-//     link: 'referenzen'
-//   },
-//   { name: 'Shop', link: 'shop' },
-//   { name: 'Jobs', link: 'jobs' },
-//   { name: 'Blog', link: 'blog' },
-//   { name: 'Kontakt', link: 'kontakt' }
-// ]
-
 function resolveType(item) {
   const slug = item.slug && item.slug.current
 
@@ -60,21 +21,27 @@ function resolveType(item) {
     case 'project':
       return `/project/${slug}`
     default:
-      return null
+      return slug
   }
 }
 
 const NavItem = ({ item }) => {
-  const { link, submenu, key: _key } = item
+  let { link, submenu, key: _key } = item
   return (
     <li key={item.key}>
       <a href={link.navLink && resolveType(link.navLink.reference)}>{link.name}</a>
 
       {submenu != null && (
         <ul>
-          {submenu.map((subitem, i) => (
-            <li key={i}>{subitem.name}</li>
-          ))}
+          {submenu.map((subitem, i) => {
+            return (
+              <li key={subitem._key}>
+                <a href={subitem.navLink && resolveType(subitem.navLink.reference)}>
+                  {subitem.name}
+                </a>
+              </li>
+            )
+          })}
         </ul>
       )}
     </li>
@@ -92,16 +59,10 @@ const Header = ({
 }) => {
   const animationTime = 1200
 
-  // const menuAnimation = useTrail(data.length, {
-  //   opacity: showNav ? 1 : 0,
-  //   tension: 2000,
-  //   friction: 4
-  // })
-
   return (
     <>
       <Headroom disableInlineStyles pinStart={0} className={showNav && `headroom-shownav`}>
-        {/* } <ul style={{ position: 'fixed', top: '100px' }}>
+        {/* <ul style={{ position: 'fixed', top: '100px' }}>
           {data.map((item, index) => (
             <NavItem item={item} />
           ))}
