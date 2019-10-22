@@ -80,10 +80,6 @@ export default () =>
             .title("Pages")
             .items([
               S.listItem()
-                .title("Pages")
-                .schemaType("page")
-                .child(S.documentTypeList("page").title("Pages")),
-              S.listItem()
                 .title("Homepage")
                 .child(
                   S.editor()
@@ -93,6 +89,11 @@ export default () =>
                     .documentId("pageHome")
                 )
                 .icon(FaFile),
+              S.listItem()
+                .title("Static Pages")
+                .schemaType("page")
+                .child(S.documentTypeList("page").title("Static Pages")),
+
               // S.listItem()
               //   .title("Static Pages")
               //   .child(

@@ -16,6 +16,8 @@ const Carousel = props => {
   useEffect(() => {
     if (width <= 700) {
       setIsDevice(true)
+    } else {
+      setIsDevice(false)
     }
   })
 

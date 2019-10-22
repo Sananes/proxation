@@ -126,6 +126,7 @@ export const query = graphql`
             }
           }
           features {
+            sectionColumns
             sectionColor
             heading {
               caption

@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import cn from 'classnames'
 import Container from '../../components/Container'
 import { Spring } from 'react-spring/renderprops'
 import Button from '../../components/Button'
-import { getSanityImageFluid } from '../../lib/helpers'
+import { getSanityImageFluid, useWindowDimensions } from '../../lib/helpers'
 import Image from 'gatsby-image/withIEPolyfill'
 
 import styles from './Hero.module.scss'
@@ -21,8 +21,19 @@ function Hero({
   ...props
 }) {
   const isHomepage = location.pathname === '/' && styles.homepage
+  const noImage = !image || (!image.asset && styles.homepage)
   const { overlayColor: color, overlayOpacity } = overlay || {}
   const opacity = overlayOpacity / 100
+  const { width } = useWindowDimensions()
+  const [isDevice, setIsDevice] = useState(false)
+
+  useEffect(() => {
+    if (width >= 960) {
+      setIsDevice(true)
+    } else {
+      setIsDevice(false)
+    }
+  })
 
   function alignmentClass(align) {
     switch (align) {
@@ -54,6 +65,7 @@ function Hero({
       className={cn(
         styles.hero,
         isHomepage,
+        noImage,
         position && alignmentClass(position),
         textColor && textColor === 'light' ? styles.light : styles.dark
       )}
@@ -70,7 +82,7 @@ function Hero({
                 <div
                   className={styles.overlay}
                   style={{
-                    backgroundColor: color.hex,
+                    backgroundColor: isDevice && color.hex,
                     opacity: opacity
                   }}
                 />

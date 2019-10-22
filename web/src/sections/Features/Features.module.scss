@@ -18,10 +18,9 @@
 
   .grid {
     display: grid;
-    width: $layout-width;
     grid-gap: 48px 24px;
     position: relative;
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: 1fr;
 
     &.oneColumns {
       @include breakpoint-md {
@@ -45,6 +44,12 @@
     &.threeColumns {
       @include breakpoint-md {
         grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    &.fourColumns {
+      @include breakpoint-md {
+        grid-template-columns: repeat(4, 1fr);
       }
     }
   }

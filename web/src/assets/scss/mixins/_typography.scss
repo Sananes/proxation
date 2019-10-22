@@ -2,7 +2,7 @@
   @include fluid-type($font-size-heading-1-mobile, $font-size-heading-1);
   @include fluid-line-height(1.2, 1.14);
   font-weight: $typographic-heading-font-weight;
-  letter-spacing: -1px;
+  letter-spacing: -2px;
 }
 
 @mixin h2 {

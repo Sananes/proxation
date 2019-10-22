@@ -128,12 +128,12 @@ const Header = ({
             <nav className={styles.menuWrapper}>
               <ul className={cn(styles.menuBlock)}>
                 <li className={styles.navItem}>
-                  <Link to="/about/">
+                  <Link to="/shopware/">
                     <span>01</span>Shopware
                   </Link>
                   <ul className={styles.subMenu}>
                     <li className={styles.navItemChild}>
-                      <Link to="/about/">Shopware 6</Link>
+                      <Link to="/shopware/">Shopware 6</Link>
                     </li>
                     <li className={styles.navItemChild}>
                       <Link to="/about/">Shopware online shops</Link>
@@ -170,22 +170,22 @@ const Header = ({
               </ul>
               <ul className={cn(styles.menuBlock, styles.menuBlockLast)}>
                 <li className={styles.navItem}>
-                  <Link to="/blog/">
+                  <Link to="/projects/">
                     <span>03</span>Referenzen
                   </Link>
                 </li>
                 <li className={styles.navItem}>
-                  <Link to="/contact/">
+                  <Link to="/shop/">
                     <span>04</span>Shop
                   </Link>
                 </li>
                 <li className={styles.navItem}>
-                  <Link to="/contact/">
+                  <Link to="/jobs/">
                     <span>05</span>Jobs
                   </Link>
                 </li>
                 <li className={styles.navItem}>
-                  <Link to="/contact/">
+                  <Link to="/blog/">
                     <span>06</span>Blog
                   </Link>
                 </li>

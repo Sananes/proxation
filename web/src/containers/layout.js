@@ -22,6 +22,7 @@ const query = graphql`
         title
         image {
           asset {
+            url
             fluid(maxWidth: 240) {
               ...GatsbySanityImageFluid
             }

@@ -5,16 +5,18 @@
 
   .grid {
     display: grid;
-    grid-gap: 48px;
     text-align: left;
+    grid-gap: 24px;
     align-items: center;
+    grid-template-columns: 1fr;
 
     @include breakpoint-md {
       grid-template-columns: repeat(2, 1fr);
-
+      grid-gap: 48px;
     }
 
-    &.left {
+    &.above {
+
       .image {
         order: 1;
       }
@@ -23,19 +25,54 @@
         order: 2;
       }
     }
+
+    &.below {
+
+      .image {
+        order: 2;
+      }
+
+      .heading {
+        order: 1;
+      }
+    }
+
+    &.right {
+      @include breakpoint-md {
+        .image {
+          order: 2;
+        }
+
+        .heading {
+          order: 1;
+        }
+      }
+    }
+
+    &.left {
+      @include breakpoint-md {
+        .image {
+          order: 1;
+        }
+
+        .heading {
+          order: 2;
+        }
+      }
+    }
   }
 
 
-
-
-
   .heading {
-    @include interpolate(margin-bottom, 24px, 120px);
     margin-left: 0;
     margin-right: 0;
     color: inherit;
 
     @include breakpoint-md {
+      margin-bottom: 0;
+    }
+
+    &:only-child {
       margin-bottom: 0;
     }
   }

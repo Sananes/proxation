@@ -28,9 +28,9 @@ const Footer = ({ companyInfo, siteTitle, isVisible }) => {
                   {companyInfo.social.map(item => (
                     <li key={item._key}>
                       <a href={item.url || '#'}>
-                        <Image
-                          fluid={item.image.asset.fluid}
-                          alt={item.title || item.image.asset.fluid.alt}
+                        <img
+                          src={item.image.asset.url}
+                          alt={item.title || item.image.alt}
                           className={styles.image}
                         />
                       </a>

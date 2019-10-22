@@ -14,6 +14,10 @@ export const query = graphql`
         current
       }
       title
+      seo {
+        title
+        description
+      }
       _rawPageBuilder(resolveReferences: { maxDepth: 10 })
     }
   }
@@ -22,10 +26,12 @@ export const query = graphql`
 const LandingPage = props => {
   const { data, errors, location } = props
   const page = data && data.page
+  const seo = data && data.page.seo
   const pageBuilder = page && page._rawPageBuilder
 
   return (
     <Layout>
+      <Seo title={seo.title || page.title} description={seo && seo.description} />
       {errors && (
         <Container>
           <GraphQLErrorList errors={errors} />

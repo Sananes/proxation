@@ -36,12 +36,55 @@ export function mapEdgesToNodes2(data) {
   return data.edges.map(edge => edge.node.relatedProjects)
 }
 
-export function getSanityImageFluid(source) {
+export function getSanityImageFluid(source, width) {
   const imageObj = {
     asset: { _ref: source.asset._id }
   }
-  const fluidProps = getFluidGatsbyImage(imageObj, { maxWidth: 1024 }, { projectId, dataset })
-  return fluidProps
+  const fluidProps = getFluidGatsbyImage(
+    imageObj,
+    { maxWidth: width || 1024 },
+    { projectId, dataset }
+  )
+  if (fluidProps) {
+    return fluidProps
+  } else {
+    return null
+  }
+}
+
+export function alignmentClass(align, styles) {
+  switch (align) {
+    case 'left':
+      return styles.left
+    case 'right':
+      return styles.right
+    default:
+      return null
+  }
+}
+
+export function mobileAlignmentClass(align, styles) {
+  switch (align) {
+    case 'below':
+      return styles.below
+    case 'above':
+      return styles.above
+    default:
+      return null
+  }
+}
+
+export function sectionColumns(column, styles) {
+  switch (column) {
+    case '2':
+      return styles.twoColumns
+    case '3':
+      return styles.threeColumns
+    case '4':
+      return styles.fourColumns
+    default:
+      return styles.oneColumns
+  }
 }
 
 export function filterOutDocsWithoutSlugs({ slug }) {
