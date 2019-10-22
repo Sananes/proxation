@@ -70,16 +70,16 @@ const SectionHeading = ({
         </Spring>
       )}
       {lead && (
-        <Spring to={animationProps} delay="300">
+        <Spring to={animationProps} delay="400">
           {props => (
-            <div className={styles.lead}>
+            <div className={styles.lead} style={props}>
               <BlockText className={styles.lead} blocks={lead} />
             </div>
           )}
         </Spring>
       )}
       {subheading && (
-        <Spring to={animationProps} delay="300">
+        <Spring to={animationProps} delay="400">
           {props => (
             <p style={props} className={styles.lead}>
               {subheading}

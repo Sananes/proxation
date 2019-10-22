@@ -26,6 +26,7 @@ import urlReference from "./objects/urlReference";
 import opacityOverlay from "./objects/opacityOverlay";
 import socialList from "./socialList";
 import seo from "./objects/seo";
+import richText from "./objects/richText";
 import hero from "./objects/hero";
 import clientsHome from "./clientsHome";
 import sectionContact from "./sectionContact";
@@ -68,6 +69,7 @@ export default createSchema({
     mainImage,
     imageSection,
     localeString,
+    richText,
     textColumnsWithImageItem,
     navigationSettings,
     nav,

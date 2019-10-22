@@ -16,6 +16,7 @@ const hiddenTypes = [
   "featuresHome",
   "heroHome",
   "landingPage",
+  "contactHome",
   "clients",
   "clientsHome",
   "social",

@@ -15,6 +15,7 @@ const Section = ({
   title,
   align,
   button,
+  style,
   sectionColor,
   isVisible,
   narrow,
@@ -40,7 +41,7 @@ const Section = ({
   }
 
   return (
-    <section className={cn(setClasses, className)}>
+    <section style={style} className={cn(setClasses, className)}>
       {container === false ? (
         children
       ) : (
