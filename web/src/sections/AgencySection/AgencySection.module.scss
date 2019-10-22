@@ -33,6 +33,10 @@
 
   .lead {
     @include body-l;
+
+    &>div {
+      @include body-l;
+    }
   }
 
 

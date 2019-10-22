@@ -52,7 +52,7 @@ const ProjectsPage = props => {
           <ProjectPreviewGrid
             title="Unsere Referenzen
             im eCommerce"
-            lead="Als E-Commerce Agentur und zertifizierter shopware solutions Partner setzen wir Ihre Wünsche
+            subheading="Als E-Commerce Agentur und zertifizierter shopware solutions Partner setzen wir Ihre Wünsche
         und Vorstellungen elegant und effizient in einen modernen Online Shop um."
             nodes={projectNodes}
           />

@@ -15,7 +15,7 @@ export default {
     {
       title: "Subheading",
       name: "subHeading",
-      type: "text"
+      type: "blockContent"
     }
   ],
   options: { collapsible: true, collapsed: false }

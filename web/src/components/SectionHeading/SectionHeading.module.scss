@@ -62,4 +62,19 @@
 .lead {
   @include body-l;
   color: $text-subdued;
+
+  &>div {
+    @include body-l;
+    color: $text-subdued;
+  }
+
+  ul {
+    padding: 0;
+
+    li {
+      padding-left: 32px;
+      background: url('../../assets/images/icon-check.svg') left 2px no-repeat;
+      margin: 6px 0;
+    }
+  }
 }

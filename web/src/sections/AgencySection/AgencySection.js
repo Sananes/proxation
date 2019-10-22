@@ -13,8 +13,7 @@ const AgencySection = props => {
     throw new Error('No slide items have been added in the studio')
   }
 
-  const { items, heading } = data
-
+  const { items, _rawHeading: heading } = data
   function fadeIn(isVisible) {
     return {
       transform: isVisible ? `translateY(0)` : `translateY(-24px)`,
@@ -37,9 +36,9 @@ const AgencySection = props => {
             />
             <Spring to={fadeIn(isVisible)}>
               {props => (
-                <p style={props} className={styles.lead}>
-                  {heading.subHeading}
-                </p>
+                <div className={styles.lead}>
+                  <BlockText style={props} blocks={heading.subHeading} />
+                </div>
               )}
             </Spring>
           </div>

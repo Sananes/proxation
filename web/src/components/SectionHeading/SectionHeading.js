@@ -5,10 +5,12 @@ import PropTypes from 'prop-types'
 import Button from '../Button'
 import cn from 'classnames'
 import styles from './SectionHeading.module.scss'
+import BlockText from '../block-text'
 
 const SectionHeading = ({
   title,
   lead,
+  subheading,
   caption,
   children,
   align,
@@ -70,8 +72,17 @@ const SectionHeading = ({
       {lead && (
         <Spring to={animationProps} delay="300">
           {props => (
+            <div className={styles.lead}>
+              <BlockText className={styles.lead} blocks={lead} />
+            </div>
+          )}
+        </Spring>
+      )}
+      {subheading && (
+        <Spring to={animationProps} delay="300">
+          {props => (
             <p style={props} className={styles.lead}>
-              {lead || `Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, eos?`}
+              {subheading}
             </p>
           )}
         </Spring>

@@ -7,21 +7,18 @@ import { getFluidGatsbyImage } from 'gatsby-source-sanity'
 import { Trail } from 'react-spring/renderprops'
 import AnimateScroll from '../../components/AnimateScroll'
 import Button from '../../components/Button'
-import { sanityConfig, buildImageObj, sectionColumns } from '../../lib/helpers'
+import { buildImageObj, sectionColumns } from '../../lib/helpers'
 import Image from 'gatsby-image/withIEPolyfill'
 import { imageUrlFor } from '../../lib/image-url'
 
 const Features = props => {
   const { isVisible } = props
-
-  const heading = props.heading && props.heading
   const items = props.items && props.items
-  const itemsCount = (items != null && items != '' && items.length) || []
 
+  const heading = (props.heading && props.heading) || (props._rawHeading && props._rawHeading)
   if (!props) {
     throw new Error('No features have been added in the studio')
   }
-
   return (
     <AnimateScroll
       once
@@ -34,9 +31,9 @@ const Features = props => {
           narrowHeading={true}
           sectionColor={props.sectionColor}
           isVisible={isVisible}
-          title={heading.title && heading.title}
-          caption={heading.caption && heading.caption}
-          lead={heading.subheading && heading.subheading}
+          title={heading.title}
+          caption={heading.caption}
+          lead={heading.subheading}
         >
           <div className={cn(styles.grid, sectionColumns(props.sectionColumns, styles))}>
             <AnimateScroll
@@ -58,6 +55,7 @@ const Features = props => {
                           <img
                             src={imageUrlFor(buildImageObj(item.image))}
                             className={styles.image}
+                            alt={item.image.asset.alt || heading.title}
                           />
                         </div>
                       )}

@@ -17,7 +17,7 @@ function ProjectPreviewGrid(props) {
             isVisible={isVisible}
             type="large"
             title={props.title}
-            lead={props.lead}
+            subheading={props.subheading}
             className={styles.headline}
           />
         )}

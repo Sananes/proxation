@@ -12,15 +12,19 @@ const SupportSection = props => {
   const {
     animate,
     sectionColor,
-    heading,
     button,
     image,
     imageAlignment: align,
     mobileImageAlignment
   } = props
-  if (!heading && !image) {
-    throw new Error('No image or text have been added in the studio for the Text with Image')
+
+  if (!props) {
+    throw new Error(
+      'Missing "Image with text settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'
+    )
   }
+
+  const heading = (props.heading && props.heading) || (props._rawHeading && props._rawHeading)
 
   return (
     <VisibilitySensor
@@ -52,8 +56,8 @@ const SupportSection = props => {
                   hasIcon: true
                 }
               }
-              sectionColor={sectionColor}
               lead={heading.subHeading}
+              sectionColor={sectionColor}
             />
             {image && image.asset && (
               <Spring
@@ -70,7 +74,7 @@ const SupportSection = props => {
                 {animation => (
                   <div className={styles.image} style={animation}>
                     <Image
-                      fluid={getSanityImageFluid(image) || []}
+                      fluid={getSanityImageFluid(image)}
                       title={image.alt || heading.title}
                       alt={image.alt || heading.title}
                     />

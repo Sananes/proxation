@@ -1,7 +1,7 @@
 export default {
   name: "sectionContact",
   title: "Contact",
-  type: "object",
+  type: "document",
   fields: [
     { title: "Heading", name: "heading", type: "heading" },
     { title: "Image", name: "image", type: "figure" },

@@ -4,14 +4,19 @@ export default {
   type: "document",
   fields: [
     { title: "Image", name: "image", type: "figure" },
-    { title: "Desktop image alignment", name: "imageAlignment", type: "imageAlignment" },
+    {
+      title: "Desktop image alignment",
+      name: "imageAlignment",
+      type: "imageAlignment"
+    },
     {
       name: "mobileImageAlignment",
       type: "string",
       title: "Mobile image alignment",
       options: {
         list: [{ title: "Above", value: "above" }, { title: "Below", value: "below" }]
-      }
+      },
+      validation: Rule => Rule.required()
     },
     { title: "Heading", name: "heading", type: "heading" },
     { title: "Button", name: "button", type: "button" },

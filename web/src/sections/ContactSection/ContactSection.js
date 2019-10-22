@@ -21,6 +21,7 @@ const ContactSection = props => {
     }
   }
 
+  const heading = (data.heading && data.heading) || (data._rawHeading && data._rawHeading)
   const isDark = data.sectionColor === 'dark'
 
   return (
@@ -41,7 +42,7 @@ const ContactSection = props => {
                 <div className={styles.content}>
                   <Image
                     className={styles.image}
-                    alt={data.image.alt || data.heading.title}
+                    alt={data.image.alt || heading.title}
                     fluid={data.image.asset.fluid}
                     style={props}
                   />
@@ -49,7 +50,7 @@ const ContactSection = props => {
 
                 <div className={styles.wrapper} style={props}>
                   <h2 className={styles.title} style={props}>
-                    {data.heading.title}
+                    {heading.title}
                   </h2>
                   <p className={styles.lead}>
                     Dann lassen Sie es uns gemeinsam angehen! Wir freuen uns auf Ihre Anfrage!{' '}

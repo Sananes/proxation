@@ -63,7 +63,7 @@ const BlogPage = props => {
                 isVisible={isVisible}
                 type="large"
                 title="Unser Blog"
-                lead="Eine Sammlung von Nachrichten und Mitteilungen, Nerds Talks und Company-Carry-Ons."
+                subheading="Eine Sammlung von Nachrichten und Mitteilungen, Nerds Talks und Company-Carry-Ons."
                 className={styles.pageHeader}
               />
             )}

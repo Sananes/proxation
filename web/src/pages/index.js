@@ -23,11 +23,7 @@ export const query = graphql`
 
     agency: sanityPageHome {
       sectionThree {
-        heading {
-          caption
-          title
-          subHeading
-        }
+        _rawHeading
         items {
           _key
           title
@@ -48,9 +44,6 @@ export const query = graphql`
 
     clients: sanityPageHome {
       clients {
-        heading {
-          title
-        }
         clients {
           _key
           title
@@ -83,10 +76,7 @@ export const query = graphql`
     contact: sanityPageHome {
       sectionContact {
         sectionColor
-        heading {
-          caption
-          title
-        }
+        _rawHeading
         image {
           asset {
             fluid(maxWidth: 450) {
@@ -104,11 +94,7 @@ export const query = graphql`
         node {
           support {
             sectionColor
-            heading {
-              caption
-              title
-              subHeading
-            }
+            _rawHeading
             image {
               asset {
                 _id
@@ -128,10 +114,7 @@ export const query = graphql`
           features {
             sectionColumns
             sectionColor
-            heading {
-              caption
-              title
-            }
+            _rawHeading
             items {
               _key
               title
@@ -232,7 +215,7 @@ const IndexPage = props => {
         animate={true}
         isVisible={isVisible}
       />
-      <Clients data={data.clients.clients} animate={true} />
+      {/* <Clients data={data.clients.clients} animate={true} /> */}
       <Features {...featuresNodes} animate={true} />
       <SupportSection {...supportSectionNode} animate={true} />
       <AgencySection data={agencySectionNodes} animate={true} /> */}

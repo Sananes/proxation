@@ -44,7 +44,6 @@ const RelatedBlogPosts = props => {
             nodes={filteredPosts(mapEdgesToNodes(data.posts))}
             {...props}
           />
-          {console.log(data)}
         </>
       )}
     />

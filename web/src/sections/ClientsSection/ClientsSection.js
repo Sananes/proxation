@@ -28,7 +28,9 @@ const ClientsSection = props => {
             <Spring to={fadeIn(isVisible)}>
               {props => (
                 <Section style={props} className={styles.root} headingClassName={styles.heading}>
-                  {data.heading.title && <h2 className={styles.title}>{data.heading.title}</h2>}
+                  {data._rawHeading.title && (
+                    <h2 className={styles.title}>{data._rawHeading.title}</h2>
+                  )}
                   <div className={styles.grid} style={(props, { delay: 300 })}>
                     {data.clients.map(item => (
                       <Image fluid={item.image.asset.fluid} alt={item.image.alt || item.title} />

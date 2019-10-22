@@ -5,6 +5,7 @@ export default {
   options: {
     list: [{ title: "Right", value: "right" }, { title: "Left", value: "left" }]
   },
+  validation: Rule => Rule.required(),
   preview: {
     select: {
       title: "heading.title"
