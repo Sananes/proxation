@@ -11,6 +11,7 @@ import category from "./page/category";
 import companyInfo from "./page/companyInfo";
 import figure from "./figure";
 import landingPage from "./page/landingPages";
+import imageSection from "./objects/imageSection";
 import pageBuilder from "./objects/pageBuilder";
 import link from "./objects/link";
 import mainImage from "./mainImage";
@@ -65,6 +66,7 @@ export default createSchema({
     figure,
     landingPage,
     mainImage,
+    imageSection,
     localeString,
     textColumnsWithImageItem,
     navigationSettings,

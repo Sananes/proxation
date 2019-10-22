@@ -1,3 +1,5 @@
+import imageSection from "./imageSection";
+
 export default {
   name: "pageBuilder",
   title: "Page Builder",
@@ -5,8 +7,8 @@ export default {
   of: [
     { type: "hero", name: "hero", title: "Hero" },
     { type: "textColumnsWithImage" },
-    { type: "post" },
-    { type: "imageWithText" }
+    { type: "imageWithText" },
+    { ...imageSection }
   ],
   options: {
     editModal: "dialog"

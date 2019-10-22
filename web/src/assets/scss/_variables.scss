@@ -31,6 +31,7 @@ $overline-color: $text-dimmed;
 // Typography
 $typographic-font-family: aktiv-grotesk,
 -apple-system,
+system-ui,
 BlinkMacSystemFont,
 "Segoe UI",
 Roboto,
@@ -41,8 +42,8 @@ Cantarell,
 sans-serif;
 
 $typographic-heading-font-family: aktiv-grotesk,
--apple-system-headline,
 -apple-system,
+system-ui,
 BlinkMacSystemFont,
 "Segoe UI",
 Roboto,
@@ -56,7 +57,7 @@ $typographic-root-font-size: 100;
 $typographic-base-font-size: 16px;
 $typographic-base-font-weight: normal;
 $typographic-small-font-size: 14px;
-$typographic-base-line-height: 1.5;
+$typographic-base-line-height: 1.68;
 $typographic-leading: round(strip-unit($typographic-base-font-size) * ($typographic-root-font-size / 100) * $typographic-base-line-height);
 
 // Desktop type sizes
