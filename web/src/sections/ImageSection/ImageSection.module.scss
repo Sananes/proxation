@@ -1,0 +1,9 @@
+@import '../../assets/scss/helpers';
+
+.root {}
+
+.contained {
+  @extend %container;
+  @include interpolate(padding-bottom, 24px, 120px);
+
+}

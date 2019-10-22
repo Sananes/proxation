@@ -33,6 +33,12 @@
   &.highlight {
     background-color: $color-hightlight-background;
   }
+
+  &.white {
+    +.white {
+      padding-top: 0;
+    }
+  }
 }
 
 .sectionDivider {

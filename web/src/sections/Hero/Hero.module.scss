@@ -179,6 +179,7 @@
 .lead {
   @include body-l;
   max-width: 500px;
+  color: $text-subdued;
 
   .light & {
     @include breakpoint-md {

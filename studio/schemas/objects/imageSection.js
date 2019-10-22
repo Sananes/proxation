@@ -7,6 +7,11 @@ export default {
       title: "Image",
       name: "imageSection",
       type: "figure"
+    },
+    {
+      title: "Contained",
+      name: "contained",
+      type: "boolean"
     }
   ],
   preview: {

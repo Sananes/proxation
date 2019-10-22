@@ -32,12 +32,10 @@ const Section = ({
     switch (color) {
       case 'dark':
         return styles.dark
-      case 'none':
-        return null
       case 'highlight':
         return styles.highlight
       default:
-        return null
+        return styles.white
     }
   }
 

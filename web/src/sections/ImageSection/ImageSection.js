@@ -1,18 +1,39 @@
 import React from 'react'
 
-import styles from './ImageSection.module.scss'
-import Hero from '../Hero'
+import cn from 'classnames'
 import Image from 'gatsby-image/withIEPolyfill'
 import { getSanityImageFluid } from '../../lib/helpers'
+import { Spring } from 'react-spring/renderprops'
+import VisibilitySensor from '../../components/VisibilitySensor'
+
+import styles from './ImageSection.module.scss'
 
 function ImageSection(props) {
-  const { imageSection: image } = props
+  const { imageSection: image, contained } = props
   return (
-    <div className={styles.root}>
-      {image && image.asset && (
-        <Image fluid={getSanityImageFluid(image)} className={styles.image} alt={image.alt} />
+    <VisibilitySensor once partialVisibility>
+      {({ isVisible }) => (
+        <Spring
+          to={{
+            opacity: isVisible ? 1 : 0,
+            transform: isVisible ? 'translateY(0)' : 'translateY(-24px)'
+          }}
+          delay={500}
+        >
+          {animation => (
+            <div style={animation} className={cn(styles.root, contained && styles.contained)}>
+              {image && image.asset && (
+                <Image
+                  fluid={getSanityImageFluid(image)}
+                  className={styles.image}
+                  alt={image.alt}
+                />
+              )}
+            </div>
+          )}
+        </Spring>
       )}
-    </div>
+    </VisibilitySensor>
   )
 }
 
