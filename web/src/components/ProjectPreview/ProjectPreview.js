@@ -16,7 +16,7 @@ function ProjectPreview(props) {
         {props.mainImage && props.mainImage.asset && (
           <Image
             fluid={props.mainImage.asset.fluid}
-            alt={props.mainImage.alt}
+            alt={props.mainImage.alt || props.title}
             styles={styles.image}
           />
         )}
