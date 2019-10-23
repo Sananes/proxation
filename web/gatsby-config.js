@@ -48,18 +48,11 @@ module.exports = {
         background_color: `#1a1a1a`,
         theme_color: `#1a1a1a`,
         display: `standalone`,
-        include_favicon: false
-      }
-    },
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `GatsbyJS`,
-        short_name: `GatsbyJS`,
-        start_url: `/`,
-        background_color: `#f7f0eb`,
-        theme_color: `#a2466c`,
-        display: `standalone`
+        icon: 'src/assets/images/favicon.png', // This path is relative to the root of the site.
+        // An optional attribute which provides support for CORS check.
+        // If you do not provide a crossOrigin option, it will skip CORS for manifest.
+        // Any invalid keyword or empty string defaults to `anonymous`
+        crossOrigin: `use-credentials`
       }
     },
     `gatsby-plugin-offline`

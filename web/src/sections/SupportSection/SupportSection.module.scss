@@ -11,7 +11,7 @@
     grid-template-columns: 1fr;
 
     @include breakpoint-md {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: 45% 55%;
       grid-gap: 48px;
     }
 
@@ -38,6 +38,7 @@
     }
 
     &.right {
+
       @include breakpoint-md {
         .image {
           order: 2;
@@ -51,6 +52,8 @@
 
     &.left {
       @include breakpoint-md {
+        grid-template-columns: 55% 45%;
+
         .image {
           order: 1;
         }
