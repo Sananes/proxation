@@ -22,7 +22,7 @@
     "dotenv": "^8.0.0",
     "gatsby": "^2.8.2",
     "gatsby-image": "^2.2.8",
-    "gatsby-plugin-manifest": "^2.2.20",
+    "gatsby-plugin-manifest": "^2.2.23",
     "gatsby-plugin-offline": "^2.2.9",
     "gatsby-plugin-postcss": "^2.0.7",
     "gatsby-plugin-react-helmet": "^3.0.12",
