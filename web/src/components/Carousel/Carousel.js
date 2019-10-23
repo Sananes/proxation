@@ -34,9 +34,9 @@ const Carousel = props => {
       totalSlides={data.length}
       className={cn(styles.sliderCarousel, className)}
     >
-      <div className={styles.pattern}>
+      {/*   <div className={styles.pattern}>
         <Icon symbol="pattern" className={styles.pattern} />
-      </div>
+  </div> */}
       <div className={styles.headingWrapper}>
         <div className={styles.heading}>
           <h2 className={styles.caption}>Latest work</h2>
