@@ -9,7 +9,8 @@ import ChevronDown from './chevron-down'
 import Pattern from './pattern'
 import Shopware from './shopware'
 
-function Icon({ symbol, strokeWidth }) {
+function Icon(props) {
+  const { symbol, strokeWidth } = props
   switch (symbol) {
     case 'hamburger':
       return <HamburgerIcon strokeWidth={strokeWidth || 2} />

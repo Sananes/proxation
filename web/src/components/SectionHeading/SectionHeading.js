@@ -1,5 +1,4 @@
 import React from 'react'
-import { useSpring, animated } from 'react-spring'
 import { Spring } from 'react-spring/renderprops'
 import PropTypes from 'prop-types'
 import Button from '../Button'
@@ -115,6 +114,6 @@ export default SectionHeading
 SectionHeading.propTypes = {
   align: PropTypes.string,
   title: PropTypes.string,
-  button: PropTypes.PropTypes.object,
+  button: PropTypes.object,
   caption: PropTypes.string
 }

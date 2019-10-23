@@ -1,1 +1,1 @@
-web: cd web && gatsby develop -p 5000  -H 0.0.0.0
+web: cd web && gatsby develop -p $PORT  -H 0.0.0.0
