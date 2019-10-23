@@ -61,7 +61,7 @@ const Header = ({
 
   return (
     <>
-      <Headroom disableInlineStyles pinStart={0} className={showNav && `headroom-shownav`}>
+      <Headroom disableInlineStyles pinStart={0} className={`${showNav}` && `headroom-shownav`}>
         {/* <ul style={{ position: 'fixed', top: '100px' }}>
           {data.map((item, index) => (
             <NavItem item={item} />

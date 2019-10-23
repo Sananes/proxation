@@ -24,7 +24,6 @@ const Carousel = props => {
   if (!data) {
     throw new Error('No slide items have been added in the studio')
   }
-
   return (
     <CarouselProvider
       naturalSlideWidth={369}

@@ -9,8 +9,8 @@ import BlockText from '../block-text'
 
 const SectionHeading = ({
   title,
-  lead,
   subheading,
+  lead,
   caption,
   children,
   align,
@@ -53,8 +53,8 @@ const SectionHeading = ({
     <div className={cn(setAlignmentClass, narrow && styles.narrow, className, colorClasses(color))}>
       {caption && (
         <Spring to={animationProps}>
-          {props => (
-            <span style={props} className={styles.caption}>
+          {animation => (
+            <span style={animation} className={styles.caption}>
               {caption || `Caption`}
             </span>
           )}
@@ -62,8 +62,8 @@ const SectionHeading = ({
       )}
       {title && (
         <Spring to={animationProps} delay="200">
-          {props => (
-            <h1 style={props} className={setTypeClass}>
+          {animation => (
+            <h1 style={animation} className={setTypeClass}>
               {title || `Title`}
             </h1>
           )}
@@ -71,17 +71,17 @@ const SectionHeading = ({
       )}
       {lead && (
         <Spring to={animationProps} delay="400">
-          {props => (
-            <div className={styles.lead} style={props}>
-              <BlockText className={styles.lead} blocks={lead} />
+          {animation => (
+            <div className={styles.lead} style={animation}>
+              <BlockText blocks={lead} />
             </div>
           )}
         </Spring>
       )}
       {subheading && (
         <Spring to={animationProps} delay="400">
-          {props => (
-            <p style={props} className={styles.lead}>
+          {animation => (
+            <p style={animation} className={styles.lead}>
               {subheading}
             </p>
           )}
@@ -89,8 +89,8 @@ const SectionHeading = ({
       )}
       {button && (
         <Spring to={animationProps} delay="400">
-          {props => (
-            <div style={props} className={styles.buttonWrapper}>
+          {animation => (
+            <div style={animation} className={styles.buttonWrapper}>
               <Button
                 text={button.text}
                 size={button.size}
@@ -116,6 +116,5 @@ SectionHeading.propTypes = {
   align: PropTypes.string,
   title: PropTypes.string,
   button: PropTypes.PropTypes.object,
-  lead: PropTypes.string,
   caption: PropTypes.string
 }

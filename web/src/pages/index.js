@@ -138,6 +138,7 @@ export const query = graphql`
             }
           }
           projects {
+            _id
             mainImage {
               crop {
                 _key

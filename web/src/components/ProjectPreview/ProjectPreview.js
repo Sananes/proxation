@@ -7,7 +7,11 @@ import styles from './ProjectPreview.module.scss'
 
 function ProjectPreview(props) {
   return (
-    <Link className={cn(styles.root, props.className)} to={`/project/${props.slug.current}`}>
+    <Link
+      className={cn(styles.root, props.className)}
+      key={props._id}
+      to={`/project/${props.slug.current}`}
+    >
       <div className={styles.wrapper}>
         {props.mainImage && props.mainImage.asset && (
           <Image
