@@ -13,7 +13,7 @@ import styles from './scss/Blog.module.scss'
 
 export const query = graphql`
   query BlogPageQuery {
-    posts: allSanityPost(limit: 12, sort: { fields: [publishedAt], order: DESC }) {
+    posts: allSanityPost(limit: 24, sort: { fields: [publishedAt], order: DESC }) {
       edges {
         node {
           id
