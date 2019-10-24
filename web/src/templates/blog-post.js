@@ -5,6 +5,7 @@ import GraphQLErrorList from '../components/graphql-error-list'
 import BlogPost from '../components/BlogPost'
 import SEO from '../components/Seo'
 import Layout from '../containers/layout'
+import { blocksToText } from '../lib/helpers'
 
 export const query = graphql`
   query BlogPostTemplateQuery($id: String!) {
@@ -15,6 +16,7 @@ export const query = graphql`
         _id
         title
       }
+      _rawExcerpt
       mainImage {
         crop {
           _key
@@ -33,6 +35,7 @@ export const query = graphql`
           width
         }
         asset {
+          url
           _id
           fluid {
             ...GatsbySanityImageFluid
@@ -43,6 +46,10 @@ export const query = graphql`
       title
       slug {
         current
+      }
+      seo {
+        title
+        description
       }
       _rawBody
       authors {
@@ -83,7 +90,13 @@ const BlogPostTemplate = props => {
   return (
     <Layout pageTitle="Unser Blog">
       {errors && <SEO title="GraphQL Error" />}
-      {post && <SEO title={post.title || 'Untitled'} description={post._rawBody} />}
+      {post && (
+        <SEO
+          title={post.title || post.seo.title || 'Untitled'}
+          image={post.mainImage.asset.url || null}
+          description={blocksToText(post._rawExcerpt) || (post.seo && post.seo.description) || null}
+        />
+      )}
 
       {errors && (
         <Container>

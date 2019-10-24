@@ -93,11 +93,9 @@ function BlogPost(props) {
                       }}
                     >
                       {props => (
-                        <BlockContent
-                          className={styles.blogContent}
-                          blocks={_rawBody}
-                          style={props}
-                        />
+                        <div style={props}>
+                          <BlockContent className={styles.blogContent} blocks={_rawBody} />
+                        </div>
                       )}
                     </Spring>
                   )}

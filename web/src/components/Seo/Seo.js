@@ -14,7 +14,7 @@ const detailsQuery = graphql`
   }
 `
 
-function Seo({ description, lang, meta, keywords = [], title }) {
+function Seo({ description, lang, meta, keywords = [], title, image }) {
   return (
     <StaticQuery
       query={detailsQuery}
@@ -23,6 +23,7 @@ function Seo({ description, lang, meta, keywords = [], title }) {
           return
         }
         const metaDescription = description || data.site.description
+        const imageContent = (image && image) || null
         return (
           <Helmet
             htmlAttributes={{
@@ -38,6 +39,14 @@ function Seo({ description, lang, meta, keywords = [], title }) {
               {
                 property: 'og:title',
                 content: title
+              },
+              {
+                property: 'og:site_name',
+                content: data.site.title
+              },
+              {
+                property: 'og:image',
+                content: imageContent
               },
               {
                 property: 'og:description',
@@ -58,6 +67,14 @@ function Seo({ description, lang, meta, keywords = [], title }) {
               {
                 name: 'twitter:title',
                 content: title
+              },
+              {
+                name: 'twitter:site_name',
+                content: data.site.title
+              },
+              {
+                name: 'twitter:image',
+                content: imageContent
               },
               {
                 name: 'twitter:description',

@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import { mapEdgesToNodes } from '../lib/helpers'
 import BlogPostPreviewGrid from '../components/BlogPostPreviewGrid'
 import Container from '../components/Container'
@@ -12,8 +12,8 @@ import VisibilitySensor from '../components/VisibilitySensor'
 import styles from './scss/Blog.module.scss'
 
 export const query = graphql`
-  query BlogPageQuery {
-    posts: allSanityPost(limit: 24, sort: { fields: [publishedAt], order: DESC }) {
+  query BlogPageQuery($limit: Int!, $skip: Int!) {
+    posts: allSanityPost(limit: $limit, skip: $skip, sort: { fields: [publishedAt], order: DESC }) {
       edges {
         node {
           id
@@ -48,8 +48,12 @@ const BlogPage = props => {
       </Layout>
     )
   }
-
   const postNodes = data && data.posts && mapEdgesToNodes(data.posts)
+  const { currentPage, numPages, slug } = props.pageContext
+  const isFirst = currentPage === 1
+  const isLast = currentPage === numPages
+  const prevPage = currentPage - 1 === 1 ? slug : slug + (currentPage - 1).toString()
+  const nextPage = slug + (currentPage + 1).toString()
 
   return (
     <Layout pageTitle="Unser Blog">
@@ -69,7 +73,21 @@ const BlogPage = props => {
             )}
           </VisibilitySensor>
         </div>
-        {postNodes && postNodes.length > 0 && <BlogPostPreviewGrid nodes={postNodes} />}
+        {postNodes && postNodes.length > 0 && (
+          <>
+            <BlogPostPreviewGrid nodes={postNodes} />
+            {!isFirst && (
+              <Link to={prevPage} rel="prev">
+                ← Previous Page
+              </Link>
+            )}
+            {!isLast && (
+              <Link to={nextPage} rel="next">
+                Next Page →
+              </Link>
+            )}
+          </>
+        )}
       </Container>
     </Layout>
   )

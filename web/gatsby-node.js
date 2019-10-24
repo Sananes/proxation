@@ -25,8 +25,27 @@ async function createBlogPostPages(graphql, actions, reporter) {
   `)
 
   if (result.errors) throw result.errors
-
+  const blogSlug = `/blog/`
   const postEdges = (result.data.allSanityPost || {}).edges || []
+  const postsPerPage = 6
+  const numPages = Math.ceil(postEdges.length / postsPerPage)
+
+  Array.from({ length: numPages }).forEach((_, i) => {
+    const path = i === 0 ? blogSlug : blogSlug + (i + 1)
+    reporter.info(`Creating blog list pages: ${path}`)
+
+    createPage({
+      path,
+      component: require.resolve('./src/templates/blog.js'),
+      context: {
+        slug: blogSlug,
+        limit: postsPerPage,
+        skip: i * postsPerPage,
+        numPages,
+        currentPage: i + 1
+      }
+    })
+  })
 
   postEdges.forEach((edge, index) => {
     const { id, slug = {} } = edge.node

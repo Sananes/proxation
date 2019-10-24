@@ -2,6 +2,20 @@ import { useEffect, useState } from 'react'
 import { format } from 'date-fns'
 import { getFluidGatsbyImage } from 'gatsby-source-sanity'
 
+export function blocksToText(blocks, opts = {}) {
+  const defaults = { nonTextBehavior: 'remove' }
+  const options = Object.assign({}, defaults, opts)
+  return blocks
+    .map(block => {
+      if (block._type !== 'block' || !block.children) {
+        return options.nonTextBehavior === 'remove' ? '' : `[${block._type} block]`
+      }
+
+      return block.children.map(child => child.text).join('')
+    })
+    .join('\n\n')
+}
+
 function requireConfig(path) {
   try {
     return require('../../../studio/sanity.json')
