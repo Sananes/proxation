@@ -25,6 +25,7 @@
     "@sanity/default-login": "^0.142.6",
     "@sanity/desk-tool": "^0.142.8",
     "@sanity/language-filter": "^0.142.6",
+    "@sanity/production-preview": "^0.142.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
