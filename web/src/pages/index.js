@@ -219,7 +219,7 @@ const IndexPage = props => {
       {/* <Clients data={data.clients.clients} animate={true} /> */}
       <Features {...featuresNodes} animate={true} />
       <SupportSection {...supportSectionNode} animate={true} />
-      <AgencySection data={agencySectionNodes} animate={true} /> */}
+      <AgencySection data={agencySectionNodes} animate={true} />
       <ContactSection data={data.contact.sectionContact} animate={true} />
     </Layout>
   )

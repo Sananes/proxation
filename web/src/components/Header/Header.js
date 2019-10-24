@@ -1,14 +1,12 @@
 import React, { useEffect } from 'react'
 import { Link } from 'gatsby'
 import Icon from '../icons'
-import { useTrail, animated } from 'react-spring'
 import { CSSTransition } from 'react-transition-group'
 import cn from 'classnames'
 import Headroom from 'react-headroom'
 
 import styles from './Header.module.scss'
 import './headroom.scss'
-import { Spring } from 'react-spring/renderprops'
 
 function resolveType(item) {
   const slug = item.slug && item.slug.current
@@ -26,19 +24,20 @@ function resolveType(item) {
 }
 
 const NavItem = ({ item }) => {
-  let { link, submenu, key: _key } = item
+  let { link, submenu } = item
+
   return (
-    <li key={item.key}>
-      <a href={link.navLink && resolveType(link.navLink.reference)}>{link.name}</a>
+    <li className={styles.navItem} key={item._key}>
+      <Link to={(link.navLink && resolveType(link.navLink.reference)) || '/'}>{link.name}</Link>
 
       {submenu != null && (
-        <ul>
-          {submenu.map((subitem, i) => {
+        <ul className={styles.subMenu}>
+          {submenu.map(subitem => {
             return (
-              <li key={subitem._key}>
-                <a href={subitem.navLink && resolveType(subitem.navLink.reference)}>
+              <li className={styles.navItemChild} key={subitem._key}>
+                <Link to={(subitem.navLink && resolveType(subitem.navLink.reference)) || '/'}>
                   {subitem.name}
-                </a>
+                </Link>
               </li>
             )
           })}
@@ -46,6 +45,36 @@ const NavItem = ({ item }) => {
       )}
     </li>
   )
+}
+
+const RenderNav = ({ items }) => {
+  const [first, two] = items
+  const rest = items.slice(2)
+  if (items.length > 0) {
+    return (
+      <React.Fragment>
+        <ul className={cn(styles.menuBlock)}>
+          <NavItem item={first} />
+        </ul>
+        <ul className={cn(styles.menuBlock)}>
+          <NavItem item={two} />
+        </ul>
+        <ul className={cn(styles.menuBlock, styles.menuBlockLast)}>
+          {rest.map(item => (
+            <NavItem item={item} />
+          ))}
+        </ul>
+      </React.Fragment>
+    )
+  } else {
+    return (
+      <ul className="singleElement">
+        {items.map(item => (
+          <NavItem item={item} />
+        ))}
+      </ul>
+    )
+  }
 }
 
 const Header = ({
@@ -61,12 +90,7 @@ const Header = ({
 
   return (
     <>
-      <Headroom disableInlineStyles pinStart={0} className={`${showNav}` && `headroom-shownav`}>
-        {/* <ul style={{ position: 'fixed', top: '100px' }}>
-          {data.map((item, index) => (
-            <NavItem item={item} />
-          ))}
-          </ul> */}
+      <Headroom disableInlineStyles pinStart={0} className={cn(showNav && `headroom-shownav`)}>
         <CSSTransition
           in={showNav}
           timeout={animationTime}
@@ -126,75 +150,7 @@ const Header = ({
         <div className={cn(styles.nav, showNav && styles.showNav, showNav && styles.animate)}>
           <div className={styles.container}>
             <nav className={styles.menuWrapper}>
-              <ul className={cn(styles.menuBlock)}>
-                <li className={styles.navItem}>
-                  <Link to="/shopware/">
-                    <span>01</span>Shopware
-                  </Link>
-                  <ul className={styles.subMenu}>
-                    <li className={styles.navItemChild}>
-                      <Link to="/shopware/">Shopware 6</Link>
-                    </li>
-                    <li className={styles.navItemChild}>
-                      <Link to="/about/">Shopware online shops</Link>
-                    </li>
-                    <li className={styles.navItemChild}>
-                      <Link to="/about/">eCommerce Beratung</Link>
-                    </li>
-                    <li className={styles.navItemChild}>
-                      <Link to="/about/">Plugin Entwicklung</Link>
-                    </li>
-                    <li className={styles.navItemChild}>
-                      <Link to="/about/">Unternehmensswebsites</Link>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-              <ul className={cn(styles.menuBlock)}>
-                <li className={styles.navItem}>
-                  <Link to="/projects/">
-                    <span>02</span>Spezialitäten
-                  </Link>
-                  <ul className={styles.subMenu}>
-                    <li className={styles.navItemChild}>
-                      <Link to="/about/">Amazon Marketing</Link>
-                    </li>
-                    <li className={styles.navItemChild}>
-                      <Link to="/about/">Braintree Payments</Link>
-                    </li>
-                    <li className={styles.navItemChild}>
-                      <Link to="/about/">Pickware Warenwirtschaft</Link>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-              <ul className={cn(styles.menuBlock, styles.menuBlockLast)}>
-                <li className={styles.navItem}>
-                  <Link to="/projects/">
-                    <span>03</span>Referenzen
-                  </Link>
-                </li>
-                <li className={styles.navItem}>
-                  <Link to="/shop/">
-                    <span>04</span>Shop
-                  </Link>
-                </li>
-                <li className={styles.navItem}>
-                  <Link to="/jobs/">
-                    <span>05</span>Jobs
-                  </Link>
-                </li>
-                <li className={styles.navItem}>
-                  <Link to="/blog/">
-                    <span>06</span>Blog
-                  </Link>
-                </li>
-                <li className={styles.navItem}>
-                  <Link to="/contact/">
-                    <span>07</span>Kontakt
-                  </Link>
-                </li>
-              </ul>
+              <RenderNav items={data} />
             </nav>
             <div className={cn(styles.bottomWrapper)}>
               <address className={cn(styles.address, styles.block)}>

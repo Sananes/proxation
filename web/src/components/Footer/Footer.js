@@ -10,7 +10,12 @@ import Image from 'gatsby-image/withIEPolyfill'
 
 const Footer = ({ companyInfo, siteTitle, isVisible }) => {
   return (
-    <Spring to={{ opacity: isVisible ? 1 : 0 }}>
+    <Spring
+      to={{
+        opacity: isVisible ? 1 : 0,
+        transform: isVisible ? `translateY(0)` : `translateY(-24px)`
+      }}
+    >
       {props => (
         <footer className={styles.footer} style={props}>
           <Container className={styles.footerWrapper}>

@@ -72,7 +72,7 @@ const Features = props => {
                           hasIcon={true}
                           className={styles.button}
                           text={item.button.text}
-                          href={item.button.url}
+                          to={item.button.url}
                         />
                       )}
                     </div>

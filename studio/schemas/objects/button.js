@@ -1,3 +1,5 @@
+import link from "./urlReference";
+
 export default {
   title: "Button",
   name: "button",
@@ -10,10 +12,8 @@ export default {
       title: "Button URL",
       name: "url",
       type: "url",
-      description: "Make sure to provide a / for relative URLs",
-      uri: {
-        allowRelative: true
-      }
+      description: "URL that allows relative URLs",
+      validation: Rule => Rule.uri({ allowRelative: true })
     },
     { title: "Text", name: "text", type: "string" }
   ]

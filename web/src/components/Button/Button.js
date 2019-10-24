@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import Link from '../GatsbyLink'
 import Icon from '../icons'
 import cn from 'classnames'
 import styles from './Button.module.scss'
@@ -30,21 +30,12 @@ const Button = ({ type, text, href, to, style, size, className, icon, hasIcon })
   // Render Link or Standard Link
 
   const RenderButtonType = ({ style }) => {
-    if (to) {
-      return (
-        <Link to={to} className={cn(styles.button, classes, style)}>
-          {text || 'Button'}
-          {hasIcon && <Icon strokeWidth="3" symbol={icon || 'chevron-right'} />}
-        </Link>
-      )
-    } else {
-      return (
-        <a href={href} className={cn(styles.button, classes, style)}>
-          {text || 'Button'}
-          {hasIcon && <Icon strokeWidth="3" symbol={icon || 'chevron-right'} />}
-        </a>
-      )
-    }
+    return (
+      <Link to={to} className={cn(styles.button, classes, style)}>
+        {text || 'Button'}
+        {hasIcon && <Icon strokeWidth="3" symbol={icon || 'chevron-right'} />}
+      </Link>
+    )
   }
 
   switch (type) {
