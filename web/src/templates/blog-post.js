@@ -94,7 +94,11 @@ const BlogPostTemplate = props => {
         <SEO
           title={post.title || post.seo.title || 'Untitled'}
           image={post.mainImage.asset.url || null}
-          description={blocksToText(post._rawExcerpt) || (post.seo && post.seo.description) || null}
+          description={
+            blocksToText((post._rawExcerpt && post._rawExcerpt) || []) ||
+            (post.seo && post.seo.description) ||
+            null
+          }
         />
       )}
 
