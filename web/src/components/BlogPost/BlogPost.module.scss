@@ -37,6 +37,11 @@
 }
 
 .blogContent {
+
+  p+p:empty {
+    display: none;
+  }
+
   & a {
     color: $color-gold;
 

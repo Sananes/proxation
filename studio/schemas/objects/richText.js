@@ -15,6 +15,19 @@ export default {
       type: "string"
     },
     {
+      title: "Title size",
+      name: "textSize",
+      type: "string",
+      options: {
+        list: [
+          { title: "Medium", value: "medium" },
+          { title: "Small", value: "small" },
+          { title: "Large", value: "large" }
+        ],
+        layout: "radio" // <-- defaults to 'dropdown'
+      }
+    },
+    {
       title: "Body",
       name: "body",
       type: "blockContent"

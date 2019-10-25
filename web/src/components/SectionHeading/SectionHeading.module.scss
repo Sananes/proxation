@@ -50,22 +50,46 @@
   margin-top: 1rem;
 }
 
+
+.titleMedium {
+  @include h3;
+}
+
 .title {
   @include h3;
-
 }
 
 .titleLarge {
-  @include h1;
+  @include h2;
 }
 
-.lead {
+.titleSmall {
+  @include h4;
+}
+
+.richText {
   @include body-l;
   color: $text-subdued;
+
+  a {
+    color: darken($color-gold, 15%);
+
+    strong {
+      font-weight: normal;
+    }
+  }
 
   &>div {
     @include body-l;
     color: $text-subdued;
+
+    a {
+      color: darken($color-gold, 15%);
+
+      strong {
+        font-weight: normal;
+      }
+    }
   }
 
   ul {

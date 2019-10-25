@@ -132,7 +132,7 @@ function Hero({
             </Spring>
           )}
 
-          {button && (
+          {button && button.text && (
             <Spring
               from={{ opacity: 0, transform: 'translateY(-24px)' }}
               to={{ opacity: 1, transform: 'translateY(0)' }}

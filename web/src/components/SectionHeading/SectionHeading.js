@@ -13,12 +13,13 @@ const SectionHeading = ({
   caption,
   children,
   align,
-  type,
+  textSize,
   button,
   isVisible,
   color,
   className,
-  narrow
+  narrow,
+  ...others
 }) => {
   const setAlignmentClass = cn(styles.sectionHeading, {
     [styles.rightAligned]: align === 'right',
@@ -40,7 +41,9 @@ const SectionHeading = ({
   }
 
   const setTypeClass = cn(styles.title, {
-    [styles.titleLarge]: type === 'large'
+    [styles.titleSmall]: textSize === 'small',
+    [styles.titleMedium]: textSize === 'medium',
+    [styles.titleLarge]: textSize === 'large'
   })
 
   const animationProps = {
@@ -62,16 +65,16 @@ const SectionHeading = ({
       {title && (
         <Spring to={animationProps} delay="200">
           {animation => (
-            <h1 style={animation} className={setTypeClass}>
+            <h2 style={animation} className={setTypeClass}>
               {title || `Title`}
-            </h1>
+            </h2>
           )}
         </Spring>
       )}
       {lead && (
         <Spring to={animationProps} delay="400">
           {animation => (
-            <div className={styles.lead} style={animation}>
+            <div className={styles.richText} style={animation}>
               <BlockText blocks={lead} />
             </div>
           )}

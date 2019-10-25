@@ -9,7 +9,7 @@ import Section from '../../components/Section'
 import styles from './RichText.module.scss'
 
 function RichText(props) {
-  const { title, caption, textAlign } = props
+  const { title, caption, textAlign, textSize } = props
   const body = (props.body && props.body) || (props._rawBody && props._rawBody)
   return (
     <VisibilitySensor once partialVisibility>
@@ -20,6 +20,7 @@ function RichText(props) {
           narrow={true}
           caption={caption}
           lead={body}
+          textSize={textSize ? textSize : null}
           className={cn(styles.root)}
           sectionColor={props.sectionColor}
           style={{ textAlign: textAlign }}

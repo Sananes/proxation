@@ -15,6 +15,7 @@ const Section = ({
   title,
   align,
   button,
+  textSize,
   style,
   sectionColor,
   isVisible,
@@ -54,6 +55,7 @@ const Section = ({
               isVisible={isVisible}
               narrow={narrowHeading}
               button={button}
+              textSize={textSize}
               color={sectionColor}
               className={headingClassName}
               lead={lead}

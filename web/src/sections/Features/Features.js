@@ -63,7 +63,7 @@ const Features = props => {
                       {item._rawContent ? (
                         <BlockText className={styles.content} blocks={item._rawContent} />
                       ) : (
-                        <BlockText blocks={item.content} />
+                        <BlockText className={styles.content} blocks={item.content} />
                       )}
                       {item.button && (
                         <Button

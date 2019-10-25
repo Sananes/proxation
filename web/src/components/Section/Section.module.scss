@@ -32,6 +32,10 @@
 
   &.highlight {
     background-color: $color-hightlight-background;
+
+    +.highlight {
+      padding-top: 0;
+    }
   }
 
   &.white {
