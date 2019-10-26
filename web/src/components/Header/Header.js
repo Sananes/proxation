@@ -23,60 +23,6 @@ function resolveType(item) {
   }
 }
 
-const NavItem = ({ item }) => {
-  let { link, submenu } = item
-
-  return (
-    <li className={styles.navItem} key={item._key}>
-      <Link to={(link.navLink && resolveType(link.navLink.reference)) || '/'}>{link.name}</Link>
-
-      {submenu != null && (
-        <ul className={styles.subMenu}>
-          {submenu.map(subitem => {
-            return (
-              <li className={styles.navItemChild} key={subitem._key}>
-                <Link to={(subitem.navLink && resolveType(subitem.navLink.reference)) || '/'}>
-                  {subitem.name}
-                </Link>
-              </li>
-            )
-          })}
-        </ul>
-      )}
-    </li>
-  )
-}
-
-const RenderNav = ({ items }) => {
-  const [first, two] = items
-  const rest = items.slice(2)
-  if (items.length > 0) {
-    return (
-      <React.Fragment>
-        <ul className={cn(styles.menuBlock)}>
-          <NavItem item={first} />
-        </ul>
-        <ul className={cn(styles.menuBlock)}>
-          <NavItem item={two} />
-        </ul>
-        <ul className={cn(styles.menuBlock, styles.menuBlockLast)}>
-          {rest.map(item => (
-            <NavItem item={item} />
-          ))}
-        </ul>
-      </React.Fragment>
-    )
-  } else {
-    return (
-      <ul className="singleElement">
-        {items.map(item => (
-          <NavItem item={item} />
-        ))}
-      </ul>
-    )
-  }
-}
-
 const Header = ({
   data,
   onHideNav,
@@ -87,6 +33,66 @@ const Header = ({
   ...props
 }) => {
   const animationTime = 1200
+  const isCurrent = location.pathname
+
+  const NavItem = ({ item }) => {
+    let { link, submenu } = item
+
+    return (
+      <li className={styles.navItem} key={item._key}>
+        <Link
+          onClick={showNav ? onHideNav : onShowNav}
+          to={(link.navLink && resolveType(link.navLink.reference)) || '/'}
+        >
+          {link.name}
+        </Link>
+
+        {submenu != null && (
+          <ul className={styles.subMenu}>
+            {submenu.map(subitem => {
+              return (
+                <li className={styles.navItemChild} key={subitem._key}>
+                  <Link to={(subitem.navLink && resolveType(subitem.navLink.reference)) || '/'}>
+                    {subitem.name}
+                  </Link>
+                </li>
+              )
+            })}
+          </ul>
+        )}
+      </li>
+    )
+  }
+
+  const RenderNav = ({ items, ...props }) => {
+    const [first, two] = items
+    const rest = items.slice(2)
+    if (items.length > 0) {
+      return (
+        <React.Fragment>
+          <ul className={cn(styles.menuBlock)}>
+            <NavItem item={first} {...props} />
+          </ul>
+          <ul className={cn(styles.menuBlock)}>
+            <NavItem item={two} {...props} />
+          </ul>
+          <ul className={cn(styles.menuBlock, styles.menuBlockLast)}>
+            {rest.map(item => (
+              <NavItem item={item} {...props} />
+            ))}
+          </ul>
+        </React.Fragment>
+      )
+    } else {
+      return (
+        <ul className="singleElement">
+          {items.map(item => (
+            <NavItem item={item} />
+          ))}
+        </ul>
+      )
+    }
+  }
 
   return (
     <>
@@ -113,7 +119,11 @@ const Header = ({
             <div className={styles.wrapper}>
               <div className={styles.titleWrapper}>
                 <h1 className={styles.branding}>
-                  <Link className={styles.branding} to="/">
+                  <Link
+                    className={styles.branding}
+                    onClick={isCurrent && showNav && onHideNav}
+                    to="/"
+                  >
                     <Icon symbol="logo" />
                     <span className={styles.title}>{siteTitle}</span>
                   </Link>

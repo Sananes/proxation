@@ -72,7 +72,7 @@ const ContactSection = props => {
                       text="Kontakt Aufnehmen"
                       type="button"
                       size="large"
-                      style="primary"
+                      color="primary"
                     />
                   </form>
                 </div>

@@ -68,7 +68,7 @@ const Features = props => {
                       {item.button && (
                         <Button
                           type="link"
-                          style="ghost"
+                          color="ghost"
                           hasIcon={true}
                           className={styles.button}
                           text={item.button.text}

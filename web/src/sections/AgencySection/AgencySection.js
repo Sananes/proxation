@@ -61,7 +61,9 @@ const AgencySection = props => {
                         {item.title}
                       </h4>
 
-                      <BlockText blocks={item._rawContent} style={props} />
+                      <div style={props}>
+                        <BlockText blocks={item._rawContent} />
+                      </div>
                     </div>
                   )}
                 />

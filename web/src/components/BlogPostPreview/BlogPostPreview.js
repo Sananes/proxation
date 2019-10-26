@@ -44,7 +44,7 @@ function BlogPostPreview(props) {
               )}
               <Button
                 type="link"
-                style="ghost"
+                color="ghost"
                 hasIcon={true}
                 className={styles.button}
                 text="Jetzt ansehen"

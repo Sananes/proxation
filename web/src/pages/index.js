@@ -192,8 +192,6 @@ const IndexPage = props => {
     )
   }
 
-  console.log(clients)
-
   return (
     <Layout>
       <Seo title={site.title} description={site.description} keywords={site.keywords} />

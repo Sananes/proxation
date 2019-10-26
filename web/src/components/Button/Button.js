@@ -4,11 +4,11 @@ import Icon from '../icons'
 import cn from 'classnames'
 import styles from './Button.module.scss'
 
-const Button = ({ type, text, href, to, style, size, className, icon, hasIcon }) => {
-  const classes = cn(renderStyle(style), className && className, hasIcon && styles.icon)
+const Button = ({ type, text, href, to, color, size, className, icon, hasIcon }) => {
+  const classes = cn(renderStyle(color), className && className, hasIcon && styles.icon)
 
-  function renderStyle(style) {
-    switch (style) {
+  function renderStyle(color) {
+    switch (color) {
       case 'primary':
         return styles.buttonPrimary
       case 'secondary':
@@ -29,9 +29,9 @@ const Button = ({ type, text, href, to, style, size, className, icon, hasIcon })
 
   // Render Link or Standard Link
 
-  const RenderButtonType = ({ style }) => {
+  const RenderButtonType = ({ color }) => {
     return (
-      <Link to={to} className={cn(styles.button, classes, style)}>
+      <Link to={to} className={cn(styles.button, classes, color)}>
         {text || 'Button'}
         {hasIcon && <Icon strokeWidth="3" symbol={icon || 'chevron-right'} />}
       </Link>
@@ -48,7 +48,7 @@ const Button = ({ type, text, href, to, style, size, className, icon, hasIcon })
     case 'button-link':
       return <RenderButtonType />
     case 'link':
-      return <RenderButtonType style={styles.buttonLink} />
+      return <RenderButtonType color={styles.buttonLink} />
     default:
       return null
   }

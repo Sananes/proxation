@@ -143,6 +143,7 @@ function Hero({
                   type="button"
                   text={button.text}
                   link={button.url}
+                  style={animate}
                   className={styles.button}
                 />
               )}

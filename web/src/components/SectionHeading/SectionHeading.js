@@ -96,7 +96,8 @@ const SectionHeading = ({
               <Button
                 text={button.text}
                 size={button.size}
-                style={button.style}
+                color={button.style}
+                style={animation}
                 type={button.type}
                 href={button.href}
                 to={button.to}

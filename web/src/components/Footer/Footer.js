@@ -48,7 +48,7 @@ const Footer = ({ companyInfo, siteTitle, isVisible }) => {
                 <h3 className={styles.title}>Subscribe to our Newsletter</h3>
                 <form className={styles.wrapper}>
                   <Input placeholder="Enter email address" />
-                  <Button style="primary" type="button" text="Absenden" />
+                  <Button color="primary" type="button" text="Absenden" />
                 </form>
               </div>
               <div className={styles.siteInfo}>
