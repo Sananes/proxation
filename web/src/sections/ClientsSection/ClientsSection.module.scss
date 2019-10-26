@@ -1,7 +1,6 @@
 @import '../../assets/scss/helpers';
 
 .root {
-  display: none;
   padding-top: 0;
 }
 
@@ -12,6 +11,11 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 24px;
+
+  @include breakpoint-md {
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 32px;
+  }
 }

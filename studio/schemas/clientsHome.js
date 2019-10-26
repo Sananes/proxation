@@ -3,7 +3,7 @@ export default {
   title: "Clients",
   type: "object",
   fields: [
-    { title: "Heading", name: "heading", type: "heading" },
+    { title: "Title", name: "title", type: "string" },
     {
       title: "Clients",
       name: "clients",

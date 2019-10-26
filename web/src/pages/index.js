@@ -43,21 +43,7 @@ export const query = graphql`
     }
 
     clients: sanityPageHome {
-      clients {
-        clients {
-          _key
-          title
-          image {
-            alt
-            caption
-            asset {
-              fluid {
-                ...GatsbySanityImageFluid
-              }
-            }
-          }
-        }
-      }
+      _rawClients(resolveReferences: { maxDepth: 10 })
     }
 
     hero: sanityPageHome {
@@ -191,6 +177,8 @@ const IndexPage = props => {
 
   const supportSectionNode = (data || {}).home && data.home.edges.map(edge => edge.node.support)[0]
 
+  const clients = (data || {}).clients._rawClients
+
   const featuresNodes = (data || {}).home && data.home.edges.map(edge => edge.node.features)[0]
 
   const hero = (data || {}).hero.heroHome
@@ -204,6 +192,8 @@ const IndexPage = props => {
     )
   }
 
+  console.log(clients)
+
   return (
     <Layout>
       <Seo title={site.title} description={site.description} keywords={site.keywords} />
@@ -216,7 +206,7 @@ const IndexPage = props => {
         animate={true}
         isVisible={isVisible}
       />
-      {/* <Clients data={data.clients.clients} animate={true} /> */}
+      <Clients {...clients} animate={true} />
       <Features {...featuresNodes} animate={true} />
       <SupportSection {...supportSectionNode} animate={true} />
       <AgencySection data={agencySectionNodes} animate={true} />
