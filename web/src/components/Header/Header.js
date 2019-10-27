@@ -33,7 +33,6 @@ const Header = ({
   ...props
 }) => {
   const animationTime = 1200
-  const isCurrent = location.pathname
 
   const NavItem = ({ item }) => {
     let { link, submenu } = item
@@ -119,11 +118,7 @@ const Header = ({
             <div className={styles.wrapper}>
               <div className={styles.titleWrapper}>
                 <h1 className={styles.branding}>
-                  <Link
-                    className={styles.branding}
-                    onClick={isCurrent && showNav && onHideNav}
-                    to="/"
-                  >
+                  <Link className={styles.branding} onClick={showNav && onHideNav} to="/">
                     <Icon symbol="logo" />
                     <span className={styles.title}>{siteTitle}</span>
                   </Link>
