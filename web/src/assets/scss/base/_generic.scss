@@ -16,6 +16,10 @@ body {
   color: $text-color;
 }
 
+a {
+  color: $color-gold;
+}
+
 /* Copy & Lists */
 p {
   @include body;

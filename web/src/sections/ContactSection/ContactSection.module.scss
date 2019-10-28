@@ -1,11 +1,12 @@
 @import '../../assets/scss/helpers';
 
 .root {
-  color: $text-light;
+  color: inherit;
 
-  * {
-    color: inherit;
+  &.light {
+    color: $text-light;
   }
+
 }
 
 .grid,
@@ -42,13 +43,16 @@
 
 .lead {
   @include body-l;
-  color: $text-light-subdued;
   margin-top: 16px;
   margin-bottom: 32px;
 
-  a {
-    color: inherit;
+  .light & {
+    color: $text-light-subdued;
   }
+
+  a {}
+
+
 }
 
 .image {
@@ -108,7 +112,11 @@
   }
 
   .badgeTechnology svg {
-    color: $text-light;
+    color: $text-dark;
+
+    .light & {
+      color: $text-light;
+    }
   }
 }
 

@@ -99,13 +99,13 @@ $animation-easing: ease-in-out;
   }
 
   a {
-    display: inline-block;
+    display: flex;
     padding-left: 0;
     padding-right: 0;
     color: $color-primary;
 
     svg {
-      height: 22px;
+      height: 14px;
 
       @include breakpoint-md {
         height: auto;

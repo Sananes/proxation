@@ -1,0 +1,41 @@
+@import '../../assets/scss/helpers';
+
+.root {
+  margin-top: 0;
+  padding-left: 0;
+  padding-right: 0;
+
+  &>section {
+    padding-top: 32px;
+
+    .container {
+      padding-left: 0;
+    }
+  }
+}
+
+.wrapper {
+  padding: 60px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 64px;
+}
+
+.title {
+  @include h2;
+}
+
+.content {}
+
+.form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 24px;
+
+  .message {
+    grid-column: span 2;
+  }
+
+  // @include interpolate(margin-top, 24px, 64px);
+  &>div {}
+}

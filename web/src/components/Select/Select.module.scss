@@ -39,19 +39,19 @@
   box-sizing: border-box;
   margin: 0;
   margin-right: -32px;
-  border: 1px solid #aaa;
+  border: 1px solid $color-input-border;
   box-shadow: 0 1px 0 1px rgba(0, 0, 0, .04);
   border-radius: 0;
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
-  border: none;
   background-color: transparent;
   background-repeat: no-repeat, repeat;
   background-position: right .7em top 50%, 0 0;
 
   .dark & {
     color: inherit;
+    border: none;
   }
 }
 
@@ -60,8 +60,12 @@
 }
 
 .select:hover {
-  border-color: #888;
-  border: none;
+  border-color: $color-input-border-hover;
+
+  .dark & {
+    border: none;
+  }
+
   color: inherit;
 }
 
