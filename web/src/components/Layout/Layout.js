@@ -28,9 +28,7 @@ const Layout = ({
       showNav={showNav}
       headerTransparent={headerTransparent}
     />
-    <div location={location} className={styles.content}>
-      {children}
-    </div>
+    <React.Fragment>{children}</React.Fragment>
     <VisibilitySensor once partialVisibility>
       {({ isVisible }) => (
         <Footer companyInfo={companyInfo} siteTitle={siteTitle} isVisible={isVisible} />

@@ -41,11 +41,7 @@ const LandingPage = props => {
         </Container>
       )}
 
-      {pageBuilder && (
-        <div>
-          <RenderModules location={location} modules={page._rawPageBuilder} />
-        </div>
-      )}
+      {pageBuilder && <RenderModules location={location} modules={page._rawPageBuilder} />}
     </Layout>
   )
 }

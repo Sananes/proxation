@@ -24,15 +24,19 @@ function RenderModules(props) {
   }
 
   return (
-    <Fragment>
+    <React.Fragment>
       {modules.map(module => {
         const ModuleComponent = resolveSections(module)
         if (!ModuleComponent) {
           return <div>Missing module {module._type}</div>
         }
-        return <ModuleComponent {...module} location={location} key={module._key} />
+        return (
+          <div className={module._type}>
+            <ModuleComponent {...module} location={location} key={module._key} />
+          </div>
+        )
       })}
-    </Fragment>
+    </React.Fragment>
   )
 }
 

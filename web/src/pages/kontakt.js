@@ -22,6 +22,7 @@ export const query = graphql`
             fluid(maxWidth: 450) {
               ...GatsbySanityImageFluid
             }
+            url
           }
           alt
           caption
@@ -43,7 +44,7 @@ const ContactPage = props => {
   }
 
   const page = data.page
-  const contact = data.contact
+  const contact = data.contact.sectionContact
 
   if (!page) {
     throw new Error(
@@ -53,38 +54,11 @@ const ContactPage = props => {
 
   return (
     <Layout>
-      <SEO title={page.title} />
+      <SEO title={page.title} image={contact.image.asset.src} />
       <Container className={styles.root}>
-        {/* } <div className={styles.wrapper}>
-          <div className={styles.content}>
-            <h1 className={styles.title}>{page.title}</h1>
-            <BlockContent blocks={page._rawBody || []} />
-          </div>
-          <div className={styles.info}>
-            <form className={styles.form}>
-              <FormGroup label="Full Name" name="fullName" />
-              <FormGroup label="Email Address" name="email" />
-              <FormGroup label="Company" name="company" />
-              <FormGroup label="Budget" type="select" name="budget" />
-              <FormGroup
-                className={styles.message}
-                label="Message"
-                name="message"
-                type="textarea"
-              />
-              <Button
-                className={styles.button}
-                text="Kontakt Aufnehmen"
-                type="button"
-                size="large"
-                color="primary"
-              />
-            </form>
-          </div>
-  </div> */}
         <ContactSection
           className={styles.contact}
-          data={contact.sectionContact}
+          data={contact}
           animate={true}
           sectionColor="white"
         />

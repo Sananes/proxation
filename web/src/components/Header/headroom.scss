@@ -41,3 +41,9 @@
     transform: translateY(0%);
   }
 }
+
+.headroom-wrapper+.imageWithText section {
+  @include breakpoint-md {
+    padding-top: 0;
+  }
+}

@@ -55,11 +55,20 @@ const ContactSection = props => {
                     Dann lassen Sie es uns gemeinsam angehen! Wir freuen uns auf Ihre Anfrage!{' '}
                     <a href="mailto: info@proxation.de">info@proxation.de</a>
                   </p>
-                  <form className={styles.form}>
+                  <form
+                    className={styles.form}
+                    name="Contact Form"
+                    method="POST"
+                    data-netlify="true"
+                    data-netlify-honeypot="bot-field"
+                    action="/thanks/"
+                  >
+                    <input type="hidden" name="bot-field" />
+                    <input type="hidden" name="form-name" value="Contact Form" />
                     <FormGroup label="Vollständiger Name" name="fullName" dark={isDark} />
                     <FormGroup label="E-Mail Adresse" name="email" dark={isDark} />
                     <FormGroup label="Firma" name="company" dark={isDark} />
-                    <FormGroup label="Budget" type="select" name="budget" dark={isDark} />
+                    <FormGroup label="Budget" type="select" name="budget[]" dark={isDark} />
                     <FormGroup
                       className={styles.message}
                       label="Erzählen Sie uns kurz von Ihrem Projekt"
@@ -70,9 +79,9 @@ const ContactSection = props => {
                     <Button
                       className={styles.button}
                       text="Kontakt Aufnehmen"
-                      type="button"
                       size="large"
                       color="primary"
+                      type="submit"
                     />
                   </form>
                 </div>

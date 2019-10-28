@@ -45,6 +45,12 @@ const Button = ({ type, text, href, to, color, size, className, icon, hasIcon })
           {text} {hasIcon && <Icon symbol={icon || 'arrow-right'} />}
         </button>
       )
+    case 'submit':
+      return (
+        <button type="submit" className={cn(styles.button, classes)}>
+          {text} {hasIcon && <Icon symbol={icon || 'arrow-right'} />}
+        </button>
+      )
     case 'button-link':
       return <RenderButtonType />
     case 'link':

@@ -11,7 +11,7 @@
     grid-template-columns: 1fr;
 
     @include breakpoint-md {
-      grid-template-columns: 45% 55%;
+      grid-template-columns: 1fr 1.25fr;
       grid-gap: 48px;
     }
 

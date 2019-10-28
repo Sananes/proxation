@@ -14,6 +14,7 @@ const SupportSection = props => {
     sectionColor,
     button,
     image,
+    textSize,
     imageAlignment: align,
     mobileImageAlignment
   } = props
@@ -46,6 +47,7 @@ const SupportSection = props => {
               isVisible={isVisible}
               title={heading.title}
               align="left"
+              textSize={textSize}
               button={
                 button && {
                   text: button.text,

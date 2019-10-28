@@ -19,6 +19,19 @@ export default {
       validation: Rule => Rule.required()
     },
     { title: "Heading", name: "heading", type: "heading" },
+    {
+      title: "Title size",
+      name: "textSize",
+      type: "string",
+      options: {
+        list: [
+          { title: "Medium", value: "medium" },
+          { title: "Small", value: "small" },
+          { title: "Large", value: "large" }
+        ],
+        layout: "radio" // <-- defaults to 'dropdown'
+      }
+    },
     { title: "Button", name: "button", type: "button" },
     { name: "sectionColor", type: "sectionColor" }
   ],

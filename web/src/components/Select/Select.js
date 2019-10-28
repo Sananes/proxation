@@ -15,11 +15,12 @@ const Select = props => {
   return (
     <div className={cn(styles.root, props.dark && styles.dark)}>
       <select {...props} className={styles.select}>
-        {options.map(option => (
-          <option key={option.value} value={option.value} disabled={option.options}>
-            {option.label}
-          </option>
-        ))}
+        {options &&
+          options.map(option => (
+            <option key={option.value} value={option.value} disabled={option.options}>
+              {option.label}
+            </option>
+          ))}
       </select>
       <Icon symbol="chevron-down" />
     </div>

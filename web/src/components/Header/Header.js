@@ -95,7 +95,11 @@ const Header = ({
 
   return (
     <>
-      <Headroom disableInlineStyles pinStart={0} className={cn(showNav && `headroom-shownav`)}>
+      <Headroom
+        disableInlineStyles
+        pinStart={0}
+        className={cn(`header`, showNav && `headroom-shownav`)}
+      >
         <CSSTransition
           in={showNav}
           timeout={animationTime}
