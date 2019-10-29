@@ -26,7 +26,6 @@ const ContactSection = props => {
   const isDark = (data.sectionColor === 'dark' && true) || false
 
   const { register, handleSubmit, errors } = useForm()
-  const onSubmit = data => console.log(data)
   return (
     <AnimateScroll
       condition={props.animate}

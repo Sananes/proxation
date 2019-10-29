@@ -6,6 +6,9 @@ import Close from './close'
 import ArrowLeft from './arrow-left'
 import ChevronRight from './chevron-right'
 import ChevronDown from './chevron-down'
+import Download from './download'
+import File from './file'
+import View from './view'
 import Pattern from './pattern'
 import Shopware from './shopware'
 
@@ -28,6 +31,12 @@ function Icon(props) {
       return <ChevronDown strokeWidth={strokeWidth || 2} />
     case 'shopware':
       return <Shopware strokeWidth={strokeWidth || 2} />
+    case 'file':
+      return <File strokeWidth={strokeWidth || 2} />
+    case 'download':
+      return <Download strokeWidth={strokeWidth || 2} />
+    case 'view':
+      return <View strokeWidth={strokeWidth || 2} />
     case 'pattern':
       return <Pattern />
     default:

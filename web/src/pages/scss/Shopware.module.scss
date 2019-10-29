@@ -1,22 +1,21 @@
 @import '../../assets/scss/helpers';
 
-.root {
+.hero {
   height: 100vh;
-  margin-top: -#{$header-mobile-height};
+  margin-top: -$header-mobile-height;
   background: $color-primary url('../../assets/images/shopware-logo-hero.png') no-repeat top center;
   background-size: 80%;
 
 
-  @include breakpoint-md {
-    margin-top: -#{$header-height};
+  @include breakpoint-lg {
+    margin-top: -$header-height;
     background-size: 45%;
     background-position: center center;
-
-
   }
 
   .container {
     @extend %container;
+
     position: relative;
     height: 100%;
     padding-top: $header-height;
@@ -70,6 +69,62 @@
 
     &.badgeBusiness svg {
       color: $color-gold;
+    }
+  }
+}
+
+.intro {
+  @extend %section;
+  max-width: $layout-breakpoint-lg;
+  margin: 0 auto;
+  display: grid;
+  @include interpolate(grid-gap, 24px, 64px);
+
+  @include breakpoint-md {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .listFeatures {
+
+    h3 {
+      @include h5;
+      margin-bottom: 16px;
+    }
+
+    ul {
+      @extend %check-list;
+    }
+  }
+
+  .list {
+    margin: 0;
+    padding: 0;
+    display: grid;
+    @include interpolate(grid-gap, 16px, 32px);
+
+    h3 {
+      @include h5;
+      margin-top: 8px;
+    }
+
+    p {
+      margin-top: 8px;
+    }
+
+    a {
+      display: block;
+      color: $color-primary;
+      text-decoration: none;
+      padding: 20px;
+
+    }
+
+    .item {
+      background: $color-hightlight-background;
+    }
+
+    svg {
+      width: 32px;
     }
   }
 }

@@ -30,11 +30,7 @@ function RenderModules(props) {
         if (!ModuleComponent) {
           return <div>Missing module {module._type}</div>
         }
-        return (
-          <div className={module._type}>
-            <ModuleComponent {...module} location={location} key={module._key} />
-          </div>
-        )
+        return <ModuleComponent {...module} location={location} key={module._key} />
       })}
     </React.Fragment>
   )

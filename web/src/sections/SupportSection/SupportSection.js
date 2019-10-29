@@ -25,7 +25,10 @@ const SupportSection = props => {
     )
   }
 
-  const heading = (props.heading && props.heading) || (props._rawHeading && props._rawHeading)
+  const heading =
+    (props.heading && props.heading) ||
+    (props._rawHeading && props._rawHeading) ||
+    (props.lead && props.lead)
 
   return (
     <VisibilitySensor
@@ -59,9 +62,10 @@ const SupportSection = props => {
                 }
               }
               lead={heading.subHeading}
+              subheading={heading.subheading}
               sectionColor={sectionColor}
             />
-            {image && image.asset && (
+            {((image && image.asset) || image.src) && (
               <Spring
                 to={{
                   transform: isVisible ? `translateY(0)` : `translateY(-32px)`,
@@ -76,7 +80,7 @@ const SupportSection = props => {
                 {animation => (
                   <div className={styles.image} style={animation}>
                     <Image
-                      fluid={getSanityImageFluid(image)}
+                      fluid={(image.asset && getSanityImageFluid(image)) || (image.src && image)}
                       title={image.alt || heading.title}
                       alt={image.alt || heading.title}
                     />
