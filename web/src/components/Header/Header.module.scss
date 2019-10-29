@@ -421,8 +421,9 @@ $animation-easing: ease-in-out;
 }
 
 .animateEnterActive {
+
   &.root {
-    background: $color-primary;
+    background: inherit;
     animation: 200ms $animation-easing 0s forwards;
     animation-name: headerFade;
   }
@@ -527,8 +528,16 @@ $animation-easing: ease-in-out;
 }
 
 :global(.headroom--scrolled) .transparent {
-  background: $color-header-background;
+  background: $color-white;
   color: $text-dark;
+
+  &.animateEnterActive {
+
+    &.root {
+      background: $color-primary !important;
+      animation-duration: 0s;
+    }
+  }
 
   &.showNav {
     background: $color-primary;
