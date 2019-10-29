@@ -42,6 +42,7 @@
     "react-dom": "^16.8.6",
     "react-headroom": "^2.2.8",
     "react-helmet": "^5.2.1",
+    "react-hook-form": "^3.26.2",
     "react-pose": "^4.0.8",
     "react-reveal": "^1.2.2",
     "react-scrolllock": "^4.0.1",

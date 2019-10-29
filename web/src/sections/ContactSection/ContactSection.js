@@ -8,6 +8,7 @@ import styles from './ContactSection.module.scss'
 import FormGroup from '../../components/FormGroup'
 import Icon from '../../components/icons'
 import { Spring } from 'react-spring/renderprops'
+import useForm from 'react-hook-form'
 
 const ContactSection = props => {
   const { data } = props
@@ -23,6 +24,9 @@ const ContactSection = props => {
 
   const heading = (data.heading && data.heading) || (data._rawHeading && data._rawHeading)
   const isDark = (data.sectionColor === 'dark' && true) || false
+
+  const { register, handleSubmit, errors } = useForm()
+  const onSubmit = data => console.log(data)
   return (
     <AnimateScroll
       condition={props.animate}
@@ -57,23 +61,50 @@ const ContactSection = props => {
                   </p>
                   <form
                     className={styles.form}
-                    name="Contact Form"
-                    method="POST"
                     data-netlify="true"
+                    name="Contact Form"
+                    action="/thank-you"
+                    type="POST"
                     data-netlify-honeypot="bot-field"
-                    action="/thanks/"
                   >
                     <input type="hidden" name="bot-field" />
                     <input type="hidden" name="form-name" value="Contact Form" />
-                    <FormGroup label="Vollständiger Name" name="fullName" dark={isDark} />
-                    <FormGroup label="E-Mail Adresse" name="email" dark={isDark} />
-                    <FormGroup label="Firma" name="company" dark={isDark} />
+
+                    <FormGroup
+                      errors={errors.fullName}
+                      label="Vollständiger Name"
+                      name="fullName"
+                      register={register({ required: 'Required' })}
+                      dark={isDark}
+                    />
+                    <FormGroup
+                      label="E-Mail Adresse"
+                      name="email"
+                      register={register({
+                        required: 'Required',
+                        pattern: {
+                          value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                          message: 'invalid email address'
+                        }
+                      })}
+                      dark={isDark}
+                      errors={errors.email}
+                    />
+                    <FormGroup
+                      label="Firma"
+                      name="company"
+                      register={register}
+                      dark={isDark}
+                      errors={errors.company}
+                    />
                     <FormGroup label="Budget" type="select" name="budget[]" dark={isDark} />
                     <FormGroup
                       className={styles.message}
                       label="Erzählen Sie uns kurz von Ihrem Projekt"
                       name="message"
                       type="textarea"
+                      register={register}
+                      errors={errors.message}
                       dark={isDark}
                     />
                     <Button

@@ -6,23 +6,25 @@ import cn from 'classnames'
 import styles from './FormGroup.module.scss'
 
 const FormGroup = props => {
+  const className = props.className || ''
+  const { errors } = props
   const RenderInputType = ({ type }) => {
     if (type === 'textarea') {
-      return <Textarea {...props} className={props.className} />
+      return <Textarea {...props} className={className} />
     } else if (type === 'select') {
-      return <Select {...props} className={props.className} />
+      return <Select {...props} className={className} />
     } else {
-      return <Input {...props} className={props.className} />
+      return <Input {...props} className={className} />
     }
   }
   return (
-    <div className={cn(styles.root, props.dark && styles.dark, props.className)}>
+    <div className={cn(styles.root, props.dark && styles.dark, className)}>
       <label htmlFor={props.name} className={styles.label}>
         <h3 className={styles.labelTitle}>{props.label}</h3>
-        <RenderInputType type={props.type && props.type} />
+        <RenderInputType type={props.type && props.type} {...props} />
       </label>
       <div className={styles.info}>
-        <p>{props.info}</p>
+        <p>{errors && errors.message}</p>
       </div>
     </div>
   )
