@@ -23,15 +23,7 @@ function resolveType(item) {
   }
 }
 
-const Header = ({
-  data,
-  onHideNav,
-  onShowNav,
-  showNav,
-  siteTitle,
-  headerTransparent,
-  ...props
-}) => {
+const Header = ({ data, onHideNav, onShowNav, showNav, siteTitle, ...props }) => {
   const animationTime = 1200
 
   const NavItem = ({ item }) => {
@@ -98,7 +90,11 @@ const Header = ({
       <Headroom
         disableInlineStyles
         pinStart={0}
-        className={cn(`header`, showNav && `headroom-shownav`)}
+        className={cn(
+          `header`,
+          showNav && `headroom-shownav`,
+          props.fullWidth && 'headroom-fullwidth'
+        )}
       >
         <CSSTransition
           in={showNav}
@@ -115,7 +111,7 @@ const Header = ({
           <div
             className={cn(
               styles.root,
-              headerTransparent && styles.transparent,
+              props.fullWidth && styles.transparent,
               showNav && styles.showNav
             )}
           >

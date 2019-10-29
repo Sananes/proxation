@@ -37,7 +37,7 @@ const query = graphql`
 
 function LayoutContainer(props) {
   const [showNav, setShowNav] = useState(false)
-  const { location } = props
+  const { location, fullWidth } = props
   function handleShowNav() {
     setShowNav(true)
   }
@@ -70,6 +70,7 @@ function LayoutContainer(props) {
               siteTitle={data.site.title}
               menu={data.headerNav._rawHeaderNav}
               onHideNav={handleHideNav}
+              fullWidth={fullWidth}
               onShowNav={handleShowNav}
               location={location}
             />

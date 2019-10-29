@@ -14,13 +14,16 @@ function Hero({
   image,
   caption,
   button,
+  style,
   overlay,
+  className,
   position,
   textColor,
   location,
   ...props
 }) {
   const isHomepage = location.pathname === '/' && styles.homepage
+  const fullWidth = props.fullWidth
   const noImage = !image || (!image.asset && styles.homepage)
   const { overlayColor: color, overlayOpacity } = overlay || {}
   const opacity = overlayOpacity / 100
@@ -62,9 +65,12 @@ function Hero({
 
   return (
     <div
+      style={style}
       className={cn(
+        className,
         styles.hero,
         isHomepage,
+        fullWidth && styles.transparent,
         noImage,
         position && alignmentClass(position),
         textColor && textColor === 'light' ? styles.light : styles.dark
@@ -91,7 +97,8 @@ function Hero({
           )}
         </Spring>
       )}
-      <Container className={styles.container}>
+      <Container className={cn(styles.container, 'container')}>
+        {props.children}
         <div className={styles.content}>
           {caption && (
             <Spring

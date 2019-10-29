@@ -176,14 +176,15 @@
   }
 }
 
-.lead {
+.lead,
+.subheading {
   @include body-l;
   max-width: 500px;
   color: $text-subdued;
 
   .light & {
     @include breakpoint-md {
-      color: $text-light;
+      color: $text-dimmed;
     }
   }
 
@@ -195,4 +196,8 @@
 
 small+.title {
   margin-top: 1rem;
+}
+
+.transparent {
+  margin-top: -$header-height;
 }

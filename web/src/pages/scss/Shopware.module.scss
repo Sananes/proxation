@@ -1,0 +1,75 @@
+@import '../../assets/scss/helpers';
+
+.root {
+  height: 100vh;
+  margin-top: -#{$header-mobile-height};
+  background: $color-primary url('../../assets/images/shopware-logo-hero.png') no-repeat top center;
+  background-size: 80%;
+
+
+  @include breakpoint-md {
+    margin-top: -#{$header-height};
+    background-size: 45%;
+    background-position: center center;
+
+
+  }
+
+  .container {
+    @extend %container;
+    position: relative;
+    height: 100%;
+    padding-top: $header-height;
+    display: flex;
+  }
+}
+
+.content {
+  max-width: 600px;
+  text-align: center;
+  margin: 0 auto;
+  align-self: center;
+
+  h1 {
+    margin-top: 0;
+    color: $text-light;
+  }
+
+  p {
+    color: $text-light-subdued;
+  }
+}
+
+.badges {
+  text-align: center;
+  margin-top: 48px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+
+  li {
+    color: $text-light;
+
+    strong {
+      display: inline-block;
+    }
+
+    svg {
+      display: block;
+      margin: 12px auto;
+    }
+
+    &.badgeItem svg {
+      color: $text-light-dimmed;
+    }
+
+    &.badgeTechnology svg {
+      color: $color-white;
+    }
+
+    &.badgeBusiness svg {
+      color: $color-gold;
+    }
+  }
+}

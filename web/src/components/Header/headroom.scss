@@ -16,12 +16,18 @@
   }
 }
 
+
+
 .headroom--unfixed {
   transform: translateY(0%);
 }
 
 .headroom--scrolled {
   transition: transform 200ms ease-in-out;
+
+  .headroom-fullwidth & {
+    background: white;
+  }
 }
 
 .headroom--unpinned {

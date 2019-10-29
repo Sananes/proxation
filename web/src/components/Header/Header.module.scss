@@ -19,13 +19,13 @@ $animation-easing: ease-in-out;
 
 @keyframes headerFade {
   0% {
-    color: $color-primary;
-    background: $color-header-background;
+    color: inherit;
+    background: inherit;
   }
 
   100% {
-    color: $color-white;
-    background: $color-primary;
+    color: inherit;
+    background: inherit;
   }
 }
 
@@ -48,7 +48,7 @@ $animation-easing: ease-in-out;
 
   &.transparent {
     color: $text-light;
-    background: white;
+    background: transparent;
     border-bottom: none;
   }
 }
@@ -523,5 +523,44 @@ $animation-easing: ease-in-out;
 
       ;
     }
+  }
+}
+
+:global(.headroom--scrolled) .transparent {
+  background: $color-header-background;
+  color: $text-dark;
+
+  &.showNav {
+    background: $color-primary;
+
+    .branding {
+      color: $text-light;
+    }
+
+    .toggleNavButton span {
+      background: $text-light;
+    }
+  }
+
+  .branding {
+    color: $text-dark;
+  }
+
+  .toggleNavButton span {
+    background: $text-dark;
+  }
+}
+
+
+.transparent {
+
+  background: transparent;
+
+  .branding {
+    color: $text-light;
+  }
+
+  .toggleNavButton span {
+    background: $text-light;
   }
 }

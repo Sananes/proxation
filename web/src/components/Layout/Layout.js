@@ -14,6 +14,7 @@ const Layout = ({
   menu,
   showNav,
   location,
+  fullWidth,
   siteTitle,
   pageTitle,
   headerTransparent
@@ -25,6 +26,7 @@ const Layout = ({
       onHideNav={onHideNav}
       onShowNav={onShowNav}
       pageTitle={pageTitle}
+      fullWidth={fullWidth}
       showNav={showNav}
       headerTransparent={headerTransparent}
     />
