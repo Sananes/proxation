@@ -6,9 +6,9 @@ import cn from 'classnames'
 import styles from './figure.module.scss'
 
 function Figure(props) {
-  const { blog } = props
+  const { blog, style } = props
   return (
-    <figure className={cn(styles.root, blog && styles.isBlog)}>
+    <figure style={style} className={cn(styles.root, blog && styles.isBlog)}>
       {props.asset && (
         <img
           src={imageUrlFor(buildImageObj(props))

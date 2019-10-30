@@ -64,6 +64,41 @@
   }
 }
 
+.details {
+  background: $color-hightlight-background;
+
+  @include interpolate((padding-top, padding-bottom), 24px, 64px);
+
+  .inner {
+    display: grid;
+    grid-gap: 16px;
+    justify-items: start;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: $layout-width;
+    margin: 0 auto;
+
+    @include breakpoint-lg {
+      grid-template-columns: repeat(4, 1fr);
+      padding-left: 0;
+      padding-right: 0;
+
+    }
+  }
+
+  h4 {
+    @include h6;
+    margin-top: 0;
+  }
+
+  p,
+  a {
+    display: block;
+    margin-top: 8px;
+  }
+}
+
 .grid {
   @extend %section;
   padding-left: 0;
@@ -71,17 +106,19 @@
 }
 
 .mainContent {
-  @extend %section-narrow;
   overflow: visible;
+  padding-top: 64px;
+  padding-bottom: 64px;
 
-  @nest & a {
-    color: var(--color-accent);
-
-    @media (hover: hover) {
-      @nest &:hover {
-        color: inherit;
-      }
-    }
+  h1,
+  h2,
+  h3,
+  h4,
+  blockquote,
+  p {
+    @extend %section-narrow;
+    padding-top: 0;
+    padding-bottom: 0;
   }
 }
 

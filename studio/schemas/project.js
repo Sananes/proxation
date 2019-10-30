@@ -20,6 +20,11 @@ export default {
       }
     },
     {
+      name: "projectLink",
+      title: "Project Link",
+      type: "url"
+    },
+    {
       name: "publishedAt",
       title: "Published at",
       description: "You can use this field to schedule projects where you show them",
@@ -60,6 +65,16 @@ export default {
       name: "type",
       title: "Type",
       type: "string"
+    },
+    {
+      name: "services",
+      title: "Services",
+      description: "List of services that was required for this project",
+      type: "array",
+      of: [{ type: "string" }],
+      options: {
+        layout: "tags"
+      }
     },
     {
       name: "categories",

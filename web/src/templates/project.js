@@ -15,6 +15,9 @@ export const query = graphql`
         _id
         title
       }
+      projectLink
+      startedAt
+      endedAt
       relatedProjects {
         title
         _id
@@ -47,10 +50,12 @@ export const query = graphql`
         }
         alt
       }
+      services
       title
       slug {
         current
       }
+      type
       excerpt
       _rawBody
       members {
