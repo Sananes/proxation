@@ -3,6 +3,7 @@ export default {
   title: "Project",
   type: "document",
   fields: [
+    { name: "seo", type: "seo", title: "Seo" },
     {
       name: "title",
       title: "Title",
@@ -27,11 +28,11 @@ export default {
     {
       name: "excerpt",
       title: "Excerpt",
-      type: "blockText"
+      type: "text"
     },
     {
       name: "members",
-      title: "Members",
+      title: "Team Members",
       type: "array",
       of: [{ type: "projectMember" }]
     },
@@ -44,6 +45,11 @@ export default {
       name: "endedAt",
       title: "Ended at",
       type: "datetime"
+    },
+    {
+      name: "cardImage",
+      title: "Card Image",
+      type: "image"
     },
     {
       name: "mainImage",

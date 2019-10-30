@@ -1,7 +1,6 @@
 %container,
 %container-narrow {
   @include clear-top-margin;
-  padding: 1.5rem 0;
 }
 
 %container {
@@ -38,6 +37,12 @@
     border-top: 0;
   }
 
+}
+
+%section-narrow {
+  @extend %section,
+  %container-narrow;
+  max-width: $content-width;
 }
 
 %section-heading {

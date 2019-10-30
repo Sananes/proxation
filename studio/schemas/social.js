@@ -8,7 +8,8 @@ export default {
       name: "image",
       title: "Image",
       type: "figure"
-    }
+    },
+    { name: "link", title: "Link", type: "url" }
   ],
   preview: {
     select: {

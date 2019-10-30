@@ -13,12 +13,8 @@ function ProjectPreview(props) {
       to={`/project/${props.slug.current}`}
     >
       <div className={styles.wrapper}>
-        {props.mainImage && props.mainImage.asset && (
-          <Image
-            fluid={props.mainImage.asset.fluid}
-            alt={props.mainImage.alt || props.title}
-            styles={styles.image}
-          />
+        {props.cardImage && props.cardImage.asset && (
+          <Image fluid={props.cardImage.asset.fluid} alt={props.title} styles={styles.image} />
         )}
       </div>
       <div className={styles.content}>

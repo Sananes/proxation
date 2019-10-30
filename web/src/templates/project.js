@@ -41,6 +41,9 @@ export const query = graphql`
         }
         asset {
           _id
+          fluid(maxWidth: 1200) {
+            ...GatsbySanityImageFluid
+          }
         }
         alt
       }
@@ -48,6 +51,7 @@ export const query = graphql`
       slug {
         current
       }
+      excerpt
       _rawBody
       members {
         _key
@@ -85,7 +89,7 @@ const ProjectTemplate = props => {
   const { data, errors } = props
   const project = data && data.project
   return (
-    <Layout title={project.title}>
+    <Layout fullWidth={true} title={project.title}>
       {errors && <SEO title="GraphQL Error" />}
       {project && <SEO title={project.title || 'Untitled'} />}
 

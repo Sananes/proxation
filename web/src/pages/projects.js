@@ -13,17 +13,15 @@ export const query = graphql`
       edges {
         node {
           id
-          mainImage {
+          cardImage {
             asset {
               _id
               fluid {
                 ...GatsbySanityImageFluid
               }
             }
-            alt
           }
           title
-          _rawExcerpt
           slug {
             current
           }

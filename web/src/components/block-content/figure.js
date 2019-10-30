@@ -2,9 +2,9 @@ import React from 'react'
 import { buildImageObj } from '../../lib/helpers'
 import { imageUrlFor } from '../../lib/image-url'
 
-import styles from './figure.module.css'
+import styles from './figure.module.scss'
 
-function Figure (props) {
+function Figure(props) {
   return (
     <figure className={styles.root}>
       {props.asset && (

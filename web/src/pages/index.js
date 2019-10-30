@@ -125,30 +125,13 @@ export const query = graphql`
           }
           projects {
             _id
-            mainImage {
-              crop {
-                _key
-                _type
-                top
-                bottom
-                left
-                right
-              }
-              hotspot {
-                _key
-                _type
-                x
-                y
-                height
-                width
-              }
+            cardImage {
               asset {
                 fluid(maxWidth: 800) {
                   ...GatsbySanityImageFluid
                 }
                 _id
               }
-              alt
             }
             title
             slug {
