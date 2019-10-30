@@ -16,14 +16,14 @@
     "test": "sanity check"
   },
   "dependencies": {
-    "@sanity/base": "^0.144.0",
+    "@sanity/base": "^0.144.1",
     "@sanity/cli": "^0.144.0",
     "@sanity/color-input": "^0.144.0",
-    "@sanity/components": "^0.144.0",
+    "@sanity/components": "^0.144.2",
     "@sanity/core": "^0.144.0",
-    "@sanity/default-layout": "^0.144.0",
+    "@sanity/default-layout": "^0.144.2",
     "@sanity/default-login": "^0.144.0",
-    "@sanity/desk-tool": "^0.144.0",
+    "@sanity/desk-tool": "^0.144.2",
     "@sanity/language-filter": "^0.144.0",
     "@sanity/production-preview": "^0.144.0",
     "prop-types": "^15.7.2",
