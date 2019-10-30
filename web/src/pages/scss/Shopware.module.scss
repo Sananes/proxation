@@ -74,7 +74,13 @@
 }
 
 .clients {
-  @extend %section;
+  padding-top: 48px !important;
+  padding-bottom: 48px !important;
+
+  @include breakpoint-md {
+    padding-top: 120px !important;
+    padding-bottom: 120px !important;
+  }
 
   h2 {
     @include h4;

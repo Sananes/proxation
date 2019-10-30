@@ -18,16 +18,6 @@ const ClientsSection = props => {
       transform: isVisible ? 'translateY(0)' : 'translateY(-24px)'
     }
   }
-  function colorClasses(color) {
-    switch (color) {
-      case 'dark':
-        return styles.dark
-      case 'highlight':
-        return styles.highlight
-      default:
-        return styles.white
-    }
-  }
   return (
     <>
       {clients && (
@@ -35,8 +25,8 @@ const ClientsSection = props => {
           {({ isVisible }) => (
             <Section
               sectionColor={sectionColor}
-              className={cn(styles.root, props.className)}
               headingClassName={styles.heading}
+              className={cn(styles.root, props.className)}
             >
               {title && <h2 className={styles.title}>{title}</h2>}
               <div className={styles.grid}>

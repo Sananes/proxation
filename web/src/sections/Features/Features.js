@@ -5,11 +5,11 @@ import BlockText from '../../components/block-text'
 import cn from 'classnames'
 import { getFluidGatsbyImage } from 'gatsby-source-sanity'
 import { Trail } from 'react-spring/renderprops'
-import AnimateScroll from '../../components/AnimateScroll'
 import Button from '../../components/Button'
 import { buildImageObj, sectionColumns } from '../../lib/helpers'
 import Image from 'gatsby-image/withIEPolyfill'
 import { imageUrlFor } from '../../lib/image-url'
+import VisibilitySensor from '../../components/VisibilitySensor'
 
 const Features = props => {
   const { isVisible } = props
@@ -20,25 +20,24 @@ const Features = props => {
     throw new Error('No features have been added in the studio')
   }
   return (
-    <AnimateScroll
+    <VisibilitySensor
       once
-      condition={true}
-      partialVisiblity="top"
+      partialVisibility
       children={({ isVisible }) => (
         <Section
+          isVisible={isVisible}
           className={styles.features}
           headingClassName={styles.heading}
           narrowHeading={true}
           sectionColor={props.sectionColor}
-          isVisible={isVisible}
           title={heading.title}
           caption={heading.caption}
           lead={heading.subheading}
         >
           <div className={cn(styles.grid, sectionColumns(props.sectionColumns, styles))}>
-            <AnimateScroll
+            <VisibilitySensor
               once
-              condition={true}
+              partialVisibility
               children={({ isVisible }) => (
                 <Trail
                   items={items}
