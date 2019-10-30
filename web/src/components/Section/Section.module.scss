@@ -43,6 +43,12 @@
       padding-top: 0;
     }
   }
+
+  &.dark {
+    +.dark {
+      padding-top: 0;
+    }
+  }
 }
 
 .sectionDivider {

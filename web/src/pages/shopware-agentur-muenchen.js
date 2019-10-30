@@ -11,6 +11,10 @@ import { Spring } from 'react-spring/renderprops'
 import SectionHeading from '../components/SectionHeading'
 import VisibilitySensor from '../components/VisibilitySensor'
 import SupportSection from '../sections/SupportSection'
+import Clients from '../sections/ClientsSection'
+import RichText from '../sections/RichText'
+import Image from 'gatsby-image/withIEPolyfill'
+import Section from '../components/Section'
 
 export const query = graphql`
   query ShopwarePageQuery {
@@ -18,6 +22,9 @@ export const query = graphql`
       id
       title
       _rawBody
+    }
+    clients: sanityPageHome {
+      _rawClients(resolveReferences: { maxDepth: 10 })
     }
     plugins: file(relativePath: { eq: "shopware/plugins.jpg" }) {
       childImageSharp {
@@ -59,7 +66,7 @@ export const query = graphql`
 
 const ShopwarePage = props => {
   const { data, errors } = props
-
+  const clients = (data || {}).clients._rawClients
   if (errors) {
     return (
       <Layout>
@@ -191,6 +198,10 @@ const ShopwarePage = props => {
             <Spring to={animationVisible(isVisible)}>
               {props => (
                 <div style={props} className={styles.listFeatures}>
+                  <Image
+                    fluid={data.hosting.childImageSharp.fluid}
+                    alt="Unsere shopware Agentur Leistungen auf einen Blick"
+                  />
                   <h3>Unsere shopware Agentur Leistungen auf einen Blick</h3>
                   <ul>
                     <li>
@@ -217,7 +228,11 @@ const ShopwarePage = props => {
             <Spring to={animationVisible(isVisible)}>
               {props => (
                 <div style={props} className={styles.listFeatures}>
-                  <h3>Unsere shopware Agentur Leistungen auf einen Blick</h3>
+                  <Image
+                    fluid={data.programming.childImageSharp.fluid}
+                    alt="Unsere shopware Agentur Leistungen auf einen Blick"
+                  />
+                  <h3 style={props}>Unsere shopware Agentur Leistungen auf einen Blick</h3>
 
                   <ul>
                     <li>Zertifizierte shopware Agentur in München</li>
@@ -240,22 +255,31 @@ const ShopwarePage = props => {
         </VisibilitySensor>
       </section>
 
+      <Clients
+        {...clients}
+        title="Unsere Referenzen"
+        className={styles.clients}
+        sectionColor="highlight"
+      />
+
       <VisibilitySensor once partialVisibility>
         {({ isVisible }) => (
-          <SectionHeading
-            align="center"
-            isVisible={isVisible}
-            caption="Shopware Agentur München - Zu Ihren Diensten"
-            title="Neuer Shop gefällig?"
-            subheading="Sie möchten für Ihr Unternehmen einen shopware Shop einrichten oder optimieren? Schreiben Sie uns eine E-Mail mit Ihren Wünschen und wir helfen Ihnen dabei, Ihren Traum-Webshop zu erstellen. Oder rufen Sie einfach gleich bei uns an und erläutern Sie uns Ihre aktuellen Anforderungen direkt am Telefon!"
-            isVisible={isVisible}
-          />
+          <Section>
+            <SectionHeading
+              align="center"
+              isVisible={isVisible}
+              caption="Shopware Agentur München - Zu Ihren Diensten"
+              title="Neuer Shop gefällig?"
+              subheading="Sie möchten für Ihr Unternehmen einen shopware Shop einrichten oder optimieren? Schreiben Sie uns eine E-Mail mit Ihren Wünschen und wir helfen Ihnen dabei, Ihren Traum-Webshop zu erstellen. Oder rufen Sie einfach gleich bei uns an und erläutern Sie uns Ihre aktuellen Anforderungen direkt am Telefon!"
+              isVisible={isVisible}
+            />
+          </Section>
         )}
       </VisibilitySensor>
 
       <SupportSection
-        sectionColor="white"
         textSize="small"
+        sectionColor="white"
         heading={{
           title: 'Welche Warenwirtschaftssysteme gibt es für Shopware?',
           subheading:
@@ -267,7 +291,6 @@ const ShopwarePage = props => {
       />
 
       <SupportSection
-        sectionColor="white"
         textSize="small"
         heading={{
           title: 'Shopware Template Programmierung',
@@ -280,7 +303,6 @@ const ShopwarePage = props => {
       />
 
       <SupportSection
-        sectionColor="white"
         textSize="small"
         heading={{
           title: 'Unsere Empfehlung für Shopware Hosting Anbieter',
@@ -292,7 +314,6 @@ const ShopwarePage = props => {
       />
 
       <SupportSection
-        sectionColor="white"
         textSize="small"
         heading={{
           title: 'Die besten Shopware Plugins',

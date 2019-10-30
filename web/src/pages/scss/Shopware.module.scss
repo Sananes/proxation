@@ -73,21 +73,34 @@
   }
 }
 
+.clients {
+  @extend %section;
+
+  h2 {
+    @include h4;
+    @include interpolate(margin-bottom, 24px, 48px);
+    text-transform: none;
+    text-align: center;
+    letter-spacing: 0;
+  }
+}
+
 .intro {
   @extend %section;
   max-width: $layout-breakpoint-lg;
   margin: 0 auto;
   display: grid;
-  @include interpolate(grid-gap, 24px, 64px);
 
   @include breakpoint-md {
     grid-template-columns: repeat(2, 1fr);
   }
 
   .listFeatures {
+    margin-top: 48px;
 
     h3 {
       @include h5;
+      margin-top: 32px;
       margin-bottom: 16px;
     }
 
