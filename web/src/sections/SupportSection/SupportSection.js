@@ -57,7 +57,7 @@ const SupportSection = props => {
                   size: 'large',
                   style: 'primary',
                   type: 'link',
-                  href: button.url,
+                  to: button.url,
                   hasIcon: true
                 }
               }

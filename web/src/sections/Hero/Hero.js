@@ -147,9 +147,9 @@ function Hero({
             >
               {animate => (
                 <Button
-                  type="button"
+                  type="button-link"
                   text={button.text}
-                  link={button.url}
+                  to={button.url}
                   style={animate}
                   className={styles.button}
                 />

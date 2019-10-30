@@ -4,7 +4,7 @@ import Icon from '../icons'
 import cn from 'classnames'
 import styles from './Button.module.scss'
 
-const Button = ({ type, text, href, to, color, size, className, icon, hasIcon }) => {
+const Button = ({ type, text, to, color, size, style, className, icon, hasIcon }) => {
   const classes = cn(renderStyle(color), className && className, hasIcon && styles.icon)
 
   function renderStyle(color) {
@@ -31,7 +31,7 @@ const Button = ({ type, text, href, to, color, size, className, icon, hasIcon })
 
   const RenderButtonType = ({ color }) => {
     return (
-      <Link to={to} className={cn(styles.button, classes, color)}>
+      <Link to={to} style={style} className={cn(styles.button, classes, color)}>
         {text || 'Button'}
         {hasIcon && <Icon strokeWidth="3" symbol={icon || 'chevron-right'} />}
       </Link>
@@ -47,7 +47,7 @@ const Button = ({ type, text, href, to, color, size, className, icon, hasIcon })
       )
     case 'submit':
       return (
-        <button type="submit" className={cn(styles.button, classes)}>
+        <button style={style} type="submit" className={cn(styles.button, classes)}>
           {text} {hasIcon && <Icon symbol={icon || 'arrow-right'} />}
         </button>
       )
