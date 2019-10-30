@@ -15,7 +15,7 @@ function ProjectPreviewGrid(props) {
           <SectionHeading
             align="center"
             isVisible={isVisible}
-            textSize="large"
+            textSize="largest"
             title={props.title}
             subheading={props.subheading}
             className={styles.headline}

@@ -50,14 +50,18 @@
   margin-top: 1rem;
 }
 
+.title {
+  @include h3;
+}
+
+.titleLargest {
+  @include h1;
+}
 
 .titleMedium {
   @include h3;
 }
 
-.title {
-  @include h3;
-}
 
 .titleLarge {
   @include h2;

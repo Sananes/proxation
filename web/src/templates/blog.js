@@ -65,7 +65,7 @@ const BlogPage = props => {
               <SectionHeading
                 align="center"
                 isVisible={isVisible}
-                textSize="large"
+                textSize="largest"
                 title="Unser Blog"
                 subheading="Eine Sammlung von Nachrichten und Mitteilungen, Nerds Talks und Company-Carry-Ons."
                 className={styles.pageHeader}

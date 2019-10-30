@@ -43,7 +43,8 @@ const SectionHeading = ({
   const setTypeClass = cn(styles.title, {
     [styles.titleSmall]: textSize === 'small',
     [styles.titleMedium]: textSize === 'medium',
-    [styles.titleLarge]: textSize === 'large'
+    [styles.titleLarge]: textSize === 'large',
+    [styles.titleLargest]: textSize === 'largest'
   })
 
   const animationProps = {

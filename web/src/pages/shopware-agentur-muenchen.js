@@ -196,8 +196,8 @@ const ShopwarePage = props => {
         <VisibilitySensor once partialVisibility>
           {({ isVisible }) => (
             <Spring to={animationVisible(isVisible)}>
-              {props => (
-                <div style={props} className={styles.listFeatures}>
+              {animate => (
+                <div style={animate} className={styles.listFeatures}>
                   <Image
                     fluid={data.hosting.childImageSharp.fluid}
                     alt="Unsere shopware Agentur Leistungen auf einen Blick"
@@ -226,13 +226,13 @@ const ShopwarePage = props => {
         <VisibilitySensor once partialVisibility>
           {({ isVisible }) => (
             <Spring to={animationVisible(isVisible)}>
-              {props => (
-                <div style={props} className={styles.listFeatures}>
+              {animate => (
+                <div style={animate} className={styles.listFeatures}>
                   <Image
                     fluid={data.programming.childImageSharp.fluid}
                     alt="Unsere shopware Agentur Leistungen auf einen Blick"
                   />
-                  <h3 style={props}>Unsere shopware Agentur Leistungen auf einen Blick</h3>
+                  <h3 style={animate}>Hervorragende Online Shops - Unser Versprechen an Sie!</h3>
 
                   <ul>
                     <li>Zertifizierte shopware Agentur in München</li>
