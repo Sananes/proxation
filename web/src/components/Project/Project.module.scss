@@ -72,6 +72,7 @@
 
 .mainContent {
   @extend %section-narrow;
+  overflow: visible;
 
   @nest & a {
     color: var(--color-accent);

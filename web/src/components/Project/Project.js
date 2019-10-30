@@ -39,7 +39,7 @@ function Project(props) {
         </div>
       )}
       <div className={styles.mainContent}>
-        {_rawBody && <BlockContent blocks={_rawBody || []} />}
+        {_rawBody && <BlockContent isBlog={true} blocks={_rawBody || []} />}
       </div>
       <aside className={styles.metaContent}>
         {publishedAt && (

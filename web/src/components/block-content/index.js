@@ -35,8 +35,11 @@ const serializers = {
   }
 }
 
-const BlockContent = ({ className, blocks }) => (
-  <BaseBlockContent className={className} blocks={blocks} serializers={serializers} />
-)
+const BlockContent = ({ className, blocks, isBlog = false }) => {
+  const newBlocks = blocks.map(block => {
+    return Object.assign({ blog: isBlog }, block)
+  })
+  return <BaseBlockContent className={className} blocks={newBlocks} serializers={serializers} />
+}
 
 export default BlockContent

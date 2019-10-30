@@ -1,3 +1,5 @@
+@import '../../assets/scss/helpers';
+
 .root {
   margin: 2rem 0;
   padding: 0;
@@ -5,6 +7,20 @@
   img {
     width: 100%;
     height: auto;
+  }
+}
+
+.isBlog {
+  @include breakpoint-md {
+    margin-top: 120px;
+    margin-bottom: 120px;
+    position: relative;
+    max-width: $layout-width;
+    left: 50%;
+    right: 50%;
+    margin-left: -#{$layout-width / 2};
+    margin-right: -#{$layout-width / 2};
+    margin-bottom: 4rem;
   }
 }
 
