@@ -133,6 +133,7 @@ export const query = graphql`
                 _id
               }
             }
+            type
             title
             slug {
               current

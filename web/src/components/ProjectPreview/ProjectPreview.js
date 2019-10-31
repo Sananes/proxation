@@ -19,7 +19,7 @@ function ProjectPreview(props) {
       </div>
       <div className={styles.content}>
         <h4 className={styles.title}>{props.title}</h4>
-        <p className={styles.description}>Accessories</p>
+        <p className={styles.description}>{props.type || 'Shopware'}</p>
       </div>
     </Link>
   )
