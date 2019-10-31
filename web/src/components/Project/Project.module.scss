@@ -116,7 +116,9 @@
   h3,
   h4,
   blockquote,
-  p {
+  p,
+  ul,
+  li {
     @extend %section-narrow;
     padding-top: 0;
     padding-bottom: 0;
