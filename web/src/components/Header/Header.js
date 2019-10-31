@@ -129,7 +129,14 @@ const Header = ({ data, onHideNav, onShowNav, showNav, siteTitle, ...props }) =>
                   </span>
                 )}
               </div>
-
+              <ul className={styles.navHeader}>
+                <li>
+                  <Link to="/shopware">Shopware</Link>
+                </li>
+                <li>
+                  <Link to="/contact">Kontakt</Link>
+                </li>
+              </ul>
               <button className={styles.toggleNavButton} onClick={showNav ? onHideNav : onShowNav}>
                 <span></span>
                 <span></span>

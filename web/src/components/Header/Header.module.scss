@@ -83,6 +83,22 @@ $animation-easing: ease-in-out;
   }
 }
 
+.navHeader {
+  margin: -7px 24px 0 0;
+  display: none;
+
+  a {
+    padding: 20px 10px 24px 10px;
+    font-weight: $font-weight-medium;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .showNav & {
+    display: none;
+  }
+}
+
 .branding {
   @include clear-top-margin;
   font-size: inherit;
