@@ -13,8 +13,9 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 24px;
+  align-items: center;
 
-  &>div img {}
+
 
   @include breakpoint-md {
     grid-template-columns: repeat(5, 1fr);

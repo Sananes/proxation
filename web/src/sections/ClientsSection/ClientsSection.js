@@ -14,7 +14,7 @@ const ClientsSection = props => {
   }
   function fadeIn(isVisible) {
     return {
-      opacity: isVisible ? 1 : 0,
+      opacity: isVisible ? 0.5 : 0,
       transform: isVisible ? 'translateY(0)' : 'translateY(-24px)'
     }
   }
