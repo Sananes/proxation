@@ -10,8 +10,8 @@
   position: relative;
   margin-top: -$header-mobile-height;
   background: #eee;
-  height: 100vh;
-  height: calc(var(--vh, 1vh) * 100);
+  width: 100%;
+  height: 100%;
   overflow: hidden;
 
   @include breakpoint-lg {
@@ -35,15 +35,13 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
-    height: calc(var(--vh, 1vh) * 100);
+    height: 100%;
   }
 
   .container {
     @extend %container;
     position: relative;
-    height: 100vh;
-    height: calc(var(--vh, 1vh) * 100);
+    height: 100%;
     z-index: 20;
 
     @include breakpoint-lg {}
@@ -70,7 +68,7 @@
 .details {
   background: $color-hightlight-background;
 
-  @include interpolate((padding-top, padding-bottom), 24px, 64px);
+  @include interpolate((padding-top, padding-bottom), 24px, 48px);
 
   .inner {
     display: grid;
@@ -98,7 +96,7 @@
   p,
   a {
     display: block;
-    margin-top: 8px;
+    margin-top: 4px;
   }
 }
 

@@ -15,6 +15,7 @@ import Clients from '../sections/ClientsSection'
 import RichText from '../sections/RichText'
 import Image from 'gatsby-image/withIEPolyfill'
 import Section from '../components/Section'
+import FullHeight from 'react-div-100vh'
 
 export const query = graphql`
   query ShopwarePageQuery {
@@ -100,10 +101,11 @@ const ShopwarePage = props => {
   return (
     <Layout pageTitle="Shopware" fullWidth={true} className={styles.root}>
       <SEO title={page.title} />
-      <Spring from={{ opacity: 0 }} to={{ opacity: 1 }} delay={200}>
-        {props => (
-          <div style={props} className={styles.hero}>
-            <div className={styles.container}>
+
+      <FullHeight className={styles.hero}>
+        <Spring from={{ opacity: 0 }} to={{ opacity: 1 }} delay={200}>
+          {props => (
+            <div style={props} className={styles.container}>
               <div className={styles.content}>
                 <Spring from={animation.from} to={animation.to} delay={500}>
                   {props => <h1 style={props}>Ihre Shopware 5 Agentur in München</h1>}
@@ -139,9 +141,9 @@ const ShopwarePage = props => {
                 </Spring>
               </div>
             </div>
-          </div>
-        )}
-      </Spring>
+          )}
+        </Spring>
+      </FullHeight>
 
       <section className={styles.intro}>
         <VisibilitySensor once partialVisibility>

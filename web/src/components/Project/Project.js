@@ -1,17 +1,13 @@
 import { format, distanceInWordsStrict } from 'date-fns'
 var eoLocale = require('date-fns/locale/de')
 import React from 'react'
-import { Link } from 'gatsby'
-import { blocksToText } from '../../lib/helpers'
 import BlockContent from '../block-content'
-import Container from '../Container'
-import RoleList from '../role-list'
 
 import styles from './Project.module.scss'
 import Image from 'gatsby-image/withIEPolyfill'
 import VisibilitySensor from '../VisibilitySensor'
 import { Spring } from 'react-spring/renderprops'
-import { types } from 'util'
+import FullHeight from 'react-div-100vh'
 
 function Project(props) {
   const {
@@ -21,9 +17,7 @@ function Project(props) {
     type,
     services,
     projectLink,
-    categories,
     mainImage,
-    members,
     startedAt,
     endedAt,
     relatedProjects
@@ -35,7 +29,7 @@ function Project(props) {
         {({ isVisible }) => (
           <React.Fragment>
             {props.mainImage && mainImage.asset && (
-              <div className={styles.mainImage}>
+              <FullHeight className={styles.mainImage}>
                 <Spring
                   to={{
                     transform: isVisible ? 'scale(1.2)' : 'scale(1)',
@@ -81,7 +75,7 @@ function Project(props) {
                     </Spring>
                   </div>
                 </div>
-              </div>
+              </FullHeight>
             )}
           </React.Fragment>
         )}

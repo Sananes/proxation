@@ -42,6 +42,14 @@
   }
 }
 
+.lead {
+  color: $text-subdued;
+
+  .dark & {
+    color: $text-light-subdued;
+  }
+}
+
 .caption {
   @include overline;
 }
