@@ -1,0 +1,192 @@
+@import '../../assets/scss/helpers';
+
+.hero {
+  display: block;
+  @include interpolate((padding-top, padding-bottom), 48px, 120px);
+  grid-gap: 24px;
+
+  @include breakpoint-md {
+    display: grid;
+    grid-gap: 64px;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(3, auto);
+  }
+
+  .title {
+    @include h2;
+
+    @include breakpoint-md {
+      grid-column: span 6;
+    }
+  }
+
+  .lead {
+    @include body-l;
+    margin-bottom: 24px;
+
+    @include breakpoint-md {
+      padding-right: 48px;
+      margin-bottom: 4px;
+      grid-column: span 6;
+    }
+  }
+
+  .title,
+  .lead {
+    @include breakpoint-md {
+      padding-bottom: 60px;
+    }
+  }
+}
+
+.imageOne,
+.imageTwo {
+  margin-bottom: 16px;
+
+  @include breakpoint-md {
+    grid-column: span 6;
+    margin-bottom: 0;
+  }
+}
+
+.imageTwo {
+  margin-bottom: 24px;
+
+  @include breakpoint-md {
+    grid-row: span 2;
+    margin-bottom: 0;
+  }
+}
+
+.sublead {
+  @include breakpoint-md {
+    margin-top: 0;
+    grid-column: span 6;
+  }
+}
+
+.vacancy {
+  @extend %section;
+  background: $color-primary;
+
+  .container {
+    @include breakpoint-md {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 32px;
+    }
+  }
+
+  small {
+    color: $text-light-dimmed;
+  }
+
+  h2,
+  .title {
+    @include h3;
+    color: $text-light;
+    margin-bottom: 32px;
+  }
+}
+
+.accordianItem {
+  border: 1px solid $text-light-muted;
+  border-width: 1px 0px;
+
+  &+& {
+    border-top: 0px;
+  }
+
+}
+
+.accordianItemButton {
+  display: flex;
+  padding: 16px 0;
+  flex: 1;
+  align-items: center;
+  color: $text-light;
+  cursor: pointer;
+  outline: 0;
+
+
+
+  h3 {
+    @include h4;
+    color: $text-light;
+    flex: 1;
+  }
+
+
+  svg {
+    width: 24px;
+    height: 24px;
+    color: $text-light;
+  }
+}
+
+.accordionItemPanel {
+
+  &:not(:hidden) {
+    transition: height 300ms ease-in-out;
+  }
+
+  color: $text-light-subdued;
+
+  p {
+    color: $text-light-subdued;
+  }
+
+  ul,
+  li {
+    list-style: disc;
+  }
+
+  button,
+  a {
+    color: $text-light;
+  }
+}
+
+.gallery {
+  @extend %section;
+  background-color: $color-hightlight-background;
+
+  .container {
+    display: grid;
+    grid-gap: 16px;
+
+    @include breakpoint-md {
+      grid-gap: 32px;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: repeat(3, auto);
+    }
+  }
+
+  h3 {
+    grid-column: span 6;
+  }
+
+  p {
+    margin: 0;
+    grid-column: span 6;
+    margin-bottom: 24px;
+
+    @include breakpoint-md {
+      margin-bottom: 100px;
+    }
+  }
+
+  .image {
+    grid-column: span 6;
+    align-self: flex-end;
+
+    &:nth-child(4),
+    &:nth-child(5) {
+      max-height: 350px;
+    }
+
+    &:nth-child(5) {
+      align-self: flex-start;
+    }
+  }
+}

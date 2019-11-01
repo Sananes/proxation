@@ -9,6 +9,8 @@ import ChevronDown from './chevron-down'
 import Download from './download'
 import File from './file'
 import View from './view'
+import PlusIcon from './plus'
+import MinusIcon from './minus'
 import Pattern from './pattern'
 import Shopware from './shopware'
 
@@ -37,6 +39,10 @@ function Icon(props) {
       return <Download strokeWidth={strokeWidth || 2} />
     case 'view':
       return <View strokeWidth={strokeWidth || 2} />
+    case 'plus':
+      return <PlusIcon strokeWidth={strokeWidth || 2} />
+    case 'minus':
+      return <MinusIcon strokeWidth={strokeWidth || 2} />
     case 'pattern':
       return <Pattern />
     default:

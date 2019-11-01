@@ -15,6 +15,14 @@ export function blocksToText(blocks, opts = {}) {
     .join('\n\n')
 }
 
+export function fadeOnVisible(isVisible) {
+  const animation = {
+    opacity: isVisible ? 1 : 0,
+    transform: isVisible ? 'translateY(0)' : 'translateY(-24px)'
+  }
+  return animation
+}
+
 function requireConfig(path) {
   try {
     return require('../../../studio/sanity.json')

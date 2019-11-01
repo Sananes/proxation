@@ -4,12 +4,14 @@
 }
 
 %container {
-  lost-center: 100%;
+  max-width: 100%;
   padding-left: 1rem;
   padding-right: 1rem;
 
   @include breakpoint-lg {
-    lost-center: $layout-breakpoint-lg;
+    max-width: $layout-breakpoint-lg;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
