@@ -63,19 +63,19 @@ const Footer = ({ companyInfo, siteTitle, isVisible }) => {
                   <ul>
                     <div className="menu" />
                     <li className={styles.navItem}>
-                      <Link to="/about/">Blog</Link>
+                      <Link to="/blog/">Blog</Link>
                     </li>
                     <li className={styles.navItem}>
                       <Link to="/projects/">Erfolge</Link>
                     </li>
                     <li className={styles.navItem}>
-                      <Link to="/blog/">Kontakt</Link>
+                      <Link to="/kontakt/">Kontakt</Link>
                     </li>
                     <li className={styles.navItem}>
-                      <Link to="/contact/">Impressum</Link>
+                      <Link to="/impressum/">Impressum</Link>
                     </li>
                     <li className={styles.navItem}>
-                      <Link to="/contact/">Datenschutz</Link>
+                      <Link to="/datenschutz/">Datenschutz</Link>
                     </li>
                   </ul>
                 </nav>
@@ -87,16 +87,18 @@ const Footer = ({ companyInfo, siteTitle, isVisible }) => {
                   <ul>
                     <div className="menu" />
                     <li className={styles.navItem}>
-                      <Link to="/about/">Shopware Shops</Link>
+                      <Link to="/shopware-agentur-muenchen/">Shopware Shops</Link>
                     </li>
                     <li className={styles.navItem}>
-                      <Link to="/projects/">E-Commerce Beratung</Link>
+                      <Link to="/services/ecommerce-beratung/">E-Commerce Beratung</Link>
                     </li>
                     <li className={styles.navItem}>
-                      <Link to="/blog/">Shopware Plug-in Entwicklung</Link>
+                      <Link to="/services/shopware-plugin-programmierung">
+                        Shopware Plug-in Entwicklung
+                      </Link>
                     </li>
                     <li className={styles.navItem}>
-                      <Link to="/contact/">Unternehmenswebsites</Link>
+                      <Link to="/unternehmenswebsites/">Unternehmenswebsites</Link>
                     </li>
                   </ul>
                 </nav>

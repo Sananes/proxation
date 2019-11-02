@@ -1,1 +1,17 @@
 @import '../../assets/scss/helpers';
+
+.title {
+  padding: 24px 0;
+
+  @include breakpoint-md {
+    padding: 100px 0;
+  }
+}
+
+.container {
+  padding-bottom: 24px;
+
+  @include breakpoint-md {
+    padding-bottom: 120px;
+  }
+}

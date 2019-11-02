@@ -78,8 +78,14 @@ $animation-easing: ease-in-out;
   flex: 1;
 
   span {
+    opacity: 0;
     margin-top: -2px;
     margin-left: 16px;
+
+    @include breakpoint-md {
+
+      opacity: 1;
+    }
   }
 }
 

@@ -5,6 +5,7 @@ export default {
   liveEdit: false,
   __experimental_actions: ["update", "publish", "create", "delete"],
   fields: [
+    { name: "seo", title: "Seo", type: "seo" },
     {
       name: "title",
       title: "Title",

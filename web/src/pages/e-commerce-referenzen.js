@@ -5,10 +5,24 @@ import GraphQLErrorList from '../components/graphql-error-list'
 import ProjectPreviewGrid from '../components/ProjectPreviewGrid/ProjectPreviewGrid'
 import SEO from '../components/Seo'
 import Layout from '../containers/layout'
-import { mapEdgesToNodes, filterOutDocsWithoutSlugs } from '../lib/helpers'
+import { mapEdgesToNodes, filterOutDocsWithoutSlugs, blocksToText } from '../lib/helpers'
 
 export const query = graphql`
   query ProjectsPageQuery {
+    page: sanityPage(slug: { current: { regex: "/e-commerce-referenzen/" } }) {
+      id
+      seo {
+        title
+        description
+        image {
+          asset {
+            url
+          }
+        }
+      }
+      title
+      _rawBody
+    }
     projects: allSanityProject(limit: 12, sort: { fields: [publishedAt], order: DESC }) {
       edges {
         node {
@@ -40,18 +54,23 @@ const ProjectsPage = props => {
       </Layout>
     )
   }
+
+  const page = data && data.page
+
   const projectNodes =
     data && data.projects && mapEdgesToNodes(data.projects).filter(filterOutDocsWithoutSlugs)
   return (
     <Layout pageTitle="Referenzen">
-      <SEO title="Referenzen" />
+      <SEO
+        title={page.seo && page.seo.title}
+        description={page.seo && page.seo.description}
+        image={page.seo.image && page.seo.image.asset.url}
+      />
       <Container>
         {projectNodes && projectNodes.length > 0 && (
           <ProjectPreviewGrid
-            title="Unsere Referenzen
-            im eCommerce"
-            subheading="Als E-Commerce Agentur und zertifizierter shopware solutions Partner setzen wir Ihre Wünsche
-        und Vorstellungen elegant und effizient in einen modernen Online Shop um."
+            title={page.title}
+            subheading={blocksToText(page._rawBody)}
             nodes={projectNodes}
           />
         )}
