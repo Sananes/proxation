@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
-import { mapEdgesToNodes } from '../lib/helpers'
+import { mapEdgesToNodes, blocksToText } from '../lib/helpers'
 import BlogPostPreviewGrid from '../components/BlogPostPreviewGrid'
 import Container from '../components/Container'
 import GraphQLErrorList from '../components/graphql-error-list'
@@ -13,6 +13,20 @@ import styles from './scss/Blog.module.scss'
 
 export const query = graphql`
   query BlogPageQuery($limit: Int!, $skip: Int!) {
+    page: sanityPage(slug: { current: { regex: "/blog/" } }) {
+      id
+      seo {
+        title
+        description
+        image {
+          asset {
+            url
+          }
+        }
+      }
+      title
+      _rawBody
+    }
     posts: allSanityPost(limit: $limit, skip: $skip, sort: { fields: [publishedAt], order: DESC }) {
       edges {
         node {
@@ -40,7 +54,7 @@ export const query = graphql`
 
 const BlogPage = props => {
   const { data, errors } = props
-
+  const page = (data && data.page) || []
   if (errors) {
     return (
       <Layout>
@@ -57,7 +71,11 @@ const BlogPage = props => {
 
   return (
     <Layout pageTitle="Unser Blog">
-      <SEO title="Unser Blog" />
+      <SEO
+        title={page.seo.title || page.title || 'Unser Blog'}
+        description={page.seo && page.seo.description}
+        image={page.seo.image && page.seo.image.asset.url}
+      />
       <Container className={styles.root}>
         <div className={styles.pageHeader}>
           <VisibilitySensor once partialVisibility>
@@ -67,7 +85,7 @@ const BlogPage = props => {
                 isVisible={isVisible}
                 textSize="largest"
                 title="Unser Blog"
-                subheading="Eine Sammlung von Nachrichten und Mitteilungen, Nerds Talks und Company-Carry-Ons."
+                subheading={page._rawBody && blocksToText(page._rawBody)}
                 className={styles.pageHeader}
               />
             )}

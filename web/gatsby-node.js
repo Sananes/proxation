@@ -25,7 +25,7 @@ async function createBlogPostPages(graphql, actions, reporter) {
   `)
 
   if (result.errors) throw result.errors
-  const blogSlug = `/blog/`
+  const blogSlug = `/e-commerce-blog/`
   const postEdges = (result.data.allSanityPost || {}).edges || []
   const postsPerPage = 6
   const numPages = Math.ceil(postEdges.length / postsPerPage)

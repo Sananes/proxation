@@ -174,10 +174,10 @@ const Header = ({ data, onHideNav, onShowNav, showNav, siteTitle, ...props }) =>
               <div className={cn(styles.kontakt, styles.block)}>
                 <ul>
                   <li>
-                    <Link to="/">+49 (0) 89 4275 9987</Link>
+                    <a href="tel:+49(0)8942759987 ">+49 (0) 89 4275 9987</a>
                   </li>
                   <li>
-                    <Link to="/">info@proxation.de</Link>
+                    <a href="mailto:info@proxation.de">info@proxation.de</a>
                   </li>
                 </ul>
               </div>

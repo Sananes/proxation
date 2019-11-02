@@ -30,6 +30,7 @@ const query = graphql`
           alt
           caption
         }
+        link
       }
     }
   }

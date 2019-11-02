@@ -70,7 +70,7 @@ const ProjectsPage = props => {
         {projectNodes && projectNodes.length > 0 && (
           <ProjectPreviewGrid
             title={page.title}
-            subheading={blocksToText(page._rawBody)}
+            subheading={(page._rawBody && blocksToText(page._rawBody)) || []}
             nodes={projectNodes}
           />
         )}

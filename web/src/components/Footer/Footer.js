@@ -7,6 +7,7 @@ import { Spring } from 'react-spring/renderprops'
 import styles from './Footer.module.scss'
 import Icon from '../icons'
 import Image from 'gatsby-image/withIEPolyfill'
+import GatsbyLink from 'gatsby-link'
 
 const Footer = ({ companyInfo, siteTitle, isVisible }) => {
   return (
@@ -32,9 +33,9 @@ const Footer = ({ companyInfo, siteTitle, isVisible }) => {
                 <ul className={styles.social}>
                   {companyInfo.social.map(item => (
                     <li key={item._key}>
-                      <a href={item.url || '#'}>
+                      <a href={item.link ? item.link : '#'}>
                         <img
-                          src={item.image.asset.url}
+                          src={item.image && item.image.asset && item.image.asset.url}
                           alt={item.title || item.image.alt}
                           className={styles.image}
                         />
@@ -63,10 +64,10 @@ const Footer = ({ companyInfo, siteTitle, isVisible }) => {
                   <ul>
                     <div className="menu" />
                     <li className={styles.navItem}>
-                      <Link to="/blog/">Blog</Link>
+                      <Link to="/e-commerce-blog/">Blog</Link>
                     </li>
                     <li className={styles.navItem}>
-                      <Link to="/projects/">Erfolge</Link>
+                      <Link to="/e-commerce-referenzen/">Erfolge</Link>
                     </li>
                     <li className={styles.navItem}>
                       <Link to="/kontakt/">Kontakt</Link>
@@ -120,10 +121,10 @@ const Footer = ({ companyInfo, siteTitle, isVisible }) => {
                 <nav className={styles.nav}>
                   <ul>
                     <li>
-                      <a href="mailto:lanzahomeslanzarote@gmail.com">+49 (0) 89 4275 9987</a>
+                      <a href="tel:+49(0)8942759987 ">+49 (0) 89 4275 9987</a>
                     </li>
                     <li>
-                      <a href="mailto:lanzahomeslanzarote@gmail.com">info@proxation.de</a>
+                      <a href="mailto:info@proxation.de">info@proxation.de</a>
                     </li>
                   </ul>
                 </nav>
