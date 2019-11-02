@@ -28,21 +28,28 @@ export const query = graphql`
       title
       _rawBody
     }
-    plugins: file(relativePath: { eq: "shopware/plugins.jpg" }) {
+    jobs1: file(relativePath: { eq: "jobs/job-01.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 800) {
           ...GatsbyImageSharpFluid
         }
       }
     }
-    hosting: file(relativePath: { eq: "shopware/hosting.jpg" }) {
+    jobs2: file(relativePath: { eq: "jobs/job-02.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 800) {
           ...GatsbyImageSharpFluid
         }
       }
     }
-    programming: file(relativePath: { eq: "shopware/programming.jpg" }) {
+    jobs3: file(relativePath: { eq: "jobs/job-03.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 800) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    jobs4: file(relativePath: { eq: "jobs/job-04.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 800) {
           ...GatsbyImageSharpFluid
@@ -104,7 +111,8 @@ const JobsPage = props => {
               {animate => (
                 <Image
                   style={animate}
-                  fluid={data.plugins.childImageSharp.fluid}
+                  alt="Jobs - We Work"
+                  fluid={data.jobs1.childImageSharp.fluid}
                   className={styles.imageOne}
                 />
               )}
@@ -117,7 +125,8 @@ const JobsPage = props => {
               {animate => (
                 <Image
                   style={animate}
-                  fluid={data.plugins.childImageSharp.fluid}
+                  alt="Jobs - We Work"
+                  fluid={data.jobs2.childImageSharp.fluid}
                   className={styles.imageTwo}
                 />
               )}
@@ -415,7 +424,8 @@ const JobsPage = props => {
                 {animate => (
                   <Image
                     style={animate}
-                    fluid={data.plugins.childImageSharp.fluid}
+                    alt="Jobs - We Work"
+                    fluid={data.jobs1.childImageSharp.fluid}
                     className={styles.image}
                   />
                 )}
@@ -428,7 +438,8 @@ const JobsPage = props => {
                 {animate => (
                   <Image
                     style={animate}
-                    fluid={data.plugins.childImageSharp.fluid}
+                    alt="Jobs - We Work"
+                    fluid={data.jobs2.childImageSharp.fluid}
                     className={styles.image}
                   />
                 )}
@@ -441,7 +452,8 @@ const JobsPage = props => {
                 {animate => (
                   <Image
                     style={animate}
-                    fluid={data.plugins.childImageSharp.fluid}
+                    alt="Jobs - We Work"
+                    fluid={data.jobs3.childImageSharp.fluid}
                     className={styles.image}
                   />
                 )}
@@ -454,7 +466,8 @@ const JobsPage = props => {
                 {animate => (
                   <Image
                     style={animate}
-                    fluid={data.plugins.childImageSharp.fluid}
+                    alt="Jobs - We Work"
+                    fluid={data.jobs4.childImageSharp.fluid}
                     className={styles.image}
                   />
                 )}
