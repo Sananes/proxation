@@ -59,17 +59,34 @@
 }
 
 .alignRight,
-.alignTopRight {
+.alignTopLeft,
+.alignTopRight,
+.alignBottomLeft,
+.alignBottomCenter,
+.alignBottomRight,
+.alignCenter,
+.alignLeft {
   text-align: left;
+}
+
+.alignRight,
+.alignTopRight {
+  @include breakpoint-md {
+    text-align: left;
+  }
 }
 
 .alignLeft,
 .alignTopLeft {
-  text-align: left;
+  @include breakpoint-md {
+    text-align: left;
+  }
 }
 
 .alignCenter {
-  text-align: center;
+  @include breakpoint-md {
+    text-align: center;
+  }
 }
 
 .container {
@@ -109,7 +126,10 @@
   max-width: 650px;
 
   .alignCenter & {
-    margin: 0 auto;
+
+    @include breakpoint-md {
+      margin: 0 auto;
+    }
   }
 
   @include breakpoint-md {
@@ -189,8 +209,10 @@
   }
 
   .alignCenter & {
-    margin-left: auto;
-    margin-right: auto;
+    @include breakpoint-md {
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
 }
 
