@@ -29,7 +29,7 @@ function Seo({ description, lang, meta, keywords = [], title, image }) {
             htmlAttributes={{
               lang
             }}
-            title={title}
+            title={title + ' | Proxation'}
             titleTemplate={title === data.site.title ? '%s' : `%s | ${data.site.title}`}
             meta={[
               {
