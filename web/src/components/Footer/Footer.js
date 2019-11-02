@@ -6,10 +6,8 @@ import Button from '../Button'
 import { Spring } from 'react-spring/renderprops'
 import styles from './Footer.module.scss'
 import Icon from '../icons'
-import Image from 'gatsby-image/withIEPolyfill'
-import GatsbyLink from 'gatsby-link'
 
-const Footer = ({ companyInfo, siteTitle, isVisible }) => {
+const Footer = ({ companyInfo, isVisible }) => {
   return (
     <Spring
       to={{

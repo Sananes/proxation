@@ -21,6 +21,18 @@ export const query = graphql`
       keywords
     }
 
+    page: sanityPageHome {
+      seo {
+        title
+        description
+        image {
+          asset {
+            url
+          }
+        }
+      }
+    }
+
     agency: sanityPageHome {
       sectionThree {
         _rawHeading
@@ -156,6 +168,7 @@ const IndexPage = props => {
     )
   }
   const site = (data || {}).site
+  const seo = (data || {}).page.seo
 
   const projectNodes = (data || {}).home && data.home.edges.map(edge => edge.node.projects)[0]
 
@@ -178,7 +191,12 @@ const IndexPage = props => {
 
   return (
     <Layout>
-      <Seo title={site.title} description={site.description} keywords={site.keywords} />
+      <Seo
+        title={seo.title || site.title}
+        description={seo.description || site.description}
+        keywords={site.keywords}
+        image={seo.image && seo.image.asset && seo.image.asset.url}
+      />
       <Hero visible={isVisible} {...hero} location={location} />
       <CarouselSection
         className={styles.projects}
