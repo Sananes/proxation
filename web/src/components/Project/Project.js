@@ -1,6 +1,6 @@
-import { format, distanceInWordsStrict } from 'date-fns'
+import React, { useState } from 'react'
+import { distanceInWordsStrict } from 'date-fns'
 var eoLocale = require('date-fns/locale/de')
-import React from 'react'
 import BlockContent from '../block-content'
 
 import styles from './Project.module.scss'
@@ -22,6 +22,9 @@ function Project(props) {
     endedAt,
     relatedProjects
   } = props
+  useState
+  const [loaded, setLoaded] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   return (
     <article className={styles.root}>
@@ -32,7 +35,7 @@ function Project(props) {
               <FullHeight className={styles.mainImage}>
                 <Spring
                   to={{
-                    transform: isVisible ? 'scale(1.2)' : 'scale(1)',
+                    transform: loaded ? 'scale(1.2)' : 'scale(1)',
                     opacity: isVisible ? 1 : 0
                   }}
                 >
@@ -40,6 +43,7 @@ function Project(props) {
                     <Image
                       fluid={mainImage.asset.fluid}
                       alt={mainImage.alt || title}
+                      onLoad={() => setLoaded(true)}
                       className={styles.image}
                       style={animate}
                     />
@@ -49,8 +53,8 @@ function Project(props) {
                   <div className={styles.content}>
                     <Spring
                       to={{
-                        opacity: isVisible ? 1 : 0,
-                        transform: isVisible ? 'translateY(0)' : 'translateY(-24px)'
+                        opacity: loaded && isVisible ? 1 : 0,
+                        transform: loaded && isVisible ? 'translateY(0)' : 'translateY(-24px)'
                       }}
                       delay={300}
                     >
@@ -62,8 +66,8 @@ function Project(props) {
                     </Spring>
                     <Spring
                       to={{
-                        opacity: isVisible ? 1 : 0,
-                        transform: isVisible ? 'translateY(0)' : 'translateY(-24px)'
+                        opacity: loaded && isVisible ? 1 : 0,
+                        transform: loaded && isVisible ? 'translateY(0)' : 'translateY(-24px)'
                       }}
                       delay={500}
                     >

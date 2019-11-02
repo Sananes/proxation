@@ -41,7 +41,7 @@ const Carousel = props => {
         {props => (
           <div style={props} className={styles.headingWrapper}>
             <div className={styles.heading}>
-              <h2 className={styles.caption}>Latest work</h2>
+              <h2 className={styles.caption}>Hervorgehobene Arbeit</h2>
             </div>
 
             <div className={styles.sliderNav}>

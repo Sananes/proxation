@@ -28,7 +28,7 @@ const ClientsSection = props => {
               headingClassName={styles.heading}
               className={cn(styles.root, props.className)}
             >
-              {title && <h2 className={styles.title}>{title}</h2>}
+              {title && <h2 className={styles.title}>{'Kunden'}</h2>}
               <div className={styles.grid}>
                 <Trail items={clients} keys={item => item._id} to={fadeIn(isVisible)}>
                   {item => props => (
