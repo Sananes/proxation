@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { format } from 'date-fns'
-import { getFluidGatsbyImage } from 'gatsby-source-sanity'
+import { getFluidGatsbyImage, getFixedGatsbyImage } from 'gatsby-source-sanity'
 const defaults = { nonTextBehavior: 'remove' }
 
 export function blocksToText(blocks, opts = {}) {
@@ -85,6 +85,18 @@ export function getSanityImageFluid(source, width) {
     { maxWidth: width || 1024 },
     { projectId, dataset }
   )
+  if (fluidProps) {
+    return fluidProps
+  } else {
+    return null
+  }
+}
+
+export function getSanityImageFixed(source, width) {
+  const imageObj = {
+    asset: { _ref: source.asset._id }
+  }
+  const fluidProps = getFixedGatsbyImage(imageObj, { width: width || 1024 }, { projectId, dataset })
   if (fluidProps) {
     return fluidProps
   } else {

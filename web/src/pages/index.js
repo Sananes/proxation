@@ -139,7 +139,7 @@ export const query = graphql`
             _id
             cardImage {
               asset {
-                fluid(maxWidth: 800) {
+                fluid(maxWidth: 700) {
                   ...GatsbySanityImageFluid
                 }
                 _id

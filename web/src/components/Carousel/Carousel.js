@@ -34,9 +34,6 @@ const Carousel = props => {
       totalSlides={data.length}
       className={cn(styles.sliderCarousel, className)}
     >
-      {/*   <div className={styles.pattern}>
-        <Icon symbol="pattern" className={styles.pattern} />
-  </div> */}
       <Spring delay={600} to={{ opacity: isVisible ? 1 : 0 }}>
         {props => (
           <div style={props} className={styles.headingWrapper}>

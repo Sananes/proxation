@@ -9,6 +9,8 @@ import FormGroup from '../../components/FormGroup'
 import Icon from '../../components/icons'
 import { Spring } from 'react-spring/renderprops'
 import useForm from 'react-hook-form'
+import VisibilitySensor from '../../components/VisibilitySensor'
+import { fadeOnVisible } from '../../lib/helpers'
 
 const ContactSection = props => {
   const { data } = props
@@ -26,45 +28,72 @@ const ContactSection = props => {
   const isDark = (data.sectionColor === 'dark' && true) || false
 
   const { register, handleSubmit, errors } = useForm()
+
+  const onSubmit = values => {
+    console.log(values)
+  }
   return (
-    <AnimateScroll
-      condition={props.animate}
-      partialVisibility
-      children={({ isVisible }) => (
-        <Spring to={fadeIn(isVisible)}>
-          {props => (
-            <Section
-              style={props}
-              className={cn(styles.root, isDark && styles.light)}
-              sectionColor={data.sectionColor}
-              headingClassName={styles.heading}
-              dark={isDark}
-            >
-              <div className={styles.grid} style={(props, { delay: 300 })}>
-                <div className={styles.content}>
+    <Section
+      className={cn(styles.root, isDark && styles.light)}
+      sectionColor={data.sectionColor}
+      headingClassName={styles.heading}
+      dark={isDark}
+    >
+      <div className={styles.grid}>
+        <div className={styles.content}>
+          <VisibilitySensor once partialVisibility>
+            {({ isVisible }) => (
+              <Spring to={fadeOnVisible(isVisible)}>
+                {props => (
                   <Image
                     className={styles.image}
                     alt={data.image.alt || heading.title}
                     fluid={data.image.asset.fluid}
                     style={props}
                   />
-                </div>
+                )}
+              </Spring>
+            )}
+          </VisibilitySensor>
+        </div>
 
-                <div className={styles.wrapper} style={props}>
+        <div className={styles.wrapper} style={props}>
+          <VisibilitySensor once partialVisibility>
+            {({ isVisible }) => (
+              <Spring to={fadeOnVisible(isVisible)}>
+                {props => (
                   <h2 className={styles.title} style={props}>
                     {heading.title}
                   </h2>
-                  <p className={styles.lead}>
+                )}
+              </Spring>
+            )}
+          </VisibilitySensor>
+          <VisibilitySensor once partialVisibility>
+            {({ isVisible }) => (
+              <Spring to={fadeOnVisible(isVisible)} delay={300}>
+                {props => (
+                  <p style={props} className={styles.lead}>
                     Dann lassen Sie es uns gemeinsam angehen! Wir freuen uns auf Ihre Anfrage!{' '}
                     <a href="mailto: info@proxation.de">info@proxation.de</a>
                   </p>
+                )}
+              </Spring>
+            )}
+          </VisibilitySensor>
+
+          <VisibilitySensor once partialVisibility>
+            {({ isVisible }) => (
+              <Spring to={fadeOnVisible(isVisible)} delay={300}>
+                {props => (
                   <form
                     className={styles.form}
                     data-netlify="true"
                     name="Contact Form"
                     action="/thank-you"
-                    type="POST"
                     data-netlify-honeypot="bot-field"
+                    onSubmit={handleSubmit(onSubmit)}
+                    style={props}
                   >
                     <input type="hidden" name="bot-field" />
                     <input type="hidden" name="form-name" value="Contact Form" />
@@ -73,13 +102,13 @@ const ContactSection = props => {
                       errors={errors.fullName}
                       label="Vollständiger Name"
                       name="fullName"
-                      register={register({ required: 'Required' })}
+                      reference={register({ required: 'Required' })}
                       dark={isDark}
                     />
                     <FormGroup
                       label="E-Mail Adresse"
                       name="email"
-                      register={register({
+                      reference={register({
                         required: 'Required',
                         pattern: {
                           value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
@@ -92,7 +121,7 @@ const ContactSection = props => {
                     <FormGroup
                       label="Firma"
                       name="company"
-                      register={register}
+                      reference={register}
                       dark={isDark}
                       errors={errors.company}
                     />
@@ -102,7 +131,7 @@ const ContactSection = props => {
                       label="Erzählen Sie uns kurz von Ihrem Projekt"
                       name="message"
                       type="textarea"
-                      register={register}
+                      reference={register}
                       errors={errors.message}
                       dark={isDark}
                     />
@@ -114,9 +143,18 @@ const ContactSection = props => {
                       type="submit"
                     />
                   </form>
-                </div>
-              </div>
-              <div className={styles.other}>
+                )}
+              </Spring>
+            )}
+          </VisibilitySensor>
+        </div>
+      </div>
+
+      <div className={styles.other}>
+        <VisibilitySensor once partialVisibility>
+          {({ isVisible }) => (
+            <Spring to={fadeOnVisible(isVisible)} style={props}>
+              {props => (
                 <div className={styles.contact} style={props}>
                   <h4 className={styles.title}>Kontakt</h4>
                   <ul>
@@ -132,6 +170,14 @@ const ContactSection = props => {
                     </li>
                   </ul>
                 </div>
+              )}
+            </Spring>
+          )}
+        </VisibilitySensor>
+        <VisibilitySensor once partialVisibility>
+          {({ isVisible }) => (
+            <Spring to={fadeOnVisible(isVisible)}>
+              {props => (
                 <div className={styles.badgesWrapper} style={props}>
                   <h4 className={styles.title}>Partners</h4>
                   <ul className={styles.badges}>
@@ -149,12 +195,12 @@ const ContactSection = props => {
                     </li>
                   </ul>
                 </div>
-              </div>
-            </Section>
+              )}
+            </Spring>
           )}
-        </Spring>
-      )}
-    />
+        </VisibilitySensor>
+      </div>
+    </Section>
   )
 }
 
