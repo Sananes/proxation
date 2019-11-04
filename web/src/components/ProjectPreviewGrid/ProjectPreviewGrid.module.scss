@@ -22,16 +22,19 @@
   }
 
   @include breakpoint-md {
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    // grid-template-columns: repeat(6, 1fr);
 
-    li:nth-child(2),
-    li:nth-child(1) {
-      grid-column: span 3;
-    }
+    // li:nth-child(2),
+    // li:nth-child(1) {
+    //   grid-column: span 3;
+    // }
 
-    li {
-      grid-column: span 2;
-    }
+    // li {
+    //   grid-column: span 2;
+    // }
+
+    grid-template-columns: repeat(3, 1fr);
+
   }
 }
 
