@@ -131,10 +131,10 @@ const Header = ({ data, onHideNav, onShowNav, showNav, siteTitle, ...props }) =>
               </div>
               <ul className={styles.navHeader}>
                 <li>
-                  <Link to="/shopware">Shopware</Link>
+                  <Link to="/shopware-agentur-muenchen">Shopware</Link>
                 </li>
                 <li>
-                  <Link to="/contact">Kontakt</Link>
+                  <Link to="/kontakt">Kontakt</Link>
                 </li>
               </ul>
               <button className={styles.toggleNavButton} onClick={showNav ? onHideNav : onShowNav}>

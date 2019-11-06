@@ -93,8 +93,12 @@ $animation-easing: ease-in-out;
   margin: -7px 24px 0 0;
   display: none;
 
+  @include breakpoint-md {
+    display: flex;
+  }
+
   a {
-    padding: 20px 10px 24px 10px;
+    padding: 20px 16px 24px 16px;
     font-weight: $font-weight-medium;
     text-decoration: none;
     color: inherit;

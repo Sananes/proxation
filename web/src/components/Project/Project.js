@@ -10,21 +10,9 @@ import { Spring } from 'react-spring/renderprops'
 import FullHeight from 'react-div-100vh'
 
 function Project(props) {
-  const {
-    _rawBody,
-    title,
-    excerpt,
-    type,
-    services,
-    projectLink,
-    mainImage,
-    startedAt,
-    endedAt,
-    relatedProjects
-  } = props
+  const { _rawBody, title, excerpt, services, projectLink, mainImage, startedAt, endedAt } = props
   useState
   const [loaded, setLoaded] = useState(false)
-  const [loading, setLoading] = useState(false)
 
   return (
     <article className={styles.root}>

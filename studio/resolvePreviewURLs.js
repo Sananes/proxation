@@ -8,7 +8,9 @@ export default function resolvePreviewURLs(document) {
     case "landingPage":
       return `${baseURL}/${document.slug.current}`;
     case "post":
-      return `${baseURL}/e-commerce-blog/${document.id}`;
+      return `${baseURL}/blog/${document.slug.current}`;
+    case "project":
+      return `${baseURL}/project/${document.slug.current}`;
     default:
       return baseURL;
   }
