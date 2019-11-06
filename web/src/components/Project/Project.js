@@ -1,13 +1,15 @@
-import React, { useState } from 'react'
 import { distanceInWordsStrict } from 'date-fns'
 var eoLocale = require('date-fns/locale/de')
+
+import React, { useState } from 'react'
 import BlockContent from '../block-content'
+import VisibilitySensor from '../VisibilitySensor'
+
+import Image from 'gatsby-image/withIEPolyfill'
+import FullHeight from 'react-div-100vh'
+import { Spring } from 'react-spring/renderprops'
 
 import styles from './Project.module.scss'
-import Image from 'gatsby-image/withIEPolyfill'
-import VisibilitySensor from '../VisibilitySensor'
-import { Spring } from 'react-spring/renderprops'
-import FullHeight from 'react-div-100vh'
 
 function Project(props) {
   const { _rawBody, title, excerpt, services, projectLink, mainImage, startedAt, endedAt } = props

@@ -1,12 +1,13 @@
 import React from 'react'
-import Section from '../../components/Section'
-import styles from './SupportSection.module.scss'
 import Image from 'gatsby-image/withIEPolyfill'
-import cn from 'classnames'
+import Section from '../../components/Section'
 import TextBlock from '../../components/SectionHeading'
 import { Spring } from 'react-spring/renderprops'
+import cn from 'classnames'
 import { getSanityImageFluid, mobileAlignmentClass, alignmentClass } from '../../lib/helpers'
 import VisibilitySensor from '../../components/VisibilitySensor'
+
+import styles from './SupportSection.module.scss'
 
 const SupportSection = props => {
   const {
@@ -24,6 +25,8 @@ const SupportSection = props => {
       'Missing "Image with text settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'
     )
   }
+
+  const mainImage = (image && image.asset) || {}
 
   const heading =
     (props.heading && props.heading) ||
@@ -44,11 +47,11 @@ const SupportSection = props => {
             )}
           >
             <TextBlock
-              caption={heading.caption}
+              caption={heading && heading.caption}
               animate={animate}
               className={styles.heading}
               isVisible={isVisible}
-              title={heading.title}
+              title={heading && heading.title}
               align="left"
               textSize={textSize}
               button={
@@ -61,11 +64,11 @@ const SupportSection = props => {
                   hasIcon: true
                 }
               }
-              lead={heading.subHeading}
-              subheading={heading.subheading}
+              lead={heading && heading.subHeading}
+              subheading={heading && heading.subheading}
               sectionColor={sectionColor}
             />
-            {((image && image.asset) || image.src) && (
+            {mainImage && (
               <Spring
                 to={{
                   transform: isVisible ? `translateY(0)` : `translateY(-32px)`,
@@ -80,9 +83,11 @@ const SupportSection = props => {
                 {animation => (
                   <div className={styles.image} style={animation}>
                     <Image
-                      fluid={(image.asset && getSanityImageFluid(image)) || (image.src && image)}
-                      title={image.alt || heading.title}
-                      alt={image.alt || heading.title}
+                      fluid={
+                        (image && image.asset && getSanityImageFluid(image)) || (mainImage && image)
+                      }
+                      title={(image && image.alt) || (heading && heading.title)}
+                      alt={(image && image.alt) || (heading && heading.title)}
                     />
                   </div>
                 )}
