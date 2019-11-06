@@ -1,19 +1,15 @@
-import { distanceInWordsStrict } from 'date-fns'
-var eoLocale = require('date-fns/locale/de')
-
 import React, { useState } from 'react'
 import BlockContent from '../block-content'
 import VisibilitySensor from '../VisibilitySensor'
-
 import Image from 'gatsby-image/withIEPolyfill'
 import FullHeight from 'react-div-100vh'
 import { Spring } from 'react-spring/renderprops'
-
+import { distanceInWordsStrict } from 'date-fns'
 import styles from './Project.module.scss'
 
 function Project(props) {
+  var eoLocale = require('date-fns/locale/de')
   const { _rawBody, title, excerpt, services, projectLink, mainImage, startedAt, endedAt } = props
-  useState
   const [loaded, setLoaded] = useState(false)
 
   return (
@@ -110,7 +106,7 @@ function Project(props) {
         </div>
       </div>
       <div className={styles.mainContent}>
-        {_rawBody && <BlockContent isBlog={true} blocks={_rawBody || []} />}
+        {_rawBody && <BlockContent isBlog blocks={_rawBody || []} />}
       </div>
 
       {/* } <aside className={styles.metaContent}>
