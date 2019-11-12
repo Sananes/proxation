@@ -7,7 +7,10 @@ import Layout from '../containers/layout'
 import styles from './scss/Contact.module.scss'
 import ContactForm from '../components/ContactForm/ContactForm'
 import Image from 'gatsby-image/withIEPolyfill'
-import GatsbyLink from '../components/GatsbyLink'
+import VisibilitySensor from '../components/VisibilitySensor'
+import { fadeOnVisible } from '../lib/helpers'
+import { Spring } from 'react-spring/renderprops'
+import ShopwarePartners from '../components/ShopwarePartner/ShopwarePartners'
 
 export const query = graphql`
   query ContactPageQuery {
@@ -16,6 +19,10 @@ export const query = graphql`
       phone
     }
     page: sanityKontakt(_id: { regex: "/(drafts.|)kontakt/" }) {
+      seo {
+        title
+        description
+      }
       title
       subheading
       notice
@@ -76,60 +83,122 @@ const ContactPage = props => {
 
   return (
     <Layout>
-      <SEO title={page.title} image={contact.image.asset.src} />
+      <SEO title={page.seo.title} image={contact.image.asset.src} />
       <div className={styles.wrapper}>
         <div className={styles.left}>
-          <h2 className={styles.pageTitle}>{page.title}</h2>
-          <p className={styles.subheading}>{page.subheading}</p>
+          <VisibilitySensor once>
+            {({ isVisible }) => (
+              <Spring to={fadeOnVisible(isVisible)}>
+                {props => (
+                  <h2 style={props} className={styles.pageTitle}>
+                    {page.title}
+                  </h2>
+                )}
+              </Spring>
+            )}
+          </VisibilitySensor>
 
-          <div className={styles.info}>
-            <h6>Rufen sie uns an</h6>
-            <a href={'tel:' + data.site.phone} className={styles.anchor}>
-              {data.site.phone}
-            </a>
-          </div>
+          <VisibilitySensor once>
+            {({ isVisible }) => (
+              <Spring to={fadeOnVisible(isVisible)}>
+                {props => (
+                  <p style={props} className={styles.subheading}>
+                    {page.subheading}
+                  </p>
+                )}
+              </Spring>
+            )}
+          </VisibilitySensor>
+          <VisibilitySensor once>
+            {({ isVisible }) => (
+              <Spring to={fadeOnVisible(isVisible)}>
+                {props => (
+                  <div className={styles.info} style={props}>
+                    <h6>Rufen sie uns an</h6>
+                    <a href={'tel:' + data.site.phone} className={styles.anchor}>
+                      {data.site.phone}
+                    </a>
+                  </div>
+                )}
+              </Spring>
+            )}
+          </VisibilitySensor>
 
-          <div className={styles.info}>
-            <h6>Schreiben Sie uns eine E-Mail</h6>
-            <a href={'mailto:' + data.site.email}>{data.site.email}</a>
-          </div>
-
+          <VisibilitySensor once>
+            {({ isVisible }) => (
+              <Spring to={fadeOnVisible(isVisible)}>
+                {props => (
+                  <div className={styles.info} style={props}>
+                    <h6>Schreiben Sie uns eine E-Mail</h6>
+                    <a href={'mailto:' + data.site.email}>{data.site.email}</a>
+                  </div>
+                )}
+              </Spring>
+            )}
+          </VisibilitySensor>
           <ul className={styles.projects}>
             <>
-              <h3 className={styles.projectsTitle}>Latest Projects</h3>
+              <VisibilitySensor once>
+                {({ isVisible }) => (
+                  <Spring to={fadeOnVisible(isVisible)}>
+                    {props => (
+                      <h3 className={styles.projectsTitle} style={props}>
+                        Latest Projects
+                      </h3>
+                    )}
+                  </Spring>
+                )}
+              </VisibilitySensor>
               {page.projects.map(project => (
-                <li>
-                  <Link to={'project/' + project.slug.current} className={styles.project}>
-                    <div className={styles.imageWrapper}>
-                      <Image
-                        fluid={project.cardImage.asset.fluid}
-                        alt={project.title}
-                        className={styles.image}
-                      />
-                    </div>
-                    <div className={styles.details}>
-                      <h3>{project.title}</h3>
-                      <span>{project.type}</span>
-                    </div>
-                  </Link>
-                </li>
+                <VisibilitySensor once>
+                  {({ isVisible }) => (
+                    <Spring to={fadeOnVisible(isVisible)}>
+                      {props => (
+                        <li style={props}>
+                          <Link to={'project/' + project.slug.current} className={styles.project}>
+                            <div className={styles.imageWrapper}>
+                              <Image
+                                fluid={project.cardImage.asset.fluid}
+                                alt={project.title}
+                                className={styles.image}
+                              />
+                            </div>
+                            <div className={styles.details}>
+                              <h3>{project.title}</h3>
+                              <span>{project.type}</span>
+                            </div>
+                          </Link>
+                        </li>
+                      )}
+                    </Spring>
+                  )}
+                </VisibilitySensor>
               ))}
             </>
           </ul>
         </div>
         <div className={styles.right}>
-          <div
-            className={cn(styles.notice, {
-              [styles.available]: page.availability === 'available',
-              [styles.unavailable]: page.availability === 'not-available',
-              [styles.busy]: page.availability === 'busy'
-            })}
-          >
-            <span className={styles.bullet}></span>
-            <p>{page.notice}</p>
-          </div>
-
+          <VisibilitySensor once>
+            {({ isVisible }) => (
+              <Spring to={fadeOnVisible(isVisible)}>
+                {props => (
+                  <div
+                    style={props}
+                    className={cn(styles.notice, {
+                      [styles.available]: page.availability === 'available',
+                      [styles.unavailable]: page.availability === 'not-available',
+                      [styles.busy]: page.availability === 'busy'
+                    })}
+                  >
+                    <span className={styles.bullet}></span>
+                    <p>{page.notice}</p>
+                  </div>
+                )}
+              </Spring>
+            )}
+          </VisibilitySensor>
           <ContactForm isDark={false} />
+          <ShopwarePartners className={styles.badges} />
         </div>
       </div>
     </Layout>

@@ -92,33 +92,7 @@
   }
 }
 
-.badges {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  padding: 0;
-  justify-content: space-around;
 
-  svg {
-    display: block;
-    margin-bottom: 12px;
-  }
-
-  .badgeItem svg {
-    color: $text-light-dimmed;
-  }
-
-  .badgeBusiness svg {
-    color: $color-gold;
-  }
-
-  .badgeTechnology svg {
-    color: $text-dark;
-
-    .light & {
-      color: $text-light;
-    }
-  }
-}
 
 .contact {
 

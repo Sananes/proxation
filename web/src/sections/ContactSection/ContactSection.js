@@ -174,31 +174,6 @@ const ContactSection = props => {
             </Spring>
           )}
         </VisibilitySensor>
-        <VisibilitySensor once partialVisibility>
-          {({ isVisible }) => (
-            <Spring to={fadeOnVisible(isVisible)}>
-              {props => (
-                <div className={styles.badgesWrapper} style={props}>
-                  <h4 className={styles.title}>Partners</h4>
-                  <ul className={styles.badges}>
-                    <li className={styles.badgeItem}>
-                      <Icon symbol="shopware" className={styles.badgeIcon}></Icon>
-                      <strong className={styles.bold}>Solutions</strong> Partner
-                    </li>
-                    <li className={cn(styles.badgeItem, styles.badgeTechnology)}>
-                      <Icon symbol="shopware" className={styles.badgeIcon}></Icon>
-                      <strong className={styles.bold}>Technology</strong> Partner
-                    </li>
-                    <li className={cn(styles.badgeItem, styles.badgeBusiness)}>
-                      <Icon symbol="shopware" className={styles.badgeIcon}></Icon>
-                      <strong className={styles.bold}>Business</strong> Partner
-                    </li>
-                  </ul>
-                </div>
-              )}
-            </Spring>
-          )}
-        </VisibilitySensor>
       </div>
     </Section>
   )

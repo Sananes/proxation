@@ -18,12 +18,24 @@ h2 {
   margin: 0;
 }
 
+.right {
+  display: grid;
+  grid-gap: 24px;
+}
+
+.badges svg {
+  width: 32px;
+  height: 32px;
+}
+
 .notice {
   padding: 16px;
   margin-top: 8px;
   margin-bottom: 32px;
   background: $color-hightlight-background;
-  display: flex;
+  display: grid;
+  grid-template-columns: 12px 1fr;
+  grid-gap: 16px;
   align-items: center;
   color: darken($color-gold, 20%);
 
@@ -123,16 +135,21 @@ h2 {
   }
 }
 
+
 .wrapper {
   @extend %section;
   max-width: $layout-breakpoint-lg;
   margin: 0 auto;
   padding: 60px 0;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 64px;
+  display: grid;
+  grid-gap: 32px;
+
 
   @include breakpoint-md {
+    grid-template-columns: 1fr 1fr;
     display: grid;
+    grid-gap: 64px;
+
   }
 }
 
