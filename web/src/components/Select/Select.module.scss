@@ -4,6 +4,7 @@
   position: relative;
   display: flex;
   height: $button-medium-height;
+  background: $color-input-background;
   height: auto;
   align-items: center;
   width: 100%;
@@ -48,6 +49,7 @@
   background-color: transparent;
   background-repeat: no-repeat, repeat;
   background-position: right .7em top 50%, 0 0;
+  cursor: pointer;
 
   .dark & {
     color: inherit;

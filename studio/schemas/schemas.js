@@ -13,6 +13,7 @@ import figure from "./figure";
 import landingPage from "./page/landingPages";
 import imageSection from "./objects/imageSection";
 import pageBuilder from "./objects/pageBuilder";
+import kontakt from "./page/kontakt";
 import link from "./objects/link";
 import mainImage from "./mainImage";
 import localeString from "./localeString";
@@ -66,6 +67,7 @@ export default createSchema({
     sectionColor,
     figure,
     landingPage,
+    kontakt,
     mainImage,
     imageSection,
     localeString,

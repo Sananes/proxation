@@ -133,9 +133,7 @@ $color-button-link-text: #000;
 $color-button-link-text-hover: #000;
 
 // Inputs
-$color-input-background: $color-white;
-$color-input-border: $color-border-darker;
-$color-input-border-hover: darken($color-border-darker, 10%);
+
 
 // Header
 $header-height: 100px;
@@ -167,6 +165,9 @@ $input-text-color: $text-subdued;
 $input-border: darken($color-border, 5%);
 $input-border-hover: darken($input-border, 5%);
 $input-border-focus: $color-primary;
+$color-input-background: #f6f6f6;
+$color-input-border: transparent;
+$color-input-border-hover: darken($color-border-darker, 10%);
 
 // Content
 $content-width: 720px;

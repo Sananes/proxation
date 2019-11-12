@@ -14,6 +14,11 @@ export default {
       type: "string"
     },
     {
+      name: "phone",
+      title: "Phone number",
+      type: "string"
+    },
+    {
       name: "email",
       title: "Email",
       type: "email"

@@ -17,6 +17,7 @@ const hiddenTypes = [
   "heroHome",
   "landingPage",
   "contactHome",
+  "kontakt",
   "sectionContact",
   "clients",
   "clientsHome",
@@ -89,6 +90,16 @@ export default () =>
                     .id("pageHome")
                     .schemaType("pageHome")
                     .documentId("pageHome")
+                )
+                .icon(FaFile),
+              S.listItem()
+                .title("Kontakt")
+                .child(
+                  S.editor()
+                    .title("Kontakt")
+                    .id("kontakt")
+                    .schemaType("kontakt")
+                    .documentId("kontakt")
                 )
                 .icon(FaFile),
               S.listItem()
