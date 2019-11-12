@@ -7,13 +7,16 @@ import { Spring } from 'react-spring/renderprops'
 import Icon from '../icons'
 
 const ShopwarePartners = props => {
-  const { className, title } = props
+  const { className, title, isDark } = props
   return (
     <VisibilitySensor once partialVisibility>
       {({ isVisible }) => (
         <Spring to={fadeOnVisible(isVisible)}>
           {props => (
-            <div className={cn(styles.badgesWrapper, className)} style={props}>
+            <div
+              className={cn(styles.badgesWrapper, className, isDark ? styles.light : null)}
+              style={props}
+            >
               {title && <h4 className={styles.title}>{title}</h4>}
               <ul className={styles.badges}>
                 <li className={styles.badgeItem}>
