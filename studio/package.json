@@ -21,6 +21,7 @@
     "@sanity/color-input": "^0.147.0",
     "@sanity/components": "^0.147.6",
     "@sanity/core": "^0.147.6",
+    "@sanity/dashboard": "^0.147.6",
     "@sanity/default-layout": "^0.147.6",
     "@sanity/default-login": "^0.147.0",
     "@sanity/desk-tool": "^0.147.7",
@@ -30,6 +31,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-icons": "^3.7.0",
+    "sanity-plugin-dashboard-widget-gatsby": "^1.0.9",
     "sanity-plugin-seo-tools": "^1.0.1",
     "sanity-plugin-unicorn-slider": "^0.0.2"
   },
