@@ -1,5 +1,5 @@
 // resolvePreviewURLs.js
-const baseURL = "https://infinite-falls-54377.herokuapp.com";
+const baseURL = "https://proxation-3634876568.gtsb.io";
 
 export default function resolvePreviewURLs(document) {
   switch (document._type) {

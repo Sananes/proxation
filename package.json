@@ -19,10 +19,10 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "lerna": "^3.14.1",
-    "rimraf": "^2.6.3"
+    "lerna": "^3.20.2",
+    "rimraf": "^2.7.1"
   },
   "dependencies": {
-    "gatsby-cli": "^2.8.4"
+    "gatsby-cli": "^2.8.26"
   }
 }
