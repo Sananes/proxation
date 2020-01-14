@@ -1,9 +1,8 @@
 import { format, distanceInWords, differenceInDays } from 'date-fns'
+import de from 'date-fns/locale/de'
 import React from 'react'
-import { graphql } from 'gatsby'
 import { getBlogUrl } from '../../lib/helpers'
 import Image from 'gatsby-image/withIEPolyfill'
-import { imageUrlFor } from '../../lib/image-url'
 import BlockContent from '../block-content'
 import Container from '../Container'
 import VisibilitySensor from '../VisibilitySensor'
@@ -51,7 +50,7 @@ function BlogPost(props) {
                             {authors && authors.map(item => <span>by {item.person.name} - </span>)}
                             {differenceInDays(new Date(publishedAt), new Date()) > 3
                               ? distanceInWords(new Date(publishedAt), new Date())
-                              : format(new Date(publishedAt), 'MMMM Do YYYY')}
+                              : format(new Date(publishedAt), 'Do MMMM YYYY', { locale: de })}
                           </div>
                         )}
                       </Spring>

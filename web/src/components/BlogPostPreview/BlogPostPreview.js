@@ -1,4 +1,5 @@
 import { format, distanceInWords, differenceInDays } from 'date-fns'
+import de from 'date-fns/locale/de'
 import { Link } from 'gatsby'
 import React from 'react'
 import { cn, getBlogUrl } from '../../lib/helpers'
@@ -31,9 +32,9 @@ function BlogPostPreview(props) {
               </div>
               {props.publishedAt && (
                 <div className={styles.publishedAt}>
-                  {differenceInDays(new Date(props.publishedAt), new Date()) > 3
-                    ? distanceInWords(new Date(props.publishedAt), new Date())
-                    : format(new Date(props.publishedAt), 'MMMM Do YYYY')}
+                  {differenceInDays(new Date(props.publishedAt), new Date(), { locale: de }) > 3
+                    ? distanceInWords(new Date(props.publishedAt), new Date(), { locale: de })
+                    : format(new Date(props.publishedAt), 'Do MMMM YYYY', { locale: de })}
                 </div>
               )}
               <h3 className={cn(styles.title)}>{props.title}</h3>

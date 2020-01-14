@@ -143,7 +143,7 @@ const ContactPage = props => {
                   <Spring to={fadeOnVisible(isVisible)}>
                     {props => (
                       <h3 className={styles.projectsTitle} style={props}>
-                        Latest Projects
+                        Neueste Referenzen
                       </h3>
                     )}
                   </Spring>

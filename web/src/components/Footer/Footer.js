@@ -58,6 +58,29 @@ const Footer = ({ companyInfo, isVisible }) => {
             <div className={styles.menuWrapper}>
               <div className={styles.menu}>
                 <nav className={styles.nav}>
+                  <h5>E-commerce Agentur München</h5>
+                  <ul>
+                    <div className="menu" />
+                    <li className={styles.navItem}>
+                      <Link to="/shopware-agentur-muenchen/">Shopware Shops</Link>
+                    </li>
+                    <li className={styles.navItem}>
+                      <Link to="/services/ecommerce-beratung/">E-Commerce Beratung</Link>
+                    </li>
+                    <li className={styles.navItem}>
+                      <Link to="/services/shopware-plugin-programmierung">
+                        Shopware Plug-in Entwicklung
+                      </Link>
+                    </li>
+                    <li className={styles.navItem}>
+                      <Link to="/unternehmenswebsites/">Unternehmenswebsites</Link>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+
+              <div className={styles.menu}>
+                <nav className={styles.nav}>
                   <h5>Über Proxation</h5>
                   <ul>
                     <div className="menu" />
@@ -75,29 +98,6 @@ const Footer = ({ companyInfo, isVisible }) => {
                     </li>
                     <li className={styles.navItem}>
                       <Link to="/datenschutz/">Datenschutz</Link>
-                    </li>
-                  </ul>
-                </nav>
-              </div>
-
-              <div className={styles.menu}>
-                <nav className={styles.nav}>
-                  <h5>E-commerce Agentur München</h5>
-                  <ul>
-                    <div className="menu" />
-                    <li className={styles.navItem}>
-                      <Link to="/shopware-agentur-muenchen/">Shopware Shops</Link>
-                    </li>
-                    <li className={styles.navItem}>
-                      <Link to="/services/ecommerce-beratung/">E-Commerce Beratung</Link>
-                    </li>
-                    <li className={styles.navItem}>
-                      <Link to="/services/shopware-plugin-programmierung">
-                        Shopware Plug-in Entwicklung
-                      </Link>
-                    </li>
-                    <li className={styles.navItem}>
-                      <Link to="/unternehmenswebsites/">Unternehmenswebsites</Link>
                     </li>
                   </ul>
                 </nav>

@@ -1,5 +1,6 @@
 import React from 'react'
 import Button from '../../components/Button'
+import { navigate } from 'gatsby-link'
 import styles from './ContactForm.module.scss'
 import FormGroup from '../../components/FormGroup'
 import { Spring } from 'react-spring/renderprops'
@@ -7,12 +8,27 @@ import useForm from 'react-hook-form'
 import VisibilitySensor from '../../components/VisibilitySensor'
 import { fadeOnVisible } from '../../lib/helpers'
 
+function encode(data) {
+  return Object.keys(data)
+    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+    .join('&')
+}
+
 const ContactForm = props => {
   const { isDark } = props
   const { register, handleSubmit, errors } = useForm()
 
   const onSubmit = values => {
-    console.log(values)
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({
+        'form-name': 'contact-form',
+        ...values
+      })
+    })
+      .then(() => navigate('/thankyou'))
+      .catch(error => alert(error))
   }
 
   return (
@@ -22,15 +38,16 @@ const ContactForm = props => {
           {props => (
             <form
               className={styles.form}
-              data-netlify="true"
-              name="Contact Form"
-              action="/thank-you"
-              data-netlify-honeypot="bot-field"
+              name="contact-form"
               onSubmit={handleSubmit(onSubmit)}
+              data-netlify-honeypot="bot-field"
+              data-netlify="true"
+              method="post"
+              action="/thanks/"
               style={props}
             >
               <input type="hidden" name="bot-field" />
-              <input type="hidden" name="form-name" value="Contact Form" />
+              <input type="hidden" name="form-name" value="contact-form" />
 
               <FormGroup
                 errors={errors.fullName}
