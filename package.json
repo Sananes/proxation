@@ -23,6 +23,7 @@
     "rimraf": "^2.7.1"
   },
   "dependencies": {
-    "gatsby-cli": "^2.8.26"
+    "gatsby-cli": "^2.8.26",
+    "sharp": "^0.24.0"
   }
 }

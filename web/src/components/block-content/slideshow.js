@@ -2,16 +2,16 @@ import React, { useState } from 'react'
 import { buildImageObj } from '../../lib/helpers'
 import { imageUrlFor } from '../../lib/image-url'
 
-import styles from './slideshow.module.css'
+import styles from './slideshow.module.scss'
 
-function Slideshow (props) {
+function Slideshow(props) {
   if (!props.slides) return null
   const len = props.slides.length
   const [index, setIndex] = useState(0)
-  function handlePrev () {
+  function handlePrev() {
     setIndex(Math.max(index - 1, 0))
   }
-  function handleNext () {
+  function handleNext() {
     setIndex(Math.min(index + 1, len - 1))
   }
   return (
@@ -37,8 +37,8 @@ function Slideshow (props) {
             {slide.asset && (
               <img
                 src={imageUrlFor(buildImageObj(slide))
-                  .width(1200)
-                  .height(Math.floor((9 / 16) * 1200))
+                  .width(1000)
+                  .height(Math.floor((9 / 16) * 1000))
                   .fit('crop')
                   .url()}
               />

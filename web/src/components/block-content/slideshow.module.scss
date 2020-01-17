@@ -1,18 +1,13 @@
-@import '../../styles/media-queries.css';
-@import '../../styles/vars.css';
+@import '../../assets/scss/helpers';
 
 .root {
-  background: var(--color-black);
-  color: var(--color-white);
+  background: $color-hightlight-background;
+  color: $color-white;
   margin: 2rem -1.5rem;
   overflow: hidden;
   padding: 1rem;
 
-  @media (--media-min-small) {
-    margin: 2rem -2rem;
-  }
-
-  @media (--media-min-medium) {
+  @include breakpoint-md {
     margin: 2rem 0;
   }
 }
@@ -22,9 +17,8 @@
   display: flex;
   justify-content: space-between;
 
-  @nest & button {
+  button {
     outline: none;
-    -webkit-font-smoothing: inherit;
     appearance: none;
     font: inherit;
     background: none;
@@ -41,6 +35,8 @@
   padding: 0;
   white-space: nowrap;
   transition: transform 250ms;
+  overflow: visible !important;
+  max-width: 100% !important;
 }
 
 .slide {
@@ -49,8 +45,10 @@
   white-space: normal;
   box-sizing: border-box;
   padding: 0 0.5rem;
+  max-width: 100% !important;
 
-  @nest & img {
+  &>img {
+    max-width: 100% !important;
     width: 100%;
     height: auto;
   }
