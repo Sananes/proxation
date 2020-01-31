@@ -15,6 +15,7 @@ import imageSection from "./objects/imageSection";
 import pageBuilder from "./objects/pageBuilder";
 import kontakt from "./page/kontakt";
 import link from "./objects/link";
+import youtube from "./objects/youtube";
 import mainImage from "./mainImage";
 import localeString from "./localeString";
 import headerNav from "./objects/headerNav";
@@ -77,6 +78,7 @@ export default createSchema({
     nav,
     headerNav,
     clients,
+    youtube,
     urlReference,
     link,
     opacityOverlay,

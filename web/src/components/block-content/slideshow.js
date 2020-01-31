@@ -38,7 +38,7 @@ function Slideshow(props) {
               <img
                 src={imageUrlFor(buildImageObj(slide))
                   .width(1000)
-                  .height(Math.floor((9 / 16) * 1000))
+                  .height(Math.floor((9 / 16) * 1200))
                   .fit('crop')
                   .url()}
               />

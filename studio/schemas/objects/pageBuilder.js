@@ -10,7 +10,8 @@ export default {
     { type: "textColumnsWithImage" },
     { type: "imageWithText" },
     { ...richText },
-    { ...imageSection }
+    { ...imageSection },
+    { type: "youtube", name: "video", title: "YouTube" }
   ],
   options: {
     editModal: "dialog"

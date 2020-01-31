@@ -1,8 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import Container from '../Container'
-import Input from '../Input'
-import Button from '../Button'
 import { Spring } from 'react-spring/renderprops'
 import styles from './Footer.module.scss'
 import Icon from '../icons'
@@ -43,16 +41,16 @@ const Footer = ({ companyInfo, isVisible }) => {
                 </ul>
               )}
 
-              <div className={styles.newsletter}>
+              {/*} <div className={styles.newsletter}>
                 <h3 className={styles.title}>Subscribe to our Newsletter</h3>
                 <form className={styles.wrapper}>
                   <Input placeholder="Enter email address" />
                   <Button color="primary" type="button" text="Absenden" />
                 </form>
-              </div>
+                  </div> */}
+
               <div className={styles.siteInfo}>
-                © Copyright {new Date().getFullYear()}, built by{' '}
-                <a href="https://www.gatsbyjs.org">Sananes & Co</a>
+                © Copyright {new Date().getFullYear()}, Proxation GmBH
               </div>
             </div>
             <div className={styles.menuWrapper}>
@@ -105,18 +103,6 @@ const Footer = ({ companyInfo, isVisible }) => {
 
               <div className={styles.menu}>
                 <nav className={styles.nav}>
-                  <h5>Kontaktdaten</h5>
-                  <address>
-                    Proxation GmbH
-                    <br /> c/o WeWork
-                    <br /> Oskar-von-Miller-Ring 20
-                    <br /> 80333 München
-                  </address>
-                </nav>
-              </div>
-
-              <div className={styles.menu}>
-                <nav className={styles.nav}>
                   <ul>
                     <li>
                       <a href="tel:+49(0)8942759987 ">+49 (0) 89 4275 9987</a>
@@ -125,6 +111,18 @@ const Footer = ({ companyInfo, isVisible }) => {
                       <a href="mailto:info@proxation.de">info@proxation.de</a>
                     </li>
                   </ul>
+                </nav>
+              </div>
+
+              <div className={styles.menu}>
+                <nav className={styles.nav}>
+                  <h5>Kontaktdaten</h5>
+                  <address>
+                    Proxation GmbH
+                    <br /> c/o WeWork
+                    <br /> Oskar-von-Miller-Ring 20
+                    <br /> 80333 München
+                  </address>
                 </nav>
               </div>
             </div>

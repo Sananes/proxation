@@ -111,6 +111,7 @@
   padding-top: 64px;
   padding-bottom: 64px;
 
+
   h1,
   h2,
   h3,
@@ -123,6 +124,23 @@
     padding-top: 0;
     padding-bottom: 0;
   }
+
+  div>iframe {
+    width: 100%;
+  }
+
+  ul,
+  li {
+
+    &:before,
+    &:after {
+      display: none;
+    }
+
+    list-style: inherit;
+    line-height: 1.5;
+    overflow: visible;
+  }
 }
 
 
@@ -134,13 +152,13 @@
   border-top: 1px solid var(--color-black);
   margin: 2rem 0 3rem;
 
-  @nest & ul {
+  & ul {
     list-style: none;
     margin: 0.75rem 0;
     padding: 0;
   }
 
-  @nest & ul li {
+  & ul li {
     padding: 0.25rem 0;
   }
 }
@@ -153,13 +171,13 @@
   border-top: 1px solid var(--color-black);
   margin: 2rem 0 3rem;
 
-  @nest & ul {
+  ul {
     list-style: none;
     margin: 0.75rem 0;
     padding: 0;
   }
 
-  @nest & a {
+  a {
     display: inline-block;
     color: inherit;
     text-decoration: none;

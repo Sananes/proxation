@@ -2,6 +2,8 @@ import BaseBlockContent from '@sanity/block-content-to-react'
 import React from 'react'
 import Figure from './figure'
 import Slideshow from './slideshow'
+import getYouTubeId from 'get-youtube-id'
+import YouTube from 'react-youtube'
 import VisibilitySensor from '../VisibilitySensor'
 import { Spring } from 'react-spring/renderprops'
 
@@ -105,6 +107,28 @@ const serializers = {
             </VisibilitySensor>
           )
       }
+    },
+    youtube: ({ node }) => {
+      const { url } = node
+      const id = getYouTubeId(url)
+      return (
+        <VisibilitySensor once partialVisibility>
+          {({ isVisible }) => (
+            <Spring
+              to={{
+                opacity: isVisible ? 1 : 0,
+                transform: isVisible ? 'translateY(0)' : 'translateY(-24px)'
+              }}
+            >
+              {animate => (
+                <div style={{ ...animate, width: '100%', margin: '1rem auto' }}>
+                  <YouTube videoId={id} isVisible={isVisible} />
+                </div>
+              )}
+            </Spring>
+          )}
+        </VisibilitySensor>
+      )
     },
     figure(props) {
       return (

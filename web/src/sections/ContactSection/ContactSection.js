@@ -99,7 +99,7 @@ const ContactSection = props => {
                     </li>
                     <li>
                       <a href="mailto:info@proxation.de">
-                        <strong>Call us:</strong> +49 778 112 332
+                        <strong>Call us:</strong> +49 (0) 89 4275 9987
                       </a>
                     </li>
                   </ul>
@@ -108,7 +108,7 @@ const ContactSection = props => {
             </Spring>
           )}
         </VisibilitySensor>
-        <ShopwarePartners title="Partners" className={styles.badges} isDark={true} />
+        <ShopwarePartners title="Partner" className={styles.badges} isDark={true} />
       </div>
     </Section>
   )
