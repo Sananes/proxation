@@ -307,7 +307,7 @@ $animation-easing: ease-in-out;
 
 
   .navItem {
-    @include h2;
+    @include h4;
     font-weight: $font-weight-medium;
     transition: color 300ms $animation-easing;
 
@@ -371,7 +371,7 @@ $animation-easing: ease-in-out;
       margin-bottom: 32px;
     }
 
-    &>li a {
+    &>li>a {
       display: block;
       color: inherit;
       margin-bottom: 16px;
@@ -396,21 +396,22 @@ $animation-easing: ease-in-out;
 }
 
 .subMenu {
-  margin: 0;
+  margin: 0 0 16px 0;
   padding: 0;
   color: $text-light-subdued;
   display: none;
+  line-height: auto;
 
   @include breakpoint-md {
-    margin: 24px 0 0 0;
+    margin: 16px 0;
     display: block;
   }
 }
 
 .subMenu li {
-  @include body-l;
+  @include body;
+  line-height: 1.5;
   letter-spacing: 0;
-  line-height: 1;
   margin: 0;
   padding: 5px;
   font-weight: $font-weight-normal;
@@ -422,6 +423,7 @@ $animation-easing: ease-in-out;
   a {
     padding: 0;
     margin: 0;
+    text-decoration: none;
     color: $text-light-subdued;
     transition: color 300ms $animation-easing;
 
