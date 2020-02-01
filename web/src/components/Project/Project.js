@@ -7,6 +7,8 @@ import FullHeight from 'react-div-100vh'
 import { Spring } from 'react-spring/renderprops'
 import { distanceInWordsStrict } from 'date-fns'
 import styles from './Project.module.scss'
+import ProjectPreviewGrid from '../ProjectPreviewGrid/ProjectPreviewGrid'
+import ProjectPreview from '../ProjectPreview'
 
 function Project(props) {
   var eoLocale = require('date-fns/locale/de')
@@ -132,11 +134,9 @@ function Project(props) {
                 {animate => (
                   <div style={animate}>
                     <h3 className={styles.relatedProjectsHeadline}>Related projects</h3>
-                    <ul>
+                    <ul className="grid">
                       {relatedProjects.map(project => (
-                        <li key={`related_${project._id}`}>
-                          <Link to={`/project/${project.slug.current}`}>{project.title}</Link>
-                        </li>
+                        <ProjectPreview {...project} />
                       ))}
                     </ul>
                   </div>

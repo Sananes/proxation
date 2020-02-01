@@ -46,6 +46,14 @@ export const query = graphql`
       relatedProjects {
         title
         _id
+        cardImage {
+          asset {
+            _id
+            fluid(maxWidth: 1200) {
+              ...GatsbySanityImageFluid
+            }
+          }
+        }
         slug {
           current
         }
