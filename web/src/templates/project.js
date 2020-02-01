@@ -18,13 +18,6 @@ export const query = graphql`
       projectLink
       startedAt
       endedAt
-      relatedProjects {
-        title
-        _id
-        slug {
-          current
-        }
-      }
       mainImage {
         crop {
           _key
@@ -49,6 +42,13 @@ export const query = graphql`
           }
         }
         alt
+      }
+      relatedProjects {
+        title
+        _id
+        slug {
+          current
+        }
       }
       services
       title

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import BlockContent from '../block-content'
 import VisibilitySensor from '../VisibilitySensor'
 import Image from 'gatsby-image/withIEPolyfill'
+import Link from 'gatsby-link'
 import FullHeight from 'react-div-100vh'
 import { Spring } from 'react-spring/renderprops'
 import { distanceInWordsStrict } from 'date-fns'
@@ -9,7 +10,17 @@ import styles from './Project.module.scss'
 
 function Project(props) {
   var eoLocale = require('date-fns/locale/de')
-  const { _rawBody, title, excerpt, services, projectLink, mainImage, startedAt, endedAt } = props
+  const {
+    _rawBody,
+    title,
+    excerpt,
+    services,
+    projectLink,
+    mainImage,
+    startedAt,
+    endedAt,
+    relatedProjects
+  } = props
   const [loaded, setLoaded] = useState(false)
 
   return (
@@ -108,7 +119,33 @@ function Project(props) {
       <div className={styles.mainContent}>
         {_rawBody && <BlockContent isBlog blocks={_rawBody || []} />}
       </div>
-
+      {relatedProjects && (
+        <div className={styles.relatedProjects}>
+          <VisibilitySensor once partialVisibility>
+            {({ isVisible }) => (
+              <Spring
+                to={{
+                  transform: isVisible ? 'translateY(0)' : 'translateY(-24px)',
+                  opacity: isVisible ? 1 : 0
+                }}
+              >
+                {animate => (
+                  <div style={animate}>
+                    <h3 className={styles.relatedProjectsHeadline}>Related projects</h3>
+                    <ul>
+                      {relatedProjects.map(project => (
+                        <li key={`related_${project._id}`}>
+                          <Link to={`/project/${project.slug.current}`}>{project.title}</Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </Spring>
+            )}
+          </VisibilitySensor>
+        </div>
+      )}
       {/* } <aside className={styles.metaContent}>
         {publishedAt && (
           <div className={styles.publishedAt}>
@@ -126,21 +163,9 @@ function Project(props) {
                 <li key={category._id}>{category.title}</li>
               ))}
             </ul>
-          </div>
-        )}
-        {relatedProjects && (
-          <div className={styles.relatedProjects}>
-            <h3 className={styles.relatedProjectsHeadline}>Related projects</h3>
-            <ul>
-              {relatedProjects.map(project => (
-                <li key={`related_${project._id}`}>
-                  <Link to={`/project/${project.slug.current}`}>{project.title}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-              </aside> */}
+            </div>
+            </aside>
+              )*/}
     </article>
   )
 }

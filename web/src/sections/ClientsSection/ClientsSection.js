@@ -6,6 +6,7 @@ import cn from 'classnames'
 import { Trail } from 'react-spring/renderprops'
 import { getSanityImageFluid } from '../../lib/helpers'
 import VisibilitySensor from '../../components/VisibilitySensor'
+import Button from '../../components/Button'
 
 const ClientsSection = props => {
   const { title, clients, sectionColor } = props
@@ -40,6 +41,7 @@ const ClientsSection = props => {
                   )}
                 </Trail>
               </div>
+              <Button className={styles.button} text="Fallstudien anzeigen" type="button" />
             </Section>
           )}
         </VisibilitySensor>

@@ -15,10 +15,21 @@
   grid-gap: 24px;
   align-items: center;
 
-
-
   @include breakpoint-md {
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 32px;
+  }
+
+
+}
+
+.button {
+  display: block;
+  width: auto;
+  text-align: center;
+  margin: 32px auto 0 auto;
+
+  @include breakpoint-md {
+    margin-top: 64px;
   }
 }
