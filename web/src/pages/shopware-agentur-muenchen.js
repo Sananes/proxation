@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import GraphQLErrorList from '../components/graphql-error-list'
 import SEO from '../components/Seo'
 import Layout from '../containers/layout'
@@ -168,24 +168,24 @@ const ShopwarePage = props => {
                 <div style={animate} className={styles.right}>
                   <ul className={styles.list}>
                     <li className={styles.item}>
-                      <a href="#">
+                      <Link to="/kontakt">
                         <Icon symbol="file" />
-                        <h3>Documentation</h3>
-                        <p>Lorem ipsum dolor sit amet.</p>
-                      </a>
+                        <h3>Kontaktiere uns</h3>
+                        <p>info@proxation.de</p>
+                      </Link>
                     </li>
                     <li className={styles.item}>
-                      <a href="#">
+                      <a href="http://demoshop.c-923.maxcluster.net/">
                         <Icon symbol="view" />
                         <h3>Live Demo</h3>
-                        <p>Lorem ipsum dolor sit amet.</p>
+                        <p>Schauen Sie sich die Shopware-Demo genau an</p>
                       </a>
                     </li>
                     <li className={styles.item}>
-                      <a href="#">
+                      <a href="https://de.shopware.com/media/pdf/shopware_5_web-brochure_de.pdf">
                         <Icon symbol="download" />
-                        <h3>Download Broshure</h3>
-                        <p>Lorem ipsum dolor sit amet.</p>
+                        <h3>Download Broshüre</h3>
+                        <p>Laden Sie es herunter, um die Shopware-Broschüre zu lesen</p>
                       </a>
                     </li>
                   </ul>
