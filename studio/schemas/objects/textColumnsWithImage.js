@@ -1,7 +1,7 @@
 export default {
   name: "textColumnsWithImage",
   title: "Text columns with image",
-  type: "document",
+  type: "object",
   fields: [
     { title: "Heading", name: "heading", type: "heading" },
     {

@@ -1,7 +1,7 @@
 export default {
   name: "imageWithText",
   title: "Text with Image",
-  type: "document",
+  type: "object",
   fields: [
     { title: "Image", name: "image", type: "figure" },
     {
@@ -14,7 +14,10 @@ export default {
       type: "string",
       title: "Mobile image alignment",
       options: {
-        list: [{ title: "Above", value: "above" }, { title: "Below", value: "below" }]
+        list: [
+          { title: "Above", value: "above" },
+          { title: "Below", value: "below" }
+        ]
       },
       validation: Rule => Rule.required()
     },
