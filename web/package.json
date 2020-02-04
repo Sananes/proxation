@@ -18,9 +18,11 @@
   "dependencies": {
     "@sanity/block-content-to-react": "^2.0.6",
     "@sanity/image-url": "^0.140.12",
+    "browserslist": "^4.8.6",
+    "caniuse-lite": "^1.0.30001023",
     "date-fns": "^1.30.1",
     "dotenv": "^8.0.0",
-    "gatsby": "^2.8.2",
+    "gatsby": "^2.19.10",
     "gatsby-image": "^2.2.8",
     "gatsby-plugin-manifest": "^2.2.23",
     "gatsby-plugin-offline": "^2.2.9",
@@ -31,8 +33,9 @@
     "gatsby-source-filesystem": "^2.1.9",
     "gatsby-source-sanity": "^4.0.1",
     "gatsby-transformer-sharp": "^2.3.0",
+    "get-youtube-id": "^1.0.1",
     "lodash": "^4.17.15",
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.13.1",
     "normalize-scss": "^7.0.1",
     "postcss-import": "^12.0.1",
     "postcss-preset-env": "^6.6.0",
@@ -52,7 +55,8 @@
     "react-spring": "^8.0.27",
     "react-text-truncate": "^0.15.0",
     "react-transition-group": "^4.3.0",
-    "react-visibility-sensor": "^5.1.1"
+    "react-visibility-sensor": "^5.1.1",
+    "react-youtube": "^7.9.0"
   },
   "devDependencies": {
     "autoprefixer": "^9.6.1",
@@ -67,7 +71,7 @@
     "eslint-plugin-standard": "^4.0.0",
     "lost": "^8.3.1",
     "postcss-pxtorem": "^4.0.1",
-    "prettier-eslint-cli": "^4.7.1",
+    "prettier-eslint-cli": "^5.0.0",
     "prop-types": "^15.7.2"
   }
 }
