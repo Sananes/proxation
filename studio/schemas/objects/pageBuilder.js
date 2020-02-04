@@ -1,4 +1,5 @@
 import imageSection from "./imageSection";
+import youtube from "./youtube";
 import richText from "./richText";
 
 export default {
@@ -11,7 +12,7 @@ export default {
     { type: "imageWithText" },
     { ...richText },
     { ...imageSection },
-    { type: "youtube", name: "video", title: "YouTube" }
+    { ...youtube }
   ],
   options: {
     editModal: "dialog"

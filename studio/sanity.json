@@ -18,8 +18,7 @@
     "seo-tools",
     "@sanity/production-preview",
     "@sanity/dashboard",
-    "dashboard-widget-gatsby",
-    "@sanity/form-builder"
+    "dashboard-widget-gatsby"
   ],
   "parts": [
     {

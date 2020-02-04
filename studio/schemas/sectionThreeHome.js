@@ -1,7 +1,7 @@
 export default {
   name: "sectionThreeHome",
   title: "Items",
-  type: "document",
+  type: "object",
   fields: [
     { title: "Heading", name: "heading", type: "heading" },
     {
