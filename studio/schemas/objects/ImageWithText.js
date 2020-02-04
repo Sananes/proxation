@@ -1,7 +1,7 @@
 export default {
   name: "imageWithText",
   title: "Text with Image",
-  type: "object",
+  type: "document",
   fields: [
     { title: "Image", name: "image", type: "figure" },
     {
