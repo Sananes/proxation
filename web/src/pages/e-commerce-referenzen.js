@@ -27,14 +27,7 @@ export const query = graphql`
       edges {
         node {
           id
-          cardImage {
-            asset {
-              _id
-              fluid {
-                ...GatsbySanityImageFluid
-              }
-            }
-          }
+          _rawCardImage(resolveReferences: { maxDepth: 10 })
           title
           slug {
             current
