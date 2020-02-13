@@ -19,7 +19,7 @@ import FullHeight from 'react-div-100vh'
 
 export const query = graphql`
   query ShopwarePageQuery {
-    page: sanityPage(_id: { regex: "/(drafts.|)about/" }) {
+    page: sanityPage(_id: { regex: "/3ef4a72-5aa8-4d6f-bc76-93b14c17d22e/" }) {
       id
       title
       _rawBody
@@ -94,7 +94,7 @@ const ShopwarePage = props => {
 
   if (!page) {
     throw new Error(
-      'Missing "About" page data. Open the studio at http://localhost:3333 and add "About" page data and restart the development server.'
+      'Missing "Shopware Agency Data" page data. Open the studio at http://localhost:3333 and add "About" page data and restart the development server.'
     )
   }
 
