@@ -1,5 +1,3 @@
-const { format } = require('date-fns')
-
 /**
  * Implement Gatsby's Node APIs in this file.
  *
@@ -136,4 +134,20 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   await createBlogPostPages(graphql, actions, reporter)
   await createProjectPages(graphql, actions, reporter)
   await createLandingPages(graphql, actions, reporter)
+}
+
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions
+  const typeDefs = `
+    type sanitySectionContact implements Node {
+      id: String
+    },
+    type sanityTextColumnsWithImage implements Node {
+      id: String
+    },
+    type sanitySectionThreeHome implements Node {
+      id: String
+    }
+  `
+  createTypes(typeDefs)
 }

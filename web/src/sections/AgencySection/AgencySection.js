@@ -6,6 +6,7 @@ import styles from './AgencySection.module.scss'
 import BlockText from '../../components/block-text'
 import { Spring, Trail } from 'react-spring/renderprops'
 import VisibilitySensor from '../../components/VisibilitySensor'
+import { getSanityImageFluid } from '../../lib/helpers'
 
 const AgencySection = props => {
   const { data } = props
@@ -13,7 +14,7 @@ const AgencySection = props => {
     throw new Error('No slide items have been added in the studio')
   }
 
-  const { items, _rawHeading: heading } = data
+  const { items, heading } = data
   function fadeIn(isVisible) {
     return {
       transform: isVisible ? `translateY(0)` : `translateY(-24px)`,
@@ -37,7 +38,7 @@ const AgencySection = props => {
             <Spring to={fadeIn(isVisible)}>
               {props => (
                 <div className={styles.lead}>
-                  <BlockText style={props} blocks={heading.subHeading} />
+                  <BlockText style={props} blocks={heading && heading.subHeading} />
                 </div>
               )}
             </Spring>
@@ -52,7 +53,7 @@ const AgencySection = props => {
                     <div className={styles.item} style={props}>
                       <Image
                         style={props}
-                        fluid={item.image.asset.fluid}
+                        fluid={getSanityImageFluid(item.image)}
                         title={item.image.alt || item.title}
                         alt={item.image.alt || item.image.title}
                       />
@@ -62,7 +63,7 @@ const AgencySection = props => {
                       </h4>
 
                       <div style={props}>
-                        <BlockText blocks={item._rawContent} />
+                        <BlockText blocks={item.content} />
                       </div>
                     </div>
                   )}

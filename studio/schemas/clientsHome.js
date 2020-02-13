@@ -1,7 +1,7 @@
 export default {
   name: "clientsHome",
   title: "Clients",
-  type: "object",
+  type: "document",
   fields: [
     { title: "Title", name: "title", type: "string" },
     {

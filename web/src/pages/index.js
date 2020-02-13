@@ -34,24 +34,7 @@ export const query = graphql`
     }
 
     agency: sanityPageHome {
-      sectionThree {
-        _rawHeading
-        items {
-          _key
-          title
-          _rawContent
-          image {
-            alt
-            caption
-            asset {
-              url
-              fluid(maxWidth: 800) {
-                ...GatsbySanityImageFluid
-              }
-            }
-          }
-        }
-      }
+      _rawSectionThree(resolveReferences: { maxDepth: 10 })
     }
 
     clients: sanityPageHome {
@@ -72,85 +55,15 @@ export const query = graphql`
     }
 
     contact: sanityPageHome {
-      sectionContact {
-        sectionColor
-        _rawHeading
-        image {
-          asset {
-            fluid(maxWidth: 450) {
-              ...GatsbySanityImageFluid
-            }
-          }
-          alt
-          caption
-        }
-      }
+      _rawSectionContact(resolveReferences: { maxDepth: 10 })
     }
 
     home: allSanityPageHome {
       edges {
         node {
-          support {
-            sectionColor
-            _rawHeading
-            image {
-              asset {
-                _id
-                fluid(maxWidth: 800) {
-                  ...GatsbySanityImageFluid
-                }
-                url
-              }
-              alt
-              caption
-            }
-            button {
-              text
-              url
-            }
-          }
-          features {
-            sectionColumns
-            sectionColor
-            _rawHeading
-            items {
-              _key
-              title
-              _rawContent
-              image {
-                alt
-                caption
-                asset {
-                  _id
-                  _key
-                  url
-                  fluid(maxWidth: 800) {
-                    ...GatsbySanityImageFluid
-                  }
-                }
-              }
-              button {
-                text
-                url
-              }
-            }
-          }
-          projects {
-            _id
-            cardImage {
-              asset {
-                fluid(maxWidth: 700) {
-                  ...GatsbySanityImageFluid
-                }
-                _id
-              }
-            }
-            type
-            title
-            slug {
-              current
-            }
-          }
+          _rawSupport(resolveReferences: { maxDepth: 10 })
+          _rawFeatures(resolveReferences: { maxDepth: 10 })
+          _rawProjects(resolveReferences: { maxDepth: 10 })
         }
       }
     }
@@ -170,17 +83,18 @@ const IndexPage = props => {
   const site = (data || {}).site
   const seo = (data || {}).page.seo
 
-  const projectNodes = (data || {}).home && data.home.edges.map(edge => edge.node.projects)[0]
+  const projectNodes = (data || {}).home && data.home.edges.map(edge => edge.node._rawProjects)[0]
 
-  const supportSectionNode = (data || {}).home && data.home.edges.map(edge => edge.node.support)[0]
+  const supportSectionNode =
+    (data || {}).home && data.home.edges.map(edge => edge.node._rawSupport)[0]
 
   const clients = (data || {}).clients._rawClients
 
-  const featuresNodes = (data || {}).home && data.home.edges.map(edge => edge.node.features)[0]
+  const featuresNodes = (data || {}).home && data.home.edges.map(edge => edge.node._rawFeatures)[0]
 
   const hero = (data || {}).hero.heroHome
 
-  const agencySectionNodes = (data || {}).agency && data.agency.sectionThree
+  const agencySectionNodes = (data || {}).agency && data.agency._rawSectionThree
 
   const isVisible = true
   if (!site) {
@@ -191,12 +105,6 @@ const IndexPage = props => {
 
   return (
     <Layout>
-      <Seo
-        title={seo.title || site.title}
-        description={seo.description || site.description}
-        keywords={site.keywords}
-        image={seo.image && seo.image.asset && seo.image.asset.url}
-      />
       <Hero visible={isVisible} {...hero} location={location} />
       <CarouselSection
         className={styles.projects}
@@ -210,7 +118,7 @@ const IndexPage = props => {
       <Features {...featuresNodes} animate={true} />
       <SupportSection {...supportSectionNode} animate={true} />
       <AgencySection data={agencySectionNodes} animate={true} />
-      <ContactSection data={data.contact.sectionContact} animate={true} />
+      <ContactSection data={data.contact._rawSectionContact} animate={true} />
     </Layout>
   )
 }

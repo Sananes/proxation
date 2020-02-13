@@ -4,6 +4,7 @@ import Image from 'gatsby-image/withIEPolyfill'
 import cn from 'classnames'
 
 import styles from './ProjectPreview.module.scss'
+import { getSanityImageFluid } from '../../lib/helpers'
 
 function ProjectPreview(props) {
   return (
@@ -13,8 +14,12 @@ function ProjectPreview(props) {
       to={`/project/${props.slug.current}`}
     >
       <div className={styles.wrapper}>
-        {props.cardImage && props.cardImage.asset && (
-          <Image fluid={props.cardImage.asset.fluid} alt={props.title} styles={styles.image} />
+        {props._rawCardImage && props._rawCardImage.asset && (
+          <Image
+            fluid={getSanityImageFluid(props._rawCardImage)}
+            alt={props.title}
+            styles={styles.image}
+          />
         )}
       </div>
       <div className={styles.content}>

@@ -44,19 +44,7 @@ export const query = graphql`
     }
 
     contact: sanityPageHome {
-      sectionContact {
-        _rawHeading
-        image {
-          asset {
-            fluid(maxWidth: 450) {
-              ...GatsbySanityImageFluid
-            }
-            url
-          }
-          alt
-          caption
-        }
-      }
+      _rawSectionContact(resolveReferences: { maxDepth: 10 })
     }
   }
 `
@@ -73,7 +61,7 @@ const ContactPage = props => {
   }
 
   const page = data.page
-  const contact = data.contact.sectionContact
+  const contact = data.contact._rawSectionContact
 
   if (!page) {
     throw new Error(
@@ -83,7 +71,7 @@ const ContactPage = props => {
 
   return (
     <Layout>
-      <SEO title={page.seo.title} image={contact.image.asset.src} />
+      <SEO title={page.seo.title} />
       <div className={styles.wrapper}>
         <div className={styles.left}>
           <VisibilitySensor once>

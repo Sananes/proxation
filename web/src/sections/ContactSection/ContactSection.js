@@ -9,6 +9,7 @@ import VisibilitySensor from '../../components/VisibilitySensor'
 import { fadeOnVisible } from '../../lib/helpers'
 import ShopwarePartners from '../../components/ShopwarePartner/ShopwarePartners'
 import ContactForm from '../../components/ContactForm/ContactForm'
+import { getSanityImageFluid } from '../../lib/helpers'
 
 const ContactSection = props => {
   const { data } = props
@@ -46,7 +47,7 @@ const ContactSection = props => {
                   <Image
                     className={styles.image}
                     alt={data.image.alt || heading.title}
-                    fluid={data.image.asset.fluid}
+                    fluid={getSanityImageFluid(data.image)}
                     style={props}
                   />
                 )}
