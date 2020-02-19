@@ -1,5 +1,22 @@
 @import '../../assets/scss/helpers';
 
+.pageTitle {
+  text-align: center;
+
+  h1 {
+    @include h1;
+
+    @include breakpoint-md {
+      max-width: 60%;
+      margin: 0 auto;
+    }
+  }
+
+  p {
+    @include body-l;
+  }
+}
+
 .title {
   padding: 24px 0;
 

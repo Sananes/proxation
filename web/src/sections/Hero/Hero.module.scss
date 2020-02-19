@@ -35,11 +35,20 @@
 
 // Homepage specific
 .homepage {
+
   &.hero {
+    text-align: left;
+
     @include breakpoint-md {
       height: calc(85vh - #{$header-height});
       margin-top: -#{$header-height / 1.5};
       padding: 0;
+    }
+
+    .content {
+      margin-left: 0;
+      padding-left: 0;
+      max-width: 80%;
     }
   }
 

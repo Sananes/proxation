@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Button from '../../components/Button'
 import { navigate } from 'gatsby-link'
 import styles from './ContactForm.module.scss'
@@ -15,10 +15,22 @@ function encode(data) {
 }
 
 const ContactForm = props => {
+  const [values, setValues] = useState({
+    fullName: '',
+    email: '',
+    company: '',
+    message: ''
+  })
   const { isDark } = props
   const { register, handleSubmit, errors } = useForm()
 
+  // const handleChange = e => {
+  //   console.log(values)
+  //   setValues({ [e.target.name]: e.target.value })
+  // }
+
   const onSubmit = values => {
+    console.log(values)
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -43,7 +55,6 @@ const ContactForm = props => {
               data-netlify-honeypot="bot-field"
               data-netlify="true"
               method="post"
-              action="/thanks/"
               style={props}
             >
               <input type="hidden" name="bot-field" />

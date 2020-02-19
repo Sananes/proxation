@@ -6,10 +6,11 @@ const Input = props => {
   return (
     <input
       id={props.name}
-      ref={props.reference}
+      ref={props.ref}
       name={props.name}
       className={cn(styles.root, props.dark && styles.dark)}
       placeholder={props.placeholder}
+      onChange={props.onChange}
       value={props.value}
     />
   )

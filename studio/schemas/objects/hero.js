@@ -24,7 +24,10 @@ export default {
       name: "textColor",
       validation: Rule => Rule.required(),
       options: {
-        list: [{ title: "Dark", value: "dark" }, { title: "Light", value: "light", default: true }]
+        list: [
+          { title: "Dark", value: "dark" },
+          { title: "Light", value: "light", default: true }
+        ]
       }
     },
     {
