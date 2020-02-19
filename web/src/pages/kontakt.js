@@ -8,7 +8,7 @@ import styles from './scss/Contact.module.scss'
 import ContactForm from '../components/ContactForm/ContactForm'
 import Image from 'gatsby-image/withIEPolyfill'
 import VisibilitySensor from '../components/VisibilitySensor'
-import { fadeOnVisible } from '../lib/helpers'
+import { fadeOnVisible, getSanityImageFluid } from '../lib/helpers'
 import { Spring } from 'react-spring/renderprops'
 import ShopwarePartners from '../components/ShopwarePartner/ShopwarePartners'
 
@@ -62,6 +62,7 @@ const ContactPage = props => {
 
   const page = data.page
   const contact = data.contact._rawSectionContact
+  console.log(contact)
 
   if (!page) {
     throw new Error(
@@ -187,6 +188,24 @@ const ContactPage = props => {
           </VisibilitySensor>
           <ContactForm isDark={false} />
           <ShopwarePartners className={styles.badges} />
+        </div>
+      </div>
+      <div>
+        <Image fluid={getSanityImageFluid(contact.image)} />
+        <div className="content">
+          <h2>Harte Arbeit & Ideenreich-tum zahlen sich aus.</h2>
+          <p>
+            In 2013 habe ich Proxation mit Fokus auf Digitalisierung von Vertriebsprozessen
+            gegründet. Nach einem Zugewinn von Kunden wie die Knauf Insulation GmbH und
+            versicherungsnahe Vertriebsunternehmen konnte die Gesellschaft bereits 2014 in eine GmbH
+            umgewandelt werden. Mit stetigem Wachstum haben wir uns anschließend auf E-Commerce
+            spezialisiert. Mit shopware Plugins wie unserem Bestseller 'Auto-Complete' konnten wir
+            uns schnell einen Namen als fähiger Shopware Entwickler machen und zählen mittlerweile
+            zu den 15 wichtigsten Plugin-Herstellern im Shopware-Ökosystem. Mehr als 1000
+            Online-Shops vertrauen auf unsere Lösungen. Heute, fast 6 Jahre nach Gründung, sind wir
+            stolzer Technologie-, Solution- & Business Partner der Shopware AG mit Fokus auf mobile
+            Commerce - Lösungen und E-Commerce Beratung.
+          </p>
         </div>
       </div>
     </Layout>
