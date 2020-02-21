@@ -15,12 +15,6 @@ function encode(data) {
 }
 
 const ContactForm = props => {
-  const [values, setValues] = useState({
-    fullName: '',
-    email: '',
-    company: '',
-    message: ''
-  })
   const { isDark } = props
   const { register, handleSubmit, errors } = useForm()
 
@@ -87,7 +81,13 @@ const ContactForm = props => {
                 dark={isDark}
                 errors={errors.company}
               />
-              <FormGroup label="Budget" type="select" name="budget[]" dark={isDark} />
+              <FormGroup
+                label="Budget"
+                type="select"
+                name="budget[]"
+                reference={register}
+                dark={isDark}
+              />
               <FormGroup
                 className={styles.message}
                 label="Erzählen Sie uns kurz von Ihrem Projekt"

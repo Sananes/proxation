@@ -10,9 +10,9 @@ const options = [
   { value: 'other', label: 'Kontinuierliche Betreuung' }
 ]
 
-const Select = React.forwardRef(({ register, ...props }, ref) => (
+const Select = props => (
   <div className={cn(styles.root, props.dark && styles.dark)}>
-    <select {...props} className={styles.select} ref={register}>
+    <select {...props} className={styles.select} ref={props.reference}>
       {options &&
         options.map(option => (
           <option key={option.value} value={option.value} disabled={option.options}>
@@ -22,6 +22,6 @@ const Select = React.forwardRef(({ register, ...props }, ref) => (
     </select>
     <Icon symbol="chevron-down" />
   </div>
-))
+)
 
 export default Select

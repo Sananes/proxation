@@ -6,7 +6,7 @@ const Input = props => {
   return (
     <input
       id={props.name}
-      ref={props.ref}
+      ref={props.reference}
       name={props.name}
       className={cn(styles.root, props.dark && styles.dark)}
       placeholder={props.placeholder}
