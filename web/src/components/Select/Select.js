@@ -12,7 +12,7 @@ const options = [
 
 const Select = props => (
   <div className={cn(styles.root, props.dark && styles.dark)}>
-    <select {...props} className={styles.select} ref={props.reference}>
+    <select {...props} className={styles.select} name={props.name} ref={props.reference}>
       {options &&
         options.map(option => (
           <option key={option.value} value={option.value} disabled={option.options}>
