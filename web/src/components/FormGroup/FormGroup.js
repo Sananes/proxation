@@ -10,7 +10,7 @@ const FormGroup = props => {
   const { errors } = props
   const RenderInputType = ({ type }) => {
     if (type === 'textarea') {
-      return <Textarea {...props} className={className} />
+      return <Textarea {...props} className={className} ref={props.reference} />
     } else if (type === 'select') {
       return <Select {...props} className={className} />
     } else {
@@ -21,7 +21,7 @@ const FormGroup = props => {
     <div className={cn(styles.root, props.dark && styles.dark, className)}>
       <label htmlFor={props.name} className={styles.label}>
         <h3 className={styles.labelTitle}>{props.label}</h3>
-        <RenderInputType type={props.type && props.type} {...props} />
+        <RenderInputType {...props} />
       </label>
       <div className={styles.info}>
         <p>{errors && errors.message}</p>

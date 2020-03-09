@@ -1,3 +1,5 @@
+@import '../../assets/scss/helpers';
+
 .form {
   display: grid;
   align-self: start;
@@ -11,10 +13,31 @@
     place-self: stretch;
   }
 
+
+  .button {
+    grid-column: 2;
+    align-self: start;
+    justify-self: flex-end;
+  }
 }
 
-.button {
-  grid-column: 2;
-  align-self: start;
-  justify-self: flex-end;
+.label h3 {
+  @include overline;
+  margin-bottom: 1rem;
+}
+
+.input {
+  composes: root from '../Input/Input.module.scss';
+}
+
+.selectWrapper {
+  composes: root from '../Select/Select.module.scss'
+}
+
+.select {
+  composes: select from '../Select/Select.module.scss'
+}
+
+.textarea {
+  composes: root from '../Textarea/Textarea.module.scss';
 }
