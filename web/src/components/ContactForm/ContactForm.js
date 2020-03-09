@@ -38,7 +38,7 @@ const ContactForm = ({ isDark } = props) => {
         }),
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
       }).then(() => {
-        // navigate('/thankyou')
+        navigate('/thankyou')
       })
     } catch (error) {
       console.log(error)
