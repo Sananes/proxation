@@ -113,12 +113,7 @@ const ContactForm = ({ isDark } = props) => {
               <label className={cn(styles.label)} htmlFor="budget">
                 <h3>Budget</h3>
                 <div className={styles.selectWrapper}>
-                  <select
-                    name="budget[]"
-                    className={styles.select}
-                    id="budget"
-                    ref={props.reference}
-                  >
+                  <select name="budget[]" className={styles.select} id="budget" ref={register}>
                     {options &&
                       options.map(option => (
                         <option key={option.value} value={option.value} disabled={option.options}>
