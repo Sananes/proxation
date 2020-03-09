@@ -7,7 +7,7 @@ const Textarea = props => {
     <textarea
       id={props.name}
       name={props.name}
-      ref={props.register}
+      ref={props.reference}
       className={cn(styles.root, props.dark && styles.dark)}
       placeholder={props.placeholder}
       value={props.value}

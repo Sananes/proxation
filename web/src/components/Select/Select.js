@@ -10,18 +10,25 @@ const options = [
   { value: 'other', label: 'Kontinuierliche Betreuung' }
 ]
 
-const Select = props => (
-  <div className={cn(styles.root, props.dark && styles.dark)}>
-    <select {...props} className={styles.select} name={props.name} ref={props.reference}>
-      {options &&
-        options.map(option => (
-          <option key={option.value} value={option.value} disabled={option.options}>
-            {option.label}
-          </option>
-        ))}
-    </select>
-    <Icon symbol="chevron-down" />
-  </div>
-)
-
+const Select = props => {
+  return (
+    <div className={cn(styles.root, props.dark && styles.dark)}>
+      <select
+        {...props}
+        className={styles.select}
+        name={props.name}
+        id={props.name}
+        ref={props.reference}
+      >
+        {options &&
+          options.map(option => (
+            <option key={option.value} value={option.value} disabled={option.options}>
+              {option.label}
+            </option>
+          ))}
+      </select>
+      <Icon symbol="chevron-down" />
+    </div>
+  )
+}
 export default Select
