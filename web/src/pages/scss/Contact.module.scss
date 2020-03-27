@@ -176,3 +176,27 @@ h2 {
   // @include interpolate(margin-top, 24px, 64px);
   &>div {}
 }
+
+.michaelSection {
+  @extend %section;
+
+  background: $color-background;
+
+  @include breakpoint-md {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .content {
+    padding: 2rem 1rem;
+
+    h2 {
+      @include h2;
+    }
+
+    @include breakpoint-md {
+      align-self: center;
+      padding: 0 4rem;
+    }
+  }
+}

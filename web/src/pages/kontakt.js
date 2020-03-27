@@ -190,21 +190,27 @@ const ContactPage = props => {
           <ShopwarePartners className={styles.badges} />
         </div>
       </div>
-      <div>
+      <div className={styles.michaelSection}>
         <Image fluid={getSanityImageFluid(contact.image)} />
-        <div className="content">
+        <div className={styles.content}>
           <h2>Harte Arbeit & Ideenreich-tum zahlen sich aus.</h2>
           <p>
-            In 2013 habe ich Proxation mit Fokus auf Digitalisierung von Vertriebsprozessen
-            gegründet. Nach einem Zugewinn von Kunden wie die Knauf Insulation GmbH und
-            versicherungsnahe Vertriebsunternehmen konnte die Gesellschaft bereits 2014 in eine GmbH
-            umgewandelt werden. Mit stetigem Wachstum haben wir uns anschließend auf E-Commerce
-            spezialisiert. Mit shopware Plugins wie unserem Bestseller 'Auto-Complete' konnten wir
-            uns schnell einen Namen als fähiger Shopware Entwickler machen und zählen mittlerweile
-            zu den 15 wichtigsten Plugin-Herstellern im Shopware-Ökosystem. Mehr als 1000
-            Online-Shops vertrauen auf unsere Lösungen. Heute, fast 6 Jahre nach Gründung, sind wir
-            stolzer Technologie-, Solution- & Business Partner der Shopware AG mit Fokus auf mobile
-            Commerce - Lösungen und E-Commerce Beratung.
+            In <strong>2013</strong> habe ich Proxation mit Fokus auf Digitalisierung von
+            Vertriebsprozessen gegründet. Nach einem Zugewinn von Kunden wie die Knauf Insulation
+            GmbH und versicherungsnahe Vertriebsunternehmen konnte die Gesellschaft bereits{' '}
+            <strong>2014</strong> in eine GmbH umgewandelt werden.
+          </p>
+          <p>
+            Mit stetigem Wachstum haben wir uns anschließend auf E-Commerce spezialisiert. Mit
+            shopware Plugins wie unserem Bestseller 'Auto-Complete' konnten wir uns schnell einen
+            Namen als fähiger Shopware Entwickler machen und zählen mittlerweile zu den 15
+            wichtigsten Plugin-Herstellern im Shopware-Ökosystem. Mehr als 1000 Online-Shops
+            vertrauen auf unsere Lösungen.
+          </p>{' '}
+          <p>
+            <strong>Heute</strong>, fast 6 Jahre nach Gründung, sind wir stolzer Technologie-,
+            Solution- & Business Partner der Shopware AG mit Fokus auf mobile Commerce - Lösungen
+            und E-Commerce Beratung.
           </p>
         </div>
       </div>
