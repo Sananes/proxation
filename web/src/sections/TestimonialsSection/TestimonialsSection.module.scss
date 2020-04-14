@@ -21,7 +21,6 @@
 .testimonial {
   line-height: 1.5;
   display: block;
-  max-width: 800px;
   margin: 0 auto;
   border-radius: 3px;
   text-align: center;
@@ -46,12 +45,30 @@
   margin-bottom: -2rem;
 }
 
+.sliderContainer {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
 .buttonBack,
 .buttonNext {
+  @include buttonReset;
   position: absolute;
+  margin: 0 auto;
+  top: 50%;
+  transform: translateY(-50%);
+
+  @include breakpoint-md {
+    margin: 0 -8rem;
+
+  }
+
+  &:disabled {
+    opacity: 0.5;
+  }
 }
 
 .buttonNext {
   right: 0;
-  transform: translateY(50%);
 }

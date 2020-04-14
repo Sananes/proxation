@@ -23,23 +23,22 @@ const TestimonialsSection = props => {
   //   }
   // })
 
-  const dataLength = 1
+  const dataLength = 2
   return (
     <CarouselProvider
-      naturalSlideHeight={120}
+      naturalSlideHeight={300}
       naturalSlideWidth={800}
+      isIntrinsicHeight={true}
       lockOnWindowScroll={false}
       interval={200}
       totalSlides={dataLength}
       className={cn(styles.sliderCarousel, className)}
     >
-    <div className={styles.heading}>
+    {/*<div className={styles.heading}>
 
     <h2 className={styles.title}>Testimonials</h2>
 
-
-
-  </div>
+  </div> */}
 
   <div className={styles.testimonialSVG}>
   <svg width="53" height="40" viewBox="0 0 53 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -56,6 +55,9 @@ const TestimonialsSection = props => {
 <Slider className={cn(styles.slider, styles.sliderContained)}>
 
 <Slide><div className={styles.testimonial}><p>“Wenn Sie nach einer maßgeschneiderten Lösung suchen, erstellt das Proxation-Expertenteam ein Online-Erlebnis, das Ihre Kunden lieben werden.”</p><div className={styles.author}><h4 className={styles.authorTitle}>Harley Finkelstein</h4><span className={styles.authorRole}>
+CEO, Plazotta</span></div></div></Slide>
+
+<Slide><div className={styles.testimonial}><p>“Wenn Sie nach einer maßgeschneiderten Lösung suchen, erstellt das Proxation-Expertenteam ein Online-Erlebnis, das Ihre Kunden lieben werden.  Proxation-Expertenteam ein Online-Erlebnis, das Ihre Kunden lieben werden”</p><div className={styles.author}><h4 className={styles.authorTitle}>Harley Finkelstein</h4><span className={styles.authorRole}>
 CEO, Plazotta</span></div></div></Slide>
 
 </Slider>
