@@ -9,6 +9,7 @@ import ContactSection from '../sections/ContactSection'
 import Clients from '../sections/ClientsSection'
 import SupportSection from '../sections/SupportSection'
 import AgencySection from '../sections/AgencySection'
+import TestimonialsSection from '../sections/TestimonialsSection'
 import Hero from '../sections/Hero'
 import styles from './scss/Index.module.scss'
 import 'pure-react-carousel/dist/react-carousel.es.css'
@@ -115,6 +116,7 @@ const IndexPage = props => {
         isVisible={isVisible}
       />
       <Clients {...clients} animate={true} />
+      <TestimonialsSection animate={true} />
       <Features {...featuresNodes} animate={true} />
       <SupportSection {...supportSectionNode} animate={true} />
       <AgencySection data={agencySectionNodes} animate={true} />

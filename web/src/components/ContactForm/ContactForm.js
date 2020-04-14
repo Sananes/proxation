@@ -81,13 +81,19 @@ const ContactForm = ({ isDark } = props) => {
 
               <label className={styles.label} htmlFor="name">
                 <h3>Vollständiger Name</h3>
-                <input className={styles.input} type="text" name="name" id="name" ref={register} />
+                <input
+                  className={cn(styles.input, dark)}
+                  type="text"
+                  name="name"
+                  id="name"
+                  ref={register}
+                />
               </label>
 
               <label className={styles.label} htmlFor="email">
                 <h3>E-Mail Adresse</h3>
                 <input
-                  className={styles.input}
+                  className={cn(styles.input, dark)}
                   type="email"
                   name="email"
                   id="email"
@@ -103,7 +109,7 @@ const ContactForm = ({ isDark } = props) => {
               <label className={styles.label} htmlFor="company">
                 <h3>Firma</h3>
                 <input
-                  className={styles.input}
+                  className={cn(styles.input, dark)}
                   type="text"
                   name="company"
                   id="company"
@@ -113,8 +119,13 @@ const ContactForm = ({ isDark } = props) => {
 
               <label className={cn(styles.label)} htmlFor="budget">
                 <h3>Budget</h3>
-                <div className={styles.selectWrapper}>
-                  <select name="budget[]" className={styles.select} id="budget[]" ref={register}>
+                <div className={cn(styles.selectWrapper, dark)}>
+                  <select
+                    name="budget[]"
+                    className={cn(styles.select, dark)}
+                    id="budget[]"
+                    ref={register}
+                  >
                     {options &&
                       options.map(option => (
                         <option key={option.value} value={option.value} disabled={option.options}>
@@ -129,7 +140,7 @@ const ContactForm = ({ isDark } = props) => {
                 <h3>Erzählen Sie uns kurz von Ihrem Projekt</h3>
                 <textarea
                   type="text"
-                  className={styles.textarea}
+                  className={cn(styles.textarea, dark)}
                   name="message"
                   id="message"
                   ref={register}

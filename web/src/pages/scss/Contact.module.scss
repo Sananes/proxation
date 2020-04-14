@@ -179,7 +179,6 @@ h2 {
 
 .michaelSection {
   @extend %section;
-
   background: $color-background;
 
   @include breakpoint-md {

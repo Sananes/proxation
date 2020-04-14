@@ -26,12 +26,42 @@
   margin-bottom: 1rem;
 }
 
+.input,
+.select,
+.textarea,
+.selectWrapper {
+  &.dark {
+    background: rgba(255, 255, 255, 0.1);
+    color: $text-light;
+    border: none;
+  }
+}
+
 .input {
   composes: root from '../Input/Input.module.scss';
 }
 
 .selectWrapper {
-  composes: root from '../Select/Select.module.scss'
+  composes: root from '../Select/Select.module.scss';
+
+  &.dark {
+    background: lighten($color-primary, 10%);
+    border: 0px;
+
+    @include placeholder {
+      color: $text-light-dimmed;
+    }
+  }
+
+  svg {
+    margin-right: 5px;
+    z-index: 50;
+  }
+
+  &.dark {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
 }
 
 .select {

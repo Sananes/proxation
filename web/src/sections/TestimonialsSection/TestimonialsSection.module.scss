@@ -1,0 +1,57 @@
+@import '../../assets/scss/helpers';
+
+
+.sliderContained {
+  margin: 4rem 0;
+}
+
+.sliderCarousel {
+  background: $color-hightlight-background;
+  padding: 6rem 0;
+}
+
+.heading {
+  text-align: center;
+
+  .title {
+    @include h3;
+  }
+}
+
+.testimonial {
+  line-height: 1.5;
+  display: block;
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 3px;
+  text-align: center;
+
+  p {
+    font-size: 26px;
+  }
+}
+
+.authorTitle {
+  @include h6;
+}
+
+.authorRole {
+  @include body-s;
+}
+
+.testimonialSVG {
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 3rem;
+  margin-bottom: -2rem;
+}
+
+.buttonBack,
+.buttonNext {
+  position: absolute;
+}
+
+.buttonNext {
+  right: 0;
+  transform: translateY(50%);
+}
