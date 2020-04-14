@@ -29,7 +29,7 @@ const TestimonialsSection = props => {
       naturalSlideHeight={300}
       naturalSlideWidth={800}
       isIntrinsicHeight={true}
-      lockOnWindowScroll={false}
+      lockOnWindowScroll={true}
       interval={200}
       totalSlides={dataLength}
       className={cn(styles.sliderCarousel, className)}
