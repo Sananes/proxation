@@ -46,22 +46,6 @@ const ContactForm = ({ isDark } = props) => {
     console.log(data)
   }
 
-  //   const onSubmit = data => {
-  //     try {
-  //       await fetch('/', {
-  //       method: 'POST',
-  //       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-  //       body: encode({
-  //         'form-name': 'contact-form',
-  //         ...data
-  //       })
-  //       reset();
-  //     })
-  //       .then(() => navigate('/thankyou'))
-  //       .catch(error => alert(error))
-  //   }
-  // }
-
   return (
     <VisibilitySensor once partialVisibility>
       {({ isVisible }) => (
@@ -154,59 +138,6 @@ const ContactForm = ({ isDark } = props) => {
                 color="primary"
                 type="submit"
               />
-
-              {/*  <FormGroup
-                label="Vollständiger Name"
-                name="fullName"
-                dark={isDark}
-                reference={register({ required: 'Required' })}
-                errors={errors.name}
-                // disabled={isSubmitting}
-              />
-              <FormGroup
-                label="E-Mail Adresse"
-                name="email"
-                reference={register({
-                  required: 'Required',
-                  pattern: {
-                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                    message: 'invalid email address'
-                  }
-                })}
-                dark={isDark}
-                errors={errors.email}
-              />
-
-              <FormGroup
-                label="Firma"
-                name="company"
-                reference={register}
-                dark={isDark}
-                errors={errors.company}
-              />
-              <FormGroup
-                label="Budget"
-                type="select"
-                name="budget[]"
-                reference={register}
-                dark={isDark}
-              />
-              <FormGroup
-                className={styles.message}
-                label="Erzählen Sie uns kurz von Ihrem Projekt"
-                name="message"
-                type="textarea"
-                reference={register}
-                errors={errors.message}
-                dark={isDark}
-              />
-              <Button
-                className={styles.button}
-                text="Kontakt Aufnehmen"
-                size="large"
-                color="primary"
-                type="submit"
-              /> */}
             </form>
           )}
         </Spring>
