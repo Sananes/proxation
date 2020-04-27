@@ -23,7 +23,9 @@
     "rimraf": "^2.7.1"
   },
   "dependencies": {
+    "gatsby": "^2.21.0",
     "gatsby-cli": "^2.8.26",
+    "gatsby-plugin-sharp": "^2.6.0",
     "get-youtube-id": "^1.0.1",
     "react-youtube": "^7.9.0",
     "sharp": "^0.24.0"
