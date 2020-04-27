@@ -148,7 +148,7 @@ function Hero({
             >
               {animation => (
                 <div style={animation} className={styles.getInTouch}>
-                  Wir sind super freundlich.
+                  Wir sind super freundlich.{' '}
                   <Link to="/kontakt">
                     In Kontakt kommen <Icon symbol="chevron-right" />
                   </Link>
