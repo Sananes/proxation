@@ -43,10 +43,10 @@ const AgencySection = props => {
               {props => (
                 <div className={styles.lead}>
                   <BlockText style={props} blocks={heading && heading.subHeading} />
-                  <img src={Developer} height="56" />
-                  <img src={DeveloperAdv} height="56" />
-                  <img src={Partner} height="56" />
-                  <img src={TemplateDeveloper} height="56" />
+                  <img src={Developer} height="56" alt="Developer" />
+                  <img src={DeveloperAdv} height="56" alt="Developer Advanced" />
+                  <img src={Partner} height="56" alt="Partner" />
+                  <img src={TemplateDeveloper} alt="Template Developer" height="56" />
                 </div>
               )}
             </Spring>
