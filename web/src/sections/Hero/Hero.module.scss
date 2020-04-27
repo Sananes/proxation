@@ -98,6 +98,36 @@
   }
 }
 
+.getInTouch {
+  @include body-l;
+
+  a {
+    position: relative;
+    font-weight: $font-weight-medium;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    border-bottom: 1px solid $color-gold;
+
+    &:hover svg {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  svg {
+    transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
+    position: absolute;
+    right: -1.5rem;
+    opacity: 0;
+    height: 16px;
+    width: 16px;
+    display: block;
+    margin-left: 0.5rem;
+    transform: translateX(-100%);
+  }
+}
+
 .container {
   position: relative;
   padding-top: 48px;

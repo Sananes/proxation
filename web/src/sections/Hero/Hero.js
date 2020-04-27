@@ -7,6 +7,8 @@ import { getSanityImageFluid, useWindowDimensions } from '../../lib/helpers'
 import Image from 'gatsby-image/withIEPolyfill'
 
 import styles from './Hero.module.scss'
+import Icon from '../../components/icons'
+import { Link } from 'gatsby'
 
 function Hero({
   title,
@@ -104,7 +106,7 @@ function Hero({
             <Spring
               from={{ opacity: 0, transform: 'translateY(-24px)' }}
               to={{ opacity: 1, transform: 'translateY(0)' }}
-            >
+            >#
               {animation => (
                 <small style={animation} className={styles.caption}>
                   {caption}
@@ -138,6 +140,20 @@ function Hero({
               )}
             </Spring>
           )}
+
+          <Spring
+            from={{ opacity: 0, transform: 'translateY(-24px)' }}
+            to={{ opacity: 1, transform: 'translateY(0)' }}
+          >
+            {animation => (
+              <div style={animation} className={styles.getInTouch}>
+                Wir sind super freundlich.{' '}
+                <Link to="/kontakt">
+                  In Kontakt kommen <Icon symbol="chevron-right" />
+                </Link>
+              </div>
+            )}
+          </Spring>
 
           {button && button.text && (
             <Spring

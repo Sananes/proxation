@@ -91,6 +91,11 @@
     }
   }
 
+  ul,
+  li {
+    @include body;
+  }
+
   &>div {
     @include body-l;
     color: $text-subdued;
