@@ -179,7 +179,9 @@ h2 {
 
 .michaelSection {
   @extend %section;
-  background: $color-background;
+  background: $color-hightlight-background;
+  padding-top: 0;
+  padding-bottom: 0;
 
   @include breakpoint-md {
     display: grid;
@@ -187,7 +189,7 @@ h2 {
   }
 
   .content {
-    padding: 2rem 1rem;
+    padding: 4rem 1rem;
 
     h2 {
       @include h2;
@@ -195,7 +197,7 @@ h2 {
 
     @include breakpoint-md {
       align-self: center;
-      padding: 0 4rem;
+      padding: 4rem 4rem;
     }
   }
 }
