@@ -5,7 +5,7 @@
   padding-left: 0;
   padding-right: 0;
 
-  & > section {
+  &>section {
     padding-top: 32px;
 
     .container {
@@ -22,6 +22,14 @@ h2 {
   display: grid;
   grid-gap: 24px;
 }
+
+.badges {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 1rem;
+}
+
+.badges img {}
 
 .badges svg {
   width: 32px;
@@ -155,24 +163,18 @@ h2 {
 
 .title {
   @include h2;
-}
 
-.content {
-}
+  .form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 24px;
 
-.form {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 24px;
-
-  .message {
-    grid-column: span 2;
-  }
-
-  // @include interpolate(margin-top, 24px, 64px);
-  & > div {
+    .message {
+      grid-column: span 2;
+    }
   }
 }
+
 
 .michaelSection {
   @extend %section;
@@ -202,3 +204,5 @@ h2 {
     }
   }
 }
+
+// @include interpolate(margin-top, 24px, 64px);

@@ -8,10 +8,9 @@ import styles from './scss/Contact.module.scss'
 import ContactForm from '../components/ContactForm/ContactForm'
 import Image from 'gatsby-image/withIEPolyfill'
 import VisibilitySensor from '../components/VisibilitySensor'
+import ShopwareBadges from '../components/ShopwareBadges'
 import { fadeOnVisible, getSanityImageFluid } from '../lib/helpers'
 import { Spring } from 'react-spring/renderprops'
-import ShopwarePartners from '../components/ShopwarePartner/ShopwarePartners'
-import Container from '../components/Container'
 
 export const query = graphql`
   query ContactPageQuery {
@@ -188,7 +187,7 @@ const ContactPage = props => {
             )}
           </VisibilitySensor>
           <ContactForm isDark={false} />
-          <ShopwarePartners className={styles.badges} />
+          <ShopwareBadges className={styles.badges} />
         </div>
       </div>
       <div className={styles.michaelSection}>
