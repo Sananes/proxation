@@ -7,10 +7,7 @@ import BlockText from '../../components/block-text'
 import { Spring, Trail } from 'react-spring/renderprops'
 import VisibilitySensor from '../../components/VisibilitySensor'
 import { getSanityImageFluid } from '../../lib/helpers'
-import DeveloperAdv from '../../assets/images/shopware/shopware-certified-developer-adv.png'
-import Developer from '../../assets/images/shopware/shopware-certified-developer.png'
-import Partner from '../../assets/images/shopware/shopware-certified-partner.png'
-import TemplateDeveloper from '../../assets/images/shopware/shopware-certified-template-developer.png'
+import ShopwareBadges from '../../components/ShopwareBadges/ShopwareBadges'
 
 const AgencySection = props => {
   const { data } = props
@@ -43,10 +40,7 @@ const AgencySection = props => {
               {props => (
                 <div className={styles.lead}>
                   <BlockText style={props} blocks={heading && heading.subHeading} />
-                  <img src={Developer} height="56" alt="Developer" />
-                  <img src={DeveloperAdv} height="56" alt="Developer Advanced" />
-                  <img src={Partner} height="56" alt="Partner" />
-                  <img src={TemplateDeveloper} alt="Template Developer" height="56" />
+                 <ShopwareBadges />
                 </div>
               )}
             </Spring>
