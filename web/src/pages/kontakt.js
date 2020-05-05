@@ -11,6 +11,7 @@ import VisibilitySensor from '../components/VisibilitySensor'
 import { fadeOnVisible, getSanityImageFluid } from '../lib/helpers'
 import { Spring } from 'react-spring/renderprops'
 import ShopwarePartners from '../components/ShopwarePartner/ShopwarePartners'
+import Container from '../components/Container'
 
 export const query = graphql`
   query ContactPageQuery {
@@ -191,6 +192,7 @@ const ContactPage = props => {
         </div>
       </div>
       <div className={styles.michaelSection}>
+      <div className={styles.container}>
         <Image fluid={getSanityImageFluid(contact.image)} />
         <div className={styles.content}>
           <h2>Harte Arbeit & Ideenreich-tum zahlen sich aus.</h2>
@@ -212,6 +214,7 @@ const ContactPage = props => {
             Solution- & Business Partner der Shopware AG mit Fokus auf mobile Commerce - Lösungen
             und E-Commerce Beratung.
           </p>
+        </div>
         </div>
       </div>
     </Layout>

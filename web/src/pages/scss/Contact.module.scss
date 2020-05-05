@@ -5,7 +5,7 @@
   padding-left: 0;
   padding-right: 0;
 
-  &>section {
+  & > section {
     padding-top: 32px;
 
     .container {
@@ -53,21 +53,20 @@ h2 {
   }
 
   &.available {
-    background-color: #EDF5ED;
-    color: #467A5C;
+    background-color: #edf5ed;
+    color: #467a5c;
 
     span {
       background-color: #219653;
     }
   }
 
-
   &.unavailable {
-    background-color: #F2E1E1;
-    color: #7C3939;
+    background-color: #f2e1e1;
+    color: #7c3939;
 
     span {
-      background-color: #A62E2E;
+      background-color: #a62e2e;
     }
   }
 }
@@ -115,7 +114,6 @@ h2 {
     background: $color-hightlight-background;
   }
 
-
   h3 {
     @include h6;
   }
@@ -140,7 +138,6 @@ h2 {
   }
 }
 
-
 .wrapper {
   @extend %section;
   max-width: $layout-breakpoint-lg;
@@ -149,12 +146,10 @@ h2 {
   display: grid;
   grid-gap: 32px;
 
-
   @include breakpoint-md {
     grid-template-columns: 1fr 1fr;
     display: grid;
     grid-gap: 64px;
-
   }
 }
 
@@ -162,7 +157,8 @@ h2 {
   @include h2;
 }
 
-.content {}
+.content {
+}
 
 .form {
   display: grid;
@@ -174,18 +170,23 @@ h2 {
   }
 
   // @include interpolate(margin-top, 24px, 64px);
-  &>div {}
+  & > div {
+  }
 }
 
 .michaelSection {
   @extend %section;
   background: $color-hightlight-background;
-  padding-top: 0;
-  padding-bottom: 0;
 
-  @include breakpoint-md {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+  .container {
+    @include breakpoint-md {
+      display: grid;
+      max-width: $layout-width;
+      margin: 0 auto;
+      padding-left: 0;
+      padding-right: 0;
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   .content {
