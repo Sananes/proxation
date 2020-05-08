@@ -1,14 +1,13 @@
 @import '../../assets/scss/helpers';
 
 .root {
-  background: $color-hightlight-background;
   color: $color-white;
-  margin: 2rem -1.5rem;
+  margin: 2rem 0;
   overflow: hidden;
   padding: 1rem;
 
   @include breakpoint-md {
-    margin: 2rem 0;
+    margin: 1rem 0;
   }
 
   ul {
@@ -64,16 +63,18 @@
   @include buttonReset;
   position: absolute;
   margin: 0 auto;
-  top: -30px;
+  top: -40px;
   color: $color-primary;
 
   &:disabled {
     opacity: 0.5;
   }
+
 }
 
 .buttonNext {
   right: 0;
+
 }
 
 .slide {

@@ -11,8 +11,19 @@ import styles from './slideshow.module.scss'
 
 const Slideshow = props => {
   const { className} = props
+  const { width } = useWindowDimensions()
+  const [isDevice, setIsDevice] = useState(false)
+
+  useEffect(() => {
+    if (width <= 700) {
+      setIsDevice(true)
+    } else {
+      setIsDevice(false)
+    }
+  })
   if (!props.slides) return null
   const len = props.slides.length
+
 
   return (
     <CarouselProvider
@@ -20,7 +31,7 @@ const Slideshow = props => {
       naturalSlideWidth={1000}
       naturalSlideHeight={Math.floor((9 / 16) * 1200)}
       isIntrinsicHeight={false}
-      visibleSlides={1.5}
+      visibleSlides={isDevice ? 1 : len > 2 && 1.5}
       infinite={true}
       interval={200}
       className={cn(styles.sliderCarousel, styles.root, className)}
