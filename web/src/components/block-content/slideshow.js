@@ -1,48 +1,55 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { buildImageObj } from '../../lib/helpers'
 import { imageUrlFor } from '../../lib/image-url'
-
+import { useWindowDimensions } from '../../lib/helpers'
+import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel'
+import cn from 'classnames'
+import Icon from '../../components/icons'
+import { Spring, useSpring, animated } from 'react-spring'
+import AnimateScroll from '../../components/AnimateScroll'
 import styles from './slideshow.module.scss'
 
-function Slideshow(props) {
-  const [index, setIndex] = useState(0)
+const Slideshow = props => {
+  const { className} = props
   if (!props.slides) return null
   const len = props.slides.length
-  const handlePrev = () => setIndex(Math.max(index - 1, 0))
-  const handleNext = () => setIndex(Math.min(index + 1, len - 1))
+
   return (
-    <div className={styles.root}>
-      <div className={styles.nav}>
-        <button onClick={handlePrev} disabled={index === 0}>
-          Prev
-        </button>
-        <span>
-          {index + 1} of {len}
-        </span>
-        <button onClick={handleNext} disabled={index === len - 1}>
-          Next
-        </button>
+    <CarouselProvider
+      totalSlides={len}
+      naturalSlideWidth={1000}
+      naturalSlideHeight={Math.floor((9 / 16) * 1200)}
+      isIntrinsicHeight={false}
+      visibleSlides={1.5}
+      infinite={true}
+      interval={200}
+      className={cn(styles.sliderCarousel, styles.root, className)}
+    >
+
+      <div className={styles.sliderContainer}>
+       <div className={styles.buttons}>
+        <ButtonBack className={cn(styles.button, styles.buttonBack)}>
+            <Icon symbol="arrow-left" />
+          </ButtonBack>
+          <ButtonNext className={cn(styles.button, styles.buttonNext)}>
+            <Icon symbol="arrow-right" />
+          </ButtonNext>
+        </div>
+        <Slider trayTag="div" className={cn(styles.slider, styles.sliderContained)}>
+          {props.slides.map((slide, i) => (
+            <Slide index={i} tag="div" key={slide._key} className={styles.slide}>
+              {slide.asset && (
+                <img
+                  src={imageUrlFor(buildImageObj(slide)).width(1000)
+                    .height(Math.floor((9 / 16) * 1200))
+                    .fit('crop').url()}
+                />
+              )}
+            </Slide>
+          ))}
+        </Slider>
       </div>
-      <ul
-        className={styles.carousel}
-        data-index={index}
-        style={{ transform: `translate3d(${index * -100}%, 0, 0)` }}
-      >
-        {props.slides.map(slide => (
-          <li key={slide._key} className={styles.slide}>
-            {slide.asset && (
-              <img
-                src={imageUrlFor(buildImageObj(slide))
-                  .width(1000)
-                  .height(Math.floor((9 / 16) * 1200))
-                  .fit('crop')
-                  .url()}
-              />
-            )}
-          </li>
-        ))}
-      </ul>
-    </div>
+    </CarouselProvider>
   )
 }
 
