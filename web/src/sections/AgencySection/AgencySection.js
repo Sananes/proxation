@@ -53,12 +53,13 @@ const AgencySection = props => {
                   partialVisibility="middle"
                   children={({ isVisible }) => (
                     <div className={styles.item} style={props}>
+                      <div className={styles.image}>
                       <Image
                         style={props}
                         fluid={getSanityImageFluid(item.image)}
                         title={item.image.alt || item.title}
                         alt={item.image.alt || item.image.title}
-                      />
+                      /></div>
 
                       <h4 className={styles.title} style={props}>
                         {item.title}

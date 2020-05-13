@@ -32,14 +32,13 @@
   }
 
   .heading {
-    @include breakpoint-md {
-    }
+    @include breakpoint-md {}
   }
 
   .lead {
     @include body-l;
 
-    & > div {
+    &>div {
       @include body-l;
     }
   }
@@ -53,7 +52,41 @@
       margin-top: 32px;
     }
 
-    .title + div {
+    &:nth-child(2n) {
+      .image:before {
+        background: darken($color-hightlight-background, 10%);
+      }
+
+      .image {
+        @include breakpoint-md {
+          padding-top: 20px;
+          padding-left: 20px;
+        }
+      }
+    }
+
+    &:nth-child(4n) {
+      .image:before {
+        left: auto;
+        right: -4%;
+      }
+    }
+
+    .image {
+      position: relative;
+      display: block;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: -5%;
+        left: -3%;
+        width: 50%;
+        height: 80%;
+      }
+    }
+
+    .title+div {
       margin-top: 16px;
     }
 
@@ -62,6 +95,7 @@
 
       &:nth-child(2n) {
         margin-top: 128px;
+
       }
     }
 
