@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import GraphQLErrorList from '../components/graphql-error-list'
-import Seo from '../components/Seo'
+import SEO from '../components/Seo'
 import Features from '../sections/Features'
 import Layout from '../containers/layout'
 import CarouselSection from '../sections/CarouselSection'
@@ -29,6 +29,9 @@ export const query = graphql`
         image {
           asset {
             url
+            fluid {
+              src
+            }
           }
         }
       }
@@ -106,6 +109,7 @@ const IndexPage = props => {
 
   return (
     <Layout>
+    <SEO title={seo.title} image={seo.image && seo.image.asset.fluid.src} />
       <Hero visible={isVisible} {...hero} location={location} />
       <CarouselSection
         className={styles.projects}
