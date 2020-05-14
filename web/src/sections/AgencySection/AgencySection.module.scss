@@ -52,7 +52,8 @@
       margin-top: 32px;
     }
 
-    &:nth-child(2n) {
+    &:nth-child(2),
+    &:nth-child(3) {
       .image:before {
         background: darken($color-hightlight-background, 10%);
       }
@@ -65,7 +66,7 @@
       }
     }
 
-    &:nth-child(4n) {
+    &:nth-child(3n) {
       .image:before {
         left: auto;
         right: -4%;
